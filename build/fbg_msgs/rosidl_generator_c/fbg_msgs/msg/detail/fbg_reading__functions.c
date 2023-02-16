@@ -19,8 +19,6 @@ fbg_msgs__msg__FbgReading__init(fbg_msgs__msg__FbgReading * msg)
   if (!msg) {
     return false;
   }
-  // num_channel
-  // num_aa
   // signal_reading
   if (!rosidl_runtime_c__double__Sequence__init(&msg->signal_reading, 0)) {
     fbg_msgs__msg__FbgReading__fini(msg);
@@ -35,8 +33,6 @@ fbg_msgs__msg__FbgReading__fini(fbg_msgs__msg__FbgReading * msg)
   if (!msg) {
     return;
   }
-  // num_channel
-  // num_aa
   // signal_reading
   rosidl_runtime_c__double__Sequence__fini(&msg->signal_reading);
 }
@@ -45,14 +41,6 @@ bool
 fbg_msgs__msg__FbgReading__are_equal(const fbg_msgs__msg__FbgReading * lhs, const fbg_msgs__msg__FbgReading * rhs)
 {
   if (!lhs || !rhs) {
-    return false;
-  }
-  // num_channel
-  if (lhs->num_channel != rhs->num_channel) {
-    return false;
-  }
-  // num_aa
-  if (lhs->num_aa != rhs->num_aa) {
     return false;
   }
   // signal_reading
@@ -72,10 +60,6 @@ fbg_msgs__msg__FbgReading__copy(
   if (!input || !output) {
     return false;
   }
-  // num_channel
-  output->num_channel = input->num_channel;
-  // num_aa
-  output->num_aa = input->num_aa;
   // signal_reading
   if (!rosidl_runtime_c__double__Sequence__copy(
       &(input->signal_reading), &(output->signal_reading)))

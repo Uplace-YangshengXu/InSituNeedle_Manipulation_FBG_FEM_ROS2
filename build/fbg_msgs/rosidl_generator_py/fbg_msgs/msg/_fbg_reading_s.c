@@ -53,24 +53,6 @@ bool fbg_msgs__msg__fbg_reading__convert_from_py(PyObject * _pymsg, void * _ros_
     assert(strncmp("fbg_msgs.msg._fbg_reading.FbgReading", full_classname_dest, 36) == 0);
   }
   fbg_msgs__msg__FbgReading * ros_message = _ros_message;
-  {  // num_channel
-    PyObject * field = PyObject_GetAttrString(_pymsg, "num_channel");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->num_channel = (uint16_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
-  {  // num_aa
-    PyObject * field = PyObject_GetAttrString(_pymsg, "num_aa");
-    if (!field) {
-      return false;
-    }
-    assert(PyLong_Check(field));
-    ros_message->num_aa = (uint16_t)PyLong_AsUnsignedLong(field);
-    Py_DECREF(field);
-  }
   {  // signal_reading
     PyObject * field = PyObject_GetAttrString(_pymsg, "signal_reading");
     if (!field) {
@@ -155,28 +137,6 @@ PyObject * fbg_msgs__msg__fbg_reading__convert_to_py(void * raw_ros_message)
     }
   }
   fbg_msgs__msg__FbgReading * ros_message = (fbg_msgs__msg__FbgReading *)raw_ros_message;
-  {  // num_channel
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->num_channel);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "num_channel", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
-  {  // num_aa
-    PyObject * field = NULL;
-    field = PyLong_FromUnsignedLong(ros_message->num_aa);
-    {
-      int rc = PyObject_SetAttrString(_pymessage, "num_aa", field);
-      Py_DECREF(field);
-      if (rc) {
-        return NULL;
-      }
-    }
-  }
   {  // signal_reading
     PyObject * field = NULL;
     field = PyObject_GetAttrString(_pymessage, "signal_reading");

@@ -24,8 +24,6 @@ extern "C"
 // Struct defined in msg/FbgReading in the package fbg_msgs.
 typedef struct fbg_msgs__msg__FbgReading
 {
-  uint16_t num_channel;
-  uint16_t num_aa;
   rosidl_runtime_c__double__Sequence signal_reading;
 } fbg_msgs__msg__FbgReading;
 

@@ -23,45 +23,13 @@ namespace builder
 class Init_FbgReading_signal_reading
 {
 public:
-  explicit Init_FbgReading_signal_reading(::fbg_msgs::msg::FbgReading & msg)
-  : msg_(msg)
+  Init_FbgReading_signal_reading()
+  : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
   ::fbg_msgs::msg::FbgReading signal_reading(::fbg_msgs::msg::FbgReading::_signal_reading_type arg)
   {
     msg_.signal_reading = std::move(arg);
     return std::move(msg_);
-  }
-
-private:
-  ::fbg_msgs::msg::FbgReading msg_;
-};
-
-class Init_FbgReading_num_aa
-{
-public:
-  explicit Init_FbgReading_num_aa(::fbg_msgs::msg::FbgReading & msg)
-  : msg_(msg)
-  {}
-  Init_FbgReading_signal_reading num_aa(::fbg_msgs::msg::FbgReading::_num_aa_type arg)
-  {
-    msg_.num_aa = std::move(arg);
-    return Init_FbgReading_signal_reading(msg_);
-  }
-
-private:
-  ::fbg_msgs::msg::FbgReading msg_;
-};
-
-class Init_FbgReading_num_channel
-{
-public:
-  Init_FbgReading_num_channel()
-  : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
-  {}
-  Init_FbgReading_num_aa num_channel(::fbg_msgs::msg::FbgReading::_num_channel_type arg)
-  {
-    msg_.num_channel = std::move(arg);
-    return Init_FbgReading_num_aa(msg_);
   }
 
 private:
@@ -79,7 +47,7 @@ template<>
 inline
 auto build<::fbg_msgs::msg::FbgReading>()
 {
-  return fbg_msgs::msg::builder::Init_FbgReading_num_channel();
+  return fbg_msgs::msg::builder::Init_FbgReading_signal_reading();
 }
 
 }  // namespace fbg_msgs

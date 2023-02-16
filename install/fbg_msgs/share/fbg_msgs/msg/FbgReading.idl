@@ -6,10 +6,6 @@
 module fbg_msgs {
   module msg {
     struct FbgReading {
-      uint16 num_channel;
-
-      uint16 num_aa;
-
       sequence<double> signal_reading;
     };
   };

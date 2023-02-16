@@ -1,0 +1,221 @@
+[0.161s] Invoking command in '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake --build /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs -- -j8 -l8
+[0.180s] -- Found ament_cmake: 1.1.6 (/opt/ros/galactic/share/ament_cmake/cmake)
+[0.195s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.195s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.237s] -- Found rclcpp: 9.2.2 (/opt/ros/galactic/share/rclcpp/cmake)
+[0.262s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.265s] -- Found rosidl_adapter: 2.2.3 (/opt/ros/galactic/share/rosidl_adapter/cmake)
+[0.350s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.389s] -- Found rmw_implementation_cmake: 3.3.1 (/opt/ros/galactic/share/rmw_implementation_cmake/cmake)
+[0.390s] -- Found rmw_cyclonedds_cpp: 0.22.6 (/opt/ros/galactic/share/rmw_cyclonedds_cpp/cmake)
+[0.403s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[0.510s] -- Found rosidl_default_generators: 1.1.1 (/opt/ros/galactic/share/rosidl_default_generators/cmake)
+[0.532s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") 
+[0.618s] -- Found ament_cmake_ros: 0.9.2 (/opt/ros/galactic/share/ament_cmake_ros/cmake)
+[0.684s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.689s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.705s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") 
+[0.705s] -- Found python_cmake_module: 0.8.1 (/opt/ros/galactic/share/python_cmake_module/cmake)
+[0.722s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.722s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+[0.722s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+[0.731s] -- Found ament_lint_auto: 0.10.7 (/opt/ros/galactic/share/ament_lint_auto/cmake)
+[0.738s] -- Added test 'copyright' to check source files copyright and LICENSE
+[0.739s] -- Added test 'lint_cmake' to check CMake code style
+[0.740s] -- Added test 'xmllint' to check XML markup files
+[0.743s] -- Configuring done
+[0.764s] -- Generating done
+[0.766s] -- Build files have been written to: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs
+[0.784s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[0.791s] [  5%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[0.972s] [  5%] Built target fbg_msgs__cpp
+[0.978s] [  7%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[0.978s] [ 10%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[0.978s] [ 12%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[0.983s] [35m[1mScanning dependencies of target fbg_msgs__rosidl_generator_c[0m
+[0.991s] [ 15%] [32mBuilding C object CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/curvature__functions.c.o[0m
+[0.992s] [ 17%] [32mBuilding C object CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/fbg_reading__functions.c.o[0m
+[1.033s] [ 20%] [32m[1mLinking C shared library libfbg_msgs__rosidl_generator_c.so[0m
+[1.056s] [ 20%] Built target fbg_msgs__rosidl_generator_c
+[1.063s] [ 23%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[1.065s] [ 25%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[1.131s] [35m[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_cpp[0m
+[1.141s] [ 28%] [32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fbg_msgs/msg/curvature__type_support.cpp.o[0m
+[1.141s] [ 30%] [32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fbg_msgs/msg/fbg_reading__type_support.cpp.o[0m
+[1.146s] [35m[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_introspection_cpp[0m
+[1.156s] [ 35%] [32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/fbg_msgs/msg/detail/curvature__type_support.cpp.o[0m
+[1.156s] [ 35%] [32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/fbg_msgs/msg/detail/fbg_reading__type_support.cpp.o[0m
+[1.248s] [35m[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_introspection_c[0m
+[1.251s] [35m[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_fastrtps_cpp[0m
+[1.260s] [ 41%] [32mBuilding C object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/fbg_msgs/msg/detail/fbg_reading__type_support.c.o[0m
+[1.260s] [ 41%] [32mBuilding C object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/fbg_msgs/msg/detail/curvature__type_support.c.o[0m
+[1.268s] [ 43%] [32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/fbg_msgs/msg/detail/dds_fastrtps/fbg_reading__type_support.cpp.o[0m
+[1.293s] [ 46%] [32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/fbg_msgs/msg/detail/dds_fastrtps/curvature__type_support.cpp.o[0m
+[1.297s] [ 48%] [32m[1mLinking C shared library libfbg_msgs__rosidl_typesupport_introspection_c.so[0m
+[1.306s] [35m[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_c[0m
+[1.314s] [ 51%] [32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/fbg_reading__type_support.cpp.o[0m
+[1.337s] [ 51%] Built target fbg_msgs__rosidl_typesupport_introspection_c
+[1.341s] [ 53%] [32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/curvature__type_support.cpp.o[0m
+[1.361s] [ 56%] [32m[1mLinking CXX shared library libfbg_msgs__rosidl_typesupport_c.so[0m
+[1.387s] [ 56%] Built target fbg_msgs__rosidl_typesupport_c
+[1.428s] [ 58%] [32m[1mLinking CXX shared library libfbg_msgs__rosidl_typesupport_cpp.so[0m
+[1.455s] [ 58%] Built target fbg_msgs__rosidl_typesupport_cpp
+[1.472s] [ 61%] [32m[1mLinking CXX shared library libfbg_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[1.520s] [ 61%] Built target fbg_msgs__rosidl_typesupport_introspection_cpp
+[1.676s] [ 64%] [32m[1mLinking CXX shared library libfbg_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[1.734s] [ 64%] Built target fbg_msgs__rosidl_typesupport_fastrtps_cpp
+[1.741s] [ 66%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[1.907s] [35m[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_fastrtps_c[0m
+[1.916s] [ 71%] [32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/fbg_msgs/msg/detail/fbg_reading__type_support_c.cpp.o[0m
+[1.916s] [ 71%] [32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/fbg_msgs/msg/detail/curvature__type_support_c.cpp.o[0m
+[2.144s] [ 74%] [32m[1mLinking CXX shared library libfbg_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[2.201s] [ 74%] Built target fbg_msgs__rosidl_typesupport_fastrtps_c
+[2.215s] [ 74%] Built target fbg_msgs
+[2.233s] [ 76%] [34m[1mGenerating Python code for ROS interfaces[0m
+[2.558s] [ 76%] Built target fbg_msgs__py
+[2.566s] [35m[1mScanning dependencies of target fbg_msgs__python[0m
+[2.576s] [ 82%] [32mBuilding C object CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/msg/_fbg_reading_s.c.o[0m
+[2.576s] [ 82%] [32mBuilding C object CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/msg/_curvature_s.c.o[0m
+[2.644s] [ 84%] [32m[1mLinking C shared library rosidl_generator_py/fbg_msgs/libfbg_msgs__python.so[0m
+[2.670s] [ 84%] Built target fbg_msgs__python
+[2.677s] [35m[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_introspection_c__pyext[0m
+[2.678s] [35m[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_c__pyext[0m
+[2.678s] [35m[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_fastrtps_c__pyext[0m
+[2.688s] [ 87%] [32mBuilding C object CMakeFiles/fbg_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[2.689s] [ 89%] [32mBuilding C object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[2.689s] [ 92%] [32mBuilding C object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[2.744s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/fbg_msgs/fbg_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so[0m
+[2.744s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/fbg_msgs/fbg_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so[0m
+[2.745s] [100%] [32m[1mLinking CXX shared library rosidl_generator_py/fbg_msgs/fbg_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so[0m
+[2.766s] [100%] Built target fbg_msgs__rosidl_typesupport_c__pyext
+[2.766s] [100%] Built target fbg_msgs__rosidl_typesupport_introspection_c__pyext
+[2.787s] [100%] Built target fbg_msgs__rosidl_typesupport_fastrtps_c__pyext
+[2.795s] Invoked command in '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake --build /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs -- -j8 -l8
+[2.839s] Invoking command in '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake --install /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs
+[2.845s] -- Install configuration: ""
+[2.845s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/ament_index/resource_index/rosidl_interfaces/fbg_msgs
+[2.845s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs
+[2.845s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg
+[2.845s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/curvature.h
+[2.845s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/rosidl_generator_c__visibility_control.h
+[2.845s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/fbg_reading.h
+[2.845s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail
+[2.845s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__functions.c
+[2.845s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__struct.h
+[2.846s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__functions.h
+[2.846s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__type_support.h
+[2.846s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__functions.h
+[2.846s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__type_support.h
+[2.846s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__struct.h
+[2.846s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__functions.c
+[2.846s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/library_path.sh
+[2.846s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/library_path.dsv
+[2.846s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_generator_c.so
+[2.846s] -- Set runtime path of "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_generator_c.so" to ""
+[2.846s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs
+[2.846s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg
+[2.846s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail
+[2.846s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__rosidl_typesupport_fastrtps_c.h
+[2.846s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__rosidl_typesupport_fastrtps_c.h
+[2.846s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[2.846s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_fastrtps_c.so
+[2.847s] -- Set runtime path of "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[2.847s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs
+[2.847s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg
+[2.847s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[2.847s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail
+[2.847s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__rosidl_typesupport_fastrtps_cpp.hpp
+[2.847s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__rosidl_typesupport_fastrtps_cpp.hpp
+[2.847s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/dds_fastrtps
+[2.847s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_fastrtps_cpp.so
+[2.847s] -- Set runtime path of "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[2.847s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs
+[2.847s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg
+[2.847s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[2.847s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail
+[2.847s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__type_support.c
+[2.847s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__rosidl_typesupport_introspection_c.h
+[2.847s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__type_support.c
+[2.847s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__rosidl_typesupport_introspection_c.h
+[2.847s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_introspection_c.so
+[2.848s] -- Set runtime path of "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_introspection_c.so" to ""
+[2.848s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_c.so
+[2.848s] -- Set runtime path of "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_c.so" to ""
+[2.848s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs
+[2.848s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg
+[2.848s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/curvature.hpp
+[2.848s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail
+[2.848s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__traits.hpp
+[2.848s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__builder.hpp
+[2.848s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__struct.hpp
+[2.848s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__struct.hpp
+[2.848s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__builder.hpp
+[2.848s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__traits.hpp
+[2.848s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/fbg_reading.hpp
+[2.848s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs
+[2.848s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg
+[2.849s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail
+[2.849s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__type_support.cpp
+[2.849s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__rosidl_typesupport_introspection_cpp.hpp
+[2.849s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__rosidl_typesupport_introspection_cpp.hpp
+[2.849s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__type_support.cpp
+[2.849s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_introspection_cpp.so
+[2.849s] -- Set runtime path of "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[2.849s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_cpp.so
+[2.849s] -- Set runtime path of "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_cpp.so" to ""
+[2.849s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/pythonpath.sh
+[2.849s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/pythonpath.dsv
+[2.849s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/__init__.py
+[2.870s] Compiling '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/__init__.py'...
+[2.872s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg
+[2.872s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg/_fbg_reading.py
+[2.872s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg/__init__.py
+[2.873s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg/_curvature.py
+[2.873s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg/_curvature_s.c
+[2.873s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg/_fbg_reading_s.c
+[2.873s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+[2.873s] -- Set runtime path of "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so" to ""
+[2.873s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+[2.874s] -- Set runtime path of "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so" to ""
+[2.874s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+[2.874s] -- Set runtime path of "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so" to ""
+[2.874s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__python.so
+[2.874s] -- Set runtime path of "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__python.so" to ""
+[2.874s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/msg/FbgReading.idl
+[2.874s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/msg/Curvature.idl
+[2.874s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/msg/FbgReading.msg
+[2.875s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/msg/Curvature.msg
+[2.875s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/ament_index/resource_index/package_run_dependencies/fbg_msgs
+[2.875s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/ament_index/resource_index/parent_prefix_path/fbg_msgs
+[2.875s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/ament_prefix_path.sh
+[2.875s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/ament_prefix_path.dsv
+[2.875s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/path.sh
+[2.875s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/path.dsv
+[2.875s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/local_setup.bash
+[2.875s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/local_setup.sh
+[2.875s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/local_setup.zsh
+[2.875s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/local_setup.dsv
+[2.875s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.dsv
+[2.875s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/ament_index/resource_index/packages/fbg_msgs
+[2.875s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_generator_cExport.cmake
+[2.875s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_generator_cExport-noconfig.cmake
+[2.875s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_introspection_cExport.cmake
+[2.876s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[2.876s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_cExport.cmake
+[2.876s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[2.876s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_generator_cppExport.cmake
+[2.876s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[2.876s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[2.876s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_cppExport.cmake
+[2.876s] -- Installing: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[2.876s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/rosidl_cmake-extras.cmake
+[2.876s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[2.876s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[2.876s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[2.876s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[2.876s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[2.876s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[2.877s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgsConfig.cmake
+[2.877s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgsConfig-version.cmake
+[2.877s] -- Up-to-date: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.xml
+[2.880s] Invoked command in '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake --install /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs

@@ -1,0 +1,6 @@
+source;share/sm130_interrogator/hook/pythonpath.ps1
+source;share/sm130_interrogator/hook/pythonpath.dsv
+source;share/sm130_interrogator/hook/pythonpath.sh
+source;share/sm130_interrogator/hook/ament_prefix_path.ps1
+source;share/sm130_interrogator/hook/ament_prefix_path.dsv
+source;share/sm130_interrogator/hook/ament_prefix_path.sh

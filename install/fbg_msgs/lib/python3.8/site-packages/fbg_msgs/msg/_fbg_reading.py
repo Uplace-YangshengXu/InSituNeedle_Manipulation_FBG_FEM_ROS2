@@ -56,20 +56,14 @@ class FbgReading(metaclass=Metaclass_FbgReading):
     """Message class 'FbgReading'."""
 
     __slots__ = [
-        '_num_channel',
-        '_num_aa',
         '_signal_reading',
     ]
 
     _fields_and_field_types = {
-        'num_channel': 'uint16',
-        'num_aa': 'uint16',
         'signal_reading': 'sequence<double>',
     }
 
     SLOT_TYPES = (
-        rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
-        rosidl_parser.definition.BasicType('uint16'),  # noqa: E501
         rosidl_parser.definition.UnboundedSequence(rosidl_parser.definition.BasicType('double')),  # noqa: E501
     )
 
@@ -77,8 +71,6 @@ class FbgReading(metaclass=Metaclass_FbgReading):
         assert all('_' + key in self.__slots__ for key in kwargs.keys()), \
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
-        self.num_channel = kwargs.get('num_channel', int())
-        self.num_aa = kwargs.get('num_aa', int())
         self.signal_reading = array.array('d', kwargs.get('signal_reading', []))
 
     def __repr__(self):
@@ -110,10 +102,6 @@ class FbgReading(metaclass=Metaclass_FbgReading):
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
-        if self.num_channel != other.num_channel:
-            return False
-        if self.num_aa != other.num_aa:
-            return False
         if self.signal_reading != other.signal_reading:
             return False
         return True
@@ -122,36 +110,6 @@ class FbgReading(metaclass=Metaclass_FbgReading):
     def get_fields_and_field_types(cls):
         from copy import copy
         return copy(cls._fields_and_field_types)
-
-    @property
-    def num_channel(self):
-        """Message field 'num_channel'."""
-        return self._num_channel
-
-    @num_channel.setter
-    def num_channel(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'num_channel' field must be of type 'int'"
-            assert value >= 0 and value < 65536, \
-                "The 'num_channel' field must be an unsigned integer in [0, 65535]"
-        self._num_channel = value
-
-    @property
-    def num_aa(self):
-        """Message field 'num_aa'."""
-        return self._num_aa
-
-    @num_aa.setter
-    def num_aa(self, value):
-        if __debug__:
-            assert \
-                isinstance(value, int), \
-                "The 'num_aa' field must be of type 'int'"
-            assert value >= 0 and value < 65536, \
-                "The 'num_aa' field must be an unsigned integer in [0, 65535]"
-        self._num_aa = value
 
     @property
     def signal_reading(self):

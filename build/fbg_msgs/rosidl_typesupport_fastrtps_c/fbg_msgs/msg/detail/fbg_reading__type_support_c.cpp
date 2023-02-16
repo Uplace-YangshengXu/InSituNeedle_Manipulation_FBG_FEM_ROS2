@@ -51,16 +51,6 @@ static bool _FbgReading__cdr_serialize(
     return false;
   }
   const _FbgReading__ros_msg_type * ros_message = static_cast<const _FbgReading__ros_msg_type *>(untyped_ros_message);
-  // Field name: num_channel
-  {
-    cdr << ros_message->num_channel;
-  }
-
-  // Field name: num_aa
-  {
-    cdr << ros_message->num_aa;
-  }
-
   // Field name: signal_reading
   {
     size_t size = ros_message->signal_reading.size;
@@ -81,16 +71,6 @@ static bool _FbgReading__cdr_deserialize(
     return false;
   }
   _FbgReading__ros_msg_type * ros_message = static_cast<_FbgReading__ros_msg_type *>(untyped_ros_message);
-  // Field name: num_channel
-  {
-    cdr >> ros_message->num_channel;
-  }
-
-  // Field name: num_aa
-  {
-    cdr >> ros_message->num_aa;
-  }
-
   // Field name: signal_reading
   {
     uint32_t cdrSize;
@@ -124,18 +104,6 @@ size_t get_serialized_size_fbg_msgs__msg__FbgReading(
   (void)padding;
   (void)wchar_size;
 
-  // field.name num_channel
-  {
-    size_t item_size = sizeof(ros_message->num_channel);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // field.name num_aa
-  {
-    size_t item_size = sizeof(ros_message->num_aa);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
   // field.name signal_reading
   {
     size_t array_size = ros_message->signal_reading.size;
@@ -171,20 +139,6 @@ size_t max_serialized_size_fbg_msgs__msg__FbgReading(
   (void)wchar_size;
   (void)full_bounded;
 
-  // member: num_channel
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint16_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
-  }
-  // member: num_aa
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint16_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
-  }
   // member: signal_reading
   {
     size_t array_size = 0;

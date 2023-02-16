@@ -34,49 +34,21 @@ struct FbgReading_
 
   explicit FbgReading_(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
   {
-    if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
-      rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
-    {
-      this->num_channel = 0;
-      this->num_aa = 0;
-    }
+    (void)_init;
   }
 
   explicit FbgReading_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
   {
+    (void)_init;
     (void)_alloc;
-    if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
-      rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
-    {
-      this->num_channel = 0;
-      this->num_aa = 0;
-    }
   }
 
   // field types and members
-  using _num_channel_type =
-    uint16_t;
-  _num_channel_type num_channel;
-  using _num_aa_type =
-    uint16_t;
-  _num_aa_type num_aa;
   using _signal_reading_type =
     std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>>;
   _signal_reading_type signal_reading;
 
   // setters for named parameter idiom
-  Type & set__num_channel(
-    const uint16_t & _arg)
-  {
-    this->num_channel = _arg;
-    return *this;
-  }
-  Type & set__num_aa(
-    const uint16_t & _arg)
-  {
-    this->num_aa = _arg;
-    return *this;
-  }
   Type & set__signal_reading(
     const std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>> & _arg)
   {
@@ -126,12 +98,6 @@ struct FbgReading_
   // comparison operators
   bool operator==(const FbgReading_ & other) const
   {
-    if (this->num_channel != other.num_channel) {
-      return false;
-    }
-    if (this->num_aa != other.num_aa) {
-      return false;
-    }
     if (this->signal_reading != other.signal_reading) {
       return false;
     }

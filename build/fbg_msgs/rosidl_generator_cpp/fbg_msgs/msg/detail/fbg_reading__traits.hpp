@@ -19,26 +19,6 @@ inline void to_yaml(
   const fbg_msgs::msg::FbgReading & msg,
   std::ostream & out, size_t indentation = 0)
 {
-  // member: num_channel
-  {
-    if (indentation > 0) {
-      out << std::string(indentation, ' ');
-    }
-    out << "num_channel: ";
-    value_to_yaml(msg.num_channel, out);
-    out << "\n";
-  }
-
-  // member: num_aa
-  {
-    if (indentation > 0) {
-      out << std::string(indentation, ' ');
-    }
-    out << "num_aa: ";
-    value_to_yaml(msg.num_aa, out);
-    out << "\n";
-  }
-
   // member: signal_reading
   {
     if (indentation > 0) {

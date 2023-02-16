@@ -35,37 +35,7 @@ void FbgReading__rosidl_typesupport_introspection_c__FbgReading_fini_function(vo
   fbg_msgs__msg__FbgReading__fini(message_memory);
 }
 
-static rosidl_typesupport_introspection_c__MessageMember FbgReading__rosidl_typesupport_introspection_c__FbgReading_message_member_array[3] = {
-  {
-    "num_channel",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT16,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(fbg_msgs__msg__FbgReading, num_channel),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
-  {
-    "num_aa",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_UINT16,  // type
-    0,  // upper bound of string
-    NULL,  // members of sub message
-    false,  // is array
-    0,  // array size
-    false,  // is upper bound
-    offsetof(fbg_msgs__msg__FbgReading, num_aa),  // bytes offset in struct
-    NULL,  // default value
-    NULL,  // size() function pointer
-    NULL,  // get_const(index) function pointer
-    NULL,  // get(index) function pointer
-    NULL  // resize(index) function pointer
-  },
+static rosidl_typesupport_introspection_c__MessageMember FbgReading__rosidl_typesupport_introspection_c__FbgReading_message_member_array[1] = {
   {
     "signal_reading",  // name
     rosidl_typesupport_introspection_c__ROS_TYPE_DOUBLE,  // type
@@ -86,7 +56,7 @@ static rosidl_typesupport_introspection_c__MessageMember FbgReading__rosidl_type
 static const rosidl_typesupport_introspection_c__MessageMembers FbgReading__rosidl_typesupport_introspection_c__FbgReading_message_members = {
   "fbg_msgs__msg",  // message namespace
   "FbgReading",  // message name
-  3,  // number of fields
+  1,  // number of fields
   sizeof(fbg_msgs__msg__FbgReading),
   FbgReading__rosidl_typesupport_introspection_c__FbgReading_message_member_array,  // message members
   FbgReading__rosidl_typesupport_introspection_c__FbgReading_init_function,  // function to initialize message memory (memory has to be allocated)

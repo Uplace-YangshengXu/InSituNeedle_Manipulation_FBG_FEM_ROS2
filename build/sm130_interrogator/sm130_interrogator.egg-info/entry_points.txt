@@ -1,0 +1,3 @@
+[console_scripts]
+talker = sm130_interrogator.publisher_member_function:main
+

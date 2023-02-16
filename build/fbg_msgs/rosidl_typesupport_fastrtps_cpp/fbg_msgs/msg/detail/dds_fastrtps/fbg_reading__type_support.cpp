@@ -32,10 +32,6 @@ cdr_serialize(
   const fbg_msgs::msg::FbgReading & ros_message,
   eprosima::fastcdr::Cdr & cdr)
 {
-  // Member: num_channel
-  cdr << ros_message.num_channel;
-  // Member: num_aa
-  cdr << ros_message.num_aa;
   // Member: signal_reading
   {
     cdr << ros_message.signal_reading;
@@ -49,12 +45,6 @@ cdr_deserialize(
   eprosima::fastcdr::Cdr & cdr,
   fbg_msgs::msg::FbgReading & ros_message)
 {
-  // Member: num_channel
-  cdr >> ros_message.num_channel;
-
-  // Member: num_aa
-  cdr >> ros_message.num_aa;
-
   // Member: signal_reading
   {
     cdr >> ros_message.signal_reading;
@@ -76,18 +66,6 @@ get_serialized_size(
   (void)padding;
   (void)wchar_size;
 
-  // Member: num_channel
-  {
-    size_t item_size = sizeof(ros_message.num_channel);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
-  // Member: num_aa
-  {
-    size_t item_size = sizeof(ros_message.num_aa);
-    current_alignment += item_size +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
-  }
   // Member: signal_reading
   {
     size_t array_size = ros_message.signal_reading.size();
@@ -116,22 +94,6 @@ max_serialized_size_FbgReading(
   (void)wchar_size;
   (void)full_bounded;
 
-
-  // Member: num_channel
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint16_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
-  }
-
-  // Member: num_aa
-  {
-    size_t array_size = 1;
-
-    current_alignment += array_size * sizeof(uint16_t) +
-      eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint16_t));
-  }
 
   // Member: signal_reading
   {
