@@ -1,0 +1,24 @@
+[0.155s] Invoking command in '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs': /usr/bin/cmake /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/fbg_msgs -DCMAKE_INSTALL_PREFIX=/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs
+[0.164s] -- Found ament_cmake: 1.1.6 (/opt/ros/galactic/share/ament_cmake/cmake)
+[0.179s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.179s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.221s] -- Found rclcpp: 9.2.2 (/opt/ros/galactic/share/rclcpp/cmake)
+[0.246s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.248s] -- Found rosidl_adapter: 2.2.3 (/opt/ros/galactic/share/rosidl_adapter/cmake)
+[0.330s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.368s] -- Found rmw_implementation_cmake: 3.3.1 (/opt/ros/galactic/share/rmw_implementation_cmake/cmake)
+[0.369s] -- Found rmw_cyclonedds_cpp: 0.22.6 (/opt/ros/galactic/share/rmw_cyclonedds_cpp/cmake)
+[0.382s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[0.484s] -- Found rosidl_default_generators: 1.1.1 (/opt/ros/galactic/share/rosidl_default_generators/cmake)
+[0.490s] CMake Error at /opt/ros/galactic/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:93 (message):
+[0.490s]   rosidl_generate_interfaces() the passed file 'msg/fbg_reading.msg' doesn't
+[0.490s]   exist relative to the CMAKE_CURRENT_SOURCE_DIR
+[0.490s]   '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/fbg_msgs'
+[0.490s] Call Stack (most recent call first):
+[0.490s]   CMakeLists.txt:13 (rosidl_generate_interfaces)
+[0.491s] 
+[0.491s] 
+[0.491s] -- Configuring incomplete, errors occurred!
+[0.491s] See also "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/CMakeFiles/CMakeOutput.log".
+[0.491s] See also "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/CMakeFiles/CMakeError.log".
+[0.495s] Invoked command in '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs' returned '1': /usr/bin/cmake /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/fbg_msgs -DCMAKE_INSTALL_PREFIX=/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs

@@ -8,12 +8,11 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "your custom interfaces will be here"
-  "one per line"
-  "no comma for separating lines"
-  )
+  "msg/FbgReading.msg" "msg/Curvature.msg")
+  
 
 ament_export_dependencies(rosidl_default_runtime)
 

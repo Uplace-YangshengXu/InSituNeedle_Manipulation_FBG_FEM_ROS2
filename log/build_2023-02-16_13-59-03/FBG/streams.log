@@ -1,0 +1,33 @@
+[0.423s] Invoking command in '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FBG': PYTHONPATH=/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/prefix_override:/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/FBG/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/FBG build --build-base /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/build install --record /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/install.log --single-version-externally-managed
+[0.559s] running egg_info
+[0.559s] creating ../../build/FBG/FBG.egg-info
+[0.559s] writing ../../build/FBG/FBG.egg-info/PKG-INFO
+[0.559s] writing dependency_links to ../../build/FBG/FBG.egg-info/dependency_links.txt
+[0.559s] writing entry points to ../../build/FBG/FBG.egg-info/entry_points.txt
+[0.560s] writing requirements to ../../build/FBG/FBG.egg-info/requires.txt
+[0.560s] writing top-level names to ../../build/FBG/FBG.egg-info/top_level.txt
+[0.560s] writing manifest file '../../build/FBG/FBG.egg-info/SOURCES.txt'
+[0.584s] reading manifest file '../../build/FBG/FBG.egg-info/SOURCES.txt'
+[0.585s] writing manifest file '../../build/FBG/FBG.egg-info/SOURCES.txt'
+[0.585s] running build
+[0.585s] running build_py
+[0.585s] creating /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/build
+[0.585s] creating /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/build/lib
+[0.585s] creating /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/build/lib/FBG
+[0.585s] copying FBG/__init__.py -> /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/build/lib/FBG
+[0.585s] running install
+[0.585s] running install_lib
+[0.586s] creating /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/FBG/lib/python3.8/site-packages/FBG
+[0.586s] copying /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/build/lib/FBG/__init__.py -> /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/FBG/lib/python3.8/site-packages/FBG
+[0.586s] byte-compiling /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/FBG/lib/python3.8/site-packages/FBG/__init__.py to __init__.cpython-38.pyc
+[0.587s] running install_data
+[0.587s] creating /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/FBG/share/ament_index
+[0.587s] creating /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/FBG/share/ament_index/resource_index
+[0.587s] creating /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/FBG/share/ament_index/resource_index/packages
+[0.587s] copying resource/FBG -> /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/FBG/share/ament_index/resource_index/packages
+[0.587s] copying package.xml -> /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/FBG/share/FBG
+[0.588s] running install_egg_info
+[0.589s] Copying ../../build/FBG/FBG.egg-info to /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/FBG/lib/python3.8/site-packages/FBG-0.0.0-py3.8.egg-info
+[0.589s] running install_scripts
+[0.601s] writing list of installed files to '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/install.log'
+[0.615s] Invoked command in '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FBG' returned '0': PYTHONPATH=/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/prefix_override:/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/FBG/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/FBG build --build-base /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/build install --record /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/FBG/install.log --single-version-externally-managed
