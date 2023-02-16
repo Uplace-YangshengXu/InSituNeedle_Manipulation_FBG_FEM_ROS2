@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'talker = sm130_interrogator.publisher_member_function:main',
+            'talker = sm130_interrogator.talker:main',
+            'listener = sm130_interrogator.listener:main',
         ],
     },
 )

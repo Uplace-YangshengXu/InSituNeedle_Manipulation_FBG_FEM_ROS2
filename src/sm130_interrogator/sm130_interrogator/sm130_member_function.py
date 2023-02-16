@@ -7,7 +7,7 @@ class interrogator_publisher(Node):
 
     def __init__(self):
         super().__init__('interrogator_publisher')
-        self.publisher_ = self.create_publisher(FbgReading,'pub',10)
+        self.publisher_ = self.create_publisher(FbgReading,'sm130',10)
         timer_period = 2
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.address = "192.168.1.11"
@@ -26,15 +26,18 @@ class interrogator_publisher(Node):
         #msg.signal_reading
         #self.get_logger().info('Publishing: "%s"' % msg.data)
 
-def main(args = None):
-    rclpy.init(args=args)
 
-    sm130_publisher = interrogator_publisher()
-    rclpy.spin(sm130_publisher)
-    sm130_publisher.destroy_node()
-    rclpy.shutdown()
+class interrogator_subscriber(Node):
+    def __init__(self):
+        super().__init__('interrogator_subscriber')
+        self.subscription = self.create_subscription(
+                FbgReading,
+                'sm130',
+                self.listener_callback,
+                10)
+        def listener_callback(self, msg):
+            print(msg.signal_reading)
 
 
-if __name__ == '__main__':
-    main()
+
 
