@@ -10,7 +10,9 @@ setup.py
 ../../build/sm130_interrogator/sm130_interrogator.egg-info/zip-safe
 resource/sm130_interrogator
 sm130_interrogator/__init__.py
-sm130_interrogator/publisher_member_function.py
+sm130_interrogator/listener.py
+sm130_interrogator/sm130_member_function.py
+sm130_interrogator/talker.py
 test/test_copyright.py
 test/test_flake8.py
 test/test_pep257.py
