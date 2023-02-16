@@ -1,0 +1,6 @@
+[0.050s] Invoking command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake --build /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs -- -j12 -l12
+[0.327s] CMake Error: The current CMakeCache.txt directory /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/CMakeCache.txt is different than the directory /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+[0.328s] CMake Error: The source directory "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/fbg_msgs" does not exist.
+[0.328s] Specify --help for usage, or press the help button on the CMake GUI.
+[0.328s] make: *** [Makefile:988: cmake_check_build_system] Error 1
+[0.594s] Invoked command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs' returned '2': CMAKE_PREFIX_PATH=/opt/ros/galactic /usr/bin/cmake --build /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs -- -j12 -l12
