@@ -1,3 +1,0 @@
-uint16 num_channel
-uint16 num_AA
-float64[] signal_reading

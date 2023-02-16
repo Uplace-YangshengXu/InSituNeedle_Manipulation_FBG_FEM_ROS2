@@ -102,4 +102,7 @@ CMakeFiles/fbg_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/fbg_msg
 CMakeFiles/fbg_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_c.c.o: rosidl_generator_c/fbg_msgs/msg/detail/fbg_reading__struct.h
 CMakeFiles/fbg_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_c.c.o: rosidl_generator_c/fbg_msgs/msg/detail/fbg_reading__type_support.h
 CMakeFiles/fbg_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_c.c.o: rosidl_generator_c/fbg_msgs/msg/rosidl_generator_c__visibility_control.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_c.c.o: rosidl_generator_c/fbg_msgs/srv/detail/curvature__functions.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_c.c.o: rosidl_generator_c/fbg_msgs/srv/detail/curvature__struct.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_c.c.o: rosidl_generator_c/fbg_msgs/srv/detail/curvature__type_support.h
 

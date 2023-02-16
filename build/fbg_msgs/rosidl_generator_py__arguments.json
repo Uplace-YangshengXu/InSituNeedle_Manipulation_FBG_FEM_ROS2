@@ -1,10 +1,11 @@
 {
   "package_name": "fbg_msgs",
-  "output_dir": "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_generator_py/fbg_msgs",
+  "output_dir": "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_generator_py/fbg_msgs",
   "template_dir": "/opt/ros/galactic/share/rosidl_generator_py/cmake/../resource",
   "idl_tuples": [
-    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/FbgReading.idl",
-    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/Curvature.idl"
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/FbgReading.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/Curvature.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs:srv/Curvature.idl"
   ],
   "target_dependencies": [
     "/opt/ros/galactic/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py",
@@ -20,7 +21,8 @@
     "/opt/ros/galactic/share/rosidl_generator_py/cmake/../resource/_msg.py.em",
     "/opt/ros/galactic/share/rosidl_generator_py/cmake/../resource/_srv_pkg_typesupport_entry_point.c.em",
     "/opt/ros/galactic/share/rosidl_generator_py/cmake/../resource/_srv.py.em",
-    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/FbgReading.idl",
-    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/Curvature.idl"
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/FbgReading.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/Curvature.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs/srv/Curvature.idl"
   ]
 }

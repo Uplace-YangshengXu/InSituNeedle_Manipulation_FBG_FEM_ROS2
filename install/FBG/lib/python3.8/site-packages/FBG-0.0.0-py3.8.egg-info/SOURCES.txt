@@ -4,7 +4,6 @@ setup.py
 ../../build/FBG/FBG.egg-info/PKG-INFO
 ../../build/FBG/FBG.egg-info/SOURCES.txt
 ../../build/FBG/FBG.egg-info/dependency_links.txt
-../../build/FBG/FBG.egg-info/entry_points.txt
 ../../build/FBG/FBG.egg-info/requires.txt
 ../../build/FBG/FBG.egg-info/top_level.txt
 ../../build/FBG/FBG.egg-info/zip-safe
