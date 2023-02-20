@@ -2,7 +2,7 @@ msg/Curvature.idl
 msg/Curvature.msg
 msg/FbgReading.idl
 msg/FbgReading.msg
-srv/Curvature.idl
-srv/Curvature.srv
-srv/Curvature_Request.msg
-srv/Curvature_Response.msg
+srv/CalCurvature.idl
+srv/CalCurvature.srv
+srv/CalCurvature_Request.msg
+srv/CalCurvature_Response.msg

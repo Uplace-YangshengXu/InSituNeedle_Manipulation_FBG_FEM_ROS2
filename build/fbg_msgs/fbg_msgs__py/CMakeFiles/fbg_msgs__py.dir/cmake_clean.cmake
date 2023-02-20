@@ -8,8 +8,8 @@ file(REMOVE_RECURSE
   "../rosidl_generator_py/fbg_msgs/msg/_fbg_reading.py"
   "../rosidl_generator_py/fbg_msgs/msg/_fbg_reading_s.c"
   "../rosidl_generator_py/fbg_msgs/srv/__init__.py"
-  "../rosidl_generator_py/fbg_msgs/srv/_curvature.py"
-  "../rosidl_generator_py/fbg_msgs/srv/_curvature_s.c"
+  "../rosidl_generator_py/fbg_msgs/srv/_cal_curvature.py"
+  "../rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c"
   "CMakeFiles/fbg_msgs__py"
 )
 

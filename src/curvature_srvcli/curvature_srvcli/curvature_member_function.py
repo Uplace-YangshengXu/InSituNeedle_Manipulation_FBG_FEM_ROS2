@@ -21,7 +21,7 @@ class CalClient(Node):
         #while not self.cli.wait_for_service(timeout_sec = 1.0):
         self.req = CalCurvature.Request()
 
-    def send_request(self)
+    def send_request(self):
     
         sm130_subscriber = interrogator_subscriber()
         self.req = sm130_subscriber.msg
