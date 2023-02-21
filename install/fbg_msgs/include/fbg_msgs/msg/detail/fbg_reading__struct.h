@@ -25,6 +25,8 @@ extern "C"
 typedef struct fbg_msgs__msg__FbgReading
 {
   rosidl_runtime_c__double__Sequence signal_reading;
+  uint8_t signal_each_ch[4];
+  uint8_t total_reading_num;
 } fbg_msgs__msg__FbgReading;
 
 // Struct for a sequence of fbg_msgs__msg__FbgReading.

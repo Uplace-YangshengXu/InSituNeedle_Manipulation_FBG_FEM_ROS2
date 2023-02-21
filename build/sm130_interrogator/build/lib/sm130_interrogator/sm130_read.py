@@ -38,13 +38,13 @@ class PeakMessage:
 class Interrogator():
     peak_msg = PeakMessage()
     available_ch = {}
-
+    #channel_interface_num = 4
     def __init__(self, address, port, timeout: float = 1):
-        self.available_channel_num = 0
+        self.signal_each_ch = np.zeros(4)
         self.total_reading_num = 0
         self.sock = socket.socket( socket.AF_INET, socket.SOCK_STREAM)
-        #self.socketTimeout = timeout
-        self.sock.settimeout(timeout)
+        self.socketTimeout = timeout
+        self.sock.settimeout(self.socketTimeout)
         self.is_ready = False
         self.connect(address,port)
         
@@ -63,23 +63,17 @@ class Interrogator():
         self.sock.settimeout(timeout)
 
     def connect(self,address,port):
-        for counter in range(5):
-            # try 5 times
-            try:
-                self.sock.connect((address,port))
-                self.is_ready = True
-                #print("Succeed to connect with Interrogator!");
-                data = self.sendCommand("#GET_UNBUFFERED_DATA")
-                self.peak_msg.header = self.parseHeader(data)
-                self.check_ch_available()
-                print("interrogator connected")
-                break;
-                
-                # get header
-            except socket.timeout:
-                print("Fail to connect interrogator, retrying...")
-                self.is_ready = False
-                time.sleep(1)
+        try:
+            self.sock.connect((address,port))
+            self.is_ready = True
+            data = self.sendCommand("#GET_UNBUFFERED_DATA")
+            self.peak_msg.header = self.parseHeader(data)
+            self.check_ch_available()
+            print("interrogator connected")                
+        except socket.timeout:
+            print("Fail to connect interrogator!")
+            self.is_ready = False
+
                 
             
 
@@ -125,25 +119,25 @@ class Interrogator():
         if self.peak_msg.header.numCH1Sensors != 0:
             self.available_ch['CH1'] = self.peak_msg.header.numCH1Sensors
             self.total_reading_num += self.peak_msg.header.numCH1Sensors
-            self.available_channel_num += 1
+            self.signal_each_ch[0] = self.peak_msg.header.numCH1Sensors
         else:
             pass
         if self.peak_msg.header.numCH2Sensors != 0:
             self.available_ch['CH2'] = self.peak_msg.header.numCH2Sensors
             self.total_reading_num += self.peak_msg.header.numCH2Sensors
-            self.available_channel_num += 1
+            self.signal_each_ch[1] = self.peak_msg.header.numCH2Sensors
         else:
             pass
         if self.peak_msg.header.numCH3Sensors != 0:
             self.available_ch['CH3'] = self.peak_msg.header.numCH3Sensors
             self.total_reading_num += self.peak_msg.header.numCH3Sensors
-            self.available_channel_num += 1
+            self.signal_each_ch[2] = self.peak_msg.header.numCH3Sensors
         else:
             pass
         if self.peak_msg.header.numCH4Sensors != 0:
             self.available_ch['CH4'] = self.peak_msg.header.numCH4Sensors
             self.total_reading_num += self.peak_msg.header.numCH4Sensors
-            self.available_channel_num += 1
+            self.signal_each_ch[3] = self.peak_msg.header.numCH4Sensors
         else:
             pass
     # end check_ch_available

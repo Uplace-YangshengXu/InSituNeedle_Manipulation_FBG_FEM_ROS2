@@ -64,7 +64,27 @@ void resize_function__FbgReading__signal_reading(void * untyped_member, size_t s
   member->resize(size);
 }
 
-static const ::rosidl_typesupport_introspection_cpp::MessageMember FbgReading_message_member_array[1] = {
+size_t size_function__FbgReading__signal_each_ch(const void * untyped_member)
+{
+  (void)untyped_member;
+  return 4;
+}
+
+const void * get_const_function__FbgReading__signal_each_ch(const void * untyped_member, size_t index)
+{
+  const auto & member =
+    *reinterpret_cast<const std::array<uint8_t, 4> *>(untyped_member);
+  return &member[index];
+}
+
+void * get_function__FbgReading__signal_each_ch(void * untyped_member, size_t index)
+{
+  auto & member =
+    *reinterpret_cast<std::array<uint8_t, 4> *>(untyped_member);
+  return &member[index];
+}
+
+static const ::rosidl_typesupport_introspection_cpp::MessageMember FbgReading_message_member_array[3] = {
   {
     "signal_reading",  // name
     ::rosidl_typesupport_introspection_cpp::ROS_TYPE_DOUBLE,  // type
@@ -79,13 +99,43 @@ static const ::rosidl_typesupport_introspection_cpp::MessageMember FbgReading_me
     get_const_function__FbgReading__signal_reading,  // get_const(index) function pointer
     get_function__FbgReading__signal_reading,  // get(index) function pointer
     resize_function__FbgReading__signal_reading  // resize(index) function pointer
+  },
+  {
+    "signal_each_ch",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    true,  // is array
+    4,  // array size
+    false,  // is upper bound
+    offsetof(fbg_msgs::msg::FbgReading, signal_each_ch),  // bytes offset in struct
+    nullptr,  // default value
+    size_function__FbgReading__signal_each_ch,  // size() function pointer
+    get_const_function__FbgReading__signal_each_ch,  // get_const(index) function pointer
+    get_function__FbgReading__signal_each_ch,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
+  },
+  {
+    "total_reading_num",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_UINT8,  // type
+    0,  // upper bound of string
+    nullptr,  // members of sub message
+    false,  // is array
+    0,  // array size
+    false,  // is upper bound
+    offsetof(fbg_msgs::msg::FbgReading, total_reading_num),  // bytes offset in struct
+    nullptr,  // default value
+    nullptr,  // size() function pointer
+    nullptr,  // get_const(index) function pointer
+    nullptr,  // get(index) function pointer
+    nullptr  // resize(index) function pointer
   }
 };
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMembers FbgReading_message_members = {
   "fbg_msgs::msg",  // message namespace
   "FbgReading",  // message name
-  1,  // number of fields
+  3,  // number of fields
   sizeof(fbg_msgs::msg::FbgReading),
   FbgReading_message_member_array,  // message members
   FbgReading_init_function,  // function to initialize message memory (memory has to be allocated)

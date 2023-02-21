@@ -36,6 +36,12 @@ cdr_serialize(
   {
     cdr << ros_message.signal_reading;
   }
+  // Member: signal_each_ch
+  {
+    cdr << ros_message.signal_each_ch;
+  }
+  // Member: total_reading_num
+  cdr << ros_message.total_reading_num;
   return true;
 }
 
@@ -49,6 +55,14 @@ cdr_deserialize(
   {
     cdr >> ros_message.signal_reading;
   }
+
+  // Member: signal_each_ch
+  {
+    cdr >> ros_message.signal_each_ch;
+  }
+
+  // Member: total_reading_num
+  cdr >> ros_message.total_reading_num;
 
   return true;
 }
@@ -74,6 +88,19 @@ get_serialized_size(
       eprosima::fastcdr::Cdr::alignment(current_alignment, padding);
     size_t item_size = sizeof(ros_message.signal_reading[0]);
     current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: signal_each_ch
+  {
+    size_t array_size = 4;
+    size_t item_size = sizeof(ros_message.signal_each_ch[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // Member: total_reading_num
+  {
+    size_t item_size = sizeof(ros_message.total_reading_num);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
 
@@ -104,6 +131,20 @@ max_serialized_size_FbgReading(
 
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+
+  // Member: signal_each_ch
+  {
+    size_t array_size = 4;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+
+  // Member: total_reading_num
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
   }
 
   return current_alignment - initial_alignment;

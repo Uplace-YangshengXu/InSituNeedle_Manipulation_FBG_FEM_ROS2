@@ -20,16 +20,48 @@ namespace msg
 namespace builder
 {
 
+class Init_FbgReading_total_reading_num
+{
+public:
+  explicit Init_FbgReading_total_reading_num(::fbg_msgs::msg::FbgReading & msg)
+  : msg_(msg)
+  {}
+  ::fbg_msgs::msg::FbgReading total_reading_num(::fbg_msgs::msg::FbgReading::_total_reading_num_type arg)
+  {
+    msg_.total_reading_num = std::move(arg);
+    return std::move(msg_);
+  }
+
+private:
+  ::fbg_msgs::msg::FbgReading msg_;
+};
+
+class Init_FbgReading_signal_each_ch
+{
+public:
+  explicit Init_FbgReading_signal_each_ch(::fbg_msgs::msg::FbgReading & msg)
+  : msg_(msg)
+  {}
+  Init_FbgReading_total_reading_num signal_each_ch(::fbg_msgs::msg::FbgReading::_signal_each_ch_type arg)
+  {
+    msg_.signal_each_ch = std::move(arg);
+    return Init_FbgReading_total_reading_num(msg_);
+  }
+
+private:
+  ::fbg_msgs::msg::FbgReading msg_;
+};
+
 class Init_FbgReading_signal_reading
 {
 public:
   Init_FbgReading_signal_reading()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  ::fbg_msgs::msg::FbgReading signal_reading(::fbg_msgs::msg::FbgReading::_signal_reading_type arg)
+  Init_FbgReading_signal_each_ch signal_reading(::fbg_msgs::msg::FbgReading::_signal_reading_type arg)
   {
     msg_.signal_reading = std::move(arg);
-    return std::move(msg_);
+    return Init_FbgReading_signal_each_ch(msg_);
   }
 
 private:

@@ -115,6 +115,39 @@ bool fbg_msgs__msg__fbg_reading__convert_from_py(PyObject * _pymsg, void * _ros_
     }
     Py_DECREF(field);
   }
+  {  // signal_each_ch
+    PyObject * field = PyObject_GetAttrString(_pymsg, "signal_each_ch");
+    if (!field) {
+      return false;
+    }
+    {
+      // TODO(dirk-thomas) use a better way to check the type before casting
+      assert(field->ob_type != NULL);
+      assert(field->ob_type->tp_name != NULL);
+      assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+      PyArrayObject * seq_field = (PyArrayObject *)field;
+      Py_INCREF(seq_field);
+      assert(PyArray_NDIM(seq_field) == 1);
+      assert(PyArray_TYPE(seq_field) == NPY_UINT8);
+      Py_ssize_t size = 4;
+      uint8_t * dest = ros_message->signal_each_ch;
+      for (Py_ssize_t i = 0; i < size; ++i) {
+        uint8_t tmp = *(npy_uint8 *)PyArray_GETPTR1(seq_field, i);
+        memcpy(&dest[i], &tmp, sizeof(uint8_t));
+      }
+      Py_DECREF(seq_field);
+    }
+    Py_DECREF(field);
+  }
+  {  // total_reading_num
+    PyObject * field = PyObject_GetAttrString(_pymsg, "total_reading_num");
+    if (!field) {
+      return false;
+    }
+    assert(PyLong_Check(field));
+    ros_message->total_reading_num = (uint8_t)PyLong_AsUnsignedLong(field);
+    Py_DECREF(field);
+  }
 
   return true;
 }
@@ -193,6 +226,35 @@ PyObject * fbg_msgs__msg__fbg_reading__convert_to_py(void * raw_ros_message)
       Py_DECREF(ret);
     }
     Py_DECREF(field);
+  }
+  {  // signal_each_ch
+    PyObject * field = NULL;
+    field = PyObject_GetAttrString(_pymessage, "signal_each_ch");
+    if (!field) {
+      return NULL;
+    }
+    assert(field->ob_type != NULL);
+    assert(field->ob_type->tp_name != NULL);
+    assert(strcmp(field->ob_type->tp_name, "numpy.ndarray") == 0);
+    PyArrayObject * seq_field = (PyArrayObject *)field;
+    assert(PyArray_NDIM(seq_field) == 1);
+    assert(PyArray_TYPE(seq_field) == NPY_UINT8);
+    assert(sizeof(npy_uint8) == sizeof(uint8_t));
+    npy_uint8 * dst = (npy_uint8 *)PyArray_GETPTR1(seq_field, 0);
+    uint8_t * src = &(ros_message->signal_each_ch[0]);
+    memcpy(dst, src, 4 * sizeof(uint8_t));
+    Py_DECREF(field);
+  }
+  {  // total_reading_num
+    PyObject * field = NULL;
+    field = PyLong_FromUnsignedLong(ros_message->total_reading_num);
+    {
+      int rc = PyObject_SetAttrString(_pymessage, "total_reading_num", field);
+      Py_DECREF(field);
+      if (rc) {
+        return NULL;
+      }
+    }
   }
 
   // ownership of _pymessage is transferred to the caller

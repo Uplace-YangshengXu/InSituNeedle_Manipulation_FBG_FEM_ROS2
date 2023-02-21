@@ -24,6 +24,8 @@ fbg_msgs__msg__FbgReading__init(fbg_msgs__msg__FbgReading * msg)
     fbg_msgs__msg__FbgReading__fini(msg);
     return false;
   }
+  // signal_each_ch
+  // total_reading_num
   return true;
 }
 
@@ -35,6 +37,8 @@ fbg_msgs__msg__FbgReading__fini(fbg_msgs__msg__FbgReading * msg)
   }
   // signal_reading
   rosidl_runtime_c__double__Sequence__fini(&msg->signal_reading);
+  // signal_each_ch
+  // total_reading_num
 }
 
 bool
@@ -47,6 +51,16 @@ fbg_msgs__msg__FbgReading__are_equal(const fbg_msgs__msg__FbgReading * lhs, cons
   if (!rosidl_runtime_c__double__Sequence__are_equal(
       &(lhs->signal_reading), &(rhs->signal_reading)))
   {
+    return false;
+  }
+  // signal_each_ch
+  for (size_t i = 0; i < 4; ++i) {
+    if (lhs->signal_each_ch[i] != rhs->signal_each_ch[i]) {
+      return false;
+    }
+  }
+  // total_reading_num
+  if (lhs->total_reading_num != rhs->total_reading_num) {
     return false;
   }
   return true;
@@ -66,6 +80,12 @@ fbg_msgs__msg__FbgReading__copy(
   {
     return false;
   }
+  // signal_each_ch
+  for (size_t i = 0; i < 4; ++i) {
+    output->signal_each_ch[i] = input->signal_each_ch[i];
+  }
+  // total_reading_num
+  output->total_reading_num = input->total_reading_num;
   return true;
 }
 

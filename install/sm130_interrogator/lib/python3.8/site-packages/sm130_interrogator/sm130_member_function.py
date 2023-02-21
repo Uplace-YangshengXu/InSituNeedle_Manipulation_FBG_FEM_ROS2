@@ -13,21 +13,32 @@ class interrogator_publisher(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.address = "192.168.1.11"
         self.port = 1852
-        #self.interrogator = Interrogator(self.address,self.port)
-        #self.header = self.interrogator.getHeader()
-        #self.total_reading_num = self.interrogator.total_reading_num
-        #self.available_channel_num = self.interrogator.available_channel_num
-        #self.available_ch = self.interrogator.available_ch
+        self.msg = FbgReading()
 
+        self.interrogator = Interrogator(self.address,self.port)
+        self.is_ready = self.interrogator.is_ready
+        self.header = self.interrogator.getHeader()
+        # get total signal readings
+        self.total_reading_num = self.interrogator.total_reading_num
+        # get signal in each ch
+        self.signal_each_ch = self.interrogator.signal_each_ch
+    
+        # pass to msg
+        self.msg.total_reading_num = self.total_reading_num
+        self.msg.signal_each_ch = self.signal_each_ch.astype(np.uint8)
+        #print(self.msg.signal_each_ch) 
+        #
+        self.available_ch = self.interrogator.available_ch
+        
+        
 
     def timer_callback(self):
-        msg = FbgReading()
-        #rawdata = self.interrogator.getData()
-        rawdata = array("d",[1,2,3])
-        msg.signal_reading = rawdata
-        print(msg.signal_reading)
-        self.publisher_.publish(msg)
-        #self.get_logger().info('Published %d readings from %d channels' %(self.total_reading_num,self.available_channel_num))
+        
+        rawdata = self.interrogator.getData() #np ndarray
+        self.msg.signal_reading = array("d",array("d",rawdata)) # array.array
+        #print(msg.signal_reading)
+        self.publisher_.publish(self.msg)
+        self.get_logger().info('Published %d readings' %self.total_reading_num)
 
 
 class interrogator_subscriber(Node):
@@ -40,8 +51,7 @@ class interrogator_subscriber(Node):
                 10)
     def listener_callback(self, msg):
         self.msg = msg
-        print(msg.signal_reading)
-
+        print(self.msg.signal_each_ch)
 
 
 

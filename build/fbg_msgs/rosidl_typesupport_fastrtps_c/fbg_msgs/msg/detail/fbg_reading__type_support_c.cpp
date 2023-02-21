@@ -59,6 +59,18 @@ static bool _FbgReading__cdr_serialize(
     cdr.serializeArray(array_ptr, size);
   }
 
+  // Field name: signal_each_ch
+  {
+    size_t size = 4;
+    auto array_ptr = ros_message->signal_each_ch;
+    cdr.serializeArray(array_ptr, size);
+  }
+
+  // Field name: total_reading_num
+  {
+    cdr << ros_message->total_reading_num;
+  }
+
   return true;
 }
 
@@ -87,6 +99,18 @@ static bool _FbgReading__cdr_deserialize(
     cdr.deserializeArray(array_ptr, size);
   }
 
+  // Field name: signal_each_ch
+  {
+    size_t size = 4;
+    auto array_ptr = ros_message->signal_each_ch;
+    cdr.deserializeArray(array_ptr, size);
+  }
+
+  // Field name: total_reading_num
+  {
+    cdr >> ros_message->total_reading_num;
+  }
+
   return true;
 }  // NOLINT(readability/fn_size)
 
@@ -113,6 +137,21 @@ size_t get_serialized_size_fbg_msgs__msg__FbgReading(
     (void)array_ptr;
     size_t item_size = sizeof(array_ptr[0]);
     current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name signal_each_ch
+  {
+    size_t array_size = 4;
+    auto array_ptr = ros_message->signal_each_ch;
+    (void)array_ptr;
+    size_t item_size = sizeof(array_ptr[0]);
+    current_alignment += array_size * item_size +
+      eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
+  }
+  // field.name total_reading_num
+  {
+    size_t item_size = sizeof(ros_message->total_reading_num);
+    current_alignment += item_size +
       eprosima::fastcdr::Cdr::alignment(current_alignment, item_size);
   }
 
@@ -148,6 +187,18 @@ size_t max_serialized_size_fbg_msgs__msg__FbgReading(
 
     current_alignment += array_size * sizeof(uint64_t) +
       eprosima::fastcdr::Cdr::alignment(current_alignment, sizeof(uint64_t));
+  }
+  // member: signal_each_ch
+  {
+    size_t array_size = 4;
+
+    current_alignment += array_size * sizeof(uint8_t);
+  }
+  // member: total_reading_num
+  {
+    size_t array_size = 1;
+
+    current_alignment += array_size * sizeof(uint8_t);
   }
 
   return current_alignment - initial_alignment;

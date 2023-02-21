@@ -38,6 +38,36 @@ inline void to_yaml(
       }
     }
   }
+
+  // member: signal_each_ch
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    if (msg.signal_each_ch.size() == 0) {
+      out << "signal_each_ch: []\n";
+    } else {
+      out << "signal_each_ch:\n";
+      for (auto item : msg.signal_each_ch) {
+        if (indentation > 0) {
+          out << std::string(indentation, ' ');
+        }
+        out << "- ";
+        value_to_yaml(item, out);
+        out << "\n";
+      }
+    }
+  }
+
+  // member: total_reading_num
+  {
+    if (indentation > 0) {
+      out << std::string(indentation, ' ');
+    }
+    out << "total_reading_num: ";
+    value_to_yaml(msg.total_reading_num, out);
+    out << "\n";
+  }
 }  // NOLINT(readability/fn_size)
 
 inline std::string to_yaml(const fbg_msgs::msg::FbgReading & msg)

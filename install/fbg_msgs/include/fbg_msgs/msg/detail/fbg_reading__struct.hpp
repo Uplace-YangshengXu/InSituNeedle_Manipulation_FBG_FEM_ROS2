@@ -34,25 +34,53 @@ struct FbgReading_
 
   explicit FbgReading_(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
   {
-    (void)_init;
+    if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
+      rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
+    {
+      std::fill<typename std::array<uint8_t, 4>::iterator, uint8_t>(this->signal_each_ch.begin(), this->signal_each_ch.end(), 0);
+      this->total_reading_num = 0;
+    }
   }
 
   explicit FbgReading_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
+  : signal_each_ch(_alloc)
   {
-    (void)_init;
-    (void)_alloc;
+    if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
+      rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
+    {
+      std::fill<typename std::array<uint8_t, 4>::iterator, uint8_t>(this->signal_each_ch.begin(), this->signal_each_ch.end(), 0);
+      this->total_reading_num = 0;
+    }
   }
 
   // field types and members
   using _signal_reading_type =
     std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>>;
   _signal_reading_type signal_reading;
+  using _signal_each_ch_type =
+    std::array<uint8_t, 4>;
+  _signal_each_ch_type signal_each_ch;
+  using _total_reading_num_type =
+    uint8_t;
+  _total_reading_num_type total_reading_num;
 
   // setters for named parameter idiom
   Type & set__signal_reading(
     const std::vector<double, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<double>> & _arg)
   {
     this->signal_reading = _arg;
+    return *this;
+  }
+  Type & set__signal_each_ch(
+    const std::array<uint8_t, 4> & _arg)
+  {
+    this->signal_each_ch = _arg;
+    return *this;
+  }
+  Type & set__total_reading_num(
+    const uint8_t & _arg)
+  {
+    this->total_reading_num = _arg;
     return *this;
   }
 
@@ -99,6 +127,12 @@ struct FbgReading_
   bool operator==(const FbgReading_ & other) const
   {
     if (this->signal_reading != other.signal_reading) {
+      return false;
+    }
+    if (this->signal_each_ch != other.signal_each_ch) {
+      return false;
+    }
+    if (this->total_reading_num != other.total_reading_num) {
       return false;
     }
     return true;
