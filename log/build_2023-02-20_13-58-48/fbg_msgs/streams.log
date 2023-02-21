@@ -1,0 +1,15 @@
+[0.020s] Invoking command in '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/opt/ros/galactic /usr/bin/cmake --build /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs -- -j8 -l8
+[0.058s] [  2%] Built target fbg_msgs__cpp
+[0.058s] [ 12%] Built target fbg_msgs__rosidl_generator_c
+[0.072s] [ 23%] Built target fbg_msgs__rosidl_typesupport_cpp
+[0.074s] [ 34%] Built target fbg_msgs__rosidl_typesupport_introspection_cpp
+[0.075s] [ 44%] Built target fbg_msgs__rosidl_typesupport_c
+[0.077s] [ 55%] Built target fbg_msgs__rosidl_typesupport_fastrtps_cpp
+[0.087s] [ 65%] Built target fbg_msgs__rosidl_typesupport_introspection_c
+[0.095s] [ 76%] Built target fbg_msgs__rosidl_typesupport_fastrtps_c
+[0.109s] [ 76%] Built target fbg_msgs
+[0.123s] [ 78%] Built target fbg_msgs__py
+[0.141s] [ 87%] Built target fbg_msgs__python
+[0.159s] [100%] Built target fbg_msgs__rosidl_typesupport_fastrtps_c__pyext
+[0.159s] [100%] Built target fbg_msgs__rosidl_typesupport_c__pyext
+[0.159s] [100%] Built target fbg_msgs__rosidl_typesupport_introspection_c__pyext
