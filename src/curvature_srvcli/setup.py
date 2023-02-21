@@ -20,6 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'server = curvature_srvcli.server:main',
+            'client = curvature_srvcli.client:main', 
         ],
     },
 )
