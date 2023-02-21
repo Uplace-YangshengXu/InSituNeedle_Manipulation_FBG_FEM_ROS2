@@ -3,12 +3,11 @@
 // generated code does not contain a copyright notice
 
 #include "fbg_msgs/msg/Curvature.idl"
-#include "fbg_msgs/msg/FbgReading.idl"
 
 module fbg_msgs {
   module srv {
     struct CalCurvature_Request {
-      fbg_msgs::msg::FbgReading fbg_reading;
+      string command;
     };
     struct CalCurvature_Response {
       fbg_msgs::msg::Curvature curvature;

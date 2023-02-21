@@ -1,1 +1,1 @@
-FbgReading fbg_reading
+string command

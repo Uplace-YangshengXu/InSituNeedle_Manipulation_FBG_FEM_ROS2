@@ -40,10 +40,6 @@ class Metaclass_CalCurvature_Request(type):
             cls._TYPE_SUPPORT = module.type_support_msg__srv__cal_curvature__request
             cls._DESTROY_ROS_MESSAGE = module.destroy_ros_message_msg__srv__cal_curvature__request
 
-            from fbg_msgs.msg import FbgReading
-            if FbgReading.__class__._TYPE_SUPPORT is None:
-                FbgReading.__class__.__import_type_support__()
-
     @classmethod
     def __prepare__(cls, name, bases, **kwargs):
         # list constant names here so that they appear in the help text of
@@ -57,23 +53,22 @@ class CalCurvature_Request(metaclass=Metaclass_CalCurvature_Request):
     """Message class 'CalCurvature_Request'."""
 
     __slots__ = [
-        '_fbg_reading',
+        '_command',
     ]
 
     _fields_and_field_types = {
-        'fbg_reading': 'fbg_msgs/FbgReading',
+        'command': 'string',
     }
 
     SLOT_TYPES = (
-        rosidl_parser.definition.NamespacedType(['fbg_msgs', 'msg'], 'FbgReading'),  # noqa: E501
+        rosidl_parser.definition.UnboundedString(),  # noqa: E501
     )
 
     def __init__(self, **kwargs):
         assert all('_' + key in self.__slots__ for key in kwargs.keys()), \
             'Invalid arguments passed to constructor: %s' % \
             ', '.join(sorted(k for k in kwargs.keys() if '_' + k not in self.__slots__))
-        from fbg_msgs.msg import FbgReading
-        self.fbg_reading = kwargs.get('fbg_reading', FbgReading())
+        self.command = kwargs.get('command', str())
 
     def __repr__(self):
         typename = self.__class__.__module__.split('.')
@@ -104,7 +99,7 @@ class CalCurvature_Request(metaclass=Metaclass_CalCurvature_Request):
     def __eq__(self, other):
         if not isinstance(other, self.__class__):
             return False
-        if self.fbg_reading != other.fbg_reading:
+        if self.command != other.command:
             return False
         return True
 
@@ -114,18 +109,17 @@ class CalCurvature_Request(metaclass=Metaclass_CalCurvature_Request):
         return copy(cls._fields_and_field_types)
 
     @property
-    def fbg_reading(self):
-        """Message field 'fbg_reading'."""
-        return self._fbg_reading
+    def command(self):
+        """Message field 'command'."""
+        return self._command
 
-    @fbg_reading.setter
-    def fbg_reading(self, value):
+    @command.setter
+    def command(self, value):
         if __debug__:
-            from fbg_msgs.msg import FbgReading
             assert \
-                isinstance(value, FbgReading), \
-                "The 'fbg_reading' field must be a sub message of type 'FbgReading'"
-        self._fbg_reading = value
+                isinstance(value, str), \
+                "The 'command' field must be of type 'str'"
+        self._command = value
 
 
 # Import statements for member types

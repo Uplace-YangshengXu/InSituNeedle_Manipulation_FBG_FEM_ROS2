@@ -12,10 +12,6 @@
 #include <string>
 #include <type_traits>
 
-// Include directives for member types
-// Member 'fbg_reading'
-#include "fbg_msgs/msg/detail/fbg_reading__traits.hpp"
-
 namespace rosidl_generator_traits
 {
 
@@ -23,13 +19,14 @@ inline void to_yaml(
   const fbg_msgs::srv::CalCurvature_Request & msg,
   std::ostream & out, size_t indentation = 0)
 {
-  // member: fbg_reading
+  // member: command
   {
     if (indentation > 0) {
       out << std::string(indentation, ' ');
     }
-    out << "fbg_reading:\n";
-    to_yaml(msg.fbg_reading, out, indentation + 2);
+    out << "command: ";
+    value_to_yaml(msg.command, out);
+    out << "\n";
   }
 }  // NOLINT(readability/fn_size)
 
@@ -54,11 +51,11 @@ inline const char * name<fbg_msgs::srv::CalCurvature_Request>()
 
 template<>
 struct has_fixed_size<fbg_msgs::srv::CalCurvature_Request>
-  : std::integral_constant<bool, has_fixed_size<fbg_msgs::msg::FbgReading>::value> {};
+  : std::integral_constant<bool, false> {};
 
 template<>
 struct has_bounded_size<fbg_msgs::srv::CalCurvature_Request>
-  : std::integral_constant<bool, has_bounded_size<fbg_msgs::msg::FbgReading>::value> {};
+  : std::integral_constant<bool, false> {};
 
 template<>
 struct is_message<fbg_msgs::srv::CalCurvature_Request>

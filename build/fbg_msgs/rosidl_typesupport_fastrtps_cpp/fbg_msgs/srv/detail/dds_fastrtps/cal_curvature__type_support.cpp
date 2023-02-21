@@ -16,29 +16,6 @@
 
 
 // forward declaration of message dependencies and their conversion functions
-namespace fbg_msgs
-{
-namespace msg
-{
-namespace typesupport_fastrtps_cpp
-{
-bool cdr_serialize(
-  const fbg_msgs::msg::FbgReading &,
-  eprosima::fastcdr::Cdr &);
-bool cdr_deserialize(
-  eprosima::fastcdr::Cdr &,
-  fbg_msgs::msg::FbgReading &);
-size_t get_serialized_size(
-  const fbg_msgs::msg::FbgReading &,
-  size_t current_alignment);
-size_t
-max_serialized_size_FbgReading(
-  bool & full_bounded,
-  size_t current_alignment);
-}  // namespace typesupport_fastrtps_cpp
-}  // namespace msg
-}  // namespace fbg_msgs
-
 
 namespace fbg_msgs
 {
@@ -55,10 +32,8 @@ cdr_serialize(
   const fbg_msgs::srv::CalCurvature_Request & ros_message,
   eprosima::fastcdr::Cdr & cdr)
 {
-  // Member: fbg_reading
-  fbg_msgs::msg::typesupport_fastrtps_cpp::cdr_serialize(
-    ros_message.fbg_reading,
-    cdr);
+  // Member: command
+  cdr << ros_message.command;
   return true;
 }
 
@@ -68,9 +43,8 @@ cdr_deserialize(
   eprosima::fastcdr::Cdr & cdr,
   fbg_msgs::srv::CalCurvature_Request & ros_message)
 {
-  // Member: fbg_reading
-  fbg_msgs::msg::typesupport_fastrtps_cpp::cdr_deserialize(
-    cdr, ros_message.fbg_reading);
+  // Member: command
+  cdr >> ros_message.command;
 
   return true;
 }
@@ -88,11 +62,10 @@ get_serialized_size(
   (void)padding;
   (void)wchar_size;
 
-  // Member: fbg_reading
-
-  current_alignment +=
-    fbg_msgs::msg::typesupport_fastrtps_cpp::get_serialized_size(
-    ros_message.fbg_reading, current_alignment);
+  // Member: command
+  current_alignment += padding +
+    eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+    (ros_message.command.size() + 1);
 
   return current_alignment - initial_alignment;
 }
@@ -112,15 +85,15 @@ max_serialized_size_CalCurvature_Request(
   (void)full_bounded;
 
 
-  // Member: fbg_reading
+  // Member: command
   {
     size_t array_size = 1;
 
-
+    full_bounded = false;
     for (size_t index = 0; index < array_size; ++index) {
-      current_alignment +=
-        fbg_msgs::msg::typesupport_fastrtps_cpp::max_serialized_size_FbgReading(
-        full_bounded, current_alignment);
+      current_alignment += padding +
+        eprosima::fastcdr::Cdr::alignment(current_alignment, padding) +
+        1;
     }
   }
 

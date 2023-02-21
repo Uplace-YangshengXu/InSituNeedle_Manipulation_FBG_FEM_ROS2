@@ -52,6 +52,10 @@ class interrogator_subscriber(Node):
     def listener_callback(self, msg):
         self.msg = msg
         print(self.msg.signal_each_ch)
+        self.callback()
+    def callback(self):
+        print(self.msg.signal_reading)
+
 
 
 

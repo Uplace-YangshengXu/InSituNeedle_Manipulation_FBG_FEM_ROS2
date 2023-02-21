@@ -5,7 +5,7 @@ def main():
     rclpy.init()
 
     server = CalService()
-
+    
     rclpy.spin(server)
 
     rclpy.shutdown()

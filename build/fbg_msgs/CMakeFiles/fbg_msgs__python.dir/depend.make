@@ -217,6 +217,8 @@ CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/msg/_fbg_reading_s.
 
 CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c
 CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: /opt/ros/galactic/include/rosidl_runtime_c/primitives_sequence.h
+CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: /opt/ros/galactic/include/rosidl_runtime_c/string.h
+CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: /opt/ros/galactic/include/rosidl_runtime_c/string_functions.h
 CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: /opt/ros/galactic/include/rosidl_runtime_c/visibility_control.h
 CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: /usr/include/python3.8/Python.h
 CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: /usr/include/python3.8/abstract.h
@@ -318,7 +320,6 @@ CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_
 CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: /usr/include/python3.8/warnings.h
 CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: /usr/include/python3.8/weakrefobject.h
 CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: rosidl_generator_c/fbg_msgs/msg/detail/curvature__struct.h
-CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: rosidl_generator_c/fbg_msgs/msg/detail/fbg_reading__struct.h
 CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: rosidl_generator_c/fbg_msgs/msg/rosidl_generator_c__visibility_control.h
 CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: rosidl_generator_c/fbg_msgs/srv/detail/cal_curvature__functions.h
 CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o: rosidl_generator_c/fbg_msgs/srv/detail/cal_curvature__struct.h

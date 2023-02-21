@@ -45,6 +45,5 @@ CMakeFiles/fbg_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fbg_msgs/
 CMakeFiles/fbg_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fbg_msgs/srv/cal_curvature__type_support.cpp.o: /opt/ros/galactic/include/rosidl_typesupport_cpp/visibility_control.h
 CMakeFiles/fbg_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fbg_msgs/srv/cal_curvature__type_support.cpp.o: /opt/ros/galactic/include/rosidl_typesupport_interface/macros.h
 CMakeFiles/fbg_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fbg_msgs/srv/cal_curvature__type_support.cpp.o: rosidl_generator_cpp/fbg_msgs/msg/detail/curvature__struct.hpp
-CMakeFiles/fbg_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fbg_msgs/srv/cal_curvature__type_support.cpp.o: rosidl_generator_cpp/fbg_msgs/msg/detail/fbg_reading__struct.hpp
 CMakeFiles/fbg_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fbg_msgs/srv/cal_curvature__type_support.cpp.o: rosidl_generator_cpp/fbg_msgs/srv/detail/cal_curvature__struct.hpp
 

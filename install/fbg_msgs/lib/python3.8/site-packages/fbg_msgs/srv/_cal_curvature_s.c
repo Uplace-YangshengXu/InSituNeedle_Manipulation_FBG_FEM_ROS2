@@ -16,8 +16,9 @@
 #include "fbg_msgs/srv/detail/cal_curvature__struct.h"
 #include "fbg_msgs/srv/detail/cal_curvature__functions.h"
 
-bool fbg_msgs__msg__fbg_reading__convert_from_py(PyObject * _pymsg, void * _ros_message);
-PyObject * fbg_msgs__msg__fbg_reading__convert_to_py(void * raw_ros_message);
+#include "rosidl_runtime_c/string.h"
+#include "rosidl_runtime_c/string_functions.h"
+
 
 ROSIDL_GENERATOR_C_EXPORT
 bool fbg_msgs__srv__cal_curvature__request__convert_from_py(PyObject * _pymsg, void * _ros_message)
@@ -52,15 +53,19 @@ bool fbg_msgs__srv__cal_curvature__request__convert_from_py(PyObject * _pymsg, v
     assert(strncmp("fbg_msgs.srv._cal_curvature.CalCurvature_Request", full_classname_dest, 48) == 0);
   }
   fbg_msgs__srv__CalCurvature_Request * ros_message = _ros_message;
-  {  // fbg_reading
-    PyObject * field = PyObject_GetAttrString(_pymsg, "fbg_reading");
+  {  // command
+    PyObject * field = PyObject_GetAttrString(_pymsg, "command");
     if (!field) {
       return false;
     }
-    if (!fbg_msgs__msg__fbg_reading__convert_from_py(field, &ros_message->fbg_reading)) {
+    assert(PyUnicode_Check(field));
+    PyObject * encoded_field = PyUnicode_AsUTF8String(field);
+    if (!encoded_field) {
       Py_DECREF(field);
       return false;
     }
+    rosidl_runtime_c__String__assign(&ros_message->command, PyBytes_AS_STRING(encoded_field));
+    Py_DECREF(encoded_field);
     Py_DECREF(field);
   }
 
@@ -85,14 +90,17 @@ PyObject * fbg_msgs__srv__cal_curvature__request__convert_to_py(void * raw_ros_m
     }
   }
   fbg_msgs__srv__CalCurvature_Request * ros_message = (fbg_msgs__srv__CalCurvature_Request *)raw_ros_message;
-  {  // fbg_reading
+  {  // command
     PyObject * field = NULL;
-    field = fbg_msgs__msg__fbg_reading__convert_to_py(&ros_message->fbg_reading);
+    field = PyUnicode_DecodeUTF8(
+      ros_message->command.data,
+      strlen(ros_message->command.data),
+      "replace");
     if (!field) {
       return NULL;
     }
     {
-      int rc = PyObject_SetAttrString(_pymessage, "fbg_reading", field);
+      int rc = PyObject_SetAttrString(_pymessage, "command", field);
       Py_DECREF(field);
       if (rc) {
         return NULL;

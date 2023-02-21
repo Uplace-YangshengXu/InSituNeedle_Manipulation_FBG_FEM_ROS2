@@ -18,13 +18,13 @@ extern "C"
 // Constants defined in the message
 
 // Include directives for member types
-// Member 'fbg_reading'
-#include "fbg_msgs/msg/detail/fbg_reading__struct.h"
+// Member 'command'
+#include "rosidl_runtime_c/string.h"
 
 // Struct defined in srv/CalCurvature in the package fbg_msgs.
 typedef struct fbg_msgs__srv__CalCurvature_Request
 {
-  fbg_msgs__msg__FbgReading fbg_reading;
+  rosidl_runtime_c__String command;
 } fbg_msgs__srv__CalCurvature_Request;
 
 // Struct for a sequence of fbg_msgs__srv__CalCurvature_Request.

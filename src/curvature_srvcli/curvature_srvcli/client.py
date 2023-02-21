@@ -1,12 +1,10 @@
 from .curvature_member_function import CalClient
 import rclpy
-from array import array
 def main():
     rclpy.init()
 
     client = CalClient()
-    rawdata = array("d",[0,0,0])
-    response = client.send_request(rawdata)
+    response = client.send_request()
     print(response)
     client.destroy_node()
     rclpy.shutdown()

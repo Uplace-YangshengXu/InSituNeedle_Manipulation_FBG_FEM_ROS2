@@ -39,14 +39,14 @@ void CalCurvature_Request_fini_function(void * message_memory)
 
 static const ::rosidl_typesupport_introspection_cpp::MessageMember CalCurvature_Request_message_member_array[1] = {
   {
-    "fbg_reading",  // name
-    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_MESSAGE,  // type
+    "command",  // name
+    ::rosidl_typesupport_introspection_cpp::ROS_TYPE_STRING,  // type
     0,  // upper bound of string
-    ::rosidl_typesupport_introspection_cpp::get_message_type_support_handle<fbg_msgs::msg::FbgReading>(),  // members of sub message
+    nullptr,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(fbg_msgs::srv::CalCurvature_Request, fbg_reading),  // bytes offset in struct
+    offsetof(fbg_msgs::srv::CalCurvature_Request, command),  // bytes offset in struct
     nullptr,  // default value
     nullptr,  // size() function pointer
     nullptr,  // get_const(index) function pointer

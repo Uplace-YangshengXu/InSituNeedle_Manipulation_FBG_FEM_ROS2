@@ -9,8 +9,8 @@
 #include <string.h>
 
 // Include directives for member types
-// Member `fbg_reading`
-#include "fbg_msgs/msg/detail/fbg_reading__functions.h"
+// Member `command`
+#include "rosidl_runtime_c/string_functions.h"
 
 bool
 fbg_msgs__srv__CalCurvature_Request__init(fbg_msgs__srv__CalCurvature_Request * msg)
@@ -18,8 +18,8 @@ fbg_msgs__srv__CalCurvature_Request__init(fbg_msgs__srv__CalCurvature_Request * 
   if (!msg) {
     return false;
   }
-  // fbg_reading
-  if (!fbg_msgs__msg__FbgReading__init(&msg->fbg_reading)) {
+  // command
+  if (!rosidl_runtime_c__String__init(&msg->command)) {
     fbg_msgs__srv__CalCurvature_Request__fini(msg);
     return false;
   }
@@ -32,8 +32,8 @@ fbg_msgs__srv__CalCurvature_Request__fini(fbg_msgs__srv__CalCurvature_Request * 
   if (!msg) {
     return;
   }
-  // fbg_reading
-  fbg_msgs__msg__FbgReading__fini(&msg->fbg_reading);
+  // command
+  rosidl_runtime_c__String__fini(&msg->command);
 }
 
 bool
@@ -42,9 +42,9 @@ fbg_msgs__srv__CalCurvature_Request__are_equal(const fbg_msgs__srv__CalCurvature
   if (!lhs || !rhs) {
     return false;
   }
-  // fbg_reading
-  if (!fbg_msgs__msg__FbgReading__are_equal(
-      &(lhs->fbg_reading), &(rhs->fbg_reading)))
+  // command
+  if (!rosidl_runtime_c__String__are_equal(
+      &(lhs->command), &(rhs->command)))
   {
     return false;
   }
@@ -59,9 +59,9 @@ fbg_msgs__srv__CalCurvature_Request__copy(
   if (!input || !output) {
     return false;
   }
-  // fbg_reading
-  if (!fbg_msgs__msg__FbgReading__copy(
-      &(input->fbg_reading), &(output->fbg_reading)))
+  // command
+  if (!rosidl_runtime_c__String__copy(
+      &(input->command), &(output->command)))
   {
     return false;
   }

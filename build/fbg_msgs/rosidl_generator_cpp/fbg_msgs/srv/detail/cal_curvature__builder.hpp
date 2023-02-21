@@ -20,15 +20,15 @@ namespace srv
 namespace builder
 {
 
-class Init_CalCurvature_Request_fbg_reading
+class Init_CalCurvature_Request_command
 {
 public:
-  Init_CalCurvature_Request_fbg_reading()
+  Init_CalCurvature_Request_command()
   : msg_(::rosidl_runtime_cpp::MessageInitialization::SKIP)
   {}
-  ::fbg_msgs::srv::CalCurvature_Request fbg_reading(::fbg_msgs::srv::CalCurvature_Request::_fbg_reading_type arg)
+  ::fbg_msgs::srv::CalCurvature_Request command(::fbg_msgs::srv::CalCurvature_Request::_command_type arg)
   {
-    msg_.fbg_reading = std::move(arg);
+    msg_.command = std::move(arg);
     return std::move(msg_);
   }
 
@@ -47,7 +47,7 @@ template<>
 inline
 auto build<::fbg_msgs::srv::CalCurvature_Request>()
 {
-  return fbg_msgs::srv::builder::Init_CalCurvature_Request_fbg_reading();
+  return fbg_msgs::srv::builder::Init_CalCurvature_Request_command();
 }
 
 }  // namespace fbg_msgs

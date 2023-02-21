@@ -1,0 +1,406 @@
+[0.000000] (-) TimerEvent: {}
+[0.000180] (fbg_msgs) JobQueued: {'identifier': 'fbg_msgs', 'dependencies': OrderedDict()}
+[0.000248] (sm130_interrogator) JobQueued: {'identifier': 'sm130_interrogator', 'dependencies': OrderedDict()}
+[0.000282] (curvature_srvcli) JobQueued: {'identifier': 'curvature_srvcli', 'dependencies': OrderedDict([('fbg_msgs', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs'), ('sm130_interrogator', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator')])}
+[0.000813] (fbg_msgs) JobStarted: {'identifier': 'fbg_msgs'}
+[0.024272] (sm130_interrogator) JobStarted: {'identifier': 'sm130_interrogator'}
+[0.043437] (fbg_msgs) JobProgress: {'identifier': 'fbg_msgs', 'progress': 'cmake'}
+[0.044407] (fbg_msgs) JobProgress: {'identifier': 'fbg_msgs', 'progress': 'build'}
+[0.045417] (fbg_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs', '--', '-j12', '-l12'], 'cwd': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'jkang'), ('SSH_AGENT_PID', '1772'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib:/opt/ros/galactic/opt/yaml_cpp_vendor/lib:/opt/ros/galactic/opt/rviz_ogre_vendor/lib:/opt/ros/galactic/lib/x86_64-linux-gnu:/opt/ros/galactic/lib'), ('HOME', '/home/jkang'), ('OLDPWD', '/home/jkang'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1539'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install'), ('ROS_DISTRO', 'galactic'), ('LOGNAME', 'jkang'), ('JOURNAL_STREAM', '8:51545'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'jkang'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/galactic/bin:/home/jkang/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/jkang-Legion-Y7000P-2019:@/tmp/.ICE-unix/1810,unix/jkang-Legion-Y7000P-2019:/tmp/.ICE-unix/1810'), ('INVOCATION_ID', 'b993813831bf42b6b72ff2ddcce54ae3'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/6f170624_c351_4ac3_9aae_3a460a5bafd2'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.1631'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs:/opt/ros/galactic'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages:/opt/ros/galactic/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/opt/ros/galactic')]), 'shell': False}
+[0.084793] (fbg_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 1.1.6 (/opt/ros/galactic/share/ament_cmake/cmake)\n'}
+[0.098975] (-) TimerEvent: {}
+[0.113929] (fbg_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[0.114269] (fbg_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.197432] (fbg_msgs) StdoutLine: {'line': b'-- Found rclcpp: 9.2.2 (/opt/ros/galactic/share/rclcpp/cmake)\n'}
+[0.199046] (-) TimerEvent: {}
+[0.245841] (fbg_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.250349] (fbg_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 2.2.3 (/opt/ros/galactic/share/rosidl_adapter/cmake)\n'}
+[0.299173] (-) TimerEvent: {}
+[0.399472] (-) TimerEvent: {}
+[0.418886] (fbg_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.494005] (fbg_msgs) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 3.3.1 (/opt/ros/galactic/share/rmw_implementation_cmake/cmake)\n'}
+[0.496297] (fbg_msgs) StdoutLine: {'line': b'-- Found rmw_cyclonedds_cpp: 0.22.6 (/opt/ros/galactic/share/rmw_cyclonedds_cpp/cmake)\n'}
+[0.499589] (-) TimerEvent: {}
+[0.524322] (fbg_msgs) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_cyclonedds_cpp' as default\n"}
+[0.599794] (-) TimerEvent: {}
+[0.700255] (-) TimerEvent: {}
+[0.717542] (fbg_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.1.1 (/opt/ros/galactic/share/rosidl_default_generators/cmake)\n'}
+[0.759749] (fbg_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.10") \n'}
+[0.800383] (-) TimerEvent: {}
+[0.900671] (-) TimerEvent: {}
+[0.927091] (fbg_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/galactic/share/ament_cmake_ros/cmake)\n'}
+[1.000798] (-) TimerEvent: {}
+[1.056550] (fbg_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.066406] (fbg_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.097646] (fbg_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3.5") \n'}
+[1.098075] (fbg_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/galactic/share/python_cmake_module/cmake)\n'}
+[1.100908] (-) TimerEvent: {}
+[1.129236] (fbg_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.129426] (fbg_msgs) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[1.129528] (fbg_msgs) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so\n'}
+[1.148885] (fbg_msgs) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.10.7 (/opt/ros/galactic/share/ament_lint_auto/cmake)\n'}
+[1.162731] (fbg_msgs) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.164961] (fbg_msgs) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.166186] (fbg_msgs) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.172356] (fbg_msgs) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.201021] (-) TimerEvent: {}
+[1.218737] (fbg_msgs) StdoutLine: {'line': b'-- Generating done\n'}
+[1.223278] (fbg_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs\n'}
+[1.255732] (fbg_msgs) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[1.269620] (fbg_msgs) StdoutLine: {'line': b'[  4%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[1.301148] (-) TimerEvent: {}
+[1.349061] (sm130_interrogator) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/sm130_interrogator', 'build', '--build-base', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build', 'install', '--record', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/install.log', '--single-version-externally-managed'], 'cwd': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/sm130_interrogator', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'jkang', 'SSH_AGENT_PID': '1772', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib:/opt/ros/galactic/opt/yaml_cpp_vendor/lib:/opt/ros/galactic/opt/rviz_ogre_vendor/lib:/opt/ros/galactic/lib/x86_64-linux-gnu:/opt/ros/galactic/lib', 'HOME': '/home/jkang', 'OLDPWD': '/home/jkang', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1539', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install', 'ROS_DISTRO': 'galactic', 'LOGNAME': 'jkang', 'JOURNAL_STREAM': '8:51545', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'jkang', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/opt/ros/galactic/bin:/home/jkang/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/jkang-Legion-Y7000P-2019:@/tmp/.ICE-unix/1810,unix/jkang-Legion-Y7000P-2019:/tmp/.ICE-unix/1810', 'INVOCATION_ID': 'b993813831bf42b6b72ff2ddcce54ae3', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/6f170624_c351_4ac3_9aae_3a460a5bafd2', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.1631', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs:/opt/ros/galactic', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages:/opt/ros/galactic/lib/python3.8/site-packages', 'COLCON': '1', 'VTE_VERSION': '6003', 'CMAKE_PREFIX_PATH': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs'}, 'shell': False}
+[1.401289] (-) TimerEvent: {}
+[1.501646] (-) TimerEvent: {}
+[1.601934] (-) TimerEvent: {}
+[1.677258] (fbg_msgs) StdoutLine: {'line': b'[  4%] Built target fbg_msgs__cpp\n'}
+[1.694584] (fbg_msgs) StdoutLine: {'line': b'[ 10%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[1.695223] (fbg_msgs) StdoutLine: {'line': b'[ 10%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[1.695932] (fbg_msgs) StdoutLine: {'line': b'[ 10%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[1.702047] (-) TimerEvent: {}
+[1.728360] (fbg_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fbg_msgs__rosidl_generator_c\x1b[0m\n'}
+[1.745392] (fbg_msgs) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/fbg_reading__functions.c.o\x1b[0m\n'}
+[1.745770] (fbg_msgs) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/srv/detail/cal_curvature__functions.c.o\x1b[0m\n'}
+[1.745996] (fbg_msgs) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/curvature__functions.c.o\x1b[0m\n'}
+[1.802169] (-) TimerEvent: {}
+[1.815265] (fbg_msgs) StdoutLine: {'line': b'[ 19%] \x1b[32m\x1b[1mLinking C shared library libfbg_msgs__rosidl_generator_c.so\x1b[0m\n'}
+[1.838320] (sm130_interrogator) StdoutLine: {'line': b'running egg_info\n'}
+[1.857297] (sm130_interrogator) StdoutLine: {'line': b'writing ../../build/sm130_interrogator/sm130_interrogator.egg-info/PKG-INFO\n'}
+[1.857715] (sm130_interrogator) StdoutLine: {'line': b'writing dependency_links to ../../build/sm130_interrogator/sm130_interrogator.egg-info/dependency_links.txt\n'}
+[1.858087] (sm130_interrogator) StdoutLine: {'line': b'writing entry points to ../../build/sm130_interrogator/sm130_interrogator.egg-info/entry_points.txt\n'}
+[1.858379] (sm130_interrogator) StdoutLine: {'line': b'writing requirements to ../../build/sm130_interrogator/sm130_interrogator.egg-info/requires.txt\n'}
+[1.858581] (sm130_interrogator) StdoutLine: {'line': b'writing top-level names to ../../build/sm130_interrogator/sm130_interrogator.egg-info/top_level.txt\n'}
+[1.861327] (fbg_msgs) StdoutLine: {'line': b'[ 19%] Built target fbg_msgs__rosidl_generator_c\n'}
+[1.875189] (fbg_msgs) StdoutLine: {'line': b'[ 23%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[1.875503] (fbg_msgs) StdoutLine: {'line': b'[ 23%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[1.902273] (-) TimerEvent: {}
+[1.903704] (sm130_interrogator) StdoutLine: {'line': b"reading manifest file '../../build/sm130_interrogator/sm130_interrogator.egg-info/SOURCES.txt'\n"}
+[1.905007] (sm130_interrogator) StdoutLine: {'line': b"writing manifest file '../../build/sm130_interrogator/sm130_interrogator.egg-info/SOURCES.txt'\n"}
+[1.905394] (sm130_interrogator) StdoutLine: {'line': b'running build\n'}
+[1.905580] (sm130_interrogator) StdoutLine: {'line': b'running build_py\n'}
+[1.906282] (sm130_interrogator) StdoutLine: {'line': b'running install\n'}
+[1.906557] (sm130_interrogator) StderrLine: {'line': b'/home/jkang/.local/lib/python3.8/site-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[1.906773] (sm130_interrogator) StderrLine: {'line': b'  warnings.warn(\n'}
+[1.915872] (sm130_interrogator) StdoutLine: {'line': b'running install_lib\n'}
+[1.935222] (sm130_interrogator) StdoutLine: {'line': b'running install_data\n'}
+[1.953267] (sm130_interrogator) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.973259] (sm130_interrogator) StdoutLine: {'line': b"removing '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator-0.0.0-py3.8.egg-info' (and everything under it)\n"}
+[1.973790] (sm130_interrogator) StdoutLine: {'line': b'Copying ../../build/sm130_interrogator/sm130_interrogator.egg-info to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator-0.0.0-py3.8.egg-info\n'}
+[1.975420] (sm130_interrogator) StdoutLine: {'line': b'running install_scripts\n'}
+[2.002370] (-) TimerEvent: {}
+[2.067333] (sm130_interrogator) StdoutLine: {'line': b'Installing listener script to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/sm130_interrogator\n'}
+[2.067642] (sm130_interrogator) StdoutLine: {'line': b'Installing talker script to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/sm130_interrogator\n'}
+[2.068093] (sm130_interrogator) StdoutLine: {'line': b"writing list of installed files to '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/install.log'\n"}
+[2.075586] (fbg_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_cpp\x1b[0m\n'}
+[2.079175] (fbg_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[2.094982] (fbg_msgs) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fbg_msgs/srv/cal_curvature__type_support.cpp.o\x1b[0m\n'}
+[2.097861] (fbg_msgs) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fbg_msgs/msg/fbg_reading__type_support.cpp.o\x1b[0m\n'}
+[2.098262] (fbg_msgs) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/fbg_msgs/msg/curvature__type_support.cpp.o\x1b[0m\n'}
+[2.101254] (fbg_msgs) StdoutLine: {'line': b'[ 31%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/fbg_msgs/msg/detail/fbg_reading__type_support.cpp.o\x1b[0m\n'}
+[2.101900] (fbg_msgs) StdoutLine: {'line': b'[ 34%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/fbg_msgs/msg/detail/curvature__type_support.cpp.o\x1b[0m\n'}
+[2.102354] (fbg_msgs) StdoutLine: {'line': b'[ 36%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/fbg_msgs/srv/detail/cal_curvature__type_support.cpp.o\x1b[0m\n'}
+[2.102750] (-) TimerEvent: {}
+[2.127771] (sm130_interrogator) CommandEnded: {'returncode': 0}
+[2.179259] (sm130_interrogator) JobEnded: {'identifier': 'sm130_interrogator', 'rc': 0}
+[2.187095] (fbg_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[2.202897] (-) TimerEvent: {}
+[2.212888] (fbg_msgs) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/fbg_msgs/msg/detail/dds_fastrtps/curvature__type_support.cpp.o\x1b[0m\n'}
+[2.214140] (fbg_msgs) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/fbg_msgs/msg/detail/dds_fastrtps/fbg_reading__type_support.cpp.o\x1b[0m\n'}
+[2.214894] (fbg_msgs) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/fbg_msgs/srv/detail/dds_fastrtps/cal_curvature__type_support.cpp.o\x1b[0m\n'}
+[2.300244] (fbg_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_c\x1b[0m\n'}
+[2.302991] (-) TimerEvent: {}
+[2.324056] (fbg_msgs) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/fbg_reading__type_support.cpp.o\x1b[0m\n'}
+[2.337918] (fbg_msgs) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/curvature__type_support.cpp.o\x1b[0m\n'}
+[2.403119] (-) TimerEvent: {}
+[2.406020] (fbg_msgs) StdoutLine: {'line': b'[ 48%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/srv/cal_curvature__type_support.cpp.o\x1b[0m\n'}
+[2.432205] (fbg_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[2.471524] (fbg_msgs) StdoutLine: {'line': b'[ 51%] \x1b[32m\x1b[1mLinking CXX shared library libfbg_msgs__rosidl_typesupport_c.so\x1b[0m\n'}
+[2.475173] (fbg_msgs) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/fbg_msgs/msg/detail/curvature__type_support.c.o\x1b[0m\n'}
+[2.475686] (fbg_msgs) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/fbg_msgs/msg/detail/fbg_reading__type_support.c.o\x1b[0m\n'}
+[2.503233] (-) TimerEvent: {}
+[2.544498] (fbg_msgs) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/fbg_msgs/srv/detail/cal_curvature__type_support.c.o\x1b[0m\n'}
+[2.558584] (fbg_msgs) StdoutLine: {'line': b'[ 57%] Built target fbg_msgs__rosidl_typesupport_c\n'}
+[2.603346] (-) TimerEvent: {}
+[2.619308] (fbg_msgs) StdoutLine: {'line': b'[ 59%] \x1b[32m\x1b[1mLinking C shared library libfbg_msgs__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[2.676971] (fbg_msgs) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking CXX shared library libfbg_msgs__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[2.680621] (fbg_msgs) StdoutLine: {'line': b'[ 61%] Built target fbg_msgs__rosidl_typesupport_introspection_c\n'}
+[2.703469] (-) TimerEvent: {}
+[2.731546] (fbg_msgs) StdoutLine: {'line': b'[ 61%] Built target fbg_msgs__rosidl_typesupport_cpp\n'}
+[2.767806] (fbg_msgs) StdoutLine: {'line': b'[ 63%] \x1b[32m\x1b[1mLinking CXX shared library libfbg_msgs__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[2.803585] (-) TimerEvent: {}
+[2.862675] (fbg_msgs) StdoutLine: {'line': b'[ 63%] Built target fbg_msgs__rosidl_typesupport_introspection_cpp\n'}
+[2.903696] (-) TimerEvent: {}
+[2.952155] (fbg_msgs) StdoutLine: {'line': b'[ 65%] \x1b[32m\x1b[1mLinking CXX shared library libfbg_msgs__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[3.003820] (-) TimerEvent: {}
+[3.059555] (fbg_msgs) StdoutLine: {'line': b'[ 65%] Built target fbg_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[3.073009] (fbg_msgs) StdoutLine: {'line': b'[ 68%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[3.103927] (-) TimerEvent: {}
+[3.204187] (-) TimerEvent: {}
+[3.304477] (-) TimerEvent: {}
+[3.404763] (-) TimerEvent: {}
+[3.447674] (fbg_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[3.468963] (fbg_msgs) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/fbg_msgs/msg/detail/fbg_reading__type_support_c.cpp.o\x1b[0m\n'}
+[3.469293] (fbg_msgs) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/fbg_msgs/msg/detail/curvature__type_support_c.cpp.o\x1b[0m\n'}
+[3.469577] (fbg_msgs) StdoutLine: {'line': b'[ 74%] \x1b[32mBuilding CXX object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/fbg_msgs/srv/detail/cal_curvature__type_support_c.cpp.o\x1b[0m\n'}
+[3.504899] (-) TimerEvent: {}
+[3.605213] (-) TimerEvent: {}
+[3.705525] (-) TimerEvent: {}
+[3.805835] (-) TimerEvent: {}
+[3.906144] (-) TimerEvent: {}
+[3.932795] (fbg_msgs) StdoutLine: {'line': b'[ 76%] \x1b[32m\x1b[1mLinking CXX shared library libfbg_msgs__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[4.006282] (-) TimerEvent: {}
+[4.039303] (fbg_msgs) StdoutLine: {'line': b'[ 76%] Built target fbg_msgs__rosidl_typesupport_fastrtps_c\n'}
+[4.065405] (fbg_msgs) StdoutLine: {'line': b'[ 76%] Built target fbg_msgs\n'}
+[4.091646] (fbg_msgs) StdoutLine: {'line': b'[ 78%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[4.106373] (-) TimerEvent: {}
+[4.206660] (-) TimerEvent: {}
+[4.306973] (-) TimerEvent: {}
+[4.407276] (-) TimerEvent: {}
+[4.507576] (-) TimerEvent: {}
+[4.607863] (-) TimerEvent: {}
+[4.708172] (-) TimerEvent: {}
+[4.808485] (-) TimerEvent: {}
+[4.844456] (fbg_msgs) StdoutLine: {'line': b'[ 78%] Built target fbg_msgs__py\n'}
+[4.859298] (fbg_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fbg_msgs__python\x1b[0m\n'}
+[4.884945] (fbg_msgs) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/msg/_fbg_reading_s.c.o\x1b[0m\n'}
+[4.885264] (fbg_msgs) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/srv/_cal_curvature_s.c.o\x1b[0m\n'}
+[4.885497] (fbg_msgs) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__python.dir/rosidl_generator_py/fbg_msgs/msg/_curvature_s.c.o\x1b[0m\n'}
+[4.908620] (-) TimerEvent: {}
+[5.008939] (-) TimerEvent: {}
+[5.017246] (fbg_msgs) StdoutLine: {'line': b'[ 87%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/fbg_msgs/libfbg_msgs__python.so\x1b[0m\n'}
+[5.069397] (fbg_msgs) StdoutLine: {'line': b'[ 87%] Built target fbg_msgs__python\n'}
+[5.083620] (fbg_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[5.083935] (fbg_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[5.084147] (fbg_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target fbg_msgs__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[5.104198] (fbg_msgs) StdoutLine: {'line': b'[ 89%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[5.104493] (fbg_msgs) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[5.105940] (fbg_msgs) StdoutLine: {'line': b'[ 93%] \x1b[32mBuilding C object CMakeFiles/fbg_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/fbg_msgs/_fbg_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[5.109047] (-) TimerEvent: {}
+[5.209321] (-) TimerEvent: {}
+[5.221733] (fbg_msgs) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/fbg_msgs/fbg_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[5.222050] (fbg_msgs) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/fbg_msgs/fbg_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[5.223581] (fbg_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX shared library rosidl_generator_py/fbg_msgs/fbg_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[5.267481] (fbg_msgs) StdoutLine: {'line': b'[100%] Built target fbg_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[5.267825] (fbg_msgs) StdoutLine: {'line': b'[100%] Built target fbg_msgs__rosidl_typesupport_c__pyext\n'}
+[5.306902] (fbg_msgs) StdoutLine: {'line': b'[100%] Built target fbg_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[5.309420] (-) TimerEvent: {}
+[5.321765] (fbg_msgs) CommandEnded: {'returncode': 0}
+[5.409619] (-) TimerEvent: {}
+[5.420862] (fbg_msgs) JobProgress: {'identifier': 'fbg_msgs', 'progress': 'install'}
+[5.436929] (fbg_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs'], 'cwd': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'jkang'), ('SSH_AGENT_PID', '1772'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib:/opt/ros/galactic/opt/yaml_cpp_vendor/lib:/opt/ros/galactic/opt/rviz_ogre_vendor/lib:/opt/ros/galactic/lib/x86_64-linux-gnu:/opt/ros/galactic/lib'), ('HOME', '/home/jkang'), ('OLDPWD', '/home/jkang'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1539'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install'), ('ROS_DISTRO', 'galactic'), ('LOGNAME', 'jkang'), ('JOURNAL_STREAM', '8:51545'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'jkang'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/galactic/bin:/home/jkang/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/jkang-Legion-Y7000P-2019:@/tmp/.ICE-unix/1810,unix/jkang-Legion-Y7000P-2019:/tmp/.ICE-unix/1810'), ('INVOCATION_ID', 'b993813831bf42b6b72ff2ddcce54ae3'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/6f170624_c351_4ac3_9aae_3a460a5bafd2'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.1631'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs:/opt/ros/galactic'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages:/opt/ros/galactic/lib/python3.8/site-packages'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/opt/ros/galactic')]), 'shell': False}
+[5.448574] (fbg_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[5.448879] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/ament_index/resource_index/rosidl_interfaces/fbg_msgs\n'}
+[5.449029] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs\n'}
+[5.449300] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg\n'}
+[5.449503] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/fbg_reading.h\n'}
+[5.449667] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/curvature.h\n'}
+[5.449797] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[5.449927] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail\n'}
+[5.450019] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__functions.c\n'}
+[5.450141] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__functions.h\n'}
+[5.450261] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__type_support.h\n'}
+[5.450350] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__struct.h\n'}
+[5.450464] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__functions.c\n'}
+[5.450581] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__struct.h\n'}
+[5.450699] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__functions.h\n'}
+[5.450915] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__type_support.h\n'}
+[5.451053] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv\n'}
+[5.451145] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/cal_curvature.h\n'}
+[5.451271] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail\n'}
+[5.451362] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__struct.h\n'}
+[5.451484] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__functions.c\n'}
+[5.451587] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__functions.h\n'}
+[5.451745] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__type_support.h\n'}
+[5.451836] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/library_path.sh\n'}
+[5.451925] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/library_path.dsv\n'}
+[5.452167] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_generator_c.so\n'}
+[5.452786] (fbg_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_generator_c.so" to ""\n'}
+[5.452916] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs\n'}
+[5.453081] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg\n'}
+[5.453176] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail\n'}
+[5.453295] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__rosidl_typesupport_fastrtps_c.h\n'}
+[5.453386] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__rosidl_typesupport_fastrtps_c.h\n'}
+[5.453559] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[5.453655] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv\n'}
+[5.453743] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail\n'}
+[5.453831] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__rosidl_typesupport_fastrtps_c.h\n'}
+[5.454071] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[5.454747] (fbg_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[5.454898] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs\n'}
+[5.455050] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg\n'}
+[5.455173] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail\n'}
+[5.455294] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[5.455387] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[5.455589] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/dds_fastrtps\n'}
+[5.455708] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[5.455796] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv\n'}
+[5.455883] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail\n'}
+[5.455970] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/dds_fastrtps\n'}
+[5.456056] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[5.456195] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[5.457011] (fbg_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[5.457148] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs\n'}
+[5.457326] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg\n'}
+[5.457441] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[5.457529] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail\n'}
+[5.457646] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__type_support.c\n'}
+[5.457763] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__rosidl_typesupport_introspection_c.h\n'}
+[5.457852] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__type_support.c\n'}
+[5.457970] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__rosidl_typesupport_introspection_c.h\n'}
+[5.458092] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv\n'}
+[5.458247] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail\n'}
+[5.458364] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__rosidl_typesupport_introspection_c.h\n'}
+[5.458458] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__type_support.c\n'}
+[5.458883] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_introspection_c.so\n'}
+[5.459671] (fbg_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[5.459982] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_c.so\n'}
+[5.460560] (fbg_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_c.so" to ""\n'}
+[5.460778] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs\n'}
+[5.460887] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg\n'}
+[5.460990] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/curvature.hpp\n'}
+[5.461175] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/fbg_reading.hpp\n'}
+[5.461332] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail\n'}
+[5.461471] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__builder.hpp\n'}
+[5.461575] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__traits.hpp\n'}
+[5.461667] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__struct.hpp\n'}
+[5.461760] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__traits.hpp\n'}
+[5.461964] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__struct.hpp\n'}
+[5.462196] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__builder.hpp\n'}
+[5.462325] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv\n'}
+[5.462494] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail\n'}
+[5.462597] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__builder.hpp\n'}
+[5.462693] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__traits.hpp\n'}
+[5.462904] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__struct.hpp\n'}
+[5.463038] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/cal_curvature.hpp\n'}
+[5.463153] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs\n'}
+[5.463245] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg\n'}
+[5.463377] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail\n'}
+[5.463495] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__type_support.cpp\n'}
+[5.463610] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/fbg_reading__rosidl_typesupport_introspection_cpp.hpp\n'}
+[5.463727] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__type_support.cpp\n'}
+[5.463816] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/msg/detail/curvature__rosidl_typesupport_introspection_cpp.hpp\n'}
+[5.463925] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv\n'}
+[5.464019] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail\n'}
+[5.464108] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__type_support.cpp\n'}
+[5.464196] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/include/fbg_msgs/srv/detail/cal_curvature__rosidl_typesupport_introspection_cpp.hpp\n'}
+[5.464322] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[5.465094] (fbg_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[5.465418] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_cpp.so\n'}
+[5.466008] (fbg_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[5.466229] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/pythonpath.sh\n'}
+[5.466369] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/pythonpath.dsv\n'}
+[5.466535] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/__init__.py\n'}
+[5.507192] (fbg_msgs) StdoutLine: {'line': b"Compiling '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/__init__.py'...\n"}
+[5.509701] (-) TimerEvent: {}
+[5.511689] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg\n'}
+[5.511963] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg/_curvature.py\n'}
+[5.512239] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg/_fbg_reading_s.c\n'}
+[5.512517] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg/_curvature_s.c\n'}
+[5.512796] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg/_fbg_reading.py\n'}
+[5.512993] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/msg/__init__.py\n'}
+[5.513242] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/srv\n'}
+[5.513486] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/srv/_cal_curvature_s.c\n'}
+[5.513712] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/srv/_cal_curvature.py\n'}
+[5.513970] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/srv/__init__.py\n'}
+[5.514465] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\n'}
+[5.515372] (fbg_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[5.515919] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\n'}
+[5.516795] (fbg_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[5.517330] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\n'}
+[5.518148] (fbg_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages/fbg_msgs/fbg_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so" to ""\n'}
+[5.518550] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__python.so\n'}
+[5.519347] (fbg_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/libfbg_msgs__python.so" to ""\n'}
+[5.519611] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/msg/FbgReading.idl\n'}
+[5.519873] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/msg/Curvature.idl\n'}
+[5.520073] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/srv/CalCurvature.idl\n'}
+[5.520359] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/msg/FbgReading.msg\n'}
+[5.520619] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/msg/Curvature.msg\n'}
+[5.520812] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/srv/CalCurvature.srv\n'}
+[5.521069] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/srv/CalCurvature_Request.msg\n'}
+[5.521345] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/srv/CalCurvature_Response.msg\n'}
+[5.521585] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/ament_index/resource_index/package_run_dependencies/fbg_msgs\n'}
+[5.521826] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/ament_index/resource_index/parent_prefix_path/fbg_msgs\n'}
+[5.522062] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/ament_prefix_path.sh\n'}
+[5.522339] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/ament_prefix_path.dsv\n'}
+[5.522633] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/path.sh\n'}
+[5.522872] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/environment/path.dsv\n'}
+[5.523079] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/local_setup.bash\n'}
+[5.523274] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/local_setup.sh\n'}
+[5.523464] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/local_setup.zsh\n'}
+[5.523759] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/local_setup.dsv\n'}
+[5.523937] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.dsv\n'}
+[5.524126] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/ament_index/resource_index/packages/fbg_msgs\n'}
+[5.524424] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_generator_cExport.cmake\n'}
+[5.524595] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[5.524827] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[5.525075] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[5.525247] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_cExport.cmake\n'}
+[5.525435] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[5.525645] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_generator_cppExport.cmake\n'}
+[5.525901] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[5.526136] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[5.526432] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[5.526701] (fbg_msgs) StdoutLine: {'line': b'-- Installing: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[5.526956] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[5.527224] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[5.527463] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[5.527718] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[5.527988] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[5.528166] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[5.528342] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[5.528553] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgsConfig.cmake\n'}
+[5.528746] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/cmake/fbg_msgsConfig-version.cmake\n'}
+[5.528934] (fbg_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.xml\n'}
+[5.531003] (fbg_msgs) CommandEnded: {'returncode': 0}
+[5.609875] (-) TimerEvent: {}
+[5.710073] (fbg_msgs) JobEnded: {'identifier': 'fbg_msgs', 'rc': 0}
+[5.715108] (-) TimerEvent: {}
+[5.715214] (curvature_srvcli) JobStarted: {'identifier': 'curvature_srvcli'}
+[5.815375] (-) TimerEvent: {}
+[5.915859] (-) TimerEvent: {}
+[6.016156] (-) TimerEvent: {}
+[6.116447] (-) TimerEvent: {}
+[6.216806] (-) TimerEvent: {}
+[6.317251] (-) TimerEvent: {}
+[6.417544] (-) TimerEvent: {}
+[6.517824] (-) TimerEvent: {}
+[6.618115] (-) TimerEvent: {}
+[6.718405] (-) TimerEvent: {}
+[6.818729] (-) TimerEvent: {}
+[6.919040] (-) TimerEvent: {}
+[6.991431] (curvature_srvcli) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/curvature_srvcli', 'build', '--build-base', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/build', 'install', '--record', '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/install.log', '--single-version-externally-managed'], 'cwd': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/curvature_srvcli', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'jkang', 'SSH_AGENT_PID': '1772', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib:/opt/ros/galactic/opt/yaml_cpp_vendor/lib:/opt/ros/galactic/opt/rviz_ogre_vendor/lib:/opt/ros/galactic/lib/x86_64-linux-gnu:/opt/ros/galactic/lib', 'HOME': '/home/jkang', 'OLDPWD': '/home/jkang', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1539', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install', 'ROS_DISTRO': 'galactic', 'LOGNAME': 'jkang', 'JOURNAL_STREAM': '8:51545', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'jkang', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/opt/ros/galactic/bin:/home/jkang/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/jkang-Legion-Y7000P-2019:@/tmp/.ICE-unix/1810,unix/jkang-Legion-Y7000P-2019:/tmp/.ICE-unix/1810', 'INVOCATION_ID': 'b993813831bf42b6b72ff2ddcce54ae3', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/6f170624_c351_4ac3_9aae_3a460a5bafd2', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.1631', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs:/opt/ros/galactic', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/opt/ros/galactic/lib/python3.8/site-packages', 'COLCON': '1', 'VTE_VERSION': '6003', 'CMAKE_PREFIX_PATH': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs'}, 'shell': False}
+[7.019174] (-) TimerEvent: {}
+[7.119494] (-) TimerEvent: {}
+[7.219781] (-) TimerEvent: {}
+[7.320072] (-) TimerEvent: {}
+[7.420361] (-) TimerEvent: {}
+[7.450461] (curvature_srvcli) StdoutLine: {'line': b'running egg_info\n'}
+[7.469201] (curvature_srvcli) StdoutLine: {'line': b'writing ../../build/curvature_srvcli/curvature_srvcli.egg-info/PKG-INFO\n'}
+[7.469508] (curvature_srvcli) StdoutLine: {'line': b'writing dependency_links to ../../build/curvature_srvcli/curvature_srvcli.egg-info/dependency_links.txt\n'}
+[7.469786] (curvature_srvcli) StdoutLine: {'line': b'writing entry points to ../../build/curvature_srvcli/curvature_srvcli.egg-info/entry_points.txt\n'}
+[7.470032] (curvature_srvcli) StdoutLine: {'line': b'writing requirements to ../../build/curvature_srvcli/curvature_srvcli.egg-info/requires.txt\n'}
+[7.470256] (curvature_srvcli) StdoutLine: {'line': b'writing top-level names to ../../build/curvature_srvcli/curvature_srvcli.egg-info/top_level.txt\n'}
+[7.508395] (curvature_srvcli) StdoutLine: {'line': b"reading manifest file '../../build/curvature_srvcli/curvature_srvcli.egg-info/SOURCES.txt'\n"}
+[7.509596] (curvature_srvcli) StdoutLine: {'line': b"writing manifest file '../../build/curvature_srvcli/curvature_srvcli.egg-info/SOURCES.txt'\n"}
+[7.509860] (curvature_srvcli) StdoutLine: {'line': b'running build\n'}
+[7.510022] (curvature_srvcli) StdoutLine: {'line': b'running build_py\n'}
+[7.510301] (curvature_srvcli) StdoutLine: {'line': b'copying curvature_srvcli/curvature_member_function.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/build/lib/curvature_srvcli\n'}
+[7.510552] (curvature_srvcli) StdoutLine: {'line': b'running install\n'}
+[7.510790] (curvature_srvcli) StderrLine: {'line': b'/home/jkang/.local/lib/python3.8/site-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.\n'}
+[7.511002] (curvature_srvcli) StderrLine: {'line': b'  warnings.warn(\n'}
+[7.517705] (curvature_srvcli) StdoutLine: {'line': b'running install_lib\n'}
+[7.520471] (-) TimerEvent: {}
+[7.536462] (curvature_srvcli) StdoutLine: {'line': b'copying /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/build/lib/curvature_srvcli/curvature_member_function.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages/curvature_srvcli\n'}
+[7.537190] (curvature_srvcli) StdoutLine: {'line': b'byte-compiling /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages/curvature_srvcli/curvature_member_function.py to curvature_member_function.cpython-38.pyc\n'}
+[7.537943] (curvature_srvcli) StdoutLine: {'line': b'running install_data\n'}
+[7.556258] (curvature_srvcli) StdoutLine: {'line': b'running install_egg_info\n'}
+[7.575430] (curvature_srvcli) StdoutLine: {'line': b"removing '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages/curvature_srvcli-0.0.0-py3.8.egg-info' (and everything under it)\n"}
+[7.575856] (curvature_srvcli) StdoutLine: {'line': b'Copying ../../build/curvature_srvcli/curvature_srvcli.egg-info to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages/curvature_srvcli-0.0.0-py3.8.egg-info\n'}
+[7.577008] (curvature_srvcli) StdoutLine: {'line': b'running install_scripts\n'}
+[7.620575] (-) TimerEvent: {}
+[7.660006] (curvature_srvcli) StdoutLine: {'line': b'Installing client script to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/curvature_srvcli\n'}
+[7.660326] (curvature_srvcli) StdoutLine: {'line': b'Installing server script to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/curvature_srvcli\n'}
+[7.660674] (curvature_srvcli) StdoutLine: {'line': b"writing list of installed files to '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/install.log'\n"}
+[7.702011] (curvature_srvcli) CommandEnded: {'returncode': 0}
+[7.719425] (curvature_srvcli) JobEnded: {'identifier': 'curvature_srvcli', 'rc': 0}
+[7.720300] (-) EventReactorShutdown: {}

@@ -13,10 +13,8 @@
 
 
 // Include directives for member types
-// Member `fbg_reading`
-#include "fbg_msgs/msg/fbg_reading.h"
-// Member `fbg_reading`
-#include "fbg_msgs/msg/detail/fbg_reading__rosidl_typesupport_introspection_c.h"
+// Member `command`
+#include "rosidl_runtime_c/string_functions.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -39,14 +37,14 @@ void CalCurvature_Request__rosidl_typesupport_introspection_c__CalCurvature_Requ
 
 static rosidl_typesupport_introspection_c__MessageMember CalCurvature_Request__rosidl_typesupport_introspection_c__CalCurvature_Request_message_member_array[1] = {
   {
-    "fbg_reading",  // name
-    rosidl_typesupport_introspection_c__ROS_TYPE_MESSAGE,  // type
+    "command",  // name
+    rosidl_typesupport_introspection_c__ROS_TYPE_STRING,  // type
     0,  // upper bound of string
-    NULL,  // members of sub message (initialized later)
+    NULL,  // members of sub message
     false,  // is array
     0,  // array size
     false,  // is upper bound
-    offsetof(fbg_msgs__srv__CalCurvature_Request, fbg_reading),  // bytes offset in struct
+    offsetof(fbg_msgs__srv__CalCurvature_Request, command),  // bytes offset in struct
     NULL,  // default value
     NULL,  // size() function pointer
     NULL,  // get_const(index) function pointer
@@ -76,8 +74,6 @@ static rosidl_message_type_support_t CalCurvature_Request__rosidl_typesupport_in
 ROSIDL_TYPESUPPORT_INTROSPECTION_C_EXPORT_fbg_msgs
 const rosidl_message_type_support_t *
 ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, fbg_msgs, srv, CalCurvature_Request)() {
-  CalCurvature_Request__rosidl_typesupport_introspection_c__CalCurvature_Request_message_member_array[0].members_ =
-    ROSIDL_TYPESUPPORT_INTERFACE__MESSAGE_SYMBOL_NAME(rosidl_typesupport_introspection_c, fbg_msgs, msg, FbgReading)();
   if (!CalCurvature_Request__rosidl_typesupport_introspection_c__CalCurvature_Request_message_type_support_handle.typesupport_identifier) {
     CalCurvature_Request__rosidl_typesupport_introspection_c__CalCurvature_Request_message_type_support_handle.typesupport_identifier =
       rosidl_typesupport_introspection_c__identifier;

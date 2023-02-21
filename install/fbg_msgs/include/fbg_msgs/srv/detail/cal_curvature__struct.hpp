@@ -14,10 +14,6 @@
 #include <vector>
 
 
-// Include directives for member types
-// Member 'fbg_reading'
-#include "fbg_msgs/msg/detail/fbg_reading__struct.hpp"
-
 #ifndef _WIN32
 # define DEPRECATED__fbg_msgs__srv__CalCurvature_Request __attribute__((deprecated))
 #else
@@ -37,27 +33,34 @@ struct CalCurvature_Request_
   using Type = CalCurvature_Request_<ContainerAllocator>;
 
   explicit CalCurvature_Request_(rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
-  : fbg_reading(_init)
   {
-    (void)_init;
+    if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
+      rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
+    {
+      this->command = "";
+    }
   }
 
   explicit CalCurvature_Request_(const ContainerAllocator & _alloc, rosidl_runtime_cpp::MessageInitialization _init = rosidl_runtime_cpp::MessageInitialization::ALL)
-  : fbg_reading(_alloc, _init)
+  : command(_alloc)
   {
-    (void)_init;
+    if (rosidl_runtime_cpp::MessageInitialization::ALL == _init ||
+      rosidl_runtime_cpp::MessageInitialization::ZERO == _init)
+    {
+      this->command = "";
+    }
   }
 
   // field types and members
-  using _fbg_reading_type =
-    fbg_msgs::msg::FbgReading_<ContainerAllocator>;
-  _fbg_reading_type fbg_reading;
+  using _command_type =
+    std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>>;
+  _command_type command;
 
   // setters for named parameter idiom
-  Type & set__fbg_reading(
-    const fbg_msgs::msg::FbgReading_<ContainerAllocator> & _arg)
+  Type & set__command(
+    const std::basic_string<char, std::char_traits<char>, typename std::allocator_traits<ContainerAllocator>::template rebind_alloc<char>> & _arg)
   {
-    this->fbg_reading = _arg;
+    this->command = _arg;
     return *this;
   }
 
@@ -103,7 +106,7 @@ struct CalCurvature_Request_
   // comparison operators
   bool operator==(const CalCurvature_Request_ & other) const
   {
-    if (this->fbg_reading != other.fbg_reading) {
+    if (this->command != other.command) {
       return false;
     }
     return true;
