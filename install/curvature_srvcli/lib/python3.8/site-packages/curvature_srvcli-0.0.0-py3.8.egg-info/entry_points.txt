@@ -1,3 +1,4 @@
 [console_scripts]
 client = curvature_srvcli.client:main
 server = curvature_srvcli.server:main
+

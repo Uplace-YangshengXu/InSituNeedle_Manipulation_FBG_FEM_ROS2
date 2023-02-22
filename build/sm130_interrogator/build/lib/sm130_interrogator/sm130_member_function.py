@@ -35,6 +35,8 @@ class interrogator_publisher(Node):
     def timer_callback(self):
         
         rawdata = self.interrogator.getData() #np ndarray
+        self.msg.total_reading_num = self.total_reading_num
+        self.msg.signal_each_ch = self.signal_each_ch.astype(np.uint8)
         self.msg.signal_reading = array("d",array("d",rawdata)) # array.array
         #print(msg.signal_reading)
         self.publisher_.publish(self.msg)

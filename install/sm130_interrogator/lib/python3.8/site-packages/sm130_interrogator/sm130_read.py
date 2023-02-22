@@ -111,6 +111,8 @@ class Interrogator():
                 pass
             # end if
         # end for
+        self.check_ch_available()
+
         return self.get_raw_data()
     # end getData
 

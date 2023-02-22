@@ -8,6 +8,7 @@ setup.py
 ../../build/curvature_srvcli/curvature_srvcli.egg-info/requires.txt
 ../../build/curvature_srvcli/curvature_srvcli.egg-info/top_level.txt
 ../../build/curvature_srvcli/curvature_srvcli.egg-info/zip-safe
+curvature_srvcli/FBG.py
 curvature_srvcli/__init__.py
 curvature_srvcli/client.py
 curvature_srvcli/curvature_member_function.py
