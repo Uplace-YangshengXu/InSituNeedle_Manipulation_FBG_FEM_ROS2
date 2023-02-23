@@ -1,0 +1,27 @@
+[0.809s] Invoking command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/curvature_srvcli': AMENT_PREFIX_PATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs:/opt/ros/galactic PYTHONPATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/opt/ros/galactic/lib/python3.8/site-packages /usr/bin/python3 setup.py egg_info --egg-base ../../build/curvature_srvcli build --build-base /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/build install --record /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/install.log --single-version-externally-managed
+[1.094s] running egg_info
+[1.105s] writing ../../build/curvature_srvcli/curvature_srvcli.egg-info/PKG-INFO
+[1.106s] writing dependency_links to ../../build/curvature_srvcli/curvature_srvcli.egg-info/dependency_links.txt
+[1.106s] writing entry points to ../../build/curvature_srvcli/curvature_srvcli.egg-info/entry_points.txt
+[1.106s] writing requirements to ../../build/curvature_srvcli/curvature_srvcli.egg-info/requires.txt
+[1.106s] writing top-level names to ../../build/curvature_srvcli/curvature_srvcli.egg-info/top_level.txt
+[1.131s] reading manifest file '../../build/curvature_srvcli/curvature_srvcli.egg-info/SOURCES.txt'
+[1.131s] writing manifest file '../../build/curvature_srvcli/curvature_srvcli.egg-info/SOURCES.txt'
+[1.131s] running build
+[1.132s] running build_py
+[1.132s] copying curvature_srvcli/curvature_member_function.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/build/lib/curvature_srvcli
+[1.132s] running install
+[1.132s] /home/jkang/.local/lib/python3.8/site-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[1.132s]   warnings.warn(
+[1.137s] running install_lib
+[1.148s] copying /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/build/lib/curvature_srvcli/curvature_member_function.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages/curvature_srvcli
+[1.149s] byte-compiling /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages/curvature_srvcli/curvature_member_function.py to curvature_member_function.cpython-38.pyc
+[1.149s] running install_data
+[1.161s] running install_egg_info
+[1.173s] removing '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages/curvature_srvcli-0.0.0-py3.8.egg-info' (and everything under it)
+[1.173s] Copying ../../build/curvature_srvcli/curvature_srvcli.egg-info to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages/curvature_srvcli-0.0.0-py3.8.egg-info
+[1.173s] running install_scripts
+[1.227s] Installing client script to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/curvature_srvcli
+[1.227s] Installing server script to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/curvature_srvcli
+[1.227s] writing list of installed files to '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/install.log'
+[1.259s] Invoked command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/curvature_srvcli' returned '0': AMENT_PREFIX_PATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs:/opt/ros/galactic PYTHONPATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/opt/ros/galactic/lib/python3.8/site-packages /usr/bin/python3 setup.py egg_info --egg-base ../../build/curvature_srvcli build --build-base /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/build install --record /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/install.log --single-version-externally-managed

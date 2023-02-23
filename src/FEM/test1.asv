@@ -1,0 +1,15 @@
+% folderPath = fullfile(pwd,"custom");
+% ros2genmsg(folderPath)
+
+
+
+%%
+cli_node = ros2node('matlab_cli');
+% ros2 node list
+% ros2 service list
+serviceTypes = ros2("service","type","/cal_curv")
+testclient = ros2svcclient(cli_node,"/cal_curv","fbg_msgs/CalCurvature");
+[connectionStatus,connectionStatustext] = waitForServer(client);
+request = ros2message(client);
+request.string_value = '';
+% testreq = ros2message(testclient)

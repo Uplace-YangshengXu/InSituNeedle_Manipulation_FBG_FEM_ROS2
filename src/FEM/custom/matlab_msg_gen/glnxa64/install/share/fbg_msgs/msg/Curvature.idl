@@ -1,0 +1,14 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from fbg_msgs/msg/Curvature.msg
+// generated code does not contain a copyright notice
+
+
+module fbg_msgs {
+  module msg {
+    struct Curvature {
+      sequence<double> curvature_xy;
+
+      sequence<double> curvature_xz;
+    };
+  };
+};

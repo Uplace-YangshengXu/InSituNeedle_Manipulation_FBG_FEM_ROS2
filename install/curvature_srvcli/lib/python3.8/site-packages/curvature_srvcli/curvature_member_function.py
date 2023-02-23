@@ -29,6 +29,8 @@ class CalService(Node):
     def cal_curv_callback(self, request, response):
         #calculate response
         print("get request from client")
+        print(request)
+        print(response)
         if self.if_init_fbg_process == 1:
             curvatures = self.fbg_process.getCurvatures(np.asarray(self.msg.signal_reading))
             

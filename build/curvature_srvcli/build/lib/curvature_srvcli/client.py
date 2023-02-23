@@ -8,7 +8,7 @@ def main():
     client = CalClient()
     for i in range(1000):
         response = client.send_request()
-        #print(response)
+        print(response)
         end = time.time()
         print("get one response")
         print(end - start)
