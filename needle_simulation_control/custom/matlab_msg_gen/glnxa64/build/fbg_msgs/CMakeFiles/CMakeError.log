@@ -1,0 +1,48 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/local/MATLAB/R2022b/toolbox/shared/coder/ninja/glnxa64/ninja cmTC_d0a6e && [1/2] Building C object CMakeFiles/cmTC_d0a6e.dir/src.c.o
+[2/2] Linking C executable cmTC_d0a6e
+FAILED: cmTC_d0a6e 
+: && /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   CMakeFiles/cmTC_d0a6e.dir/src.c.o  -o cmTC_d0a6e   && :
+/usr/bin/ld: CMakeFiles/cmTC_d0a6e.dir/src.c.o: in function `main':
+src.c:(.text+0x46): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x52): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x63): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/local/MATLAB/R2022b/toolbox/shared/coder/ninja/glnxa64/ninja cmTC_88d0d && [1/2] Building C object CMakeFiles/cmTC_88d0d.dir/CheckFunctionExists.c.o
+[2/2] Linking C executable cmTC_88d0d
+FAILED: cmTC_88d0d 
+: && /usr/bin/cc -DCHECK_FUNCTION_EXISTS=pthread_create   CMakeFiles/cmTC_88d0d.dir/CheckFunctionExists.c.o  -o cmTC_88d0d  -lpthreads && :
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
+
+
+
