@@ -25,5 +25,11 @@ classdef MatlabRosPubSub
         function sendPubMsg(obj,msg)
             send(obj.pub,msg)
         end
+        
+        function delete(obj)
+            delete(obj.sub)
+            delete(obj.pub)
+        end
+
     end
 end

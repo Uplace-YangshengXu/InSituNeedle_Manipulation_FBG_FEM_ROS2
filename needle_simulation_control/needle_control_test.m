@@ -9,6 +9,7 @@
 % this script reconstruct the needle base on FEM and FBG reading
 % and implement a control test which alway keep the needle straigt
 
+
 %% dependency initialization
 
 % for FEM
@@ -29,7 +30,7 @@ addpath ./Galil_MATLAB_API/ % galil control api
 
 %% switches
 FBG_switch = 1; %switch off fbg with 0
-Motor_switch = 1; %switch off motor with 0
+Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -77,6 +78,9 @@ ini_control = [0;0;0];
 %% initialization
 
 if FBG_switch == 1
+    if exist("subscriber")
+        delete(subscriber)
+    end
     % create a matlab subscriber to get curvature reading
     subscriber = MatlabRosPubSub('sub','matlab_curvature_subscriber','/pub_Curv','fbg_msgs/Curvature');
 end
@@ -136,10 +140,10 @@ m = memmapfile(filename, 'Writable',true, 'Format', ...
     });
 
 % story initialize data
-m.Data.x_new(1:sz_x_new(1), 1) = x_new;
-m.Data.y_new(1:sz_y_new(1), 1) = y_new;
-m.Data.k_new(1:sz_k_new(1), 1) = k_new;
-m.Data.curvatures(1:sz_curvatures(1),1:sz_curvatures(2)) = curvatures;
+% m.Data.x_new(1:sz_x_new(1), 1) = x_new;
+% m.Data.y_new(1:sz_y_new(1), 1) = y_new;
+% m.Data.k_new(1:sz_k_new(1), 1) = k_new;
+% m.Data.curvatures(1:sz_curvatures(1),1:sz_curvatures(2)) = curvatures;
 
 % save params for plotting use
 save("../plot_params.mat",'NumChannel','NumAA','FBG_switch','L','ti','Mu','Alpha','Interval','AA_lcn');
@@ -162,6 +166,8 @@ while(1)
 
     % get current needle state from FBG data
     [msg_received,status,statustext] = subscriber.getSubMsg(10);
+    curvatures_xy = msg_received.curvature_xy;
+    curvatures_xz = msg_received.curvature_xz;
 
     [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
     x_pre, y_pre, k_pre, ...
@@ -178,9 +184,11 @@ while(1)
     while (1)
         if FBG_switch == 1
             [msg_received,status,statustext] = subscriber.getSubMsg(10);
+            curvatures_xy = msg_received.curvature_xy;
+            curvatures_xz = msg_received.curvature_xz;
         else
-            curvatures_xy = []
-            curvatures_xz = []
+            curvatures_xy = [];
+            curvatures_xz = [];
         end
         
         ic = [x_pre(end);y_pre(end);k_pre(end);0;0;0];
@@ -212,6 +220,8 @@ while(1)
         % calculate error
         if FBG_switch == 1
             [msg_received,status,statustext] = subscriber.getSubMsg(10);
+            curvatures_xy = msg_received.curvature_xy;
+            curvatures_xz = msg_received.curvature_xz;
         else
             curvatures_xy = [];
             curvatures_xz = [];
@@ -229,19 +239,19 @@ while(1)
         %disp(error);
 
         % story data for plotting
-        m.Data.x_new(1:sz_x_new(1), 1) = x_new;
-        m.Data.y_new(1:sz_y_new(1), 1) = y_new;
-        m.Data.k_new(1:sz_k_new(1), 1) = k_new;
-        m.Data.curvatures(1:sz_curvatures(1),1:sz_curvatures(2)) = curvatures;
+%         m.Data.x_new(1:sz_x_new(1), 1) = x_new;
+%         m.Data.y_new(1:sz_y_new(1), 1) = y_new;
+%         m.Data.k_new(1:sz_k_new(1), 1) = k_new;
+%         m.Data.curvatures(1:sz_curvatures(1),1:sz_curvatures(2)) = curvatures;
         
 
         % break critria
         if error <= 0.05
             % story data for plotting
-            m.Data.x_new(1:sz_x_new(1), 1) = x_new;
-            m.Data.y_new(1:sz_y_new(1), 1) = y_new;
-            m.Data.k_new(1:sz_k_new(1), 1) = k_new;
-            m.Data.curvatures(1:sz_curvatures(1),1:sz_curvatures(2)) = curvatures;
+% %             m.Data.x_new(1:sz_x_new(1), 1) = x_new;
+% %             m.Data.y_new(1:sz_y_new(1), 1) = y_new;
+% %             m.Data.k_new(1:sz_k_new(1), 1) = k_new;
+% %             m.Data.curvatures(1:sz_curvatures(1),1:sz_curvatures(2)) = curvatures;
             break;
         end
 
