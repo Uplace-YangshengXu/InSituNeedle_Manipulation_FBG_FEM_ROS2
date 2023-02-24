@@ -13,9 +13,9 @@
 %% dependency initialization
 
 % for FEM
-addpath ../FEM/helper_funcs/invChol/
-addpath ../FEM/helper_funcs/
-addpath ../FEM
+addpath ./FEM/helper_funcs/invChol/
+addpath ./FEM/helper_funcs/
+addpath ./FEM
 
 % for memmap % temperatory use
 memmapfile_name = 'communicate.dat';
@@ -26,7 +26,8 @@ filename = fullfile(tempdir,memmapfile_name);
 FEM_params;
 
 % for motor control
-addpath ./Galil_MATLAB_API/ % galil control api
+addpath ./Control/Galil_MATLAB_API/ % galil control api
+addpath ./Control/
 
 %% switches
 FBG_switch = 1; %switch off fbg with 0
@@ -65,8 +66,8 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre)); % used as x_pre, y_pre and k_pre in FEM
 
 xd = []; % desired states
-
-AA_lcn = [100;135;170]; % position of AA on needle, measured from needle base.
+AA_lcn = [100;135];
+%AA_lcn = [100;135;170]; % position of AA on needle, measured from needle base.
 % only the AA mentioned in AA_lcn will be used in FEM, in this test, we omit the last AA
 
 %% control parameters
@@ -99,9 +100,11 @@ end
 
 % initialize variables for memmap
 %curvatures = zeros(NumAA,2); %num_AA * 2
-curvatures = data_process(RefData,RefData,NumChannel,NumAA);
-curvatures_xy = curvatures(:,1);
-curvatures_xz = curvatures(:,2);
+%curvatures = data_process(RefData,RefData,NumChannel,NumAA);
+[msg_received,status,statustext] = subscriber.getSubMsg(10);
+curvatures_xy = msg_received.curvature_xy;
+curvatures_xz = msg_received.curvature_xz;
+
 % get the new states by ini move
 [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
     x_pre, y_pre, k_pre, ...
@@ -122,7 +125,7 @@ if a == 0
     fwrite(fid,x_new,'double');
     fwrite(fid,y_new,'double');
     fwrite(fid,k_new,'double');
-    fwrite(fid,curvatures,'double');
+    %fwrite(fid,curvatures,'double');
     fclose(fid);
 end
 
@@ -130,13 +133,13 @@ end
 sz_x_new = size(x_new);
 sz_y_new = size(y_new);
 sz_k_new = size(k_new);
-sz_curvatures = size(curvatures);
+%sz_curvatures = size(curvatures);
 
 m = memmapfile(filename, 'Writable',true, 'Format', ...
     {'double', sz_x_new, 'x_new';
     'double', sz_y_new, 'y_new';
     'double', sz_k_new, 'k_new';
-    'double', sz_curvatures, 'curvatures';
+    %'double', sz_curvatures, 'curvatures';
     });
 
 % story initialize data
@@ -167,7 +170,7 @@ while(1)
     % get current needle state from FBG data
     [msg_received,status,statustext] = subscriber.getSubMsg(10);
     curvatures_xy = msg_received.curvature_xy;
-    curvatures_xz = msg_received.curvature_xz;
+    curvatures_xz = msg_received.curvature_xz
 
     [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
     x_pre, y_pre, k_pre, ...
@@ -227,7 +230,7 @@ while(1)
             curvatures_xz = [];
         end
 
-        [x_new, y_new, k_new] = planar_nee_FEM(L, Mu, Alpha, Interval, ...
+        [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
             x_pre, y_pre, k_pre, ...
             dbx, dby, dbk, ...
             curvatures_xz, AA_lcn);
@@ -235,7 +238,7 @@ while(1)
         y_pre = y_new;
         k_pre = k_new;
 
-        error = norm([x_new(end);y_new(end);k_new(end)] - xd);
+        error = norm([x_new(end);y_new(end);k_new(end)] - xd)
         %disp(error);
 
         % story data for plotting
