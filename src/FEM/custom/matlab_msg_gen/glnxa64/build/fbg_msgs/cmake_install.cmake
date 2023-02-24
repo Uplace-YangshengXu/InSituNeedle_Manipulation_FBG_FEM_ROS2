@@ -182,6 +182,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/fbg_msgs/srv" TYPE FILE FILES "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/srv/FindNorm.idl")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/fbg_msgs/msg" TYPE FILE FILES "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/src/fbg_msgs/msg/Curvature.msg")
 endif()
 
@@ -199,6 +203,18 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/fbg_msgs/srv" TYPE FILE FILES "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_cmake/srv/CalCurvature_Response.msg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/fbg_msgs/srv" TYPE FILE FILES "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/src/fbg_msgs/srv/FindNorm.srv")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/fbg_msgs/srv" TYPE FILE FILES "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_cmake/srv/FindNorm_Request.msg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/fbg_msgs/srv" TYPE FILE FILES "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_cmake/srv/FindNorm_Response.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

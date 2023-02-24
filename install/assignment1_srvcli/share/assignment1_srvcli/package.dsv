@@ -1,0 +1,11 @@
+source;share/assignment1_srvcli/hook/cmake_prefix_path.ps1
+source;share/assignment1_srvcli/hook/cmake_prefix_path.dsv
+source;share/assignment1_srvcli/hook/cmake_prefix_path.sh
+source;share/assignment1_srvcli/hook/ld_library_path_lib.ps1
+source;share/assignment1_srvcli/hook/ld_library_path_lib.dsv
+source;share/assignment1_srvcli/hook/ld_library_path_lib.sh
+source;share/assignment1_srvcli/local_setup.bash
+source;share/assignment1_srvcli/local_setup.dsv
+source;share/assignment1_srvcli/local_setup.ps1
+source;share/assignment1_srvcli/local_setup.sh
+source;share/assignment1_srvcli/local_setup.zsh

@@ -6,3 +6,7 @@ srv/CalCurvature.idl
 srv/CalCurvature.srv
 srv/CalCurvature_Request.msg
 srv/CalCurvature_Response.msg
+srv/FindNorm.idl
+srv/FindNorm.srv
+srv/FindNorm_Request.msg
+srv/FindNorm_Response.msg

@@ -5,7 +5,8 @@
   "idl_tuples": [
     "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/Curvature.idl",
     "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/FbgReading.idl",
-    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:srv/CalCurvature.idl"
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:srv/CalCurvature.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:srv/FindNorm.idl"
   ],
   "target_dependencies": [
     "/home/jkang/MATLAB/R2022b/sys/ros2/glnxa64/ros2/share/rosidl_generator_c/cmake/../../../lib/rosidl_generator_c/rosidl_generator_c",
@@ -23,6 +24,7 @@
     "/home/jkang/MATLAB/R2022b/sys/ros2/glnxa64/ros2/share/rosidl_generator_c/cmake/../resource/srv__type_support.h.em",
     "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/Curvature.idl",
     "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/FbgReading.idl",
-    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/srv/CalCurvature.idl"
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/srv/CalCurvature.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/FEM/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/srv/FindNorm.idl"
   ]
 }

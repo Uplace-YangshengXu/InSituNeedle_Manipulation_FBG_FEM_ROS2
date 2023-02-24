@@ -35,6 +35,7 @@ set(msg_files
 )
 set(srv_files
   "srv/CalCurvature.srv"
+  "srv/FindNorm.srv"
 )
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
@@ -48,6 +49,7 @@ add_library(
     src/fbg_msgs_Curvature_message.cpp
     src/fbg_msgs_FbgReading_message.cpp
     src/fbg_msgs_CalCurvature_service.cpp
+    src/fbg_msgs_FindNorm_service.cpp
 )
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 target_compile_options(fbg_msgs_matlab PUBLIC 
@@ -109,4 +111,4 @@ add_custom_command(
 				   )				   
 endforeach(file_i)
 ament_package()
-# Generated on Thu Feb 23 13:51:33 2023
+# Generated on Thu Feb 23 16:13:59 2023
