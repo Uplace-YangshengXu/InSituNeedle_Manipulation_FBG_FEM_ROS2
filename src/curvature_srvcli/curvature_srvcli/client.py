@@ -6,7 +6,7 @@ def main():
     start = time.time()
     rclpy.init()
     client = CalClient()
-    for i in range(1000):
+    for i in range(10000):
         response = client.send_request()
         print(response)
         end = time.time()
