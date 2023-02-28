@@ -12,7 +12,9 @@ curvature_srvcli/FBG.py
 curvature_srvcli/__init__.py
 curvature_srvcli/client.py
 curvature_srvcli/curvature_member_function.py
+curvature_srvcli/publisher.py
 curvature_srvcli/server.py
+launch/sm130_launch.xml
 resource/curvature_srvcli
 test/test_copyright.py
 test/test_flake8.py

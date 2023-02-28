@@ -11,7 +11,7 @@ find_package(rclcpp REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "msg/FbgReading.msg" "msg/Curvature.msg" "srv/CalCurvature.srv")
+  "msg/FbgReading.msg" "msg/Curvature.msg" "msg/NeedleShape.msg" "srv/CalCurvature.srv")
   
 
 ament_export_dependencies(rosidl_default_runtime)

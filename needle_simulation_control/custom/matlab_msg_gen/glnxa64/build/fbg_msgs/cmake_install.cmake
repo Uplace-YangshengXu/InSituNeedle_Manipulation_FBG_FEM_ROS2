@@ -173,6 +173,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/fbg_msgs/msg" TYPE FILE FILES "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/NeedleShape.idl")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/fbg_msgs/srv" TYPE FILE FILES "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/srv/CalCurvature.idl")
 endif()
 
@@ -186,6 +190,10 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/fbg_msgs/msg" TYPE FILE FILES "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/src/fbg_msgs/msg/FbgReading.msg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/fbg_msgs/msg" TYPE FILE FILES "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/src/fbg_msgs/msg/NeedleShape.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

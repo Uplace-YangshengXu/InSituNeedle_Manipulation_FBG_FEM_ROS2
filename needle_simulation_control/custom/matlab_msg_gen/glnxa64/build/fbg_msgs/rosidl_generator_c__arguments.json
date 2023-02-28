@@ -5,6 +5,7 @@
   "idl_tuples": [
     "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/Curvature.idl",
     "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/FbgReading.idl",
+    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/NeedleShape.idl",
     "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:srv/CalCurvature.idl",
     "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:srv/FindNorm.idl"
   ],
@@ -24,6 +25,7 @@
     "/usr/local/MATLAB/R2022b/sys/ros2/glnxa64/ros2/share/rosidl_generator_c/cmake/../resource/srv__type_support.h.em",
     "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/Curvature.idl",
     "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/FbgReading.idl",
+    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/NeedleShape.idl",
     "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/srv/CalCurvature.idl",
     "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs/srv/FindNorm.idl"
   ]

@@ -17,6 +17,14 @@ CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/deta
 CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/fbg_reading__functions.c.o: rosidl_generator_c/fbg_msgs/msg/detail/fbg_reading__struct.h
 CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/fbg_reading__functions.c.o: rosidl_generator_c/fbg_msgs/msg/rosidl_generator_c__visibility_control.h
 
+CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/needle_shape__functions.c.o: rosidl_generator_c/fbg_msgs/msg/detail/needle_shape__functions.c
+CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/needle_shape__functions.c.o: /opt/ros/galactic/include/rosidl_runtime_c/primitives_sequence.h
+CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/needle_shape__functions.c.o: /opt/ros/galactic/include/rosidl_runtime_c/primitives_sequence_functions.h
+CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/needle_shape__functions.c.o: /opt/ros/galactic/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/needle_shape__functions.c.o: rosidl_generator_c/fbg_msgs/msg/detail/needle_shape__functions.h
+CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/needle_shape__functions.c.o: rosidl_generator_c/fbg_msgs/msg/detail/needle_shape__struct.h
+CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/msg/detail/needle_shape__functions.c.o: rosidl_generator_c/fbg_msgs/msg/rosidl_generator_c__visibility_control.h
+
 CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/srv/detail/cal_curvature__functions.c.o: rosidl_generator_c/fbg_msgs/srv/detail/cal_curvature__functions.c
 CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/srv/detail/cal_curvature__functions.c.o: /opt/ros/galactic/include/rosidl_runtime_c/primitives_sequence.h
 CMakeFiles/fbg_msgs__rosidl_generator_c.dir/rosidl_generator_c/fbg_msgs/srv/detail/cal_curvature__functions.c.o: /opt/ros/galactic/include/rosidl_runtime_c/string.h

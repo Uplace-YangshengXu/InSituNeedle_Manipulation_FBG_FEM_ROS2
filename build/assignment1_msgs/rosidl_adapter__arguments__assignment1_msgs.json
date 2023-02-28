@@ -1,7 +1,0 @@
-{
-  "package_name": "assignment1_msgs",
-  "non_idl_tuples": [
-    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/assignment1/assignment1_msgs:msg/Command.msg",
-    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/assignment1/assignment1_msgs:srv/FindNorm.srv"
-  ]
-}

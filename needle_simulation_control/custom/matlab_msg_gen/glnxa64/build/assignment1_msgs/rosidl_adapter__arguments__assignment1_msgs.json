@@ -1,7 +1,0 @@
-{
-  "package_name": "assignment1_msgs",
-  "non_idl_tuples": [
-    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/src/assignment1_msgs:msg/Command.msg",
-    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/src/assignment1_msgs:srv/FindNorm.srv"
-  ]
-}

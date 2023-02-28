@@ -2,6 +2,8 @@ msg/Curvature.idl
 msg/Curvature.msg
 msg/FbgReading.idl
 msg/FbgReading.msg
+msg/NeedleShape.idl
+msg/NeedleShape.msg
 srv/CalCurvature.idl
 srv/CalCurvature.srv
 srv/CalCurvature_Request.msg

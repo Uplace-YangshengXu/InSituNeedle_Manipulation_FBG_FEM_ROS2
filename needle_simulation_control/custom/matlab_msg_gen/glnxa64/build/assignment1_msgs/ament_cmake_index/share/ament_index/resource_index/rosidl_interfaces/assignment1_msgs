@@ -1,6 +1,0 @@
-msg/Command.idl
-msg/Command.msg
-srv/FindNorm.idl
-srv/FindNorm.srv
-srv/FindNorm_Request.msg
-srv/FindNorm_Response.msg

@@ -1,3 +1,7 @@
+% modified by yangsheng xu at 27/02/2023
+% discard the memmap method for visulization
+% use python + ros2 for visulization
+
 % modified by Yangsheng Xu at 24/02/2023
 % this main script is modified to be able to compatible with ros2
 % resceive msg from ros2 publisher
@@ -17,12 +21,8 @@ addpath ./FEM/helper_funcs/invChol/
 addpath ./FEM/helper_funcs/
 addpath ./FEM
 
-% for memmap % temperatory use
-memmapfile_name = 'communicate.dat';
-filename = fullfile(tempdir,memmapfile_name);
 
-
-% Constants
+% FEM Constants
 FEM_params;
 
 % for motor control
@@ -30,7 +30,7 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 1; %switch off fbg with 0
+FBG_switch = 0; %switch off fbg with 0
 Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
@@ -78,8 +78,9 @@ ini_control = [0;0;0];
 
 %% initialization
 
+% curvature reading subscriber
 if FBG_switch == 1
-    if exist("subscriber")
+    if exist("subscriber",'var')
         delete(subscriber)
     end
     % create a matlab subscriber to get curvature reading
@@ -87,7 +88,11 @@ if FBG_switch == 1
 end
 
 g = []; % object of Galil motor controller
-
+            % story data for plotting
+% %             m.Data.x_new(1:sz_x_new(1), 1) = x_new;
+% %             m.Data.y_new(1:sz_y_new(1), 1) = y_new;
+% %             m.Data.k_new(1:sz_k_new(1), 1) = k_new;
+% %             m.Data.curvatures(1:sz_curvatures(1),1:sz_curvatures(2)) = curvatures;
 if Motor_switch == 1
     % run ini_motor_controller.m
     g = ini_motor_controller(motor_controller_ip,motor_controller_port);
@@ -98,12 +103,14 @@ if Motor_switch == 1
     Input_Rotation = 0;
 end
 
-% initialize variables for memmap
-%curvatures = zeros(NumAA,2); %num_AA * 2
-%curvatures = data_process(RefData,RefData,NumChannel,NumAA);
-[msg_received,status,statustext] = subscriber.getSubMsg(10);
-curvatures_xy = msg_received.curvature_xy;
-curvatures_xz = msg_received.curvature_xz;
+if exist('subscriber','var')
+    [msg_received,status,statustext] = subscriber.getSubMsg(10);
+    curvatures_xy = msg_received.curvature_xy;
+    curvatures_xz = msg_received.curvature_xz;
+else
+    curvatures_xy = zeros(NumAA,1);
+    curvatures_xz = zeros(NumAA,1);
+end
 
 % get the new states by ini move
 [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
@@ -115,41 +122,23 @@ x_pre = x_new;
 y_pre = y_new;
 k_pre = k_new;
 
-% check if exist this file
-a = exist(filename, 'file');
-
-if a == 0
-    % if not exist, create one
-    %plot needed parameters
-    fid = fopen(filename,'w');
-    fwrite(fid,x_new,'double');
-    fwrite(fid,y_new,'double');
-    fwrite(fid,k_new,'double');
-    %fwrite(fid,curvatures,'double');
-    fclose(fid);
+% needle data publisher
+if exist("publisher",'var')
+    delete(publisher)
 end
 
-% get output size
-sz_x_new = size(x_new);
-sz_y_new = size(y_new);
-sz_k_new = size(k_new);
-%sz_curvatures = size(curvatures);
+publisher = MatlabRosPubSub('pub','matlab_needle_shape_publisher','/needle_shape','fbg_msgs/NeedleShape');
+pub_msg = ros2message("fbg_msgs/NeedleShape"); % create message structure
+pub_msg.needle_total_length = uint8(L);
+pub_msg.active_area_location = AA_lcn;
+%send(pub,msg) % send message
 
-m = memmapfile(filename, 'Writable',true, 'Format', ...
-    {'double', sz_x_new, 'x_new';
-    'double', sz_y_new, 'y_new';
-    'double', sz_k_new, 'k_new';
-    %'double', sz_curvatures, 'curvatures';
-    });
+pub_msg.needle_x_axis = x_new;
+pub_msg.needle_y_axis = y_new;
+pub_msg.needle_slope  = k_new;
 
-% story initialize data
-% m.Data.x_new(1:sz_x_new(1), 1) = x_new;
-% m.Data.y_new(1:sz_y_new(1), 1) = y_new;
-% m.Data.k_new(1:sz_k_new(1), 1) = k_new;
-% m.Data.curvatures(1:sz_curvatures(1),1:sz_curvatures(2)) = curvatures;
+publisher.sendPubMsg(pub_msg);
 
-% save params for plotting use
-save("../plot_params.mat",'NumChannel','NumAA','FBG_switch','L','ti','Mu','Alpha','Interval','AA_lcn');
 
 %% main part
 % define the change of x/y/r of control point with 0, those are used for
@@ -168,9 +157,11 @@ while(1)
     dbk = 0;
 
     % get current needle state from FBG data
-    [msg_received,status,statustext] = subscriber.getSubMsg(10);
-    curvatures_xy = msg_received.curvature_xy;
-    curvatures_xz = msg_received.curvature_xz
+    if exist('subscriber','var')
+        [msg_received,status,statustext] = subscriber.getSubMsg(10);
+        curvatures_xy = msg_received.curvature_xy;
+        curvatures_xz = msg_received.curvature_xz;
+    end
 
     [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
     x_pre, y_pre, k_pre, ...
@@ -181,6 +172,12 @@ while(1)
     x_pre = x_new;
     y_pre = y_new;
     k_pre = k_new;
+
+    pub_msg.needle_x_axis = x_new;
+    pub_msg.needle_y_axis = y_new;
+    pub_msg.needle_slope  = k_new;
+    publisher.sendPubMsg(pub_msg);
+
     % get new desire tip states
     xd = [x_new(end);y_new(end);0]; % desired tip state for next 
 
@@ -237,24 +234,19 @@ while(1)
         x_pre = x_new;
         y_pre = y_new;
         k_pre = k_new;
+        
+        pub_msg.needle_x_axis = x_new;
+        pub_msg.needle_y_axis = y_new;
+        pub_msg.needle_slope  = k_new;
+        publisher.sendPubMsg(pub_msg);
 
         error = norm([x_new(end);y_new(end);k_new(end)] - xd)
         %disp(error);
 
-        % story data for plotting
-%         m.Data.x_new(1:sz_x_new(1), 1) = x_new;
-%         m.Data.y_new(1:sz_y_new(1), 1) = y_new;
-%         m.Data.k_new(1:sz_k_new(1), 1) = k_new;
-%         m.Data.curvatures(1:sz_curvatures(1),1:sz_curvatures(2)) = curvatures;
-        
 
         % break critria
         if error <= 0.05
-            % story data for plotting
-% %             m.Data.x_new(1:sz_x_new(1), 1) = x_new;
-% %             m.Data.y_new(1:sz_y_new(1), 1) = y_new;
-% %             m.Data.k_new(1:sz_k_new(1), 1) = k_new;
-% %             m.Data.curvatures(1:sz_curvatures(1),1:sz_curvatures(2)) = curvatures;
+            disp("arrive at goal, looking for next goal.")
             break;
         end
 

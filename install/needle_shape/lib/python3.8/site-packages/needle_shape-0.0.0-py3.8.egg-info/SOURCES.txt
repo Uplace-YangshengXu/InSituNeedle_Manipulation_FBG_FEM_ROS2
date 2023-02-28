@@ -1,0 +1,17 @@
+package.xml
+setup.cfg
+setup.py
+../../build/needle_shape/needle_shape.egg-info/PKG-INFO
+../../build/needle_shape/needle_shape.egg-info/SOURCES.txt
+../../build/needle_shape/needle_shape.egg-info/dependency_links.txt
+../../build/needle_shape/needle_shape.egg-info/entry_points.txt
+../../build/needle_shape/needle_shape.egg-info/requires.txt
+../../build/needle_shape/needle_shape.egg-info/top_level.txt
+../../build/needle_shape/needle_shape.egg-info/zip-safe
+needle_shape/__init__.py
+needle_shape/needle_shape_member_function.py
+needle_shape/needle_shape_viewer.py
+resource/needle_shape
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

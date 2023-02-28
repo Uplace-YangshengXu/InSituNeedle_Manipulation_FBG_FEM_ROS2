@@ -32,6 +32,7 @@ set (CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 set(msg_files
   "msg/Curvature.msg"
   "msg/FbgReading.msg"
+  "msg/NeedleShape.msg"
 )
 set(srv_files
   "srv/CalCurvature.srv"
@@ -48,6 +49,7 @@ add_library(
     SHARED
     src/fbg_msgs_Curvature_message.cpp
     src/fbg_msgs_FbgReading_message.cpp
+    src/fbg_msgs_NeedleShape_message.cpp
     src/fbg_msgs_CalCurvature_service.cpp
     src/fbg_msgs_FindNorm_service.cpp
 )
@@ -111,4 +113,4 @@ add_custom_command(
 				   )				   
 endforeach(file_i)
 ament_package()
-# Generated on Fri Feb 24 13:52:14 2023
+# Generated on Mon Feb 27 17:13:26 2023

@@ -25,6 +25,18 @@ CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/
 CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/fbg_reading__type_support.cpp.o: rosidl_generator_c/fbg_msgs/msg/detail/fbg_reading__struct.h
 CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/fbg_reading__type_support.cpp.o: rosidl_typesupport_c/fbg_msgs/msg/rosidl_typesupport_c__visibility_control.h
 
+CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp.o: rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp
+CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp.o: /opt/ros/galactic/include/rosidl_runtime_c/message_type_support_struct.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp.o: /opt/ros/galactic/include/rosidl_runtime_c/primitives_sequence.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp.o: /opt/ros/galactic/include/rosidl_runtime_c/visibility_control.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp.o: /opt/ros/galactic/include/rosidl_typesupport_c/identifier.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp.o: /opt/ros/galactic/include/rosidl_typesupport_c/message_type_support_dispatch.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp.o: /opt/ros/galactic/include/rosidl_typesupport_c/type_support_map.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp.o: /opt/ros/galactic/include/rosidl_typesupport_c/visibility_control.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp.o: /opt/ros/galactic/include/rosidl_typesupport_interface/macros.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp.o: rosidl_generator_c/fbg_msgs/msg/detail/needle_shape__struct.h
+CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/msg/needle_shape__type_support.cpp.o: rosidl_typesupport_c/fbg_msgs/msg/rosidl_typesupport_c__visibility_control.h
+
 CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/srv/cal_curvature__type_support.cpp.o: rosidl_typesupport_c/fbg_msgs/srv/cal_curvature__type_support.cpp
 CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/srv/cal_curvature__type_support.cpp.o: /opt/ros/galactic/include/rosidl_runtime_c/message_type_support_struct.h
 CMakeFiles/fbg_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/fbg_msgs/srv/cal_curvature__type_support.cpp.o: /opt/ros/galactic/include/rosidl_runtime_c/primitives_sequence.h
