@@ -176,10 +176,13 @@ while(1)
     pub_msg.needle_x_axis = x_new;
     pub_msg.needle_y_axis = y_new;
     pub_msg.needle_slope  = k_new;
+    pub_msg.needle_z_axis = zeros(size(x_new));
     publisher.sendPubMsg(pub_msg);
 
     % get new desire tip states
-    xd = [x_new(end);y_new(end);0]; % desired tip state for next 
+
+    % test
+    xd = [x_new(end);y_new(end)+0.1;0]; % desired tip state for next 
 
     while (1)
         if FBG_switch == 1
