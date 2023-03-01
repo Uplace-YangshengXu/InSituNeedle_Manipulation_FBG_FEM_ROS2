@@ -1,5 +1,0 @@
-  File "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages/needle_shape/needle_shape_member_function.py", line 71
-    plt.setp(self.needle_3d,xdata = np.asarray(self.needle_msg.needle_x_axis), ydata = np.asarray(self.needle_msg.needle_y_axis), 3d_properties = np.asarray(self.needle_msg.needle_z_axis))
-                                                                                                                                   ^
-SyntaxError: invalid syntax
-

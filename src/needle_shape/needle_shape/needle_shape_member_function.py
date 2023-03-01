@@ -5,17 +5,29 @@ from rclpy.node import Node
 from fbg_msgs.msg import NeedleShape,Curvature
 from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
+import matplotlib
+import sys
 
-class needle_shape_subscriber(Node):
+class needle_shape_visulisation(Node):
     def __init__(self):
-        super().__init__('needle_shape_subscriber')
+        super().__init__('needle_shape_visulisation')
 
         # ini figure
         self.matlab_listener = 0
         self.curv_listener = 0
+        matplotlib.use('Qt5Agg')
+        # QtAgg Qt5Agg agg
         self.fig = plt.figure()
+        bk = matplotlib.get_backend()
+        matplotlib.rcParams['figure.raise_window'] = 'False'
+        #rw = matplotlib.rcParams['figure.raise_window']
+        #print(bk)
+        #print(rw)
+        # open interact mode
+        plt.ion()
+        
         self.axs = plt.axes(projection='3d')
-        #self.axs = plt.axes()
+        
         self.axs.set_xlabel('x(mm)')
         self.axs.set_ylabel('y(mm)')
         self.axs.set_zlabel('z(mm)')
@@ -23,7 +35,7 @@ class needle_shape_subscriber(Node):
         self.axs.grid(True)
 
         self.if_init_needle_shape = 0
-        self.if_init_active_area =0
+        self.if_init_active_area = 0
 
 
         self.needle_subscription = self.create_subscription(
@@ -38,26 +50,61 @@ class needle_shape_subscriber(Node):
                 10)
         
 
-        plot_timer_period = 0.01
+        plot_timer_period = 0.05
         self.plottimer = self.create_timer(plot_timer_period,self.plot_needle_shape)
 
 
 
     def matlab_listener_callback(self,msg):
         self.needle_msg = msg
+
         if self.if_init_needle_shape == 0:
             # first get msg from matlab
+
+
+            self.if_init_needle_shape = 1
+
+            # analyse the content in msg
+            # needle base tip and AA relative location
+            needle_aa_rel_loc = np.asarray(self.needle_msg.active_area_location)
+            needle_base_rel_loc = 0
+            needle_tip_rel_loc = self.needle_msg.needle_total_length
+
+            # get index
+            x_loc = np.asarray(self.needle_msg.needle_x_axis)
+            for i in range(x_loc):
+                if needle_base_rel_loc == x_loc(i):
+                    print(i)
+                    self.needle_base_index = i
+                break
+            
+            for 
+                if needle_tip_rel_loc == x_loc(i):
+                    print(i)
+                    self.needle_tip_index = i
+                if needle_aa_rel_loc == x_loc(i)
+                self.needle_tip_index = 
+
+
             # ini line element here
             # create needle in 3d
-            self.needle_3d, = self.axs.plot3D([0,self.needle_msg.needle_total_length],[-10,10],[0,0])
+            self.needle_3d, = self.axs.plot3D([0,self.needle_msg.needle_total_length],[0,0],[0,0])
 
             plt.setp(self.needle_3d,linestyle='-',linewidth=2,color='k')
-            self.if_init_needle_shape = 1
-        
+            # create those scatter points
+            self.needle_base = self.axs.scatter([],[],[],marker='v')
+
+            self.active_area = self.axs.scatter([],[],[],marker='*')
+            self.needle_tip = self.axs.scatter([],[],[],marker='^')
+
+            plt.ioff()
+            plt.pause(0.01)
+            plt.show(block=False)
+
+
         self.matlab_listener = 1
 
-
-        print("receive msg from matlab pub")
+        #print("receive msg from matlab pub")
         #print(self.needle_msg.needle_total_length)
         #print(self.needle_msg.active_area_location)
         #print(self.needle_msg.needle_x_axis)
@@ -65,6 +112,7 @@ class needle_shape_subscriber(Node):
         #print(self.needle_msg.needle_z_axis)
         #print(np.asarray(self.needle_msg.needle_z_axis))
         #print(self.msg.needle_slope)
+
 
     def curv_listener_callback(self,msg):
 
@@ -78,24 +126,31 @@ class needle_shape_subscriber(Node):
     
     def plot_needle_shape(self):
         if self.matlab_listener == 1 and self.if_init_needle_shape == 1:
-            #update needle shape
+            
+            #update needle shape use animation
 
             self.needle_3d.set_xdata(np.asarray(self.needle_msg.needle_x_axis))
             self.needle_3d.set_ydata(np.asarray(self.needle_msg.needle_y_axis))
         
             self.needle_3d.set_3d_properties(np.asarray(self.needle_msg.needle_z_axis))
 
+
+
+
+
             # plot
-            self.fig.tight_layout()
-            plt.axis('equal')
+            plt.ioff()
             plt.pause(0.01)
+            plt.show(block=False)
             
             self.matlab_listener = 0
         
-        if self.curv_listener == 1:
+        if self.curv_listener == 1 and self.if_init_active_area == 1:
             # update curvature
             
             self.curv_listener = 0
 
-
-
+        
+        if self.curv_listener == 0 or self.matlab_listener == 0:
+            print("viewer has been suspend")
+            

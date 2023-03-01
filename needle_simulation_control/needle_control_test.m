@@ -66,7 +66,8 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre)); % used as x_pre, y_pre and k_pre in FEM
 
 xd = []; % desired states
-AA_lcn = [100;135];
+AA_lcn = []; %test
+%AA_lcn = [100;135];
 %AA_lcn = [100;135;170]; % position of AA on needle, measured from needle base.
 % only the AA mentioned in AA_lcn will be used in FEM, in this test, we omit the last AA
 

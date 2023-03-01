@@ -1,5 +1,0 @@
-  File "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages/needle_shape/needle_shape_member_function.py", line 59
-    if if_init_needle_shape == 0
-                               ^
-SyntaxError: invalid syntax
-
