@@ -9,20 +9,23 @@ clc;
 % collect n data set for each curve
 FBG_data_point = 400;
 % trial num
-val_repetitions = 2;
+val_repetitions = 3;
 % number of channle and activate area
 channels = 2;
 AAs = 4;
 
 % curvature of slots on jig
 % cal_curve = [0,0.5,1.6,2.0,2.5,3.2,4.0]';
-% slot_num = length(cal_curve);
-% filename = '/calibration.xls';
+cal_curve = [0.5,1.6,2.0,2.5,3.2]';
 
-% curvature of slots on jig
-cal_curve = [0,0.25,0.8,1.0,1.25,3.125]';
 slot_num = length(cal_curve);
-filename = '/validation.xls';
+filename = '/calibration.xls';
+
+% % curvature of slots on jig
+% 
+% cal_curve = [0,0.25,0.8,1.0,1.25,3.125]';
+% slot_num = length(cal_curve);
+% filename = '/validation.xls';
 
 % deg
 cal_rot = [0,90];
@@ -65,4 +68,4 @@ for k = 1:val_repetitions
     end
 end
 
-close_pnet();
+% close_pnet();

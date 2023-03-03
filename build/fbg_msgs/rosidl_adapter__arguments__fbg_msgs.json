@@ -1,9 +1,0 @@
-{
-  "package_name": "fbg_msgs",
-  "non_idl_tuples": [
-    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/fbg_msgs:msg/FbgReading.msg",
-    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/fbg_msgs:msg/Curvature.msg",
-    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/fbg_msgs:msg/NeedleShape.msg",
-    "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/fbg_msgs:srv/CalCurvature.srv"
-  ]
-}

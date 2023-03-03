@@ -1,5 +1,0 @@
-  File "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages/needle_shape/needle_shape_member_function.py", line 200
-    self.xz_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index], np.asarray(self.needle_msg.needle_z_axis][self.needle_tip_index)]])
-                                                                                                                                                    ^
-SyntaxError: closing parenthesis ']' does not match opening parenthesis '('
-

@@ -21,9 +21,9 @@ find_package( class_loader REQUIRED)
 find_package( console_bridge REQUIRED)
 find_package( rclcpp REQUIRED)
 find_package( rcutils REQUIRED)
-include_directories("/usr/local/MATLAB/R2022b/extern/include")
-include_directories("/usr/local/MATLAB/R2022b/extern/include/MatlabDataArray")
-include_directories("/usr/local/MATLAB/R2022b/toolbox/ros/include/ros2")
+include_directories("/home/jkang/MATLAB/R2022b/extern/include")
+include_directories("/home/jkang/MATLAB/R2022b/extern/include/MatlabDataArray")
+include_directories("/home/jkang/MATLAB/R2022b/toolbox/ros/include/ros2")
 include_directories("include/fbg_msgs")
 set (CMAKE_SKIP_BUILD_RPATH false)
 set (CMAKE_BUILD_WITH_INSTALL_RPATH true)
@@ -42,7 +42,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
   ${srv_files}
 )
-link_directories("/usr/local/MATLAB/R2022b/extern/bin/glnxa64")
+link_directories("/home/jkang/MATLAB/R2022b/extern/bin/glnxa64")
 # Library
 add_library(
     fbg_msgs_matlab 
@@ -63,8 +63,8 @@ target_include_directories(fbg_msgs_matlab PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
 target_link_libraries( fbg_msgs_matlab
-	/usr/local/MATLAB/R2022b/sys/os/glnxa64/orig/libstdc++.so.6
-	/usr/local/MATLAB/R2022b/extern/bin/glnxa64/libMatlabDataArray.so
+	/home/jkang/MATLAB/R2022b/sys/os/glnxa64/orig/libstdc++.so.6
+	/home/jkang/MATLAB/R2022b/extern/bin/glnxa64/libMatlabDataArray.so
 	${CMAKE_DL_LIBS}
 	)
 ament_target_dependencies(
@@ -113,4 +113,4 @@ add_custom_command(
 				   )				   
 endforeach(file_i)
 ament_package()
-# Generated on Fri Mar 03 12:52:54 2023
+# Generated on Fri Mar 03 17:44:15 2023

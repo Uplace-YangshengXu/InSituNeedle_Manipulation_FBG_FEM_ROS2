@@ -1,5 +1,0 @@
-  File "/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages/needle_shape/sensor_data_member_function.py", line 121
-    items.plot([self.buff_x[0] self.buff_x[end]],[self.buff_y[AA_count-1][0],self.buff_y[AA_count-1][end],'--',self.color_list[AA_count-1])
-                               ^
-SyntaxError: invalid syntax
-

@@ -1,4 +1,0 @@
-[console_scripts]
-listener = sm130_interrogator.listener:main
-talker = sm130_interrogator.talker:main
-
