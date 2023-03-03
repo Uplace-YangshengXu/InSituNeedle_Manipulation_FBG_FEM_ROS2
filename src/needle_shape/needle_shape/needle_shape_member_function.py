@@ -32,7 +32,7 @@ class needle_shape_visulisation(Node):
         self.axs.set_ylabel('y(mm)')
         self.axs.set_zlabel('z(mm)')
         self.axs.set_title('Needle Shape')
-        self.axs.grid(True)
+        self.axs.grid(False)
 
         self.if_init_needle_shape = 0
         self.if_init_active_area = 0
@@ -67,40 +67,80 @@ class needle_shape_visulisation(Node):
             # analyse the content in msg
             # needle base tip and AA relative location
             needle_aa_rel_loc = np.asarray(self.needle_msg.active_area_location)
-            needle_base_rel_loc = 0
-            needle_tip_rel_loc = self.needle_msg.needle_total_length
+            needle_base_rel_loc = self.needle_msg.needle_x_axis[0]
+
+            needle_tip_rel_loc = self.needle_msg.needle_x_axis[-1]
 
             # get index
             x_loc = np.asarray(self.needle_msg.needle_x_axis)
-            for i in range(x_loc):
-                if needle_base_rel_loc == x_loc(i):
-                    print(i)
-                    self.needle_base_index = i
-                break
-            
-            for 
-                if needle_tip_rel_loc == x_loc(i):
-                    print(i)
+            self.needle_base_index = 0
+            self.needle_tip_index = []
+            self.needle_aa_index = []
+
+            for i in range(len(x_loc)):
+                if x_loc[i] in needle_aa_rel_loc:
+                    self.needle_aa_index.append(i)
+                if needle_tip_rel_loc == x_loc[i]:
                     self.needle_tip_index = i
-                if needle_aa_rel_loc == x_loc(i)
-                self.needle_tip_index = 
-
-
+            
             # ini line element here
             # create needle in 3d
-            self.needle_3d, = self.axs.plot3D([0,self.needle_msg.needle_total_length],[0,0],[0,0])
+            #print(self.needle_msg.needle_y_axis[self.needle_base_index])
+            #print(self.needle_msg.needle_y_axis[self.needle_tip_index])
+            print(self.needle_tip_index)
+            self.needle_3d, = self.axs.plot3D(
+                    [np.asarray(self.needle_msg.needle_x_axis[self.needle_base_index]),np.asarray(self.needle_msg.needle_x_axis[self.needle_tip_index])],
+                    [np.asarray(self.needle_msg.needle_y_axis[self.needle_base_index]),np.asarray(self.needle_msg.needle_y_axis[self.needle_tip_index])],
+                    [np.asarray(self.needle_msg.needle_z_axis[self.needle_base_index]),np.asarray(self.needle_msg.needle_z_axis[self.needle_tip_index])]
+                    )
 
             plt.setp(self.needle_3d,linestyle='-',linewidth=2,color='k')
             # create those scatter points
-            self.needle_base = self.axs.scatter([],[],[],marker='v')
+            self.needle_base = self.axs.scatter3D(
+                    self.needle_msg.needle_x_axis[self.needle_base_index],
+                    self.needle_msg.needle_y_axis[self.needle_base_index],
+                    self.needle_msg.needle_z_axis[self.needle_base_index],
+                    marker='.',c='brown')
 
-            self.active_area = self.axs.scatter([],[],[],marker='*')
-            self.needle_tip = self.axs.scatter([],[],[],marker='^')
+            self.active_area = self.axs.scatter3D(
+                    np.asarray(self.needle_msg.needle_x_axis)[self.needle_aa_index],
+                    np.asarray(self.needle_msg.needle_y_axis)[self.needle_aa_index],
+                    np.asarray(self.needle_msg.needle_z_axis)[self.needle_aa_index],
+                    marker='.',c='yellow') # from dark to light??
+
+            self.needle_tip = self.axs.scatter3D(
+                    self.needle_msg.needle_x_axis[self.needle_tip_index],
+                    self.needle_msg.needle_y_axis[self.needle_tip_index],
+                    self.needle_msg.needle_z_axis[self.needle_tip_index],
+                    marker='.',c='orange')
+
+            # create needle tip projection
+            self.xy_projection, = self.axs.plot3D(
+                    [self.needle_msg.needle_x_axis[self.needle_tip_index],self.needle_msg.needle_x_axis[self.needle_tip_index]],
+                    [self.needle_msg.needle_y_axis[self.needle_tip_index],self.needle_msg.needle_y_axis[self.needle_tip_index]],
+                    [self.needle_msg.needle_z_axis[self.needle_tip_index],0]
+                    )
+
+            self.xz_projection, = self.axs.plot3D(
+                    [self.needle_msg.needle_x_axis[self.needle_tip_index],self.needle_msg.needle_x_axis[self.needle_tip_index]],
+                    [self.needle_msg.needle_y_axis[self.needle_tip_index],0],
+                    [self.needle_msg.needle_z_axis[self.needle_tip_index],self.needle_msg.needle_z_axis[self.needle_tip_index]]
+                    )
+
+            self.yz_projection, = self.axs.plot3D(
+                    [self.needle_msg.needle_x_axis[self.needle_tip_index],0],
+                    [self.needle_msg.needle_y_axis[self.needle_tip_index],self.needle_msg.needle_y_axis[self.needle_tip_index]],
+                    [self.needle_msg.needle_z_axis[self.needle_tip_index],self.needle_msg.needle_z_axis[self.needle_tip_index]]
+                    )
+            
+            plt.setp(self.xy_projection,linestyle='--',linewidth=1,color='b',alpha=0.5)
+            plt.setp(self.yz_projection,linestyle='--',linewidth=1,color='r',alpha=0.5)
+            plt.setp(self.xz_projection,linestyle='--',linewidth=1,color='g',alpha=0.5)
+
 
             plt.ioff()
             plt.pause(0.01)
             plt.show(block=False)
-
 
         self.matlab_listener = 1
 
@@ -130,9 +170,40 @@ class needle_shape_visulisation(Node):
             #update needle shape use animation
 
             self.needle_3d.set_xdata(np.asarray(self.needle_msg.needle_x_axis))
-            self.needle_3d.set_ydata(np.asarray(self.needle_msg.needle_y_axis))
-        
+            self.needle_3d.set_ydata(np.asarray(self.needle_msg.needle_y_axis)) 
             self.needle_3d.set_3d_properties(np.asarray(self.needle_msg.needle_z_axis))
+            
+            #self.needle_base._offsets3d = (
+            #        np.asarray(self.needle_msg.needle_x_axis[self.needle_base_index]),
+            #        np.asarray(self.needle_msg.needle_y_axis[self.needle_base_index]),
+            #        np.asarray(self.needle_msg.needle_z_axis[self.needle_base_index])
+            #        )
+
+            #self.needle_tip._offsets3d = (
+            #        np.asarray(self.needle_msg.needle_x_axis[self.needle_tip_index]),
+            #        np.asarray(self.needle_msg.needle_y_axis[self.needle_tip_index]),
+            #        np.asarray(self.needle_msg.needle_z_axis[self.needle_tip_index])
+            #        )
+
+            #self.active_area._offsets3d = (
+            #        np.asarray(self.needle_msg.needle_x_axis)[self.needle_aa_index],
+            #        np.asarray(self.needle_msg.needle_y_axis)[self.needle_aa_index],
+            #        np.asarray(self.needle_msg.needle_z_axis)[self.needle_aa_index]
+            #        )
+
+            self.xy_projection.set_xdata([np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index],np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index]])
+            self.xy_projection.set_ydata([np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index],np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index]])
+            self.xy_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index], 0])
+
+            self.xz_projection.set_xdata([np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index],np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index]])
+            self.xz_projection.set_ydata([np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index],0])
+            self.xz_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index], np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index]])
+
+            self.yz_projection.set_xdata([np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index], 0])
+            self.yz_projection.set_ydata([np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index],np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index]])
+            self.yz_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index], np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index]])
+
+            
 
 
 
@@ -140,6 +211,7 @@ class needle_shape_visulisation(Node):
 
             # plot
             plt.ioff()
+            plt.axis('equal')
             plt.pause(0.01)
             plt.show(block=False)
             
@@ -151,6 +223,6 @@ class needle_shape_visulisation(Node):
             self.curv_listener = 0
 
         
-        if self.curv_listener == 0 or self.matlab_listener == 0:
-            print("viewer has been suspend")
+        #if self.curv_listener == 0 and self.matlab_listener == 0:
+            #print("viewer has been suspend")
             
