@@ -12,6 +12,8 @@
 % created by yangsheng xu at 22/01/2023
 % this script reconstruct the needle base on FEM and FBG reading
 % and implement a control test which alway keep the needle straigt
+clear;
+clc;
 
 
 %% dependency initialization
@@ -99,6 +101,9 @@ if Motor_switch == 1
     Input_AbsPos_Z = 0; % actually not use
     Input_Rotation = 0;
 end
+
+curvatures_xy = [];
+curvatures_xz = [];
 
 if exist('subscriber','var')
     [msg_received,status,statustext] = subscriber.getSubMsg(10);
