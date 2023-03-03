@@ -31,11 +31,7 @@ class sensor_data_visulisation(Node):
 
         self.if_init_sm130_plot = 0
 
-        #self.curv_subscription = self.create_subscription(
-        #        Curvature,
-        #        'Pub_Curv',
-        #        self.curv_listener_callback,
-        #        10)
+        
 
         self.sm130_subscription = self.create_subscription(
                 FbgReading,
@@ -54,6 +50,8 @@ class sensor_data_visulisation(Node):
             pass
         else:
             self.if_init_sm130_plot = 0
+            self.current_point_num = 0
+            self.current_time = 0
             plt.close(self.fig)
             # redo init
         
@@ -91,6 +89,7 @@ class sensor_data_visulisation(Node):
             self.buff_x = []
             self.buff_x.append(self.current_time)
             self.buff_y = []
+
             for items in self.axs:
                 items.grid()
                 items.set_xlabel("time(s)")
@@ -110,17 +109,7 @@ class sensor_data_visulisation(Node):
         self.sm130_listener = 1
 
 
-        #def curv_listener_callback(self,msg):
-        #    
-        #    self.curv_msg = msg
-        #    
-        #    if self.if_init_curv_plot == 0:
-
-                # init plot
-        #        self.if_init_curv_plot = 1
-        #        pass
-        #
-        #    self.curv_listener = 1
+        
 
         
     def plot_sensor_reading(self):
@@ -142,6 +131,7 @@ class sensor_data_visulisation(Node):
                     ydata = self.sensor_reading_msg.signal_reading[self.data_start_index+AA_count - 1]
                     self.buff_y[AA_count-1].append(ydata)
                     items.plot(self.buff_x,self.buff_y[AA_count-1],self.color_list[AA_count-1])
+                    
                     items.plot(
                             [self.buff_x[0],self.buff_x[-1]],
                             [self.buff_y[AA_count-1][-1],self.buff_y[AA_count-1][-1]], 
@@ -164,6 +154,7 @@ class sensor_data_visulisation(Node):
                     ydata = self.sensor_reading_msg.signal_reading[self.data_start_index+AA_count - 1]
                     self.buff_y[AA_count-1].pop(0)
                     self.buff_y[AA_count-1].append(ydata)
+                    
                     items.plot(self.buff_x,self.buff_y[AA_count-1],self.color_list[AA_count-1])
                     items.plot(
                             [self.buff_x[0],self.buff_x[-1]],
@@ -171,6 +162,7 @@ class sensor_data_visulisation(Node):
                             linestyle='--',
                             color=self.color_list[AA_count-1],
                             linewidth=1)
+                    
                     AA_count += 1
 
             plt.ioff()

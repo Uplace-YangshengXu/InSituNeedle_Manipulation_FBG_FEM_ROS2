@@ -2,7 +2,7 @@ import rclpy
 import numpy as np
 import time
 from rclpy.node import Node
-from fbg_msgs.msg import NeedleShape
+from fbg_msgs.msg import NeedleShape,Curvature
 from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
 import matplotlib
@@ -14,6 +14,7 @@ class needle_shape_visulisation(Node):
 
         # ini figure
         self.matlab_listener = 0
+        self.curv_listener = 0
 
         matplotlib.use('Qt5Agg')
         # QtAgg Qt5Agg agg
@@ -35,17 +36,31 @@ class needle_shape_visulisation(Node):
         self.axs.grid(False)
 
         self.if_init_needle_shape = 0
-
+        self.if_init_curv_plot = 0
 
         self.needle_subscription = self.create_subscription(
                 NeedleShape,
                 'needle_shape',
                 self.matlab_listener_callback,
                 10)
+       
+        self.curv_subscription = self.create_subscription(
+                Curvature,
+                'Pub_Curv',
+                self.curv_listener_callback,
+                10)
         
 
         plot_timer_period = 0.05
         self.plottimer = self.create_timer(plot_timer_period,self.plot_needle_shape)
+
+    def curv_listener_callback(self,msg):   
+        self.curv_msg = msg
+        if self.if_init_curv_plot == 0:
+            # init plot
+            self.if_init_curv_plot = 1
+            
+        self.curv_listener = 1
 
 
 
@@ -79,9 +94,6 @@ class needle_shape_visulisation(Node):
             
             # ini line element here
             # create needle in 3d
-            #print(self.needle_msg.needle_y_axis[self.needle_base_index])
-            #print(self.needle_msg.needle_y_axis[self.needle_tip_index])
-            #print(self.needle_tip_index)
 
 
             self.needle_3d, = self.axs.plot3D(
@@ -92,23 +104,23 @@ class needle_shape_visulisation(Node):
 
             plt.setp(self.needle_3d,linestyle='-',linewidth=2,color='k')
             # create those scatter points
-            self.needle_base = self.axs.scatter3D(
-                    self.needle_msg.needle_x_axis[self.needle_base_index],
-                    self.needle_msg.needle_y_axis[self.needle_base_index],
-                    self.needle_msg.needle_z_axis[self.needle_base_index],
-                    marker='.',c='brown')
+            #self.needle_base = self.axs.scatter3D(
+            #        self.needle_msg.needle_x_axis[self.needle_base_index],
+            #        self.needle_msg.needle_y_axis[self.needle_base_index],
+            #        self.needle_msg.needle_z_axis[self.needle_base_index],
+            #        marker='.',c='brown')
 
-            self.active_area = self.axs.scatter3D(
-                    np.asarray(self.needle_msg.needle_x_axis)[self.needle_aa_index],
-                    np.asarray(self.needle_msg.needle_y_axis)[self.needle_aa_index],
-                    np.asarray(self.needle_msg.needle_z_axis)[self.needle_aa_index],
-                    marker='.',c='yellow') # from dark to light??
+            #self.active_area = self.axs.scatter3D(
+            #        np.asarray(self.needle_msg.needle_x_axis)[self.needle_aa_index],
+            #        np.asarray(self.needle_msg.needle_y_axis)[self.needle_aa_index],
+            #        np.asarray(self.needle_msg.needle_z_axis)[self.needle_aa_index],
+            #        marker='.',c='yellow') # from dark to light??
 
-            self.needle_tip = self.axs.scatter3D(
-                    self.needle_msg.needle_x_axis[self.needle_tip_index],
-                    self.needle_msg.needle_y_axis[self.needle_tip_index],
-                    self.needle_msg.needle_z_axis[self.needle_tip_index],
-                    marker='.',c='orange')
+            #self.needle_tip = self.axs.scatter3D(
+            #        self.needle_msg.needle_x_axis[self.needle_tip_index],
+            #        self.needle_msg.needle_y_axis[self.needle_tip_index],
+            #        self.needle_msg.needle_z_axis[self.needle_tip_index],
+            #        marker='.',c='orange')
 
             # create needle tip projection
             self.xy_projection, = self.axs.plot3D(
@@ -193,7 +205,7 @@ class needle_shape_visulisation(Node):
             
             # plot
             plt.ioff()
-            plt.axis('equal')
+            #plt.axis('equal')
             plt.pause(0.01)
             plt.show(block=False)
             
@@ -203,3 +215,5 @@ class needle_shape_visulisation(Node):
         #if self.curv_listener == 0 and self.matlab_listener == 0:
             #print("viewer has been suspend")
             
+
+
