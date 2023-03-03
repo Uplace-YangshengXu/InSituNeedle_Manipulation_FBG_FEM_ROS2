@@ -1,0 +1,24 @@
+[0.605s] Invoking command in '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/needle_shape': PYTHONPATH=/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/prefix_override:/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/needle_shape build --build-base /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/build install --record /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/install.log --single-version-externally-managed
+[0.748s] running egg_info
+[0.748s] writing ../../build/needle_shape/needle_shape.egg-info/PKG-INFO
+[0.748s] writing dependency_links to ../../build/needle_shape/needle_shape.egg-info/dependency_links.txt
+[0.748s] writing entry points to ../../build/needle_shape/needle_shape.egg-info/entry_points.txt
+[0.748s] writing requirements to ../../build/needle_shape/needle_shape.egg-info/requires.txt
+[0.748s] writing top-level names to ../../build/needle_shape/needle_shape.egg-info/top_level.txt
+[0.773s] reading manifest file '../../build/needle_shape/needle_shape.egg-info/SOURCES.txt'
+[0.773s] writing manifest file '../../build/needle_shape/needle_shape.egg-info/SOURCES.txt'
+[0.773s] running build
+[0.774s] running build_py
+[0.774s] copying needle_shape/needle_shape_member_function.py -> /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/build/lib/needle_shape
+[0.774s] running install
+[0.774s] running install_lib
+[0.775s] copying /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/build/lib/needle_shape/needle_shape_member_function.py -> /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages/needle_shape
+[0.775s] byte-compiling /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages/needle_shape/needle_shape_member_function.py to needle_shape_member_function.cpython-38.pyc
+[0.777s] running install_data
+[0.777s] running install_egg_info
+[0.778s] removing '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages/needle_shape-0.0.0-py3.8.egg-info' (and everything under it)
+[0.778s] Copying ../../build/needle_shape/needle_shape.egg-info to /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages/needle_shape-0.0.0-py3.8.egg-info
+[0.779s] running install_scripts
+[0.791s] Installing needle_shape_viewer script to /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/needle_shape
+[0.791s] writing list of installed files to '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/install.log'
+[0.807s] Invoked command in '/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/needle_shape' returned '0': PYTHONPATH=/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/prefix_override:/home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/needle_shape build --build-base /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/build install --record /home/yangshengxu/Desktop/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/install.log --single-version-externally-managed

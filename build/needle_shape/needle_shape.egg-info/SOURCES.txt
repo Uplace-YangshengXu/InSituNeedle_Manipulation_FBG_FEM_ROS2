@@ -11,6 +11,7 @@ setup.py
 needle_shape/__init__.py
 needle_shape/needle_shape_member_function.py
 needle_shape/needle_shape_viewer.py
+needle_shape/sensor_data_member_function.py
 resource/needle_shape
 test/test_copyright.py
 test/test_flake8.py

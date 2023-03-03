@@ -66,9 +66,9 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre)); % used as x_pre, y_pre and k_pre in FEM
 
 xd = []; % desired states
-AA_lcn = []; %test
+%AA_lcn = []; %test
 %AA_lcn = [100;135];
-%AA_lcn = [100;135;170]; % position of AA on needle, measured from needle base.
+AA_lcn = [100;135;170]; % position of AA on needle, measured from needle base.
 % only the AA mentioned in AA_lcn will be used in FEM, in this test, we omit the last AA
 
 %% control parameters
@@ -89,11 +89,7 @@ if FBG_switch == 1
 end
 
 g = []; % object of Galil motor controller
-            % story data for plotting
-% %             m.Data.x_new(1:sz_x_new(1), 1) = x_new;
-% %             m.Data.y_new(1:sz_y_new(1), 1) = y_new;
-% %             m.Data.k_new(1:sz_k_new(1), 1) = k_new;
-% %             m.Data.curvatures(1:sz_curvatures(1),1:sz_curvatures(2)) = curvatures;
+
 if Motor_switch == 1
     % run ini_motor_controller.m
     g = ini_motor_controller(motor_controller_ip,motor_controller_port);
@@ -137,6 +133,7 @@ pub_msg.active_area_location = AA_lcn;
 pub_msg.needle_x_axis = x_new;
 pub_msg.needle_y_axis = y_new;
 pub_msg.needle_slope  = k_new;
+pub_msg.needle_z_axis = ones(size(x_new));
 
 publisher.sendPubMsg(pub_msg);
 
@@ -177,13 +174,12 @@ while(1)
     pub_msg.needle_x_axis = x_new;
     pub_msg.needle_y_axis = y_new;
     pub_msg.needle_slope  = k_new;
-    pub_msg.needle_z_axis = zeros(size(x_new));
     publisher.sendPubMsg(pub_msg);
 
     % get new desire tip states
 
     % test
-    xd = [x_new(end);y_new(end)+0.1;0]; % desired tip state for next 
+    xd = [x_new(end)+10;y_new(end)+10;0]; % desired tip state for next 
 
     while (1)
         if FBG_switch == 1

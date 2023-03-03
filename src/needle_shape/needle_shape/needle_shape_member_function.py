@@ -2,7 +2,7 @@ import rclpy
 import numpy as np
 import time
 from rclpy.node import Node
-from fbg_msgs.msg import NeedleShape,Curvature
+from fbg_msgs.msg import NeedleShape
 from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
 import matplotlib
@@ -14,7 +14,7 @@ class needle_shape_visulisation(Node):
 
         # ini figure
         self.matlab_listener = 0
-        self.curv_listener = 0
+
         matplotlib.use('Qt5Agg')
         # QtAgg Qt5Agg agg
         self.fig = plt.figure()
@@ -35,18 +35,12 @@ class needle_shape_visulisation(Node):
         self.axs.grid(False)
 
         self.if_init_needle_shape = 0
-        self.if_init_active_area = 0
 
 
         self.needle_subscription = self.create_subscription(
                 NeedleShape,
                 'needle_shape',
                 self.matlab_listener_callback,
-                10)
-        self.curv_subscription = self.create_subscription(
-                Curvature,
-                'Pub_Curv',
-                self.curv_listener_callback,
                 10)
         
 
@@ -87,7 +81,9 @@ class needle_shape_visulisation(Node):
             # create needle in 3d
             #print(self.needle_msg.needle_y_axis[self.needle_base_index])
             #print(self.needle_msg.needle_y_axis[self.needle_tip_index])
-            print(self.needle_tip_index)
+            #print(self.needle_tip_index)
+
+
             self.needle_3d, = self.axs.plot3D(
                     [np.asarray(self.needle_msg.needle_x_axis[self.needle_base_index]),np.asarray(self.needle_msg.needle_x_axis[self.needle_tip_index])],
                     [np.asarray(self.needle_msg.needle_y_axis[self.needle_base_index]),np.asarray(self.needle_msg.needle_y_axis[self.needle_tip_index])],
@@ -154,15 +150,6 @@ class needle_shape_visulisation(Node):
         #print(self.msg.needle_slope)
 
 
-    def curv_listener_callback(self,msg):
-
-            
-        self.curv_listener = 1
-        self.curv_msg = msg
-        print("receive msg from curv pub")
-        #print(self.curv_msg.curvature_xz)
-
-
     
     def plot_needle_shape(self):
         if self.matlab_listener == 1 and self.if_init_needle_shape == 1:
@@ -204,11 +191,6 @@ class needle_shape_visulisation(Node):
             self.yz_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index], np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index]])
 
             
-
-
-
-
-
             # plot
             plt.ioff()
             plt.axis('equal')
@@ -217,11 +199,6 @@ class needle_shape_visulisation(Node):
             
             self.matlab_listener = 0
         
-        if self.curv_listener == 1 and self.if_init_active_area == 1:
-            # update curvature
-            
-            self.curv_listener = 0
-
         
         #if self.curv_listener == 0 and self.matlab_listener == 0:
             #print("viewer has been suspend")
