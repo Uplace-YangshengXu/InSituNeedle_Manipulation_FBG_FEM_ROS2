@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             'needle_shape_viewer = needle_shape.needle_shape_viewer:main',
+            'sensor_data_viewer = needle_shape.sensor_data_viewer:main'
         ],
     },
 )
