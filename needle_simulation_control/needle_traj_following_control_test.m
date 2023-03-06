@@ -9,13 +9,6 @@ addpath ./FEM/helper_funcs/invChol/
 addpath ./FEM/helper_funcs/
 addpath ./FEM
 
-% for memmap
-memmapfile_name = 'communicate.dat';
-filename = fullfile(tempdir,memmapfile_name);
-% if exist(filename,'file')
-%     delete(filename);
-% end
-
 % Constants
 FEM_params;
 
