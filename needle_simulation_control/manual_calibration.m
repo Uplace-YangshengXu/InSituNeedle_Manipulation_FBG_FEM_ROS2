@@ -19,13 +19,13 @@ AAs = 4;
 cal_curve = [0.5,1.6,2.0,2.5,3.2]';
 
 slot_num = length(cal_curve);
-filename = '/calibration.xls';
+filename = '/calibration_1.xls';
 
 % % curvature of slots on jig
 % 
 % cal_curve = [0,0.25,0.8,1.0,1.25,3.125]';
 % slot_num = length(cal_curve);
-% filename = '/validation.xls';
+% filename = '/validation_1.xls';
 
 % deg
 cal_rot = [0,90];
@@ -39,7 +39,7 @@ if exist("subscriber",'var')
 subscriber = MatlabRosPubSub('sub','matlab_fbg_subscriber','/sm130','fbg_msgs/FbgReading');
     
     
-for k = 1:val_repetitions
+for k = 4:val_repetitions+3
     for i = 1:slot_num
         for n = 1:length(cal_rot)
             clc;
