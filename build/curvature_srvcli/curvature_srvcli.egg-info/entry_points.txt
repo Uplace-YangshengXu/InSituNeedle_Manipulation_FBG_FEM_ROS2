@@ -1,0 +1,4 @@
+[console_scripts]
+client = curvature_srvcli.client:main
+publisher = curvature_srvcli.publisher:main
+server = curvature_srvcli.server:main

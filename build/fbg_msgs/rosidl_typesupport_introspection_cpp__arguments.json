@@ -1,0 +1,25 @@
+{
+  "package_name": "fbg_msgs",
+  "output_dir": "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_typesupport_introspection_cpp/fbg_msgs",
+  "template_dir": "/opt/ros/galactic/share/rosidl_typesupport_introspection_cpp/resource",
+  "idl_tuples": [
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/FbgReading.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/Curvature.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/NeedleShape.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs:srv/CalCurvature.idl"
+  ],
+  "target_dependencies": [
+    "/opt/ros/galactic/lib/rosidl_typesupport_introspection_cpp/rosidl_typesupport_introspection_cpp",
+    "/opt/ros/galactic/lib/python3.8/site-packages/rosidl_typesupport_introspection_cpp/__init__.py",
+    "/opt/ros/galactic/share/rosidl_typesupport_introspection_cpp/resource/idl__rosidl_typesupport_introspection_cpp.hpp.em",
+    "/opt/ros/galactic/share/rosidl_typesupport_introspection_cpp/resource/idl__type_support.cpp.em",
+    "/opt/ros/galactic/share/rosidl_typesupport_introspection_cpp/resource/msg__rosidl_typesupport_introspection_cpp.hpp.em",
+    "/opt/ros/galactic/share/rosidl_typesupport_introspection_cpp/resource/msg__type_support.cpp.em",
+    "/opt/ros/galactic/share/rosidl_typesupport_introspection_cpp/resource/srv__rosidl_typesupport_introspection_cpp.hpp.em",
+    "/opt/ros/galactic/share/rosidl_typesupport_introspection_cpp/resource/srv__type_support.cpp.em",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/FbgReading.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/Curvature.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs/msg/NeedleShape.idl",
+    "/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs/rosidl_adapter/fbg_msgs/srv/CalCurvature.idl"
+  ]
+}

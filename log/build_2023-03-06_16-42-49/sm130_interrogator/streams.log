@@ -1,0 +1,49 @@
+[1.767s] Invoking command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/sm130_interrogator': PYTHONPATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/sm130_interrogator build --build-base /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build install --record /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/install.log --single-version-externally-managed
+[2.220s] running egg_info
+[2.220s] creating ../../build/sm130_interrogator/sm130_interrogator.egg-info
+[2.238s] writing ../../build/sm130_interrogator/sm130_interrogator.egg-info/PKG-INFO
+[2.238s] writing dependency_links to ../../build/sm130_interrogator/sm130_interrogator.egg-info/dependency_links.txt
+[2.239s] writing entry points to ../../build/sm130_interrogator/sm130_interrogator.egg-info/entry_points.txt
+[2.239s] writing requirements to ../../build/sm130_interrogator/sm130_interrogator.egg-info/requires.txt
+[2.239s] writing top-level names to ../../build/sm130_interrogator/sm130_interrogator.egg-info/top_level.txt
+[2.240s] writing manifest file '../../build/sm130_interrogator/sm130_interrogator.egg-info/SOURCES.txt'
+[2.277s] reading manifest file '../../build/sm130_interrogator/sm130_interrogator.egg-info/SOURCES.txt'
+[2.278s] writing manifest file '../../build/sm130_interrogator/sm130_interrogator.egg-info/SOURCES.txt'
+[2.278s] running build
+[2.279s] running build_py
+[2.279s] creating /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build
+[2.279s] creating /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib
+[2.279s] creating /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib/sm130_interrogator
+[2.279s] copying sm130_interrogator/talker.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib/sm130_interrogator
+[2.280s] copying sm130_interrogator/sm130_read.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib/sm130_interrogator
+[2.280s] copying sm130_interrogator/listener.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib/sm130_interrogator
+[2.280s] copying sm130_interrogator/__init__.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib/sm130_interrogator
+[2.280s] copying sm130_interrogator/sm130_member_function.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib/sm130_interrogator
+[2.280s] running install
+[2.281s] /home/jkang/.local/lib/python3.8/site-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+[2.281s]   warnings.warn(
+[2.287s] running install_lib
+[2.306s] creating /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator
+[2.306s] copying /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib/sm130_interrogator/talker.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator
+[2.307s] copying /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib/sm130_interrogator/sm130_read.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator
+[2.307s] copying /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib/sm130_interrogator/listener.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator
+[2.307s] copying /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib/sm130_interrogator/__init__.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator
+[2.307s] copying /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build/lib/sm130_interrogator/sm130_member_function.py -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator
+[2.308s] byte-compiling /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator/talker.py to talker.cpython-38.pyc
+[2.308s] byte-compiling /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator/sm130_read.py to sm130_read.cpython-38.pyc
+[2.308s] byte-compiling /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator/listener.py to listener.cpython-38.pyc
+[2.309s] byte-compiling /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator/__init__.py to __init__.cpython-38.pyc
+[2.309s] byte-compiling /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator/sm130_member_function.py to sm130_member_function.cpython-38.pyc
+[2.309s] running install_data
+[2.328s] creating /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/ament_index
+[2.328s] creating /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/ament_index/resource_index
+[2.328s] creating /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/ament_index/resource_index/packages
+[2.328s] copying resource/sm130_interrogator -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/ament_index/resource_index/packages
+[2.329s] copying package.xml -> /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator
+[2.329s] running install_egg_info
+[2.350s] Copying ../../build/sm130_interrogator/sm130_interrogator.egg-info to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages/sm130_interrogator-0.0.0-py3.8.egg-info
+[2.351s] running install_scripts
+[2.433s] Installing listener script to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/sm130_interrogator
+[2.433s] Installing talker script to /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/sm130_interrogator
+[2.434s] writing list of installed files to '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/install.log'
+[2.474s] Invoked command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/sm130_interrogator' returned '0': PYTHONPATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/sm130_interrogator build --build-base /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build install --record /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/install.log --single-version-externally-managed

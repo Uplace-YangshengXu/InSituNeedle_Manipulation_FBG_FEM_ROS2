@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from fbg_msgs/msg/FbgReading.msg
+// generated code does not contain a copyright notice
+
+
+module fbg_msgs {
+  module msg {
+    typedef uint8 uint8__4[4];
+    struct FbgReading {
+      sequence<double> signal_reading;
+
+      uint8__4 signal_each_ch;
+
+      uint8 total_reading_num;
+    };
+  };
+};

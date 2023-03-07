@@ -1,0 +1,16 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from fbg_msgs/srv/CalCurvature.srv
+// generated code does not contain a copyright notice
+
+#include "fbg_msgs/msg/Curvature.idl"
+
+module fbg_msgs {
+  module srv {
+    struct CalCurvature_Request {
+      string command;
+    };
+    struct CalCurvature_Response {
+      fbg_msgs::msg::Curvature curvature;
+    };
+  };
+};

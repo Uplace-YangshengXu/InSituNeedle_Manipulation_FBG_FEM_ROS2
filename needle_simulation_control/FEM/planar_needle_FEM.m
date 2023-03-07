@@ -29,7 +29,6 @@ function [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
 % Constants
 FEM_params;
 
-
 MuT = Mu*10^-6; % Pa, but in mm^2; 1Pa = 1e-6 N/mm^2; 1kPa = 1e-3 N/mm^2
 AlphaT = Alpha; % need abs(alpha) > 1
 GammaT = zeros(size(MuT));
@@ -65,29 +64,62 @@ if ~isempty(AA_crv) % if curvatrue is empty then AA_er is []
     AA_er = AA_er(AA_er>=0); % elements that have negativce indices are skiped
 end
 
-%% FEM Main
-K = zeros(nDOF, nDOF);
-F = zeros(nDOF, 1);
-P = zeros(nDOF, 1);
-% Apply EBC
-d(EBC_idx) = [dby + y_pre(1); dbk + k_pre(1)]; % EBCs include the change in base y and slope; if no change, the output is the same as the previous simulation step
+% Load-stepping functionality
+max_inner_iter = 5; % maximum number of iterations for Newton's method
+max_outer_iter = 5; % maximum number of iteratinos for load stepping
+outer_iter = 0;
+tol = 1e-5;
+converged = 0;
+load_ratio = 1;
+EBC_delta_des = [dby; dbk]; % desired amount of BC change
+EBC_delta_cur = zeros(2, 1); % current amount of BC change
+EBC_delta_converged = zeros(2, 1); % previously-converged BC change
 
-% Loop over each element
-for e = 1:Nel
-    % Get local nodal values from global d
-    d_i_local = d(2*e - 1:2*e + 2);
-    [ke, pe] = compute_element_matrix(d_i_local, ti, E, I, PropertyTable, e, h, x_pre(e), x_pre(e + 1), AA_er, AA_crv);
-    % Global assembly process
-    % Using vectors instead of FOR loops
-    K(LM(1:4, e), LM(1:4, e)) = K(LM(1:4, e), LM(1:4, e)) + ke;
-    P(LM(1:4, e)) = P(LM(1:4, e)) + pe;
+%% FEM Main with load stepping
+while converged == 0 && (outer_iter < max_outer_iter)
+    outer_iter = outer_iter + 1;
+    inner_iter = 0;
+    converged = 0;
+    EBC_delta_cur = EBC_delta_converged + load_ratio*EBC_delta_des;
+    while inner_iter < max_inner_iter
+        % main FEM
+        K = zeros(nDOF, nDOF);
+        F = zeros(nDOF, 1);
+        P = zeros(nDOF, 1);
+        % Apply EBC
+        d(EBC_idx) = [EBC_delta_cur(1) + y_pre(1); 
+                      EBC_delta_cur(2) + k_pre(1)]; % EBCs include the change in base y and slope; if no change, the output is the same as the previous simulation step
+
+        % Loop over each element    
+        for e = 1:Nel
+            % Get local nodal values from global d
+            d_i_local = d(2*e - 1:2*e + 2);
+            [ke, pe] = compute_element_matrix(d_i_local, ti, E, I, PropertyTable, e, h, x_pre(e), x_pre(e + 1), AA_er, AA_crv);
+            % Global assembly process
+            % Using vectors instead of FOR loops
+            K(LM(1:4, e), LM(1:4, e)) = K(LM(1:4, e), LM(1:4, e)) + ke;
+            P(LM(1:4, e)) = P(LM(1:4, e)) + pe;
+        end
+
+        % Newton's method
+        % Use only free DOF from the list of DOF to compute d
+        % delta_d = invChol_mex(K(freeDOF, freeDOF))*(F(freeDOF, 1)-P(freeDOF, 1));
+        delta_d = pinv(K(freeDOF, freeDOF))*(F(freeDOF, 1)-P(freeDOF, 1));
+        if(norm(F(freeDOF, 1) - P(freeDOF, 1)) <= tol)
+            converged = 1;
+            break;
+        end
+        d(freeDOF, 1) = d(freeDOF, 1) + delta_d;
+        inner_iter = inner_iter + 1;
+    end
+    if converged ~= 1
+        load_ratio = 0.5*load_ratio;
+        EBC_delta_cur = zeros(2, 1);
+        disp("No convergence. Decreasing load step\n");
+    else
+        EBC_delta_converged = EBC_delta_cur;
+    end
 end
-
-% Newton's method
-% Use only free DOF from the list of DOF to compute d
-% delta_d = invChol_mex(K(freeDOF, freeDOF))*(F(freeDOF, 1)-P(freeDOF, 1));
-delta_d = pinv(K(freeDOF, freeDOF))*(F(freeDOF, 1)-P(freeDOF, 1));
-d(freeDOF, 1) = d(freeDOF, 1) + delta_d;
 
 %% Outputs
 dy_bend = extract_dist_from_d(d); % y coordinate due to bending

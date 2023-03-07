@@ -1,0 +1,464 @@
+[0.554s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.554s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f132c7e13d0>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=12, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f132c7e13d0>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f132c6fb5e0>)
+[0.649s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.649s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.649s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.649s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.649s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.649s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.649s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2'
+[0.649s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.650s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.670s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.670s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.670s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.670s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.670s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.670s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.670s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.671s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.671s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.671s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.671s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.671s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.671s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.671s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.671s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extensions ['ignore', 'ignore_ament_install']
+[0.671s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extension 'ignore'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extension 'ignore_ament_install'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extensions ['colcon_pkg']
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extension 'colcon_pkg'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extensions ['colcon_meta']
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extension 'colcon_meta'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extensions ['ros']
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extension 'ros'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extensions ['cmake', 'python']
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extension 'cmake'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extension 'python'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extensions ['python_setup_py']
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control) by extension 'python_setup_py'
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extensions ['ignore', 'ignore_ament_install']
+[0.672s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extension 'ignore'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extension 'ignore_ament_install'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extensions ['colcon_pkg']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extension 'colcon_pkg'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extensions ['colcon_meta']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extension 'colcon_meta'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extensions ['ros']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extension 'ros'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extensions ['cmake', 'python']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extension 'cmake'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extension 'python'
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extensions ['python_setup_py']
+[0.673s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control) by extension 'python_setup_py'
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extensions ['ignore', 'ignore_ament_install']
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extension 'ignore'
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extension 'ignore_ament_install'
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extensions ['colcon_pkg']
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extension 'colcon_pkg'
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extensions ['colcon_meta']
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extension 'colcon_meta'
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extensions ['ros']
+[0.674s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extension 'ros'
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extensions ['cmake', 'python']
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extension 'cmake'
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extension 'python'
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extensions ['python_setup_py']
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Control/Galil_MATLAB_API) by extension 'python_setup_py'
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extensions ['ignore', 'ignore_ament_install']
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extension 'ignore'
+[0.675s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extension 'ignore_ament_install'
+[0.676s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extensions ['colcon_pkg']
+[0.676s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extension 'colcon_pkg'
+[0.676s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extensions ['colcon_meta']
+[0.676s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extension 'colcon_meta'
+[0.676s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extensions ['ros']
+[0.676s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extension 'ros'
+[0.676s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extensions ['cmake', 'python']
+[0.676s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extension 'cmake'
+[0.676s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extension 'python'
+[0.676s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extensions ['python_setup_py']
+[0.676s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/Dataset) by extension 'python_setup_py'
+[0.677s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extensions ['ignore', 'ignore_ament_install']
+[0.677s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extension 'ignore'
+[0.677s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extension 'ignore_ament_install'
+[0.677s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extensions ['colcon_pkg']
+[0.677s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extension 'colcon_pkg'
+[0.677s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extensions ['colcon_meta']
+[0.677s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extension 'colcon_meta'
+[0.677s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extensions ['ros']
+[0.677s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extension 'ros'
+[0.678s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extensions ['cmake', 'python']
+[0.678s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extension 'cmake'
+[0.678s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extension 'python'
+[0.678s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extensions ['python_setup_py']
+[0.678s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM) by extension 'python_setup_py'
+[0.678s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extensions ['ignore', 'ignore_ament_install']
+[0.678s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extension 'ignore'
+[0.678s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extension 'ignore_ament_install'
+[0.679s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extensions ['colcon_pkg']
+[0.679s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extension 'colcon_pkg'
+[0.679s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extensions ['colcon_meta']
+[0.679s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extension 'colcon_meta'
+[0.679s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extensions ['ros']
+[0.679s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extension 'ros'
+[0.679s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extensions ['cmake', 'python']
+[0.679s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extension 'cmake'
+[0.679s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extension 'python'
+[0.679s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extensions ['python_setup_py']
+[0.679s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs) by extension 'python_setup_py'
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extensions ['ignore', 'ignore_ament_install']
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extension 'ignore'
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extension 'ignore_ament_install'
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extensions ['colcon_pkg']
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extension 'colcon_pkg'
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extensions ['colcon_meta']
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extension 'colcon_meta'
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extensions ['ros']
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extension 'ros'
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extensions ['cmake', 'python']
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extension 'cmake'
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extension 'python'
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extensions ['python_setup_py']
+[0.680s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/FEM/helper_funcs/invChol) by extension 'python_setup_py'
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extensions ['ignore', 'ignore_ament_install']
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extension 'ignore'
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extension 'ignore_ament_install'
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extensions ['colcon_pkg']
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extension 'colcon_pkg'
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extensions ['colcon_meta']
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extension 'colcon_meta'
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extensions ['ros']
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extension 'ros'
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extensions ['cmake', 'python']
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extension 'cmake'
+[0.681s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extension 'python'
+[0.682s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extensions ['python_setup_py']
+[0.682s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom) by extension 'python_setup_py'
+[0.682s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.682s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extension 'ignore'
+[0.682s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extension 'ignore_ament_install'
+[0.682s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extensions ['colcon_pkg']
+[0.682s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extension 'colcon_pkg'
+[0.682s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extensions ['colcon_meta']
+[0.682s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extension 'colcon_meta'
+[0.682s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extensions ['ros']
+[0.682s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extension 'ros'
+[0.683s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extensions ['cmake', 'python']
+[0.683s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extension 'cmake'
+[0.683s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extension 'python'
+[0.683s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extensions ['python_setup_py']
+[0.683s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs) by extension 'python_setup_py'
+[0.683s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extensions ['ignore', 'ignore_ament_install']
+[0.683s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extension 'ignore'
+[0.683s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extension 'ignore_ament_install'
+[0.683s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extensions ['colcon_pkg']
+[0.683s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extension 'colcon_pkg'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extensions ['colcon_meta']
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extension 'colcon_meta'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extensions ['ros']
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extension 'ros'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extensions ['cmake', 'python']
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extension 'cmake'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extension 'python'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extensions ['python_setup_py']
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/msg) by extension 'python_setup_py'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extensions ['ignore', 'ignore_ament_install']
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extension 'ignore'
+[0.684s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extension 'ignore_ament_install'
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extensions ['colcon_pkg']
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extension 'colcon_pkg'
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extensions ['colcon_meta']
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extension 'colcon_meta'
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extensions ['ros']
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extension 'ros'
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extensions ['cmake', 'python']
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extension 'cmake'
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extension 'python'
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extensions ['python_setup_py']
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/fbg_msgs/srv) by extension 'python_setup_py'
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/matlab_msg_gen) by extensions ['ignore', 'ignore_ament_install']
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/matlab_msg_gen) by extension 'ignore'
+[0.685s] Level 1:colcon.colcon_core.package_identification:_identify(needle_simulation_control/custom/matlab_msg_gen) ignored
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.686s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.687s] Level 1:colcon.colcon_core.package_identification:_identify(src/curvature_srvcli) by extensions ['ignore', 'ignore_ament_install']
+[0.687s] Level 1:colcon.colcon_core.package_identification:_identify(src/curvature_srvcli) by extension 'ignore'
+[0.687s] Level 1:colcon.colcon_core.package_identification:_identify(src/curvature_srvcli) by extension 'ignore_ament_install'
+[0.687s] Level 1:colcon.colcon_core.package_identification:_identify(src/curvature_srvcli) by extensions ['colcon_pkg']
+[0.687s] Level 1:colcon.colcon_core.package_identification:_identify(src/curvature_srvcli) by extension 'colcon_pkg'
+[0.687s] Level 1:colcon.colcon_core.package_identification:_identify(src/curvature_srvcli) by extensions ['colcon_meta']
+[0.687s] Level 1:colcon.colcon_core.package_identification:_identify(src/curvature_srvcli) by extension 'colcon_meta'
+[0.687s] Level 1:colcon.colcon_core.package_identification:_identify(src/curvature_srvcli) by extensions ['ros']
+[0.687s] Level 1:colcon.colcon_core.package_identification:_identify(src/curvature_srvcli) by extension 'ros'
+[0.691s] DEBUG:colcon.colcon_core.package_identification:Package 'src/curvature_srvcli' with type 'ros.ament_python' and name 'curvature_srvcli'
+[0.691s] Level 1:colcon.colcon_core.package_identification:_identify(src/fbg_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.691s] Level 1:colcon.colcon_core.package_identification:_identify(src/fbg_msgs) by extension 'ignore'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(src/fbg_msgs) by extension 'ignore_ament_install'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(src/fbg_msgs) by extensions ['colcon_pkg']
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(src/fbg_msgs) by extension 'colcon_pkg'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(src/fbg_msgs) by extensions ['colcon_meta']
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(src/fbg_msgs) by extension 'colcon_meta'
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(src/fbg_msgs) by extensions ['ros']
+[0.692s] Level 1:colcon.colcon_core.package_identification:_identify(src/fbg_msgs) by extension 'ros'
+[0.693s] DEBUG:colcon.colcon_core.package_identification:Package 'src/fbg_msgs' with type 'ros.ament_cmake' and name 'fbg_msgs'
+[0.693s] Level 1:colcon.colcon_core.package_identification:_identify(src/needle_shape) by extensions ['ignore', 'ignore_ament_install']
+[0.693s] Level 1:colcon.colcon_core.package_identification:_identify(src/needle_shape) by extension 'ignore'
+[0.694s] Level 1:colcon.colcon_core.package_identification:_identify(src/needle_shape) by extension 'ignore_ament_install'
+[0.694s] Level 1:colcon.colcon_core.package_identification:_identify(src/needle_shape) by extensions ['colcon_pkg']
+[0.694s] Level 1:colcon.colcon_core.package_identification:_identify(src/needle_shape) by extension 'colcon_pkg'
+[0.694s] Level 1:colcon.colcon_core.package_identification:_identify(src/needle_shape) by extensions ['colcon_meta']
+[0.694s] Level 1:colcon.colcon_core.package_identification:_identify(src/needle_shape) by extension 'colcon_meta'
+[0.694s] Level 1:colcon.colcon_core.package_identification:_identify(src/needle_shape) by extensions ['ros']
+[0.694s] Level 1:colcon.colcon_core.package_identification:_identify(src/needle_shape) by extension 'ros'
+[0.695s] DEBUG:colcon.colcon_core.package_identification:Package 'src/needle_shape' with type 'ros.ament_python' and name 'needle_shape'
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(src/sm130_interrogator) by extensions ['ignore', 'ignore_ament_install']
+[0.695s] Level 1:colcon.colcon_core.package_identification:_identify(src/sm130_interrogator) by extension 'ignore'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(src/sm130_interrogator) by extension 'ignore_ament_install'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(src/sm130_interrogator) by extensions ['colcon_pkg']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(src/sm130_interrogator) by extension 'colcon_pkg'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(src/sm130_interrogator) by extensions ['colcon_meta']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(src/sm130_interrogator) by extension 'colcon_meta'
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(src/sm130_interrogator) by extensions ['ros']
+[0.696s] Level 1:colcon.colcon_core.package_identification:_identify(src/sm130_interrogator) by extension 'ros'
+[0.697s] DEBUG:colcon.colcon_core.package_identification:Package 'src/sm130_interrogator' with type 'ros.ament_python' and name 'sm130_interrogator'
+[0.697s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.697s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.697s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.698s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.698s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.742s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.742s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.747s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 4 installed packages in /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install
+[0.750s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 273 installed packages in /opt/ros/galactic
+[0.752s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.878s] Level 5:colcon.colcon_core.verb:set package 'fbg_msgs' build argument 'cmake_args' from command line to 'None'
+[0.878s] Level 5:colcon.colcon_core.verb:set package 'fbg_msgs' build argument 'cmake_target' from command line to 'None'
+[0.879s] Level 5:colcon.colcon_core.verb:set package 'fbg_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.879s] Level 5:colcon.colcon_core.verb:set package 'fbg_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.879s] Level 5:colcon.colcon_core.verb:set package 'fbg_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.879s] Level 5:colcon.colcon_core.verb:set package 'fbg_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.879s] Level 5:colcon.colcon_core.verb:set package 'fbg_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.879s] Level 5:colcon.colcon_core.verb:set package 'fbg_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.879s] Level 5:colcon.colcon_core.verb:set package 'fbg_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.879s] DEBUG:colcon.colcon_core.verb:Building package 'fbg_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs', 'merge_install': False, 'path': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/fbg_msgs', 'symlink_install': False, 'test_result_base': None}
+[0.883s] Level 5:colcon.colcon_core.verb:set package 'needle_shape' build argument 'cmake_args' from command line to 'None'
+[0.883s] Level 5:colcon.colcon_core.verb:set package 'needle_shape' build argument 'cmake_target' from command line to 'None'
+[0.883s] Level 5:colcon.colcon_core.verb:set package 'needle_shape' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.883s] Level 5:colcon.colcon_core.verb:set package 'needle_shape' build argument 'cmake_clean_cache' from command line to 'False'
+[0.883s] Level 5:colcon.colcon_core.verb:set package 'needle_shape' build argument 'cmake_clean_first' from command line to 'False'
+[0.883s] Level 5:colcon.colcon_core.verb:set package 'needle_shape' build argument 'cmake_force_configure' from command line to 'False'
+[0.883s] Level 5:colcon.colcon_core.verb:set package 'needle_shape' build argument 'ament_cmake_args' from command line to 'None'
+[0.883s] Level 5:colcon.colcon_core.verb:set package 'needle_shape' build argument 'catkin_cmake_args' from command line to 'None'
+[0.883s] Level 5:colcon.colcon_core.verb:set package 'needle_shape' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.883s] DEBUG:colcon.colcon_core.verb:Building package 'needle_shape' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape', 'merge_install': False, 'path': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/needle_shape', 'symlink_install': False, 'test_result_base': None}
+[0.886s] Level 5:colcon.colcon_core.verb:set package 'sm130_interrogator' build argument 'cmake_args' from command line to 'None'
+[0.886s] Level 5:colcon.colcon_core.verb:set package 'sm130_interrogator' build argument 'cmake_target' from command line to 'None'
+[0.887s] Level 5:colcon.colcon_core.verb:set package 'sm130_interrogator' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.887s] Level 5:colcon.colcon_core.verb:set package 'sm130_interrogator' build argument 'cmake_clean_cache' from command line to 'False'
+[0.887s] Level 5:colcon.colcon_core.verb:set package 'sm130_interrogator' build argument 'cmake_clean_first' from command line to 'False'
+[0.887s] Level 5:colcon.colcon_core.verb:set package 'sm130_interrogator' build argument 'cmake_force_configure' from command line to 'False'
+[0.887s] Level 5:colcon.colcon_core.verb:set package 'sm130_interrogator' build argument 'ament_cmake_args' from command line to 'None'
+[0.887s] Level 5:colcon.colcon_core.verb:set package 'sm130_interrogator' build argument 'catkin_cmake_args' from command line to 'None'
+[0.887s] Level 5:colcon.colcon_core.verb:set package 'sm130_interrogator' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.887s] DEBUG:colcon.colcon_core.verb:Building package 'sm130_interrogator' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator', 'merge_install': False, 'path': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/sm130_interrogator', 'symlink_install': False, 'test_result_base': None}
+[0.890s] Level 5:colcon.colcon_core.verb:set package 'curvature_srvcli' build argument 'cmake_args' from command line to 'None'
+[0.890s] Level 5:colcon.colcon_core.verb:set package 'curvature_srvcli' build argument 'cmake_target' from command line to 'None'
+[0.890s] Level 5:colcon.colcon_core.verb:set package 'curvature_srvcli' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.890s] Level 5:colcon.colcon_core.verb:set package 'curvature_srvcli' build argument 'cmake_clean_cache' from command line to 'False'
+[0.890s] Level 5:colcon.colcon_core.verb:set package 'curvature_srvcli' build argument 'cmake_clean_first' from command line to 'False'
+[0.890s] Level 5:colcon.colcon_core.verb:set package 'curvature_srvcli' build argument 'cmake_force_configure' from command line to 'False'
+[0.890s] Level 5:colcon.colcon_core.verb:set package 'curvature_srvcli' build argument 'ament_cmake_args' from command line to 'None'
+[0.890s] Level 5:colcon.colcon_core.verb:set package 'curvature_srvcli' build argument 'catkin_cmake_args' from command line to 'None'
+[0.890s] Level 5:colcon.colcon_core.verb:set package 'curvature_srvcli' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.890s] DEBUG:colcon.colcon_core.verb:Building package 'curvature_srvcli' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli', 'merge_install': False, 'path': '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/curvature_srvcli', 'symlink_install': False, 'test_result_base': None}
+[0.892s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.906s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.906s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/fbg_msgs' with build type 'ament_cmake'
+[0.906s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/fbg_msgs'
+[0.915s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.915s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.915s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.928s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/sm130_interrogator' with build type 'ament_python'
+[0.929s] Level 1:colcon.colcon_core.shell:create_environment_hook('sm130_interrogator', 'ament_prefix_path')
+[0.934s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator/hook/ament_prefix_path.ps1'
+[0.936s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator/hook/ament_prefix_path.dsv'
+[0.936s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator/hook/ament_prefix_path.sh'
+[0.943s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.943s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.955s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/needle_shape' with build type 'ament_python'
+[0.955s] Level 1:colcon.colcon_core.shell:create_environment_hook('needle_shape', 'ament_prefix_path')
+[0.960s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/needle_shape/hook/ament_prefix_path.ps1'
+[0.961s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/needle_shape/hook/ament_prefix_path.dsv'
+[0.962s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/needle_shape/hook/ament_prefix_path.sh'
+[0.969s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.969s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.992s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape:/opt/ros/galactic /usr/bin/cmake --build /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs -- -j12 -l12
+[1.518s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/sm130_interrogator'
+[1.523s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.523s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.065s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/needle_shape'
+[2.070s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[2.071s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[2.104s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape:/opt/ros/galactic /usr/bin/cmake --build /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs -- -j12 -l12
+[2.253s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape:/opt/ros/galactic /usr/bin/cmake --install /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs
+[2.339s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(fbg_msgs)
+[2.345s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape:/opt/ros/galactic /usr/bin/cmake --install /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/fbg_msgs
+[2.360s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs' for CMake module files
+[2.361s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs' for CMake config files
+[2.362s] Level 1:colcon.colcon_core.shell:create_environment_hook('fbg_msgs', 'cmake_prefix_path')
+[2.371s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/cmake_prefix_path.ps1'
+[2.372s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/cmake_prefix_path.dsv'
+[2.372s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/cmake_prefix_path.sh'
+[2.374s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib'
+[2.374s] Level 1:colcon.colcon_core.shell:create_environment_hook('fbg_msgs', 'ld_library_path_lib')
+[2.382s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/ld_library_path_lib.ps1'
+[2.383s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/ld_library_path_lib.dsv'
+[2.384s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/ld_library_path_lib.sh'
+[2.384s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/bin'
+[2.384s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/pkgconfig/fbg_msgs.pc'
+[2.385s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages'
+[2.385s] Level 1:colcon.colcon_core.shell:create_environment_hook('fbg_msgs', 'pythonpath')
+[2.394s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/pythonpath.ps1'
+[2.394s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/pythonpath.dsv'
+[2.395s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/pythonpath.sh'
+[2.396s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/bin'
+[2.405s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.ps1'
+[2.407s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.dsv'
+[2.408s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.sh'
+[2.410s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.bash'
+[2.412s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.zsh'
+[2.413s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/colcon-core/packages/fbg_msgs)
+[2.553s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(fbg_msgs)
+[2.565s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs' for CMake module files
+[2.567s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs' for CMake config files
+[2.568s] Level 1:colcon.colcon_core.shell:create_environment_hook('fbg_msgs', 'cmake_prefix_path')
+[2.576s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/cmake_prefix_path.ps1'
+[2.577s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/cmake_prefix_path.dsv'
+[2.577s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/cmake_prefix_path.sh'
+[2.578s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib'
+[2.579s] Level 1:colcon.colcon_core.shell:create_environment_hook('fbg_msgs', 'ld_library_path_lib')
+[2.587s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/ld_library_path_lib.ps1'
+[2.588s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/ld_library_path_lib.dsv'
+[2.588s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/ld_library_path_lib.sh'
+[2.589s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/bin'
+[2.589s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/pkgconfig/fbg_msgs.pc'
+[2.590s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages'
+[2.590s] Level 1:colcon.colcon_core.shell:create_environment_hook('fbg_msgs', 'pythonpath')
+[2.595s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/pythonpath.ps1'
+[2.596s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/pythonpath.dsv'
+[2.596s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/hook/pythonpath.sh'
+[2.597s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/bin'
+[2.601s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.ps1'
+[2.602s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.dsv'
+[2.603s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.sh'
+[2.604s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.bash'
+[2.604s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/fbg_msgs/package.zsh'
+[2.605s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/share/colcon-core/packages/fbg_msgs)
+[3.057s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/needle_shape': PYTHONPATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/needle_shape build --build-base /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/build install --record /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/install.log --single-version-externally-managed
+[3.155s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/sm130_interrogator': PYTHONPATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/sm130_interrogator build --build-base /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build install --record /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/install.log --single-version-externally-managed
+[3.919s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape' for CMake module files
+[3.920s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/needle_shape' returned '0': PYTHONPATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/needle_shape build --build-base /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/build install --record /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/needle_shape/install.log --single-version-externally-managed
+[3.921s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape' for CMake config files
+[3.922s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib'
+[3.922s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/bin'
+[3.922s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/pkgconfig/needle_shape.pc'
+[3.923s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages'
+[3.923s] Level 1:colcon.colcon_core.shell:create_environment_hook('needle_shape', 'pythonpath')
+[3.928s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/needle_shape/hook/pythonpath.ps1'
+[3.929s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/needle_shape/hook/pythonpath.dsv'
+[3.930s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/needle_shape/hook/pythonpath.sh'
+[3.931s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/bin'
+[3.931s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(needle_shape)
+[3.936s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/needle_shape/package.ps1'
+[3.937s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/needle_shape/package.dsv'
+[3.937s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/needle_shape/package.sh'
+[3.938s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/needle_shape/package.bash'
+[3.939s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/needle_shape/package.zsh'
+[3.940s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/share/colcon-core/packages/needle_shape)
+[4.000s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator' for CMake module files
+[4.001s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/sm130_interrogator' returned '0': PYTHONPATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/sm130_interrogator build --build-base /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/build install --record /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/sm130_interrogator/install.log --single-version-externally-managed
+[4.001s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator' for CMake config files
+[4.002s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib'
+[4.002s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/bin'
+[4.002s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/pkgconfig/sm130_interrogator.pc'
+[4.003s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages'
+[4.003s] Level 1:colcon.colcon_core.shell:create_environment_hook('sm130_interrogator', 'pythonpath')
+[4.010s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator/hook/pythonpath.ps1'
+[4.010s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator/hook/pythonpath.dsv'
+[4.011s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator/hook/pythonpath.sh'
+[4.012s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/bin'
+[4.012s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sm130_interrogator)
+[4.020s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator/package.ps1'
+[4.021s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator/package.dsv'
+[4.022s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator/package.sh'
+[4.023s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator/package.bash'
+[4.023s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/sm130_interrogator/package.zsh'
+[4.024s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/share/colcon-core/packages/sm130_interrogator)
+[4.024s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/curvature_srvcli' with build type 'ament_python'
+[4.025s] Level 1:colcon.colcon_core.shell:create_environment_hook('curvature_srvcli', 'ament_prefix_path')
+[4.033s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/curvature_srvcli/hook/ament_prefix_path.ps1'
+[4.034s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/curvature_srvcli/hook/ament_prefix_path.dsv'
+[4.035s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/curvature_srvcli/hook/ament_prefix_path.sh'
+[4.044s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.044s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[4.658s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/curvature_srvcli'
+[4.663s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[4.664s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[5.693s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/curvature_srvcli': AMENT_PREFIX_PATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs:/opt/ros/galactic PYTHONPATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages:/opt/ros/galactic/lib/python3.8/site-packages /usr/bin/python3 setup.py egg_info --egg-base ../../build/curvature_srvcli build --build-base /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/build install --record /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/install.log --single-version-externally-managed
+[6.556s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli' for CMake module files
+[6.556s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/src/curvature_srvcli' returned '0': AMENT_PREFIX_PATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs:/opt/ros/galactic PYTHONPATH=/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/prefix_override:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/sm130_interrogator/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/fbg_msgs/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages:/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/needle_shape/lib/python3.8/site-packages:/opt/ros/galactic/lib/python3.8/site-packages /usr/bin/python3 setup.py egg_info --egg-base ../../build/curvature_srvcli build --build-base /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/build install --record /home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/build/curvature_srvcli/install.log --single-version-externally-managed
+[6.557s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli' for CMake config files
+[6.558s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib'
+[6.558s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/bin'
+[6.558s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/pkgconfig/curvature_srvcli.pc'
+[6.559s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/lib/python3.8/site-packages'
+[6.559s] Level 1:colcon.colcon_core.shell:create_environment_hook('curvature_srvcli', 'pythonpath')
+[6.565s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/curvature_srvcli/hook/pythonpath.ps1'
+[6.566s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/curvature_srvcli/hook/pythonpath.dsv'
+[6.566s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/curvature_srvcli/hook/pythonpath.sh'
+[6.567s] Level 1:colcon.colcon_core.environment:checking '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/bin'
+[6.567s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(curvature_srvcli)
+[6.572s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/curvature_srvcli/package.ps1'
+[6.573s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/curvature_srvcli/package.dsv'
+[6.573s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/curvature_srvcli/package.sh'
+[6.574s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/curvature_srvcli/package.bash'
+[6.574s] INFO:colcon.colcon_core.shell:Creating package script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/curvature_srvcli/package.zsh'
+[6.575s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/curvature_srvcli/share/colcon-core/packages/curvature_srvcli)
+[6.575s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[6.576s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[6.576s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[6.576s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[6.585s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[6.585s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[6.585s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[6.605s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[6.610s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/local_setup.ps1'
+[6.611s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/_local_setup_util_ps1.py'
+[6.613s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/setup.ps1'
+[6.617s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/local_setup.sh'
+[6.617s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/_local_setup_util_sh.py'
+[6.618s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/setup.sh'
+[6.622s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/local_setup.bash'
+[6.623s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/setup.bash'
+[6.626s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/local_setup.zsh'
+[6.627s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/install/setup.zsh'
