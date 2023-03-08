@@ -73,22 +73,19 @@ dt = 0.1;
 % ini_tip_state = [x_pre(end);y_pre(end);k_pre(end)];
 % ini_control = [0;0;0];
 
-%% initialization for subscriber
+%% initialization for client
 
 if FBG_switch == 1
-
-    if exist("subscriber",'var')
-        delete(subscriber)
+    if exist("client",'var')
+        delete(client)
     end
-    % create a matlab subscriber to get curvature reading
-    subscriber = MatlabRosPubSub('sub','matlab_curvature_subscriber',...
-                '/pub_Curv','fbg_msgs/Curvature');
-
+    client = MatlabRosSrvCli('client','/cli_node',"/cal_curv","fbg_msgs/CalCurvature");
 end
 
-g = []; % object of Galil motor controller
+[connectionStatus,connectionStatustext] = waitForServer(client.cli);
 
 %% initialization for motor
+g = []; % object of Galil motor controller
 
 if Motor_switch == 1
     % run ini_motor_controller.m
@@ -114,8 +111,9 @@ last_r_control_point = 0;
 curvatures_xy = [];
 curvatures_xz = [];
 % get current needle state from FBG data
-if exist('subscriber','var')
-    [msg_received,status,statustext] = subscriber.getSubMsg(10);
+
+if exist('client','var') && waitForServer(client.cli)
+    msg_received = getResponseMsg(client);
     curvatures_xy = msg_received.curvature_xy;
     curvatures_xz = msg_received.curvature_xz;
 end
@@ -190,7 +188,7 @@ publisher.sendPubMsg(pub_msg);
 
         %% calculate error
         if FBG_switch == 1
-            [msg_received,status,statustext] = subscriber.getSubMsg(10);
+            msg_received = getResponseMsg(client);
             curvatures_xy = msg_received.curvature_xy;
             curvatures_xz = msg_received.curvature_xz;
         else
