@@ -33,7 +33,11 @@ class needle_shape_visulisation(Node):
         self.axs.set_ylabel('y(mm)')
         self.axs.set_zlabel('z(mm)')
         self.axs.set_title('Needle Shape')
-        self.axs.grid(False)
+        self.axs.set_xlim(-200,80)
+        self.axs.set_ylim(-50,50)
+        self.axs.set_zlim(-20,20)
+        self.axs.set_aspect('equal')
+        self.axs.grid(True)
 
         self.if_init_needle_shape = 0
         self.if_init_curv_plot = 0
@@ -126,17 +130,20 @@ class needle_shape_visulisation(Node):
             self.xy_projection, = self.axs.plot3D(
                     [self.needle_msg.needle_x_axis[self.needle_tip_index],self.needle_msg.needle_x_axis[self.needle_tip_index]],
                     [self.needle_msg.needle_y_axis[self.needle_tip_index],self.needle_msg.needle_y_axis[self.needle_tip_index]],
-                    [self.needle_msg.needle_z_axis[self.needle_tip_index],0]
+                    #[self.needle_msg.needle_z_axis[self.needle_tip_index],0]
+                    [self.needle_msg.needle_z_axis[self.needle_tip_index],self.axs.get_zlim()[0]]
                     )
 
             self.xz_projection, = self.axs.plot3D(
                     [self.needle_msg.needle_x_axis[self.needle_tip_index],self.needle_msg.needle_x_axis[self.needle_tip_index]],
-                    [self.needle_msg.needle_y_axis[self.needle_tip_index],0],
+                    #[self.needle_msg.needle_y_axis[self.needle_tip_index],0],
+                    [self.needle_msg.needle_y_axis[self.needle_tip_index],self.axs.get_ylim()[0]],
                     [self.needle_msg.needle_z_axis[self.needle_tip_index],self.needle_msg.needle_z_axis[self.needle_tip_index]]
                     )
 
             self.yz_projection, = self.axs.plot3D(
-                    [self.needle_msg.needle_x_axis[self.needle_tip_index],0],
+                    #[self.needle_msg.needle_x_axis[self.needle_tip_index],0],
+                    [self.needle_msg.needle_x_axis[self.needle_tip_index],self.axs.get_xlim()[0]],
                     [self.needle_msg.needle_y_axis[self.needle_tip_index],self.needle_msg.needle_y_axis[self.needle_tip_index]],
                     [self.needle_msg.needle_z_axis[self.needle_tip_index],self.needle_msg.needle_z_axis[self.needle_tip_index]]
                     )
@@ -192,13 +199,16 @@ class needle_shape_visulisation(Node):
 
             self.xy_projection.set_xdata([np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index],np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index]])
             self.xy_projection.set_ydata([np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index],np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index]])
-            self.xy_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index], 0])
+            #self.xy_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index], 0])
+            self.xy_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index],self.axs.get_zlim()[0]])
 
             self.xz_projection.set_xdata([np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index],np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index]])
-            self.xz_projection.set_ydata([np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index],0])
+            #self.xz_projection.set_ydata([np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index],0])
+            self.xz_projection.set_ydata([np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index],self.axs.get_ylim()[0]])
             self.xz_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index], np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index]])
 
-            self.yz_projection.set_xdata([np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index], 0])
+            #self.yz_projection.set_xdata([np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index], 0])
+            self.yz_projection.set_xdata([np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index],self.axs.get_xlim()[0]])
             self.yz_projection.set_ydata([np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index],np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index]])
             self.yz_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index], np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index]])
 

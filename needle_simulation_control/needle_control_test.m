@@ -32,7 +32,7 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 0; %switch off fbg with 0
+FBG_switch = 1; %switch off fbg with 0
 Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
@@ -59,7 +59,7 @@ Interval = {[0, 80]};
 
 L = 200; % total length of needle
 
-bx = 0; % initial base position
+bx = -200; % initial base position
 by = 0; % 
 bk = 0; % assume the needle is horizontally straight
 

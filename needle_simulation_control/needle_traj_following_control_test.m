@@ -15,7 +15,7 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 0; %switch off fbg with 0
+FBG_switch = 1; %switch off fbg with 0
 Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
@@ -142,16 +142,20 @@ pub_msg = ros2message("fbg_msgs/NeedleShape"); % create message structure
 pub_msg.needle_total_length = uint8(L);
 pub_msg.active_area_location = AA_lcn;
 pub_msg.needle_z_axis = ones(size(x_new));
-    
+pub_msg.needle_x_axis = x_pre;
+pub_msg.needle_y_axis = y_pre;
+pub_msg.needle_slope  = k_pre;
+publisher.sendPubMsg(pub_msg);    
 
 %% main loop
     while (1)
         %% updated and the corresponding control
 
-        pub_msg.needle_x_axis = x_new;
-        pub_msg.needle_y_axis = y_new;
-        pub_msg.needle_slope  = k_new;
+        pub_msg.needle_x_axis = x_pre;
+        pub_msg.needle_y_axis = y_pre;
+        pub_msg.needle_slope  = k_pre;
         publisher.sendPubMsg(pub_msg);
+
         ic = [x_pre(end);y_pre(end);k_pre(end);0;0;0];
 
         [dcontrol,desired] = numerical_jacobian_traj_following_control(xd, Kp, ic, L, Mu, Alpha, Interval,...
@@ -177,7 +181,7 @@ pub_msg.needle_z_axis = ones(size(x_new));
             % move motors
             Input_AbsPos_X = Input_AbsPos_X - round(dx*1000);
             Input_AbsPos_Y = Input_AbsPos_Y - round(dy*1000);
-            Input_AbsPos_Z = 0; % actually not use
+            Input_AbsPos_Z = 0; % act   ually not use
             Input_Rotation = Input_Rotation + round(dr*7031.25);
             give_pos=strcat('PA ',num2str(Input_AbsPos_X),',',num2str(Input_AbsPos_Y),',', num2str(Input_AbsPos_Z), ',', num2str(Input_Rotation));
             galil_command(g, give_pos);
