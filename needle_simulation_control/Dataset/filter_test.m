@@ -3,12 +3,12 @@
 close all;
 num_point = 6000;
 
-% namefile = 'validation4-6_090.xls'; % data used to validate the calibration matrix
-% num_trial = 4:1:6;
+% namefile = 'validation7-9_090.xls'; % data used to validate the calibration matrix
+% num_trial = 7:1:9;
 % curvature = [0,0.25,0.8,1.0,1.25,3.125]; % constant curvature curve
  
-namefile = 'calibration4-6_090.xls';
-num_trial = 4:1:6;
+namefile = 'calibration7-9_090.xls';
+num_trial = 7:1:9;
 curvature = [0 0.5 1.6 2 2.5 3.2];
 
 ilustration = figure;
