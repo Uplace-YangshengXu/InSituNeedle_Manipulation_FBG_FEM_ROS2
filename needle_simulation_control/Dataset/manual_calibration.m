@@ -10,32 +10,24 @@ addpath ../
 % collect n data set for each curve
 FBG_data_point = 400;
 % trial num
-val_repetitions = 1;
-trial_start_num = 9;
+val_repetitions = 3;
+trial_start_num = 10;
 % number of channle and activate area
 channels = 2;
 AAs = 4;
 
 % % curvature of slots on jig
-% cal_curve = [0,0.5,1.6,2.0,2.5,3.2]';
-% 
-% slot_num = length(cal_curve);
-% filename = '/calibration7-9_090.xls';
+cal_curve = [0,0.5,1.6,2.0,2.5,3.2]';
+slot_num = length(cal_curve);
+filename = '/calibration10-12_090.xls';
 
 % % curvature of slots on jig
-% 
 % cal_curve = [0,0.25,0.8,1.0,1.25,3.125]';
 % slot_num = length(cal_curve);
-% filename = '/validation7-9_090.xls';
-
-cal_curve = 3.2;
-slot_num = length(cal_curve);
-filename = 'trail9calino6deg0.xls';
-cal_rot = 0;
+% filename = '/validation10-12_090.xls';
 
 % deg
-%cal_rot = [0,90];
-
+cal_rot = [0,90];
 calPath = cd;
 
 if exist("subscriber",'var')
@@ -73,5 +65,3 @@ for k = trial_start_num:val_repetitions+trial_start_num-1
         end
     end
 end
-
-% close_pnet();
