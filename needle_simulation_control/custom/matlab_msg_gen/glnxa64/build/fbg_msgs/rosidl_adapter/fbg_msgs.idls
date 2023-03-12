@@ -1,5 +1,0 @@
-/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/Curvature.idl
-/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/FbgReading.idl
-/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:msg/NeedleShape.idl
-/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:srv/CalCurvature.idl
-/home/jkang/InSituNeedle_Manipulation_FBG_FEM_ROS2/needle_simulation_control/custom/matlab_msg_gen/glnxa64/build/fbg_msgs/rosidl_adapter/fbg_msgs:srv/FindNorm.idl

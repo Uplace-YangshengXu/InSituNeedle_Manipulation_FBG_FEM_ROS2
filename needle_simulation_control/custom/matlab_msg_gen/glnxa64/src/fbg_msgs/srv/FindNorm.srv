@@ -1,4 +1,0 @@
-#geometry_msgs/Vector3 vector
-float64 input
----
-float64 norm
