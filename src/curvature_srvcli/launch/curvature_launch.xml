@@ -1,0 +1,17 @@
+<launch>
+    
+    <node
+    pkg = "sm130_interrogator"
+    exec = "talker"
+    name = "interrogator_pub"
+    output = "screen">
+    </node>
+    
+
+    <node
+    pkg = "curvature_srvcli"
+    exec = "server">
+    </node>
+
+
+</launch>
