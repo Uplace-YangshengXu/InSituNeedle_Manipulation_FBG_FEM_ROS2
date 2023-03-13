@@ -4,10 +4,9 @@ function [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
     curvatures, AA_lcn)
 
 % Flexible needle and soft tissue interaction simulation. Needle bending is
-% based on beam bending with Ogden1 hyperelastic material model with
-% unconstrainted incomparessibility condition. Needle insertion is based on
-% nodel slope information.
-% Based mainly on ogden_unconstrained_true_one_step.m
+% based on Euler-Bernoulli beam theory. Tissue compression is modeled as
+% unconfined uniaxial compression with Ogden1 incompressible hyperelastic
+% material model. Needle insertion is based on nodal slope information.
 
 % Inputs: 
 % L: total length of the needle
@@ -33,6 +32,7 @@ MuT = Mu*10^-6; % Pa, but in mm^2; 1Pa = 1e-6 N/mm^2; 1kPa = 1e-3 N/mm^2
 AlphaT = Alpha; % need abs(alpha) > 1
 GammaT = zeros(size(MuT));
 PropertyTable = table(Interval, MuT, AlphaT, GammaT);
+[MuTs, AlphaTs, GammaTs] = lookup_properties(x_pre, PropertyTable);
 
 % FEM-specific constants
 Nel = L; % Total umber of elements, using 1mm elements
@@ -44,15 +44,12 @@ EBC_idx = [1; 2]; % Displacement and slope of first element left node is prescri
 freeDOF = DOF;
 freeDOF(EBC_idx) = [];
 
-d = assem_d_k(y_pre, k_pre); % initial guess of the solution, based on previous simulation step
+d = assem_dof_2d(y_pre, k_pre); % initial guess of the solution, based on previous simulation step
 
 % Construction of LM
 LM = zeros(Nen, Nel);
 for e = 1:Nel
-    LM(1, e) = 2*e - 1;
-    LM(2, e) = 2*e - 0;
-    LM(3, e) = 2*e + 1;
-    LM(4, e) = 2*e + 2;
+    LM(:, e) = (2*e - 1) : (2*e + 2);
 end
 
 % curvature inputs from FBG
@@ -65,10 +62,7 @@ if ~isempty(AA_crv) % if curvatrue is empty then AA_er is []
 end
 
 % Load-stepping functionality
-max_inner_iter = 5; % maximum number of iterations for Newton's method
-max_outer_iter = 5; % maximum number of iteratinos for load stepping
 outer_iter = 0;
-tol = 1e-5;
 converged = 0;
 load_ratio = 1;
 EBC_delta_des = [dby; dbk]; % desired amount of BC change
@@ -87,14 +81,13 @@ while converged == 0 && (outer_iter < max_outer_iter)
         F = zeros(nDOF, 1);
         P = zeros(nDOF, 1);
         % Apply EBC
-        d(EBC_idx) = [EBC_delta_cur(1) + y_pre(1); 
-                      EBC_delta_cur(2) + k_pre(1)]; % EBCs include the change in base y and slope; if no change, the output is the same as the previous simulation step
-
+        d(EBC_idx) = EBC_delta_cur + [y_pre(1); k_pre(1)]; % EBCs include the change in base y and slope; if no change, the output is the same as the previous simulation step                              
         % Loop over each element    
         for e = 1:Nel
             % Get local nodal values from global d
             d_i_local = d(2*e - 1:2*e + 2);
-            [ke, pe] = compute_element_matrix(d_i_local, ti, E, I, PropertyTable, e, h, x_pre(e), x_pre(e + 1), AA_er, AA_crv);
+            [ke, pe] = compute_element_matrix(d_i_local, ti, E, I, e, h, ...
+                MuTs(e), AlphaTs(e), GammaTs(e), AA_er, AA_crv);
             % Global assembly process
             % Using vectors instead of FOR loops
             K(LM(1:4, e), LM(1:4, e)) = K(LM(1:4, e), LM(1:4, e)) + ke;
@@ -103,68 +96,55 @@ while converged == 0 && (outer_iter < max_outer_iter)
 
         % Newton's method
         % Use only free DOF from the list of DOF to compute d
-        % delta_d = invChol_mex(K(freeDOF, freeDOF))*(F(freeDOF, 1)-P(freeDOF, 1));
-        delta_d = pinv(K(freeDOF, freeDOF))*(F(freeDOF, 1)-P(freeDOF, 1));
-        if(norm(F(freeDOF, 1) - P(freeDOF, 1)) <= tol)
+        delta_d = invChol_mex(K(freeDOF, freeDOF))*(F(freeDOF, 1)-P(freeDOF, 1));
+        % delta_d = pinv(K(freeDOF, freeDOF))*(F(freeDOF, 1)-P(freeDOF, 1));
+        err = norm(F(freeDOF, 1) - P(freeDOF, 1));
+        if(err <= tol)
             converged = 1;
             break;
         end
         d(freeDOF, 1) = d(freeDOF, 1) + delta_d;
         inner_iter = inner_iter + 1;
-    end
+    end % end inner iteration
     if converged ~= 1
         load_ratio = 0.5*load_ratio;
         EBC_delta_cur = zeros(2, 1);
-        disp("No convergence. Decreasing load step\n");
+        fprintf("No convergence. Decreasing load step\n");
     else
         EBC_delta_converged = EBC_delta_cur;
     end
-end
+end % end outer iteration
 
 %% Outputs
-dy_bend = extract_dist_from_d(d); % y coordinate due to bending
-dy_insert = zeros(size(dy_bend)); 
-
+[dy_bend, k_new] = extract_from_2d(d); % y coordinate and slope due to bending
 dx_bend = zeros(size(dy_bend));
-dx_bend(1) = x_pre(1) + dbx; % offset needle base x by the amount of change
-dx_insert = zeros(size(dy_bend));
+dx_bend(1) = x_pre(1) + dbx;
+ddy_bend = diff(dy_bend);
 
-k_new = extract_slop_from_d(d); % slopes
-
-ddy_bending = diff(dy_bend);
+dx_insert = zeros(size(dx_bend));
+dy_insert = zeros(size(dy_bend));
 for i = 2:(Nel + 1)
-    dx_bend(i) = dx_bend(i - 1) + sqrt(h^2 - ddy_bending(i - 1)^2); % x coordinate due to bending
-    dx_insert(i) = sqrt(dbx^2/(1 + k_new(i)^2)); % x coordinate change due to insertion
-    dy_insert(i) = k_new(i)*dx_insert(i); % y coordinate change due to insertion
+    dx_bend(i) = dx_bend(i - 1) + sqrt(h^2 - ddy_bend(i - 1)^2);
+    dx_insert(i) = - (sqrt(dbx^2/(1 + k_new(i)^2)) - sqrt(dbx^2/(1 + k_new(i - 1)^2)));
+    dy_insert(i) = - (k_new(i)*sqrt(dbx^2/(1 + k_new(i)^2)) - k_new(i - 1)*sqrt(dbx^2/(1 + k_new(i - 1)^2)));
 end
 
-x_new = dx_bend; 
+x_new = dx_bend + dx_insert;
 y_new = dy_bend + dy_insert;
+
+%% Constant element size check
+x_diff = diff(x_new); y_diff = diff(y_new);
+h_pre = sqrt(x_diff.^2 + y_diff.^2);
+if ~all(abs(h_pre - h) < 1e-5)
+    warning('Element size wrong\n')
+end
+
 end
 
 %% Defined helper functions
-% Look up material properties at given location
-function [MuT_e, AlphaT_e, GammaT_e] = lookup_property(PropertyTable, x_begin, x_end)
-x_mid = (x_begin + x_end)/2; % Find the midpoint location of the element in global coordinate
-for i = 1:numel(PropertyTable.Interval)
-    cur_interval = PropertyTable.Interval{i};
-    if (x_mid >= cur_interval(1)) && (x_mid < cur_interval(2))
-        MuT_e = PropertyTable.MuT(i);
-        AlphaT_e = PropertyTable.AlphaT(i);
-        GammaT_e = PropertyTable.GammaT(i);
-        return;
-    else
-        MuT_e = 0;
-        AlphaT_e = -1;
-        GammaT_e = 0;
-    end
-end
-end
-
 % Compute element stiffness matrix and internal force vector
-function [ke, pe] = compute_element_matrix(d_i_local, ti, E, I, PropertyTable,e, h, x_begin, x_end, AA_er,AA_crv)
-% Find properties
-[MuT_e, AlphaT_e, GammaT_e] = lookup_property(PropertyTable, x_begin, x_end);
+function [ke, pe] = compute_element_matrix(d_i_local, ti, E, I, ...
+    e, h, MuT_e, AlphaT_e, GammaT_e, AA_er,AA_crv)
 % Calculate integrals
 % _beam will stay the same
 pe_beam = calc_pe_beam(d_i_local, h, E, I);
@@ -210,9 +190,13 @@ u_zeta = [N_zeta(1, :)*d_i_local; N_zeta(2, :)*d_i_local];% Displacements deriva
 % Sum over all gauss points
 pe_cont = zeros(1, 4);
 for i = 1:length(ig)
+    stretch = (ti - abs(u(i)))/ti;
+    if stretch < 0 % happens when control makes abs(u) larger than ti
+        stretch = 0.1; % manually assign a large compression ratio 
+    end
     pe_cont = pe_cont + ...
         wg(i)*(...
-        N(i, :)*2*MuT_e*(((ti - abs(u(i)))/ti)^(AlphaT_e - 1) + 1/2*((ti - abs(u(i)))/ti)^(-AlphaT_e/2 - 1))*...
+        N(i, :)*2*MuT_e*((stretch)^(AlphaT_e - 1) + 1/2*(stretch)^(-AlphaT_e/2 - 1))*...
         u(i)*(1 - GammaT_e*sin(atan(u_zeta(i)*(2/h)))^2)*(h/2)...
         );
 end
@@ -231,16 +215,20 @@ u_zeta = [N_zeta(1, :)*d_i_local; N_zeta(2, :)*d_i_local];% Displacements deriva
 % Sum over all gauss points
 ke_cont = zeros(4, 4);
 for i = 1:length(ig)
+    stretch = (ti - abs(u(i)))/ti;
+    if stretch < 0 % happens when control makes abs(u) larger than ti
+        stretch = 0.1; % manually assign a large compression ratio 
+    end
     ke_cont = ke_cont + ...
         wg(i)*(...
-        N(i, :)'*2*MuT_e*((AlphaT_e - 1)*((ti - abs(u(i)))/ti)^(AlphaT_e - 2)*(-1/ti*sign(u(i))*N(i, :)) + ...
-        1/2*(-AlphaT_e/2 - 1)*((ti - abs(u(i)))/ti)^(-AlphaT_e/2 - 2)*(-1/ti*sign(u(i))*N(i, :)))*u(i)* ...
+        N(i, :)'*2*MuT_e*((AlphaT_e - 1)*(stretch)^(AlphaT_e - 2)*(-1/ti*sign(u(i))*N(i, :)) + ...
+        1/2*(-AlphaT_e/2 - 1)*(stretch)^(-AlphaT_e/2 - 2)*(-1/ti*sign(u(i))*N(i, :)))*u(i)* ...
         (1 - GammaT_e*sin(atan(u_zeta(i)*(2/h)))^2)*(h/2) + ...
         ...
-        N(i, :)'*2*MuT_e*(((ti - abs(u(i)))/ti)^(AlphaT_e - 1) + 1/2*((ti - abs(u(i)))/ti)^(-AlphaT_e/2 - 1))*N(i, :)*...
+        N(i, :)'*2*MuT_e*((stretch)^(AlphaT_e - 1) + 1/2*(stretch)^(-AlphaT_e/2 - 1))*N(i, :)*...
         (1 - GammaT_e*sin(atan(u_zeta(i)*(2/h)))^2)*(h/2) + ...
         ...
-        N(i, :)'*2*MuT_e*(((ti - abs(u(i)))/ti)^(AlphaT_e - 1) + 1/2*((ti - abs(u(i)))/ti)^(-AlphaT_e/2 - 1))*u(i)*...
+        N(i, :)'*2*MuT_e*((stretch)^(AlphaT_e - 1) + 1/2*(stretch)^(-AlphaT_e/2 - 1))*u(i)*...
         -GammaT_e*((2*u_zeta(i)*(2/h))/((u_zeta(i)*(2/h))^2 + 1)^2*N(i, :)*(2/h) - (2*(u_zeta(i)*(2/h))^3)/((u_zeta(i)*(2/h))^2 + 1)^2*N(i, :)*(2/h))*(h/2)...
         );
 end
