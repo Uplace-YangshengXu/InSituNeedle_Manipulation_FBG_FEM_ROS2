@@ -7,24 +7,15 @@ clear;
 %AA_selection = [3,7];  % AA3: 3,7
 AA_selection = [4,8];   % AA4: 4,8
 
-
- 
-%namefile = {'calibration1-3_090.xls','calibration4-6_090.xls','calibration7-9_090.xls'};
-%num_trial = {1:3,4:6,7:9};
-
-%namefile = {'calibration4-6_090.xls','calibration7-9_090.xls'};
-%num_trial = {4:6,7:9};
-
-namefile = {'calibration10-12_090.xls'};
-num_trial = {10:12};
-
-curvature = [0 0.5 1.6 2 2.5 3.2];
+% 
+% namefile = {'calibration7-9_090.xls','calibration10-12_090.xls'};
+% num_trial = {7:9,10:12};
+% curvature = [0 0.5 1.6 2 2.5 3.2];
 
 
-% namefile = {'validation10-12_090.xls'}; % data used to validate the calibration matrix
-% num_trial = {10:12};
-% curvature = [0,0.25,0.8,1.0,1.25,3.125]; % constant curvature curve
-
+namefile = {'validation7-9_090.xls','validation10-12_090.xls'}; % data used to validate the calibration matrix
+num_trial = {7:9,10:12};
+curvature = [0,0.25,0.8,1.0,1.25,3.125]; % constant curvature curve
 
 fig1 = figure(1);
 fig2 = figure(2);
