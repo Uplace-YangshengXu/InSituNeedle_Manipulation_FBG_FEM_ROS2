@@ -2,12 +2,12 @@
 This repo tries to set the project in FBG_MATLAB on ROS2
 
 ## Configurate matlab_ros2 communication 
-### Custom msg and srv type in matlab
+## Custom msg and srv type in matlab
 Place ros2 .msg file in ./needle_simulation_control/custom/package_name/msg
 
 Place ros2 .srv file in ./needle_simulation_control/custom/package_name/srv
 
-###Automatically remove and auto build the matlab_ros2 workspace
+##Automatically remove and auto build the matlab_ros2 workspace
 
     generate_ros2msg(pwd)
 pwd: the absolute dir of ./needle_simulation_control
@@ -38,7 +38,7 @@ Or using launch file:
 
     ro2 launch curvature_srvcli curvature_launch.xml
 
-###Other executable:
+##Other executable:
 
 Client node:
 
