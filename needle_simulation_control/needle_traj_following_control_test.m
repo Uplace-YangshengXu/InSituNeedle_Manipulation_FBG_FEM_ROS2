@@ -15,7 +15,7 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 1; %switch off fbg with 0
+FBG_switch = 0; %switch off fbg with 0
 Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
@@ -82,7 +82,7 @@ if FBG_switch == 1
     client = MatlabRosSrvCli('client','/cli_node',"/cal_curv","fbg_msgs/CalCurvature");
 end
 
-[connectionStatus,connectionStatustext] = waitForServer(client.cli);
+% [connectionStatus,connectionStatustext] = waitForServer(client.cli);
 
 %% initialization for motor
 g = []; % object of Galil motor controller
@@ -112,7 +112,7 @@ curvatures_xy = [];
 curvatures_xz = [];
 % get current needle state from FBG data
 
-if exist('client','var') && waitForServer(client.cli)
+if exist('client','var')
     msg_received = getResponseMsg(client);
     curvatures_xy = msg_received.curvature_xy;
     curvatures_xz = msg_received.curvature_xz;
@@ -148,14 +148,14 @@ publisher.sendPubMsg(pub_msg);
 %% main loop
     while (1)
         %% updated and the corresponding control
-
+       
         pub_msg.needle_x_axis = x_pre;
         pub_msg.needle_y_axis = y_pre;
         pub_msg.needle_slope  = k_pre;
         publisher.sendPubMsg(pub_msg);
 
         ic = [x_pre(end);y_pre(end);k_pre(end);0;0;0];
-
+        tic
         [dcontrol,desired] = numerical_jacobian_traj_following_control(xd, Kp, ic, L, Mu, Alpha, Interval,...
         x_pre,y_pre,k_pre,...
         [],AA_lcn,thre,desired);
@@ -205,7 +205,7 @@ publisher.sendPubMsg(pub_msg);
         y_pre = y_new;
         k_pre = k_new;
         disp([x_pre(end) y_pre(end) k_pre(end)]);
-
+        toc
         % publish again
         pub_msg.needle_x_axis = x_new;
         pub_msg.needle_y_axis = y_new;
@@ -220,6 +220,5 @@ publisher.sendPubMsg(pub_msg);
             disp("arrive at goal, stopped with error: " + error)
             break;
         end
-
     end
 
