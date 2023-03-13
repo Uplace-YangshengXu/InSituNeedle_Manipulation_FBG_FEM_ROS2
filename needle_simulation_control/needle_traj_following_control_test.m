@@ -15,7 +15,7 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 0; %switch off fbg with 0
+FBG_switch = 1; %switch off fbg with 0
 Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
@@ -147,6 +147,7 @@ publisher.sendPubMsg(pub_msg);
 
 %% main loop
     while (1)
+        tic
         %% updated and the corresponding control
        
         pub_msg.needle_x_axis = x_pre;
@@ -155,7 +156,7 @@ publisher.sendPubMsg(pub_msg);
         publisher.sendPubMsg(pub_msg);
 
         ic = [x_pre(end);y_pre(end);k_pre(end);0;0;0];
-        tic
+        
         [dcontrol,desired] = numerical_jacobian_traj_following_control(xd, Kp, ic, L, Mu, Alpha, Interval,...
         x_pre,y_pre,k_pre,...
         [],AA_lcn,thre,desired);
@@ -210,7 +211,7 @@ publisher.sendPubMsg(pub_msg);
         y_pre = y_new;
         k_pre = k_new;
         disp([x_pre(end) y_pre(end) k_pre(end)]);
-        toc
+       
         % publish again
         pub_msg.needle_x_axis = x_new;
         pub_msg.needle_y_axis = y_new;
@@ -219,7 +220,7 @@ publisher.sendPubMsg(pub_msg);
 
         error = norm([x_new(end);y_new(end);k_new(end)] - xd(:,end));
         disp(error);
-
+        toc
         % break critria
         if error <= 0.05
             disp("arrive at goal, stopped with error: " + error)

@@ -33,7 +33,7 @@ addpath ./Control/
 
 %% switches
 FBG_switch = 1; %switch off fbg with 0
-Motor_switch = 0; %switch off motor with 0
+Motor_switch = 1; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -81,14 +81,25 @@ ini_control = [0;0;0];
 
 %% initialization
 
-% curvature reading subscriber
+% % curvature reading subscriber
+% if FBG_switch == 1
+%     if exist("subscriber",'var')
+%         delete(subscriber)
+%     end
+%     % create a matlab subscriber to get curvature reading
+%     subscriber = MatlabRosPubSub('sub','matlab_curvature_subscriber','/pub_Curv','fbg_msgs/Curvature');
+% end
+
 if FBG_switch == 1
-    if exist("subscriber",'var')
-        delete(subscriber)
+    if exist("client",'var')
+        delete(client)
     end
-    % create a matlab subscriber to get curvature reading
-    subscriber = MatlabRosPubSub('sub','matlab_curvature_subscriber','/pub_Curv','fbg_msgs/Curvature');
+    client = MatlabRosSrvCli('client','/cli_node',"/cal_curv","fbg_msgs/CalCurvature");
+    [connectionStatus,connectionStatustext] = waitForServer(client.cli);
+
 end
+
+%%
 
 g = []; % object of Galil motor controller
 
@@ -105,20 +116,26 @@ end
 curvatures_xy = [];
 curvatures_xz = [];
 
-if exist('subscriber','var')
-    [msg_received,status,statustext] = subscriber.getSubMsg(10);
+% if exist('subscriber','var')
+%     [msg_received,status,statustext] = subscriber.getSubMsg(10);
+%     curvatures_xy = msg_received.curvature_xy;
+%     curvatures_xz = msg_received.curvature_xz;
+% else
+%     curvatures_xy = zeros(NumAA,1);
+%     curvatures_xz = zeros(NumAA,1);
+% end
+
+if exist('client','var')
+    msg_received = getResponseMsg(client);
     curvatures_xy = msg_received.curvature_xy;
     curvatures_xz = msg_received.curvature_xz;
-else
-    curvatures_xy = zeros(NumAA,1);
-    curvatures_xz = zeros(NumAA,1);
 end
 
 % get the new states by ini move
 [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
     x_pre, y_pre, k_pre, ...
     ini_control(1), ini_control(2), ini_control(3), ...
-    curvatures_xz, AA_lcn);
+    curvatures_xy, AA_lcn);
 % update the previous states
 x_pre = x_new;
 y_pre = y_new;
@@ -160,8 +177,14 @@ while(1)
     dbk = 0;
 
     % get current needle state from FBG data
-    if exist('subscriber','var')
-        [msg_received,status,statustext] = subscriber.getSubMsg(10);
+%     if exist('subscriber','var')
+%         [msg_received,status,statustext] = subscriber.getSubMsg(10);
+%         curvatures_xy = msg_received.curvature_xy;
+%         curvatures_xz = msg_received.curvature_xz;
+%     end
+
+    if exist('client','var')
+        msg_received = getResponseMsg(client);
         curvatures_xy = msg_received.curvature_xy;
         curvatures_xz = msg_received.curvature_xz;
     end
@@ -169,7 +192,7 @@ while(1)
     [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
     x_pre, y_pre, k_pre, ...
     dbx, dby, dbk, ...
-    curvatures_xz, AA_lcn);
+    curvatures_xy, AA_lcn);
 
     % update states
     x_pre = x_new;
@@ -182,24 +205,28 @@ while(1)
     publisher.sendPubMsg(pub_msg);
 
     % get new desire tip states
-
-    % test
-    xd = [x_new(end)+10;y_new(end)+10;0]; % desired tip state for next 
+    xd = [x_new(end);y_new(end);0]; % desired tip state for next loop
 
     while (1)
-        if FBG_switch == 1
-            [msg_received,status,statustext] = subscriber.getSubMsg(10);
-            curvatures_xy = msg_received.curvature_xy;
-            curvatures_xz = msg_received.curvature_xz;
-        else
-            curvatures_xy = [];
-            curvatures_xz = [];
-        end
+%         if FBG_switch == 1
+%             [msg_received,status,statustext] = subscriber.getSubMsg(10);
+%             curvatures_xy = msg_received.curvature_xy;
+%             curvatures_xz = msg_received.curvature_xz;
+%         else
+%             curvatures_xy = [];
+%             curvatures_xz = [];
+%         end
+
+%         if exist('client','var')
+%             msg_received = getResponseMsg(client);
+%             curvatures_xy = msg_received.curvature_xy;
+%             curvatures_xz = msg_received.curvature_xz;
+%         end
         
         ic = [x_pre(end);y_pre(end);k_pre(end);0;0;0];
         dcontrol = numerical_jacobian_pos_ori_control(xd, Kp, ic, L, Mu, Alpha, Interval,...
         x_pre,y_pre,k_pre,...
-        curvatures_xz, AA_lcn);
+        [], AA_lcn);
 
         % motor gain
         % cumulative record x/y/r at control point
@@ -222,20 +249,27 @@ while(1)
             galil_command(g, give_pos);
             % assume the error during motor move is zero
         end
+        
         % calculate error
-        if FBG_switch == 1
-            [msg_received,status,statustext] = subscriber.getSubMsg(10);
+%         if FBG_switch == 1
+%             [msg_received,status,statustext] = subscriber.getSubMsg(10);
+%             curvatures_xy = msg_received.curvature_xy;
+%             curvatures_xz = msg_received.curvature_xz;
+%         else
+%             curvatures_xy = [];
+%             curvatures_xz = [];
+%         end
+
+        if exist('client','var')
+            msg_received = getResponseMsg(client);
             curvatures_xy = msg_received.curvature_xy;
             curvatures_xz = msg_received.curvature_xz;
-        else
-            curvatures_xy = [];
-            curvatures_xz = [];
         end
-
+            disp(curvatures_xy)
         [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
             x_pre, y_pre, k_pre, ...
             dbx, dby, dbk, ...
-            curvatures_xz, AA_lcn);
+            curvatures_xy, AA_lcn);
         x_pre = x_new;
         y_pre = y_new;
         k_pre = k_new;
@@ -245,15 +279,14 @@ while(1)
         pub_msg.needle_slope  = k_new;
         publisher.sendPubMsg(pub_msg);
 
-        error = norm([x_new(end);y_new(end);k_new(end)] - xd)
+        error = norm([x_new(end);y_new(end);k_new(end)] - xd);
         %disp(error);
-
 
         % break critria
         if error <= 0.05
-            disp("arrive at goal, looking for next goal.")
+            %disp("arrive at goal, looking for next goal.");
             break;
         end
-
+        
     end
 end

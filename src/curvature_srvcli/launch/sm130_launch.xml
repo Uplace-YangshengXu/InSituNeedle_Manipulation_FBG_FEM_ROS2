@@ -3,15 +3,13 @@
     <node
     pkg = "sm130_interrogator"
     exec = "talker"
-    name = "interrogator_pub"
-    output = "screen">
+    name = "interrogator_pub">
     </node>
     
 
     <node
     pkg = "curvature_srvcli"
-    exec = "server"
-    output = "screen">
+    exec = "server">
     </node>
 
 
