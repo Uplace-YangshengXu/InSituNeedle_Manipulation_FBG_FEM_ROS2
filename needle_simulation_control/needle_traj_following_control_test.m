@@ -57,9 +57,9 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [30;
-      0;
-      0];
+xd = [0 30;
+      0 -2;
+      0 -0.1];
 % initialize the desired traj
 desired = 1; 
 % stopping and updating threshold
@@ -80,9 +80,9 @@ if FBG_switch == 1
         delete(client)
     end
     client = MatlabRosSrvCli('client','/cli_node',"/cal_curv","fbg_msgs/CalCurvature");
-end
+    [connectionStatus,connectionStatustext] = waitForServer(client.cli);
 
-% [connectionStatus,connectionStatustext] = waitForServer(client.cli);
+end
 
 %% initialization for motor
 g = []; % object of Galil motor controller
@@ -161,16 +161,21 @@ publisher.sendPubMsg(pub_msg);
         [],AA_lcn,thre,desired);
 
 %         disp(desired)
-        
+        %scaling the control using step_size for FEM convergence   
+        step_size = 0.1;
+        if norm(dcontrol*dt) > 0.5
+            dcontrol = dcontrol * step_size; 
+        end
+
         % get scaled base control
         dbx = dcontrol(1)*dt;
         dby = dcontrol(2)*dt;
         dbk = dcontrol(3)*dt;
 
         %restricting the control for FEM convergence
-        dbx = sign(dbx)*min(0.1,norm(dbx));
-        dby = sign(dby)*min(0.05,norm(dby));
-        dbk = sign(dbk)*min(0.01,norm(dbk));
+%         dbx = sign(dbx)*min(0.1,norm(dbx));
+%         dby = sign(dby)*min(0.05,norm(dby));
+%         dbk = sign(dbk)*min(0.01,norm(dbk));
 
         %% Transform the control into motor control
         [dx,dy,dr,last_x_control_point,last_y_control_point,last_r_control_point] = robot_geometric(dbx,dby,dbk,last_x_control_point,last_y_control_point,last_r_control_point);
