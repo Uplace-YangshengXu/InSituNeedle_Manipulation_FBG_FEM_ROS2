@@ -38,6 +38,16 @@ Or using launch file:
 
     ro2 launch curvature_srvcli curvature_launch.xml
 
+Visualization in python:
+
+    ros2 run needle_shape needle_shape_viewer 
+
+Visualization in matlab: matlab_visualization.m
+
+Sensor wavelength visualization:
+
+    ros2 run needle_shape sensor_shape_viewer 
+
 ## Other executable:
 
 Client node:
