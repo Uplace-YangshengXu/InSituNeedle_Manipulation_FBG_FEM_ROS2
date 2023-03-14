@@ -32,8 +32,8 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 1; %switch off fbg with 0
-Motor_switch = 1; %switch off motor with 0
+FBG_switch = 0; %switch off fbg with 0
+Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -79,7 +79,7 @@ dt = 0.1; % scale the control
 ini_tip_state = [x_pre(end);y_pre(end);k_pre(end)];
 ini_control = [0;0;0];
 
-%% initialization
+%% initialization for sub
 
 % % curvature reading subscriber
 % if FBG_switch == 1
@@ -89,6 +89,7 @@ ini_control = [0;0;0];
 %     % create a matlab subscriber to get curvature reading
 %     subscriber = MatlabRosPubSub('sub','matlab_curvature_subscriber','/pub_Curv','fbg_msgs/Curvature');
 % end
+%% initialization for client
 
 if FBG_switch == 1
     if exist("client",'var')
@@ -99,7 +100,7 @@ if FBG_switch == 1
 
 end
 
-%%
+%% initialization for motor
 
 g = []; % object of Galil motor controller
 
@@ -116,6 +117,7 @@ end
 curvatures_xy = [];
 curvatures_xz = [];
 
+%% sub to get curv
 % if exist('subscriber','var')
 %     [msg_received,status,statustext] = subscriber.getSubMsg(10);
 %     curvatures_xy = msg_received.curvature_xy;
@@ -124,6 +126,7 @@ curvatures_xz = [];
 %     curvatures_xy = zeros(NumAA,1);
 %     curvatures_xz = zeros(NumAA,1);
 % end
+%% client to get curv 
 
 if exist('client','var')
     msg_received = getResponseMsg(client);
@@ -208,21 +211,7 @@ while(1)
     xd = [x_new(end);y_new(end);0]; % desired tip state for next loop
 
     while (1)
-%         if FBG_switch == 1
-%             [msg_received,status,statustext] = subscriber.getSubMsg(10);
-%             curvatures_xy = msg_received.curvature_xy;
-%             curvatures_xz = msg_received.curvature_xz;
-%         else
-%             curvatures_xy = [];
-%             curvatures_xz = [];
-%         end
 
-%         if exist('client','var')
-%             msg_received = getResponseMsg(client);
-%             curvatures_xy = msg_received.curvature_xy;
-%             curvatures_xz = msg_received.curvature_xz;
-%         end
-        
         ic = [x_pre(end);y_pre(end);k_pre(end);0;0;0];
         dcontrol = numerical_jacobian_pos_ori_control(xd, Kp, ic, L, Mu, Alpha, Interval,...
         x_pre,y_pre,k_pre,...
@@ -284,7 +273,7 @@ while(1)
 
         % break critria
         if error <= 0.05
-            %disp("arrive at goal, looking for next goal.");
+%             disp("arrive at goal, looking for next goal.");
             break;
         end
         

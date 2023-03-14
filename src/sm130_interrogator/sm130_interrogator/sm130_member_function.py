@@ -40,7 +40,7 @@ class interrogator_publisher(Node):
         self.msg.signal_reading = array("d",array("d",rawdata)) # array.array
         #print(msg.signal_reading)
         self.publisher_.publish(self.msg)
-        self.get_logger().info('Published %d readings' %self.total_reading_num)
+        #self.get_logger().info('Published %d readings' %self.total_reading_num)
 
 
 class interrogator_subscriber(Node):
