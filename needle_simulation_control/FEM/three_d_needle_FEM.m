@@ -44,7 +44,7 @@ end
 AA_crv_xy = 1e-3*curvatures_xy';
 AA_crv_xz = 1e-3*curvatures_xz';
 AA_er = [];
-if ~isempty(AA_lcn) % if curvature is empty then AA_er is []
+if ~isempty(AA_crv_xz) || ~isempty(AA_crv_xy) % if curvature is empty then AA_er is []
     AA_er = round(AA_lcn./h) + 1; % elements where the left-moment is fixed
     AA_crv_xy = AA_crv_xy(AA_er >= 0); % curvatures that have negative element indices are skipped
     AA_crv_xz = AA_crv_xz(AA_er >= 0);
@@ -154,8 +154,8 @@ pe = pe_beam + pe_cont;
 % replace the curvature with fbg measured value
 FBG_idx_r = find(e == AA_er);
 if FBG_idx_r % if input curvature is [] then FBG_idx_r is also []
-    pe(3) = AA_crv_xy(FBG_idx_r)*E*I;
-    pe(4) = AA_crv_xz(FBG_idx_r)*E*I;
+    pe(3) = AA_crv_xz(FBG_idx_r)*E*I;
+    pe(4) = AA_crv_xy(FBG_idx_r)*E*I;
 end
 ke = ke_beam + ke_cont;
 end
