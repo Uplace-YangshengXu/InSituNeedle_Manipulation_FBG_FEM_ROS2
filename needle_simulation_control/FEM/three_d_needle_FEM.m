@@ -154,8 +154,8 @@ pe = pe_beam + pe_cont;
 % replace the curvature with fbg measured value
 FBG_idx_r = find(e == AA_er);
 if FBG_idx_r % if input curvature is [] then FBG_idx_r is also []
-    pe(3) = AA_crv_xz(FBG_idx_r)*E*I;
-    pe(4) = AA_crv_xy(FBG_idx_r)*E*I;
+    pe(3) = AA_crv_xy(FBG_idx_r)*E*I;
+    pe(4) = AA_crv_xz(FBG_idx_r)*E*I;
 end
 ke = ke_beam + ke_cont;
 end
