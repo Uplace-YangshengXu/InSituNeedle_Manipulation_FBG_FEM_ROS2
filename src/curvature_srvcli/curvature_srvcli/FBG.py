@@ -51,8 +51,10 @@ class FBG_process:
         check_status = 0
 
         for i in range(self.Num_AA):   
-            raw_data_seperate_AA['AA'+str(i+1)] = np.array([var])
-        # end for
+            raw_data_seperate_AA['AA'+str(i+1)] = np.array([])
+
+        #end for
+
         counter = 0
 
         for i in range(self.Num_CH):

@@ -89,7 +89,7 @@ for i = 1:num_AA
                 
                 data_0 = readmatrix(calibration_filename{num_file},'Sheet',strcat(sheet_name,'_0deg'));
                 
-                measure_mat = [measure_mat;1, mean(data_0(:,[i,i+num_AA]) - data_0_unbent(:,[i,i+num_AA]),1)];
+                measure_mat = [measure_mat;mean(data_0(:,[i,i+num_AA]) - data_0_unbent(:,[i,i+num_AA]),1)];
                 real_mat = [real_mat; curve_digi,0];
             end
         end
@@ -107,7 +107,7 @@ for i = 1:num_AA
                 data_90_unbent = readmatrix(calibration_filename{num_file},'Sheet',strcat(sheet_name_unbent,'_90deg'));
                 data_90 = readmatrix(calibration_filename{num_file},'Sheet',strcat(sheet_name,'_90deg'));
                 
-                measure_mat = [measure_mat;1, mean(data_90(:,[i,i+num_AA]) - data_90_unbent(:,[i,i+num_AA]),1)];
+                measure_mat = [measure_mat;mean(data_90(:,[i,i+num_AA]) - data_90_unbent(:,[i,i+num_AA]),1)];
                 real_mat = [real_mat; 0,curve_digi];
             end
         end
@@ -126,7 +126,7 @@ for i = 1:num_AA
                 sheet_name_unbent = strcat('trial',num2str(tri),'_0mm');
                 data_0_unbent = readmatrix(validation_filename{num_file},'Sheet',strcat(sheet_name_unbent,'_0deg'));
                 data_0 = readmatrix(validation_filename{num_file},'Sheet',strcat(sheet_name,'_0deg'));
-                measure_mat = [measure_mat;1, mean(data_0(:,[i,i+num_AA]) - data_0_unbent(:,[i,i+num_AA]),1)];
+                measure_mat = [measure_mat;mean(data_0(:,[i,i+num_AA]) - data_0_unbent(:,[i,i+num_AA]),1)];
                 real_mat = [real_mat; curve_digi,0];
             end
         end
@@ -144,7 +144,7 @@ for i = 1:num_AA
                 data_90_unbent = readmatrix(validation_filename{num_file},'Sheet',strcat(sheet_name_unbent,'_90deg'));
                 data_90 = readmatrix(validation_filename{num_file},'Sheet',strcat(sheet_name,'_90deg'));
                 
-                measure_mat = [measure_mat;1, mean(data_90(:,[i,i+num_AA]) - data_90_unbent(:,[i,i+num_AA]),1)];
+                measure_mat = [measure_mat;mean(data_90(:,[i,i+num_AA]) - data_90_unbent(:,[i,i+num_AA]),1)];
                 real_mat = [real_mat; 0,curve_digi];
             end
         end

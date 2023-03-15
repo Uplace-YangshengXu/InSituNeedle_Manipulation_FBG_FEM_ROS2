@@ -66,7 +66,7 @@ class needle_shape_visulisation(Node):
         if self.if_init_curv_plot == 0:
             # init plot
             self.if_init_curv_plot = 1
-            
+            print(curv_msg.curvatures_xy)
         self.curv_listener = 1
 
 
