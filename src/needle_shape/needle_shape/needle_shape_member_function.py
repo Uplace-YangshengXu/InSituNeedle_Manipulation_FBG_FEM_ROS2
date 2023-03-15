@@ -15,7 +15,7 @@ class needle_shape_visulisation(Node):
         # ini figure
         self.matlab_listener = 0
         self.curv_listener = 0
-
+        self.curv_text = {}
         matplotlib.use('Qt5Agg')
         # QtAgg Qt5Agg agg
         #matplotlib.rcParams['figure.figsize'] = (3,3)
@@ -138,6 +138,12 @@ class needle_shape_visulisation(Node):
                                            self.needle_msg.needle_y_axis[self.needle_tip_index],
                                            self.needle_msg.needle_z_axis[self.needle_tip_index], "tip", color='red')
             
+            for i in range(len(self.needle_aa_index)):
+                self.curv_text[i] = self.axs.text(self.needle_msg.needle_x_axis[self.needle_aa_index[i]], 
+                                           self.needle_msg.needle_y_axis[self.needle_aa_index[i]]-2,
+                                           self.needle_msg.needle_z_axis[self.needle_aa_index[i]],"AA" + str(i), color = 'black' )
+
+
             # create needle tip projection
             '''
             self.xy_projection, = self.axs.plot3D(
@@ -219,6 +225,12 @@ class needle_shape_visulisation(Node):
                                         + ", "
                                         + str(round(self.needle_msg.needle_slope[self.needle_tip_index],3))
                                         + "]")
+            for i in range(len(self.needle_aa_index)):
+                self.curv_text[i].set_position([self.needle_msg.needle_x_axis[self.needle_aa_index[i]], 
+                                           self.needle_msg.needle_y_axis[self.needle_aa_index[i]]-15,
+                                           self.needle_msg.needle_z_axis[self.needle_aa_index[i]]])
+                if self.if_init_curv_plot == 1:
+                        self.curv_text[i].set_text("[" + str(round(self.curv_msg.curvatures_xy[i]),4) + ", " + str(round(self.curv_msg.curvatures_xz[i]),4) + "]")
 
             self.needle_base._offsets3d = (
                     np.ma.ravel(self.needle_msg.needle_x_axis[self.needle_base_index]),
