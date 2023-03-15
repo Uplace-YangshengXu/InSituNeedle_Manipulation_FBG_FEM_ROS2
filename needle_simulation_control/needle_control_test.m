@@ -32,7 +32,7 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 0; %switch off fbg with 0
+FBG_switch = 1; %switch off fbg with 0
 Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
@@ -219,6 +219,8 @@ while(1)
 
         % motor gain
         % cumulative record x/y/r at control point
+        dcontrol = zeros(1,3);
+
 
         % get scaled base control
         dbx = dcontrol(1)*dt;

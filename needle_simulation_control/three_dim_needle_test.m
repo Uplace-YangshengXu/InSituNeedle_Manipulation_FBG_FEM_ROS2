@@ -15,7 +15,7 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 0; %switch off fbg with 0
+FBG_switch = 1; %switch off fbg with 0
 Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
@@ -39,10 +39,10 @@ Mu = 0;
 Alpha = 1;
 
 Interval = {[0, 80]};
+offset = 60;
+L = 200 - offset; % total length of needle
 
-L = 200; % total length of needle
-
-bx = -202; % needle base x coordinate
+bx = -L-1; % needle base x coordinate
 by = 0; % needle base y coordinate
 bz = 0; % needle base z coordinate
 bty = 0; % needle base slope about y axis
@@ -57,7 +57,7 @@ tz_pre = btz*ones(size(x_pre)); % nodal slopes about z axis
 % position of AA on needle, measured from needle base.
 % only the AA mentioned in AA_lcn will be used in FEM, 
 % in this test, we omit the last AA
-AA_lcn_ini = [100;135;170]; 
+AA_lcn_ini = [100;135;170] - offset; 
 
 % initial guess for FEM
 

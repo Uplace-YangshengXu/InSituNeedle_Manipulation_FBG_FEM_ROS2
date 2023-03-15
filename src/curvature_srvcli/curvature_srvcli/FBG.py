@@ -29,7 +29,7 @@ class FBG_process:
 
         self.total_reading_num = total_reading_num
         self.signal_each_ch = signal_each_ch
-
+        self.dif_bound = 5
         self.load_params(filename)
 
         """
@@ -45,7 +45,7 @@ class FBG_process:
     #properties
     
     #functions
-    def checkSignalSize(self, raw_data: np.ndarray, var = 1) -> dict:
+    def checkSignalSize(self, raw_data: np.ndarray, var = 0) -> dict:
         # create a dict
         raw_data_seperate_AA = {}
         check_status = 0
@@ -79,16 +79,32 @@ class FBG_process:
         input: raw_signal, np.ndarray 1*N
         output: curvatures, Num_AA * 2
         """
+        
+        
 
-        curvatures = np.zeros(self.Num_AA*2).reshape(self.Num_AA,2)
+
+
 
         # check reading size and convert the input signal of raw_signal
         raw_signal_seperate_AA,check_status = self.checkSignalSize(raw_signal)
+
+
+        curvatures = np.zeros(self.Num_AA*2).reshape(self.Num_AA,2)
         
         if check_status == 1:
+            
+
             aa_counter = 0
             for Cal_AA_names,Cal_AA_mats in self.cal_mats.items():
                 diff_value = raw_signal_seperate_AA[Cal_AA_names] - self.ref_wavelength[Cal_AA_names]
+                # diff is 1 by numAA
+
+                max_dif = max(abs(diff_value))
+
+                if max_dif >= self.dif_bound:
+                    print("FBG value outbound, return empty list")
+                    return []
+
                 curvatures[aa_counter][0:2] = diff_value @ Cal_AA_mats
                 aa_counter += 1
 

@@ -27,18 +27,25 @@ class CalService(Node):
     
     def cal_curv_callback(self, request, response):
         #calculate response
-        print("get request from client")
+        #print("get request from client")
         #print(request)
         #print(response)
         if self.if_init_fbg_process == 1:
+            #ref = self.fbg_process.ref_wavelength
             curvatures = self.fbg_process.getCurvatures(np.asarray(self.msg.signal_reading))
-            print("ref wavelength:")
-            print(self.fbg_process.ref_wavelength)
 
-            response.curvature.curvature_xy = array("d",curvatures[:,0])
-            response.curvature.curvature_xz = array("d",curvatures[:,1])
+            #print("ref wavelength:")
+            #print(self.fbg_process.ref_wavelength)
+            if len(curvatures) == 0:
+                print("get empty curvatures")
+                response.curvature.curvature_xy = array("d",[])
+                response.curvature.curvature_xz = array("d",[])
+            else:    
+                response.curvature.curvature_xy = array("d",curvatures[:,0])
+                response.curvature.curvature_xz = array("d",curvatures[:,1])
+
             print("send msgs to client:")
-            print(curvatures)
+            print(response)
             
         else:
             print("fbg ref data miss, try again!")
