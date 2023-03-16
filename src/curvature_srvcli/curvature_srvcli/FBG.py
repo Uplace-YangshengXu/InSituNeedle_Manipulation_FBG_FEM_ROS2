@@ -106,7 +106,6 @@ class FBG_process:
                 if max_dif >= self.dif_bound:
                     print("FBG value outbound, return empty list")
                     return []
-
                 curvatures[aa_counter][0:2] = diff_value @ Cal_AA_mats
                 aa_counter += 1
 

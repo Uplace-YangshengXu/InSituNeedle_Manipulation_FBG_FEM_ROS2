@@ -5,17 +5,17 @@ clc;
 
 Interval = {[0, 100]};
 xd = [30 -2 -0.1];
-curvature_switch = 0;
+curvature_switch = 1;
 %%
 % initialize the needleshape sub
 needle_subscriber = MatlabRosPubSub('sub','matlab_needle_shape_subscriber','/needle_shape','fbg_msgs/NeedleShape');
 
 if curvature_switch == 1
-    if exist("curv_client",'var')
-        delete(curv_client)
+    if exist("cur_client",'var')
+        delete(cur_client)
     end
     cur_client = MatlabRosSrvCli('client','/curv_cli_node',"/cal_curv","fbg_msgs/CalCurvature");
-    [connectionStatus,connectionStatustext] = waitForServer(client.cli);
+    [connectionStatus,connectionStatustext] = waitForServer(cur_client.cli);
 
 end
 
@@ -111,23 +111,26 @@ while 1
     %% Curvature plotting
     if curvature_switch ==1
 
-        curv_received = getResponseMsg(client);
+        curv_received = getResponseMsg(cur_client);
         curvatures_xy = curv_received.curvature_xy;
         curvatures_xz = curv_received.curvature_xz;
 
         for i = 1:size(AA_lcn,1)
+            if ~(size(curvatures_xz,1))
+                curvatures_xz = [0;0;0;0];
+            end
             switch i
                 case 1 
-                    str_A1 = "FBG-AA1: " + newline +num2str(curvatures_xz(1,2))+" (1/m)";
+                    str_A1 = "FBG-AA1: " + newline +num2str(curvatures_xz(1))+" (1/m)";
                     set(AA1_text,'Position',[x_new(index_aa(1)+1)-10,y_new(index_aa(1)+1)+10], 'String', str_A1);
                 case 2
-                    str_A2 = "FBG-AA2: " + newline +num2str(curvatures_xz(2,2))+" (1/m)";
+                    str_A2 = "FBG-AA2: " + newline +num2str(curvatures_xz(2))+" (1/m)";
                     set(AA2_text,'Position',[x_new(index_aa(2)+1)-10,y_new(index_aa(2)+1)-10], 'String', str_A2);
                 case 3
-                    str_A3 = "FBG-AA3: " + newline +num2str(curvatures_xz(3,2))+" (1/m)";
+                    str_A3 = "FBG-AA3: " + newline +num2str(curvatures_xz(3))+" (1/m)";
                     set(AA3_text,'Position',[x_new(index_aa(3)+1)-10,y_new(index_aa(3)+1)+10], 'String', str_A3);
                 case 4
-                    str_A4 = "FBG-AA4: " + newline +num2str(curvatures_xz(4,2))+" (1/m)";
+                    str_A4 = "FBG-AA4: " + newline +num2str(curvatures_xz(4))+" (1/m)";
                     set(AA4_text,'Position',[x_new(index_aa(4)+1)-10,y_new(index_aa(4)+1)-10], 'String', str_A4);
             end
         end

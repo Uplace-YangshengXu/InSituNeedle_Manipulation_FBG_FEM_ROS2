@@ -15,7 +15,7 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 1; %switch off fbg with 0
+FBG_switch = 0; %switch off fbg with 0
 Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
@@ -31,18 +31,18 @@ Alpha_PSM = 8.74;
 Alpha_PVC = -1;
 Mu_PSM = 3.03e+03;
 Mu_PVC = 1.2715e+04;
-%Mu = Mu_PSM;
-%Alpha = Alpha_PSM;
+Mu = Mu_PSM;
+Alpha = Alpha_PSM;
 
 % for air
-Mu = 0;
-Alpha = 1;
+% Mu = 0;
+% Alpha = 1;
 
 Interval = {[0, 80]};
 
 L = 200; % total length of needle
 
-bx = -202; % initial base position
+bx = -170; % initial base position
 by = 0; 
 bk = 0;
 
@@ -57,9 +57,9 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [0 30;
-      0 -2;
-      0 -0.1];
+xd = [30 20 30;
+      0 0 -2;
+      0 0 -0.1];
 % initialize the desired traj
 desired = 1; 
 % stopping and updating threshold

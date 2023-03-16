@@ -7,7 +7,7 @@ from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
 import matplotlib
 import sys
-from curvature_srvcli import CalClient
+from curvature_member_function import CalClient
 
 class needle_shape_visulisation(Node):
     def __init__(self):
