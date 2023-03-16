@@ -25,40 +25,40 @@ cali_ch1_deg0 = {[1,3],
             [1,2,3,5,6],
             [1,2,3,4,6],
             [1,2,6]};
-cali_ch1_deg90 = {[1:6],
+cali_ch1_deg90 = {[1:5],
             [1:6],
             [1:6],
             [1,2,4,5,6]};
         
- cali_ch2_deg0 = {[1,3],
-            [1,2,3,5,6],
-            [1,2,3,4,6],
-            [1,2,6]};
- 
- cali_ch2_deg90 = {[1:6],
-            [1:6],
-            [1:6],
-            [1,2,4,5,6]};
+%  cali_ch2_deg0 = {[1,3],
+%             [1,2,3,5,6],
+%             [1,2,3,4,6],
+%             [1,2,6]};
+%  
+%  cali_ch2_deg90 = {[1:6],
+%             [1:6],
+%             [1:6],
+%             [1,2,4,5,6]};
         
  vali_ch1_deg0 = {[1,6],
             [1,3,4,5,6],
             [1,3,4,6],
             [1,3,4,6]};
  
- vali_ch1_deg90 = {[1:6],
+ vali_ch1_deg90 = {[1,2,4,5],
             [1:6],
             [1:6],
             [1,2,5,6]};
  
- vali_ch2_deg0 = {[1,6],
-            [1,3,4,5,6],
-            [1,3,4,6],
-            [1,3,4,6]};
- 
- vali_ch2_deg90 = {[1:6],
-            [1:6],
-            [1:6],
-            [1,2,5,6]};
+%  vali_ch2_deg0 = {[1,6],
+%             [1,3,4,5,6],
+%             [1,3,4,6],
+%             [1,3,4,6]};
+%  
+%  vali_ch2_deg90 = {[1:6],
+%             [1:6],
+%             [1:6],
+%             [1,2,5,6]};
 
             
 
@@ -68,7 +68,8 @@ cal_name = 'Cal_mat_2CH_alldata.mat';
 %% construct meassured data matrix and expected data matrix
 
 
-for i = 1:num_AA
+%for i = 1:num_AA
+for i = 3
     real_mat = [];
     measure_mat = [];
 
@@ -156,11 +157,18 @@ for i = 1:num_AA
     error =  predict - real_mat;
     disp(H_sub);
     disp(mean(abs(error),1));
+    disp(max(abs(error)));
+    figure(1)
+    plot(error(:,1));
+    hold on;
+    plot(error(:,2));
+    legend("xy plane","xz plane");
+    grid on;
+    hold off;
 
 
 end
 
-%disp(size(real_mat));
-%disp(size(measure_mat));
+
         
     
