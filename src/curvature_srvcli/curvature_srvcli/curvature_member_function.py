@@ -60,6 +60,7 @@ class CalService(Node):
         if self.if_init_fbg_process == 0:
       
             self.fbg_process = FBG_process(self.Load_json_filename,self.msg.total_reading_num,self.msg.signal_each_ch,np.asarray(self.msg.signal_reading))
+            
             self.if_init_fbg_process = 1
         #end if
 
