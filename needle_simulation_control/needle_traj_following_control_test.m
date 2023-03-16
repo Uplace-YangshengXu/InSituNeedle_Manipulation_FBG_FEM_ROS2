@@ -57,7 +57,7 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [30 20 30;
+xd = [30 30 60;
       0 0 -2;
       0 0 -0.1];
 % initialize the desired traj

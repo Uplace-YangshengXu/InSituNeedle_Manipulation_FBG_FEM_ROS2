@@ -7,7 +7,7 @@ from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
 import matplotlib
 import sys
-from curvature_member_function import CalClient
+from curvature_srvcli.curvature_member_function import CalClient
 
 class needle_shape_visulisation(Node):
     def __init__(self):
@@ -193,7 +193,7 @@ class needle_shape_visulisation(Node):
 
     
     def plot_needle_shape(self):
-        if self.client.service_is_ready() == 1:
+        if self.client.cli.service_is_ready() == 1:
                 response = self.client.send_request()
                 self.curv_msg = response.curvature
                 self.if_init_curv_plot = 1
@@ -239,7 +239,8 @@ class needle_shape_visulisation(Node):
                                            self.needle_msg.needle_y_axis[self.needle_aa_index[i]]-15,
                                            self.needle_msg.needle_z_axis[self.needle_aa_index[i]]])
                 if self.if_init_curv_plot == 1:
-                        self.curv_text[i].set_text("[" + str(round(self.curv_msg.Curvature.curvatures_xy[i]),4) + ", " + str(round(self.curv_msg.Curvature.curvatures_xz[i]),4) + "]")
+                        print(self.curv_msg)
+                        self.curv_text[i].set_text("[" + str(round(self.curv_msg.curvature_xy[i],4)) + ", " + str(round(self.curv_msg.curvature_xz[i],4)) + "]")
 
             self.needle_base._offsets3d = (
                     np.ma.ravel(self.needle_msg.needle_x_axis[self.needle_base_index]),
