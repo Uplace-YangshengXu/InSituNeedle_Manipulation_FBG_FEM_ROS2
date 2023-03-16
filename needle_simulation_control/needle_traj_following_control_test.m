@@ -1,7 +1,8 @@
 % created by Jiarong Kang at 27/02/2023
 % adpoted from needle_control_test, used for trajectory following
 %% dependency initialization
-
+clc
+clear
 % for FEM
 addpath ./FEM/helper_funcs/invChol/
 addpath ./FEM/helper_funcs/
@@ -16,7 +17,7 @@ addpath ./Control/
 
 %% switches
 FBG_switch = 0; %switch off fbg with 0
-Motor_switch = 0; %switch off motor with 0
+Motor_switch = 1; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -31,18 +32,18 @@ Alpha_PSM = 8.74;
 Alpha_PVC = -1;
 Mu_PSM = 3.03e+03;
 Mu_PVC = 1.2715e+04;
-Mu = Mu_PSM;
-Alpha = Alpha_PSM;
+% Mu = Mu_PSM;
+% Alpha = Alpha_PSM;
 
 % for air
-% Mu = 0;
-% Alpha = 1;
+Mu = 0;
+Alpha = 1;
 
 Interval = {[0, 80]};
 
 L = 200; % total length of needle
 
-bx = -170; % initial base position
+bx = -200; % initial base position
 by = 0; 
 bk = 0;
 
@@ -57,9 +58,9 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [30 30 60;
-      0 0 -2;
-      0 0 -0.1];
+xd = [4 0;
+      4 0;
+      0 0];
 % initialize the desired traj
 desired = 1; 
 % stopping and updating threshold
@@ -90,6 +91,11 @@ g = []; % object of Galil motor controller
 if Motor_switch == 1
     % run ini_motor_controller.m
     g = ini_motor_controller(motor_controller_ip,motor_controller_port);
+    
+    % set home position
+    %set_home_pos=strcat('DP ',num2str(0),',',num2str(0),',', num2str(0), ',', num2str(0));
+    %galil_command(g, set_home_pos);
+
     % go to home position
     Input_AbsPos_X = 0;
     Input_AbsPos_Y = 0;
