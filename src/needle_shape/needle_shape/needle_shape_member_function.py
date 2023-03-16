@@ -7,6 +7,7 @@ from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
 import matplotlib
 import sys
+from curvature_srvcli import CalClient
 
 class needle_shape_visulisation(Node):
     def __init__(self):
@@ -50,17 +51,19 @@ class needle_shape_visulisation(Node):
                 'needle_shape',
                 self.matlab_listener_callback,
                 10)
-       
+        '''
         self.curv_subscription = self.create_subscription(
                 Curvature,
                 'Pub_Curv',
                 self.curv_listener_callback,
                 10)
-        
+        '''
 
         plot_timer_period = 0.05
         self.plottimer = self.create_timer(plot_timer_period,self.plot_needle_shape)
-
+        
+        self.client = CalClient()
+    '''
     def curv_listener_callback(self,msg):   
         self.curv_msg = msg
         if self.if_init_curv_plot == 0:
@@ -68,7 +71,7 @@ class needle_shape_visulisation(Node):
             self.if_init_curv_plot = 1
             print(curv_msg.curvatures_xy)
         self.curv_listener = 1
-
+    '''
 
 
     def matlab_listener_callback(self,msg):
@@ -190,6 +193,12 @@ class needle_shape_visulisation(Node):
 
     
     def plot_needle_shape(self):
+        if self.client.service_is_ready() == 1:
+                response = self.client.send_request()
+                self.curv_msg = response.curvature
+                self.if_init_curv_plot = 1
+
+
         if self.matlab_listener == 1 and self.if_init_needle_shape == 1:
             
             #update needle shape use animation
@@ -230,7 +239,7 @@ class needle_shape_visulisation(Node):
                                            self.needle_msg.needle_y_axis[self.needle_aa_index[i]]-15,
                                            self.needle_msg.needle_z_axis[self.needle_aa_index[i]]])
                 if self.if_init_curv_plot == 1:
-                        self.curv_text[i].set_text("[" + str(round(self.curv_msg.curvatures_xy[i]),4) + ", " + str(round(self.curv_msg.curvatures_xz[i]),4) + "]")
+                        self.curv_text[i].set_text("[" + str(round(self.curv_msg.Curvature.curvatures_xy[i]),4) + ", " + str(round(self.curv_msg.Curvature.curvatures_xz[i]),4) + "]")
 
             self.needle_base._offsets3d = (
                     np.ma.ravel(self.needle_msg.needle_x_axis[self.needle_base_index]),
