@@ -258,8 +258,13 @@ class needle_shape_visulisation(Node):
                                            self.needle_msg.needle_y_axis[self.needle_aa_index[i]]-15,
                                            self.needle_msg.needle_z_axis[self.needle_aa_index[i]]])
                 if self.if_init_curv_plot == 1:
-                        print(self.curv_msg)
+                    if len(self.curv_msg.curvature_xy) == 0 or len(self.curv_msg.curvature_xz) == 0:
+                        self.curv_text[i].set_text("simulate data")
+                        print(i)
+                        print(self.curv_msg.curvature_xy)
+                    else:
                         self.curv_text[i].set_text("[" + str(round(self.curv_msg.curvature_xy[i],4)) + ", " + str(round(self.curv_msg.curvature_xz[i],4)) + "]")
+
 
             self.needle_base._offsets3d = (
                     np.ma.ravel(self.needle_msg.needle_x_axis[self.needle_base_index]),
