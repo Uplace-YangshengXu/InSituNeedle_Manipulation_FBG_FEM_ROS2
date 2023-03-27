@@ -58,13 +58,12 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [0 10 20 30;
-      0 -1 -1.5 -2;
-      0 0 0.1 -0.1];
+xd = [0 30;
+      0 -2;
+      0 -0.1];
 
 % initialize the desired traj
 desired = 1; 
-
 % stopping and updating threshold
 thre = 0.3; 
 
