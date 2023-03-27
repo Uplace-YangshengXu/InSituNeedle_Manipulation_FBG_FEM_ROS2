@@ -46,6 +46,10 @@ class needle_shape_visulisation(Node):
         self.if_init_needle_shape = 0
         self.if_init_curv_plot = 0
 
+        self.tip_traj_x = []
+        self.tip_traj_y = []
+        self.tip_traj_z = []
+
         self.needle_subscription = self.create_subscription(
                 NeedleShape,
                 'needle_shape',
@@ -63,6 +67,7 @@ class needle_shape_visulisation(Node):
         self.plottimer = self.create_timer(plot_timer_period,self.plot_needle_shape)
         
         self.client = CalClient()
+        
     '''
     def curv_listener_callback(self,msg):   
         self.curv_msg = msg
@@ -76,6 +81,10 @@ class needle_shape_visulisation(Node):
 
     def matlab_listener_callback(self,msg):
         self.needle_msg = msg
+        #update tip traj
+        self.tip_traj_x.append(self.needle_msg.needle_x_axis[-1])
+        self.tip_traj_y.append(self.needle_msg.needle_y_axis[-1])
+        self.tip_traj_z.append(self.needle_msg.needle_z_axis[-1])
 
         if self.if_init_needle_shape == 0:
             # first get msg from matlab
@@ -112,6 +121,12 @@ class needle_shape_visulisation(Node):
                     [np.asarray(self.needle_msg.needle_y_axis[self.needle_base_index]),np.asarray(self.needle_msg.needle_y_axis[self.needle_tip_index])],
                     [np.asarray(self.needle_msg.needle_z_axis[self.needle_base_index]),np.asarray(self.needle_msg.needle_z_axis[self.needle_tip_index])]
                     )
+            
+            self.needle_tip_3d, = self.axs.plot3D(
+                    [np.asarray(self.tip_traj_x)],
+                    [np.asarray(self.tip_traj_y)],
+                    [np.asarray(self.tip_traj_z)]
+                    )
 
             plt.setp(self.needle_3d,linestyle='-',linewidth=2,color='k')
             # create those scatter points
@@ -145,7 +160,6 @@ class needle_shape_visulisation(Node):
                 self.curv_text[i] = self.axs.text(self.needle_msg.needle_x_axis[self.needle_aa_index[i]], 
                                            self.needle_msg.needle_y_axis[self.needle_aa_index[i]]-2,
                                            self.needle_msg.needle_z_axis[self.needle_aa_index[i]],"AA" + str(i), color = 'black' )
-
 
             # create needle tip projection
             '''
@@ -206,6 +220,11 @@ class needle_shape_visulisation(Node):
             self.needle_3d.set_xdata(np.asarray(self.needle_msg.needle_x_axis))
             self.needle_3d.set_ydata(np.asarray(self.needle_msg.needle_y_axis)) 
             self.needle_3d.set_3d_properties(np.asarray(self.needle_msg.needle_z_axis))
+
+            self.needle_tip_3d.set_xdata(np.asarray(self.tip_traj_x))
+            self.needle_tip_3d.set_ydata(np.asarray(self.tip_traj_y))
+            self.needle_tip_3d.set_3d_properties(np.asarray(self.tip_traj_z))
+
 
             self.base_text.set_position([self.needle_msg.needle_x_axis[self.needle_base_index],
                                          self.needle_msg.needle_y_axis[self.needle_base_index]+2,
