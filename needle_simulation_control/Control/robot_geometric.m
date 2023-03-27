@@ -16,7 +16,9 @@ function [dx_c,dy_c,dr,Dx,Dy,Dk] = robot_geometric(dx,dy,dk,Dx,Dy,Dk)
 % dr in DEG
 % Dx,Dy,Dk
 
-D = 50.62; % in mm
+%D = 50.62; % in mm previous
+D = 45;
+
 alpha = atan(dk); % since dk is tan(theta) this line get the d_theta in rad
 alpha_kb = Dk; % here Dk is the total change of rotation stage in rad
 %last states

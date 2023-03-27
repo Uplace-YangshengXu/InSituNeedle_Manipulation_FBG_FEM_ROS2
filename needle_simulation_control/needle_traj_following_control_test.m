@@ -41,16 +41,16 @@ Alpha = 1;
 
 Interval = {[0, 80]};
 
-L = 200; % total length of needle
+L = 163; % total length of needle (estimate)
 
-bx = -200; % initial base position
+bx = -L; % initial base position
 by = 0; 
 bk = 0;
 
 % position of AA on needle, measured from needle base.
 % only the AA mentioned in AA_lcn will be used in FEM, 
 % in this test, we omit the last AA
-AA_lcn = [100;135;170]; 
+AA_lcn = [44;79;114]; 
 
 % initial guess for FEM
 x_pre = linspace(bx,bx+L,L+1)';
