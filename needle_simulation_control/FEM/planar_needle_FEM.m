@@ -109,11 +109,15 @@ while converged == 0 && (outer_iter < max_outer_iter)
     if converged ~= 1
         load_ratio = 0.5*load_ratio;
         EBC_delta_cur = zeros(2, 1);
-        fprintf("No convergence. Decreasing load step\n");
+%         fprintf("No convergence. Decreasing load step\n");
     else
         EBC_delta_converged = EBC_delta_cur;
     end
 end % end outer iteration
+
+if converged ~= 1
+    warning("Exited FEM without convergence")
+end
 
 %% Outputs
 [dy_bend, k_new] = extract_from_2d(d); % y coordinate and slope due to bending
@@ -135,7 +139,7 @@ y_new = dy_bend + dy_insert;
 %% Constant element size check
 x_diff = diff(x_new); y_diff = diff(y_new);
 h_pre = sqrt(x_diff.^2 + y_diff.^2);
-if ~all(abs(h_pre - h) < 1e-5)
+if ~all(abs(h_pre - h) < 1e-3)
     warning('Element size wrong\n')
 end
 

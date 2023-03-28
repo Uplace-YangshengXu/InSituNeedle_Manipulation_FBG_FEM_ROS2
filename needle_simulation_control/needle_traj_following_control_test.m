@@ -32,18 +32,20 @@ Alpha_PSM = 8.74;
 Alpha_PVC = -1;
 Mu_PSM = 3.03e+03;
 Mu_PVC = 1.2715e+04;
-% Mu = Mu_PSM;
-% Alpha = Alpha_PSM;
+Mu = Mu_PSM;
+Alpha = Alpha_PSM;
 
 % for air
-Mu = 0;
-Alpha = 1;
+% Mu = 0;
+% Alpha = 1;
+% Mu = Mu_PVC;
+% Alpha = Alpha_PVC;
 
 Interval = {[0, 80]};
 
 L = 163; % total length of needle (estimate)
 
-bx = -L; % initial base position
+bx = -L-0.5; % initial base position
 by = 0; 
 bk = 0;
 
@@ -58,9 +60,9 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [0 10 20 30;
-      0 10 0 10;
-      0 0 0.1 -0.1];
+xd = [20 20;
+      0 -3;
+      0 0];
 
 % initialize the desired traj
 desired = 1; 
@@ -89,6 +91,10 @@ end
 
 %% initialization for motor
 g = []; % object of Galil motor controller
+Input_AbsPos_X = 0;
+Input_AbsPos_Y = 0;
+Input_AbsPos_Z = 0; % actually not use
+Input_Rotation = 0;
 
 if Motor_switch == 1
     % run ini_motor_controller.m
@@ -98,11 +104,7 @@ if Motor_switch == 1
     %set_home_pos=strcat('DP ',num2str(0),',',num2str(0),',', num2str(0), ',', num2str(0));
     %galil_command(g, set_home_pos);
 
-    % go to home position
-    Input_AbsPos_X = 0;
-    Input_AbsPos_Y = 0;
-    Input_AbsPos_Z = 0; % actually not use
-    Input_Rotation = 0;
+
 end
 
 
@@ -155,9 +157,31 @@ publisher.sendPubMsg(pub_msg);
 
 %% main loop
     while (1)
-        tic
+%         tic
         %% updated and the corresponding control
-       
+        dbx = 0;
+        dby = 0;
+        dbk = 0;
+        
+        if FBG_switch == 1
+            msg_received = getResponseMsg(client);
+            curvatures_xy = msg_received.curvature_xy;
+            curvatures_xz = msg_received.curvature_xz;
+        else
+            curvatures_xy = [];
+            curvatures_xz = [];
+        end
+
+        [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
+        x_pre, y_pre, k_pre, ...
+        dbx, dby, dbk, ...
+        curvatures_xz, AA_lcn);
+
+        % update states
+        x_pre = x_new;
+        y_pre = y_new;
+        k_pre = k_new;
+
         pub_msg.needle_x_axis = x_pre;
         pub_msg.needle_y_axis = y_pre;
         pub_msg.needle_slope  = k_pre;
@@ -172,7 +196,7 @@ publisher.sendPubMsg(pub_msg);
 %         disp(desired)
         %scaling the control using step_size for FEM convergence   
         step_size = 0.1;
-        if norm(dcontrol*dt) > 0.5
+        if norm(dcontrol*dt) > 0.3
             dcontrol = dcontrol * step_size; 
         end
 
@@ -180,7 +204,9 @@ publisher.sendPubMsg(pub_msg);
         dbx = dcontrol(1)*dt;
         dby = dcontrol(2)*dt;
         dbk = dcontrol(3)*dt;
-
+%         dbx = 0;
+%         dby = 0;
+%         dbk = 0;
         %restricting the control for FEM convergence
 %         dbx = sign(dbx)*min(0.1,norm(dbx));
 %         dby = sign(dby)*min(0.05,norm(dby));
@@ -188,13 +214,13 @@ publisher.sendPubMsg(pub_msg);
 
         %% Transform the control into motor control
         [dx,dy,dr,last_x_control_point,last_y_control_point,last_r_control_point] = robot_geometric(dbx,dby,dbk,last_x_control_point,last_y_control_point,last_r_control_point);
+        Input_AbsPos_X = Input_AbsPos_X - round(dx*1000);
+        Input_AbsPos_Y = Input_AbsPos_Y - round(dy*1000);
+        Input_AbsPos_Z = 0; % act   ually not use
+        Input_Rotation = Input_Rotation + round(dr*7031.25);
         % control motor
         if Motor_switch == 1
             % move motors
-            Input_AbsPos_X = Input_AbsPos_X - round(dx*1000);
-            Input_AbsPos_Y = Input_AbsPos_Y - round(dy*1000);
-            Input_AbsPos_Z = 0; % act   ually not use
-            Input_Rotation = Input_Rotation + round(dr*7031.25);
             give_pos=strcat('PA ',num2str(Input_AbsPos_X),',',num2str(Input_AbsPos_Y),',', num2str(Input_AbsPos_Z), ',', num2str(Input_Rotation));
             galil_command(g, give_pos);
             % assume the error during motor move is zero
@@ -218,20 +244,20 @@ publisher.sendPubMsg(pub_msg);
         x_pre = x_new;
         y_pre = y_new;
         k_pre = k_new;
-        disp([x_pre(end) y_pre(end) k_pre(end)]);
+%         disp([x_pre(end) y_pre(end) k_pre(end)]);
        
         % publish again
         pub_msg.needle_x_axis = x_new;
         pub_msg.needle_y_axis = y_new;
         pub_msg.needle_slope  = k_new;
         publisher.sendPubMsg(pub_msg);
-
+        disp([x_new(end);y_new(end);k_new(end)])
         error = norm([x_new(end);y_new(end);k_new(end)] - xd(:,end));
         disp(error);
-        toc
+%         toc
         % break critria
         if error <= 0.05
-            disp("arrive at goal, stopped with error: " + error)
+            disp("arrive at goal, stopped with error: " + error);
             break;
         end
     end

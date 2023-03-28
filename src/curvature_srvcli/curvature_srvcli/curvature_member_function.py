@@ -42,7 +42,7 @@ class CalService(Node):
                 response.curvature.curvature_xz = array("d",[])
             else:    
                 response.curvature.curvature_xy = array("d",curvatures[:,0])
-                response.curvature.curvature_xz = array("d",curvatures[:,1])
+                response.curvature.curvature_xz = array("d",-curvatures[:,1])
 
             print("send msgs to client:")
             print(response)
