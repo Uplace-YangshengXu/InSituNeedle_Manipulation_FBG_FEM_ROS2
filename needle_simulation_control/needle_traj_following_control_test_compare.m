@@ -19,7 +19,7 @@ addpath ./Control/
 FBG_switch = 0; %switch off fbg with 0
 Motor_switch = 0; %switch off motor with 0
 Shape_sensing = 0;
-Compare_switch = 0;
+Compare_switch = 1;
 %% interrogator and GMC params
 
 NumChannel = 3; % number of channels
@@ -81,14 +81,14 @@ dt = 0.1;
 
 %% initialization for client
 
-if FBG_switch == 1
+% if FBG_switch == 1
     if exist("client",'var')
         delete(client)
     end
     client = MatlabRosSrvCli('client','/cli_node',"/cal_curv","fbg_msgs/CalCurvature");
     [connectionStatus,connectionStatustext] = waitForServer(client.cli);
 
-end
+% end
 
 %% initialization for motor
 g = []; % object of Galil motor controller
@@ -206,11 +206,11 @@ end
         publisher.sendPubMsg(pub_msg);
 %%
         if Compare_switch == 1
-%             msg_received = getResponseMsg(client);
-%             curvatures_xy_c = msg_received.curvature_xy;
-%             curvatures_xz_c = msg_received.curvature_xz;
-            curvatures_xy_c = [];
-            curvatures_xz_c = [];
+            msg_received = getResponseMsg(client);
+            curvatures_xy_c = msg_received.curvature_xy;
+            curvatures_xz_c = msg_received.curvature_xz;
+%             curvatures_xy_c = [];
+%             curvatures_xz_c = [];
 
             [x_fbg, y_fbg, k_fbg] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
             x_pre, y_pre, k_pre, ...
@@ -288,11 +288,11 @@ end
         publisher.sendPubMsg(pub_msg);
 %%
         if Compare_switch == 1
-%             msg_received = getResponseMsg(client);
-%             curvatures_xy_c = msg_received.curvature_xy;
-%             curvatures_xz_c = msg_received.curvature_xz;
-            curvatures_xy_c = [];
-            curvatures_xz_c = [];
+            msg_received = getResponseMsg(client);
+            curvatures_xy_c = msg_received.curvature_xy;
+            curvatures_xz_c = msg_received.curvature_xz;
+%             curvatures_xy_c = [];
+%             curvatures_xz_c = [];
 
             [x_fbg, y_fbg, k_fbg] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
             x_pre, y_pre, k_pre, ...
