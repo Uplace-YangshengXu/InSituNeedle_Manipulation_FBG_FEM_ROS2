@@ -16,6 +16,8 @@ class needle_shape_visulisation(Node):
         # ini figure
         self.matlab_listener = 0
         self.curv_listener = 0
+        self.fbg_listener = 0
+
         self.curv_text = {}
         matplotlib.use('Qt5Agg')
         # QtAgg Qt5Agg agg
@@ -38,13 +40,14 @@ class needle_shape_visulisation(Node):
         self.axs.set_ylabel('y(mm)')
         self.axs.set_zlabel('z(mm)')
         self.axs.set_title('Needle Shape')
-        self.axs.set_xlim(-200,80)
+        self.axs.set_xlim(-170,40)
         self.axs.set_ylim(-50,50)
         self.axs.set_zlim(-20,20)
         self.axs.set_aspect('equal')
         self.axs.grid(True)
         self.if_init_needle_shape = 0
         self.if_init_curv_plot = 0
+        self.if_init_fbg_shape = 0
 
         self.tip_traj_x = []
         self.tip_traj_y = []
@@ -54,6 +57,12 @@ class needle_shape_visulisation(Node):
                 NeedleShape,
                 'needle_shape',
                 self.matlab_listener_callback,
+                10)
+        
+        self.fbg_subscription = self.create_subscription(
+                NeedleShape,
+                'needle_shape_fbg',
+                self.fbg_listener_callback,
                 10)
         '''
         self.curv_subscription = self.create_subscription(
@@ -204,6 +213,96 @@ class needle_shape_visulisation(Node):
         #print(np.asarray(self.needle_msg.needle_z_axis))
         #print(self.msg.needle_slope)
 
+    def fbg_listener_callback(self,msg):
+                self.needle_msg_fbg = msg
+
+                if self.if_init_fbg_shape == 0:
+                # first get msg from matlab
+
+
+                        self.if_init_fbg_shape = 1
+
+                        # analyse the content in msg
+                        # needle base tip and AA relative location
+                        needle_aa_rel_loc = np.asarray(self.needle_msg.active_area_location)
+                        print(needle_aa_rel_loc)
+                        needle_base_rel_loc = self.needle_msg_fbg.needle_x_axis[0]
+
+                        needle_tip_rel_loc = self.needle_msg_fbg.needle_x_axis[-1]
+
+                        # get index
+                        x_loc = np.asarray(self.needle_msg_fbg.needle_x_axis)
+                        self.needle_base_index = 0
+                        self.needle_tip_index = []
+                        self.needle_aa_index = []
+                        for i in range(len(x_loc)):
+                                #if x_loc[i] in needle_aa_rel_loc:
+                                #    self.needle_aa_index.append(i)
+                                if needle_tip_rel_loc == x_loc[i]:
+                                        self.needle_tip_index = i
+                        self.needle_aa_index = np.int32((len(x_loc)-1)/int(self.needle_msg_fbg.needle_total_length)* needle_aa_rel_loc)
+                        print((len(x_loc)-1)/int(self.needle_msg_fbg.needle_total_length)* needle_aa_rel_loc)
+                        # ini line element here
+                        # create needle in 3d
+
+
+                        self.needle_3d_fbg, = self.axs.plot3D(
+                                [np.asarray(self.needle_msg_fbg.needle_x_axis[self.needle_base_index]),np.asarray(self.needle_msg_fbg.needle_x_axis[self.needle_tip_index])],
+                                [np.asarray(self.needle_msg_fbg.needle_y_axis[self.needle_base_index]),np.asarray(self.needle_msg_fbg.needle_y_axis[self.needle_tip_index])],
+                                [np.asarray(self.needle_msg_fbg.needle_z_axis[self.needle_base_index]),np.asarray(self.needle_msg_fbg.needle_z_axis[self.needle_tip_index])]
+                                )
+                        
+
+                        plt.setp(self.needle_3d_fbg,linestyle='-',linewidth=2,color='red')
+                        # create those scatter points
+                        self.needle_base_fbg = self.axs.scatter(
+                                self.needle_msg_fbg.needle_x_axis[self.needle_base_index],
+                                self.needle_msg_fbg.needle_y_axis[self.needle_base_index],
+                                self.needle_msg_fbg.needle_z_axis[self.needle_base_index],
+                                marker='.',c='brown')
+
+                        self.active_area_fbg = self.axs.scatter3D(
+                                np.asarray(self.needle_msg_fbg.needle_x_axis)[self.needle_aa_index],
+                                np.asarray(self.needle_msg_fbg.needle_y_axis)[self.needle_aa_index],
+                                np.asarray(self.needle_msg_fbg.needle_z_axis)[self.needle_aa_index],
+                                marker='.',c='yellow') # from dark to light??
+
+                        self.needle_tip_fbg = self.axs.scatter3D(
+                                self.needle_msg_fbg.needle_x_axis[self.needle_tip_index],
+                                self.needle_msg_fbg.needle_y_axis[self.needle_tip_index],
+                                self.needle_msg_fbg.needle_z_axis[self.needle_tip_index],
+                                marker='.',c='orange')
+                        
+                        self.base_text_fbg = self.axs.text(self.needle_msg_fbg.needle_x_axis[self.needle_base_index], 
+                                                        self.needle_msg_fbg.needle_y_axis[self.needle_base_index],
+                                                        self.needle_msg_fbg.needle_z_axis[self.needle_base_index], "base", color='red')
+                        
+                        self.tip_text_fbg = self.axs.text(self.needle_msg_fbg.needle_x_axis[self.needle_tip_index], 
+                                                        self.needle_msg_fbg.needle_y_axis[self.needle_tip_index],
+                                                        self.needle_msg_fbg.needle_z_axis[self.needle_tip_index], "tip", color='red')
+                        
+
+                        # create needle tip projection
+
+                        self.yz_projection_fbg, = self.axs.plot3D(
+                                #[self.needle_msg.needle_x_axis[self.needle_tip_index],0],
+                                [self.needle_msg_fbg.needle_x_axis[self.needle_tip_index],self.axs.get_xlim()[0]],
+                                [self.needle_msg_fbg.needle_y_axis[self.needle_tip_index],self.needle_msg.needle_y_axis[self.needle_tip_index]],
+                                [self.needle_msg_fbg.needle_z_axis[self.needle_tip_index],self.needle_msg.needle_z_axis[self.needle_tip_index]]
+                                )
+                        
+                        #plt.setp(self.xy_projection,linestyle='--',linewidth=1,color='b',alpha=0.5)
+                        plt.setp(self.yz_projection_fbg,linestyle='--',linewidth=1,color='y',alpha=0.5)
+                        #plt.setp(self.xz_projection,linestyle='--',linewidth=1,color='g',alpha=0.5)
+
+
+                        plt.ioff()
+                        plt.pause(0.01)
+                        plt.show(block=False)
+
+                self.fbg_listener = 1
+
+
 
     
     def plot_needle_shape(self):
@@ -305,6 +404,83 @@ class needle_shape_visulisation(Node):
             plt.show(block=False)
             
             self.matlab_listener = 0
+
+        if self.fbg_listener == 1 and self.if_init_fbg_shape == 1:
+            
+            #update needle shape use animation
+
+            self.needle_3d_fbg.set_xdata(np.asarray(self.needle_msg_fbg.needle_x_axis))
+            self.needle_3d_fbg.set_ydata(np.asarray(self.needle_msg_fbg.needle_y_axis)) 
+            self.needle_3d_fbg.set_3d_properties(np.asarray(self.needle_msg_fbg.needle_z_axis))
+
+            self.base_text_fbg.set_position([self.needle_msg_fbg.needle_x_axis[self.needle_base_index],
+                                         self.needle_msg_fbg.needle_y_axis[self.needle_base_index]+2,
+                                         self.needle_msg_fbg.needle_z_axis[self.needle_base_index]+1])
+            self.base_text_fbg.set_text("[" + str(round(self.needle_msg_fbg.needle_x_axis[self.needle_base_index],3))
+                                        + ", "
+                                        + str(round(self.needle_msg_fbg.needle_y_axis[self.needle_base_index],3))
+                                        + ", "
+                                        + str(round(self.needle_msg_fbg.needle_z_axis[self.needle_base_index],3))
+                                        + ", "
+                                        + str(round(self.needle_msg_fbg.needle_slope[self.needle_base_index],3))
+                                        + "]")
+
+
+            
+            self.tip_text_fbg.set_position([self.needle_msg_fbg.needle_x_axis[self.needle_tip_index],
+                                         self.needle_msg_fbg.needle_y_axis[self.needle_tip_index]+2,
+                                         self.needle_msg_fbg.needle_z_axis[self.needle_tip_index]+1])
+            
+
+            self.tip_text_fbg.set_text("[" + str(round(self.needle_msg_fbg.needle_x_axis[self.needle_tip_index],3))
+                                        + ", "
+                                        + str(round(self.needle_msg_fbg.needle_y_axis[self.needle_tip_index],3))
+                                        + ", "
+                                        + str(round(self.needle_msg_fbg.needle_z_axis[self.needle_tip_index],3))
+                                        + ", "
+                                        + str(round(self.needle_msg_fbg.needle_slope[self.needle_tip_index],3))
+                                        + "]")
+
+
+            self.needle_base_fbg._offsets3d = (
+                    np.ma.ravel(self.needle_msg_fbg.needle_x_axis[self.needle_base_index]),
+                    np.ma.ravel(self.needle_msg_fbg.needle_y_axis[self.needle_base_index]),
+                    np.ma.ravel(self.needle_msg_fbg.needle_z_axis[self.needle_base_index]),
+                    )
+            self.needle_tip_fbg._offsets3d = (
+                    np.ma.ravel(self.needle_msg_fbg.needle_x_axis[self.needle_tip_index]),
+                    np.ma.ravel(self.needle_msg_fbg.needle_y_axis[self.needle_tip_index]),
+                    np.ma.ravel(self.needle_msg_fbg.needle_z_axis[self.needle_tip_index])
+                    ) 
+            self.active_area_fbg._offsets3d = (
+                    np.ma.ravel(np.asarray(self.needle_msg_fbg.needle_x_axis)[self.needle_aa_index]),
+                    np.ma.ravel(np.asarray(self.needle_msg_fbg.needle_y_axis)[self.needle_aa_index]),
+                    np.ma.ravel(np.asarray(self.needle_msg_fbg.needle_z_axis)[self.needle_aa_index])
+                    )
+            '''
+            self.xy_projection.set_xdata([np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index],np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index]])
+            self.xy_projection.set_ydata([np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index],np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index]])
+            #self.xy_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index], 0])
+            self.xy_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index],self.axs.get_zlim()[0]])
+
+            self.xz_projection.set_xdata([np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index],np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index]])
+            #self.xz_projection.set_ydata([np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index],0])
+            self.xz_projection.set_ydata([np.asarray(self.needle_msg.needle_y_axis)[self.needle_tip_index],self.axs.get_ylim()[0]])
+            self.xz_projection.set_3d_properties([np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index], np.asarray(self.needle_msg.needle_z_axis)[self.needle_tip_index]])
+            '''
+            #self.yz_projection.set_xdata([np.asarray(self.needle_msg.needle_x_axis)[self.needle_tip_index], 0])
+            self.yz_projection_fbg.set_xdata([np.asarray(self.needle_msg_fbg.needle_x_axis)[self.needle_tip_index],self.axs.get_xlim()[0]])
+            self.yz_projection_fbg.set_ydata([np.asarray(self.needle_msg_fbg.needle_y_axis)[self.needle_tip_index],np.asarray(self.needle_msg_fbg.needle_y_axis)[self.needle_tip_index]])
+            self.yz_projection_fbg.set_3d_properties([np.asarray(self.needle_msg_fbg.needle_z_axis)[self.needle_tip_index], np.asarray(self.needle_msg_fbg.needle_z_axis)[self.needle_tip_index]])
+
+            
+            # plot
+            plt.ioff()
+            #plt.axis('equal')
+            plt.pause(0.01)
+            plt.show(block=False)
+            
+            self.fbg_listener = 0
         
         
         #if self.curv_listener == 0 and self.matlab_listener == 0:
