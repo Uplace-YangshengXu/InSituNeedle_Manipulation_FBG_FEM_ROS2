@@ -7,6 +7,6 @@ I = pi/4*(OD/2)^4; % in mm^4
 ti = 25; % initial length of the tissue
 
 % Load-stepping
-max_inner_iter = 5; % maximum number of iterations for Newton's method
+max_inner_iter = 50; % maximum number of iterations for Newton's method
 max_outer_iter = 5; % maximum number of iteratinos for load stepping
 tol = 1e-3;

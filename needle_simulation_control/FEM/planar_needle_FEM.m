@@ -62,7 +62,7 @@ if ~isempty(AA_crv) % if curvatrue is empty then AA_er is []
 end
 
 % Load-stepping functionality
-outer_iter = 0;
+outer_iter = 1;
 converged = 0;
 load_ratio = 1;
 EBC_delta_des = [dby; dbk]; % desired amount of BC change
@@ -70,12 +70,12 @@ EBC_delta_cur = zeros(2, 1); % current amount of BC change
 EBC_delta_converged = zeros(2, 1); % previously-converged BC change
 
 %% FEM Main with load stepping
-while converged == 0 && (outer_iter < max_outer_iter)
+while converged == 0 && (outer_iter <= max_outer_iter)
     outer_iter = outer_iter + 1;
-    inner_iter = 0;
+    inner_iter = 1;
     converged = 0;
     EBC_delta_cur = EBC_delta_converged + load_ratio*EBC_delta_des;
-    while inner_iter < max_inner_iter
+    while inner_iter <= max_inner_iter
         % main FEM
         K = zeros(nDOF, nDOF);
         F = zeros(nDOF, 1);

@@ -17,7 +17,7 @@ addpath ./Control/
 
 %% switches
 FBG_switch = 0; %switch off fbg with 0
-Motor_switch = 0; %switch off motor with 0
+Motor_switch = 1; %switch off motor with 0
 Shape_sensing = 0;
 Compare_switch = 1;
 %% interrogator and GMC params
@@ -33,6 +33,7 @@ Alpha_PSM = 8.74;
 Alpha_PVC = -1;
 Mu_PSM = 3.03e+03;
 Mu_PVC = 1.2715e+04;
+
 Mu = Mu_PSM;
 Alpha = Alpha_PSM;
 
@@ -61,9 +62,9 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [20 20;
-      0 -3;
-      0 0];
+xd = [0 15 20;
+      0 0 2;
+      0 0 0];
 
 % initialize the desired traj
 desired = 1; 
@@ -170,7 +171,10 @@ if Compare_switch == 1
     pub_msg_fbg.needle_x_axis = x_pre;
     pub_msg_fbg.needle_y_axis = y_pre;
     pub_msg_fbg.needle_slope  = k_pre;
-    publisher_fbg.sendPubMsg(pub_msg_fbg);    
+    publisher_fbg.sendPubMsg(pub_msg_fbg);  
+    x_fbg_pre = x_pre;
+    y_fbg_pre = y_pre;
+    k_fbg_pre = k_pre;
 
 end
 %% main loop
@@ -213,14 +217,22 @@ end
 %             curvatures_xz_c = [];
 
             [x_fbg, y_fbg, k_fbg] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
-            x_pre, y_pre, k_pre, ...
-            0, 0, 0, ...
+            x_fbg_pre, y_fbg_pre, k_fbg_pre, ...
+            dbx, dby, dbk, ...
             curvatures_xz_c, AA_lcn);
+%             [x_fbg, y_fbg, k_fbg,curvatures_xz_cal] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
+%             x_pre, y_pre, k_pre, ...
+%             dbx, dby, dbk, ...
+%             curvatures_xz_c,AA_lcn);
+%             disp(curvatures_xz_cal)
 
             pub_msg_fbg.needle_x_axis = x_fbg;
             pub_msg_fbg.needle_y_axis = y_fbg;
             pub_msg_fbg.needle_slope  = k_fbg;
             publisher_fbg.sendPubMsg(pub_msg_fbg);
+            x_fbg_pre = x_fbg;
+            y_fbg_pre = y_fbg;
+            k_fbg_pre = k_fbg;
         end
 %%
         ic = [x_pre(end);y_pre(end);k_pre(end);0;0;0];
@@ -240,12 +252,12 @@ end
         dbx = dcontrol(1)*dt;
         dby = dcontrol(2)*dt;
         dbk = dcontrol(3)*dt;
-
-        if Shape_sensing == 1
-            dbx = 0;
-            dby = 0;
-            dbk = 0;
-        end
+% 
+%         if Shape_sensing == 1
+%             dbx = 0;
+%             dby = 0;
+%             dbk = 0;
+%         end
 
         %% Transform the control into motor control
         [dx,dy,dr,last_x_control_point,last_y_control_point,last_r_control_point] = robot_geometric(dbx,dby,dbk,last_x_control_point,last_y_control_point,last_r_control_point);
@@ -293,17 +305,24 @@ end
             curvatures_xz_c = msg_received.curvature_xz;
 %             curvatures_xy_c = [];
 %             curvatures_xz_c = [];
-
             [x_fbg, y_fbg, k_fbg] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
-            x_pre, y_pre, k_pre, ...
-            0, 0, 0, ...
+            x_fbg_pre, y_fbg_pre, k_fbg_pre, ...
+            dbx, dby, dbk, ...
             curvatures_xz_c, AA_lcn);
-
+%             [x_fbg, y_fbg, k_fbg,curvatures_xz_cal] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
+%             x_pre, y_pre, k_pre, ...
+%             0, 0, 0, ...
+%             curvatures_xz_c,AA_lcn);
+%             disp(curvatures_xz_cal)
             pub_msg_fbg.needle_x_axis = x_fbg;
             pub_msg_fbg.needle_y_axis = y_fbg;
             pub_msg_fbg.needle_slope  = k_fbg;
             publisher_fbg.sendPubMsg(pub_msg_fbg);
+            x_fbg_pre = x_fbg;
+            y_fbg_pre = y_fbg;
+            k_fbg_pre = k_fbg;
         end
+
 %%
         disp([x_new(end);y_new(end);k_new(end)])
         error = norm([x_new(end);y_new(end);k_new(end)] - xd(:,end));
