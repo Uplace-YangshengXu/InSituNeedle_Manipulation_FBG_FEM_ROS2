@@ -19,12 +19,12 @@ galil_command(g, 'PT 1,1,1,1');
 galil_command(g, 'KP 323,261,300,58');
 galil_command(g, 'KI 9,6,7,2');
 galil_command(g, 'KD 2746,2453,2600,433');
-galil_command(g, 'AC 9216,9216,9216,9260');
-galil_command(g, 'DC 9216,9216,9216,9260');
+galil_command(g, 'AC 9216,9216,9216,64820');
+galil_command(g, 'DC 9216,9216,9216,64820');
 galil_command(g, 'SP 25000,25000,25000,80000');
 
 flag = true;
-promptX = "Input next X displacement (mm) negative-rigt:";
+promptX = "Input next X displacement (mm) negative-right:";
 promptY = "Input next Y displacement (mm) negative-up:";
 promptZ = "Input next Z displacement (mm) negative-downward:";
 promptK = "Input next k(Deg) negative-cw:";

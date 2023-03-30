@@ -17,7 +17,7 @@ addpath ./Control/
 
 %% switches
 FBG_switch = 1; %switch off fbg with 0
-Motor_switch = 1; %switch off motor with 0
+Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -32,12 +32,12 @@ Alpha_PSM = 8.74;
 Alpha_PVC = -1;
 Mu_PSM = 3.03e+03;
 Mu_PVC = 1.2715e+04;
-% Mu = Mu_PSM;
-% Alpha = Alpha_PSM;
+Mu = Mu_PSM;
+Alpha = Alpha_PSM;
 
 % for air
-Mu = 0;
-Alpha = 1;
+% Mu = 0;
+% Alpha = 1;
 % Mu = Mu_PVC;
 % Alpha = Alpha_PVC;
 
@@ -45,7 +45,7 @@ Interval = {[0, 80]};
 
 L = 163; % total length of needle (estimate)
 
-bx = -L-2; % initial base position
+bx = -L-0.5; % initial base position
 by = 0; 
 bk = 0;
 
@@ -60,17 +60,15 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [0 10 3 14;
-      0 0 0 -3;
-      0 0 0 -0.05];
-% xd = [0 40;
-%       0 0;
-%       0 0];
+xd = [0 14 ;
+      0 0;
+      0 0];
+
 % initialize the desired traj
 desired = 1; 
 
 % stopping and updating threshold
-thre = 0.1; 
+thre = 0.3; 
 
 %% control parameters
 
