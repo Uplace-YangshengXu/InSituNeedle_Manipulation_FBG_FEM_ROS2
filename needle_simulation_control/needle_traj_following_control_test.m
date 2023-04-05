@@ -31,13 +31,14 @@ motor_controller_port = 23;
 Alpha_PSM = 8.74;
 Alpha_PVC = -1;
 Mu_PSM = 3.03e+03;
+%Mu_PSM = 2030;
 Mu_PVC = 1.2715e+04;
-% Mu = Mu_PSM;
-% Alpha = Alpha_PSM;
+Mu = Mu_PSM;
+Alpha = Alpha_PSM;
 
 % for air
-Mu = 0;
-Alpha = 1;
+% Mu = 0;
+% Alpha = 1;
 % Mu = Mu_PVC;
 % Alpha = Alpha_PVC;
 
@@ -60,17 +61,17 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [0 10 3 14;
-      0 0 0 -3;
-      0 0 0 -0.05];
+xd = [0 40 10 40;
+      0 0 0 -1.5;
+      0 0 0 -0.03];
 % xd = [0 40;
 %       0 0;
 %       0 0];
 % initialize the desired traj
 desired = 1; 
-
+desired_s = 1;
 % stopping and updating threshold
-thre = 0.1; 
+thre = 0.03; 
 
 %% control parameters
 
@@ -194,12 +195,17 @@ publisher.sendPubMsg(pub_msg);
         [dcontrol,desired] = numerical_jacobian_traj_following_control(xd, Kp, ic, L, Mu, Alpha, Interval,...
         x_pre,y_pre,k_pre,...
         [],AA_lcn,thre,desired);
-
+        if desired ~= desired_s
+            waitforbuttonpress
+            desired_s = desired;
+        end
 %         disp(desired)
         %scaling the control using step_size for FEM convergence   
         step_size = 0.1;
         if norm(dcontrol*dt) > 0.3
-            dcontrol = dcontrol * step_size; 
+            dcontrol = dcontrol * step_size;
+        else
+            dcontrol = dcontrol * step_size*5;
         end
 
         % get scaled base control
