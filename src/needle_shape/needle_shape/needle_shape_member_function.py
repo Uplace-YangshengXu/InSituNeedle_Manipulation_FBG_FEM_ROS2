@@ -3,6 +3,9 @@ import numpy as np
 import time
 from rclpy.node import Node
 from fbg_msgs.msg import NeedleShape,Curvature
+
+from itertools import product, combinations
+
 from mpl_toolkits import mplot3d
 import matplotlib.pyplot as plt
 import matplotlib
@@ -23,7 +26,7 @@ class needle_shape_visulisation(Node):
         # QtAgg Qt5Agg agg
         #matplotlib.rcParams['figure.figsize'] = (3,3)
         self.fig = plt.figure()
-
+        #self.axs_cube = self.fig.add_subplot(111 , projection = '3d')
         bk = matplotlib.get_backend()
         matplotlib.rcParams['figure.raise_window'] = 'False'
         #rw = matplotlib.rcParams['figure.raise_window']
@@ -40,7 +43,7 @@ class needle_shape_visulisation(Node):
         self.axs.set_ylabel('y(mm)')
         self.axs.set_zlabel('z(mm)')
         self.axs.set_title('Needle Shape')
-        self.axs.set_xlim(-170,40)
+        self.axs.set_xlim(-170,50)
         self.axs.set_ylim(-50,50)
         self.axs.set_zlim(-20,20)
         self.axs.set_aspect('equal')
@@ -48,7 +51,7 @@ class needle_shape_visulisation(Node):
         self.if_init_needle_shape = 0
         self.if_init_curv_plot = 0
         self.if_init_fbg_shape = 0
-
+        #self.data = np.ones(np.array([20,20,20]))
         self.tip_traj_x = []
         self.tip_traj_y = []
         self.tip_traj_z = []
@@ -196,7 +199,19 @@ class needle_shape_visulisation(Node):
             #plt.setp(self.xy_projection,linestyle='--',linewidth=1,color='b',alpha=0.5)
             plt.setp(self.yz_projection,linestyle='--',linewidth=1,color='r',alpha=0.5)
             #plt.setp(self.xz_projection,linestyle='--',linewidth=1,color='g',alpha=0.5)
+        
+            #self.axs.voxels(self.data, facecolors="yellow")
 
+            rx = [-30,30]
+            ry = [-40,40]
+            rz = [-20,20]
+            for s, e in combinations(np.array(list(product(rx, ry, rz)))+np.array([20, 0, 0]), 2):
+                if np.sum(np.abs(s-e)) == rx[1]-rx[0]:
+                        self.axs.plot3D(*zip(s, e), color="yellow")
+                if np.sum(np.abs(s-e)) == ry[1]-ry[0]:
+                        self.axs.plot3D(*zip(s, e), color="yellow")
+                if np.sum(np.abs(s-e)) == rz[1]-rz[0]:
+                        self.axs.plot3D(*zip(s, e), color="yellow")
 
             plt.ioff()
             plt.pause(0.01)
