@@ -207,12 +207,12 @@ class needle_shape_visulisation(Node):
             rz = [-20,20]
             for s, e in combinations(np.array(list(product(rx, ry, rz)))+np.array([20, 0, 0]), 2):
                 if np.sum(np.abs(s-e)) == rx[1]-rx[0]:
-                        self.axs.plot3D(*zip(s, e), color="yellow")
+                        self.axs.plot3D(*zip(s, e), color="gray")
                 if np.sum(np.abs(s-e)) == ry[1]-ry[0]:
-                        self.axs.plot3D(*zip(s, e), color="yellow")
+                        self.axs.plot3D(*zip(s, e), color="gray")
                 if np.sum(np.abs(s-e)) == rz[1]-rz[0]:
-                        self.axs.plot3D(*zip(s, e), color="yellow")
-
+                        self.axs.plot3D(*zip(s, e), color="gray")
+            self.axs.legend(['Needle', 'Tip_traj'])   
             plt.ioff()
             plt.pause(0.01)
             plt.show(block=False)
@@ -288,9 +288,9 @@ class needle_shape_visulisation(Node):
                                 self.needle_msg_fbg.needle_z_axis[self.needle_tip_index],
                                 marker='.',c='orange')
                         
-                        self.base_text_fbg = self.axs.text(self.needle_msg_fbg.needle_x_axis[self.needle_base_index], 
-                                                        self.needle_msg_fbg.needle_y_axis[self.needle_base_index],
-                                                        self.needle_msg_fbg.needle_z_axis[self.needle_base_index], "base", color='red')
+                        self.base_text_fbg = self.axs.text(str(round(self.needle_msg_fbg.needle_x_axis[self.needle_base_index]),2), 
+                                                        str(round(self.needle_msg_fbg.needle_y_axis[self.needle_base_index]),2),
+                                                        str(round(self.needle_msg_fbg.needle_z_axis[self.needle_base_index]),2), "base", color='red')
                         
                         self.tip_text_fbg = self.axs.text(self.needle_msg_fbg.needle_x_axis[self.needle_tip_index], 
                                                         self.needle_msg_fbg.needle_y_axis[self.needle_tip_index],
@@ -343,13 +343,13 @@ class needle_shape_visulisation(Node):
             self.base_text.set_position([self.needle_msg.needle_x_axis[self.needle_base_index],
                                          self.needle_msg.needle_y_axis[self.needle_base_index]+2,
                                          self.needle_msg.needle_z_axis[self.needle_base_index]+1])
-            self.base_text.set_text("[" + str(round(self.needle_msg.needle_x_axis[self.needle_base_index],3))
+            self.base_text.set_text("[" + str(round(self.needle_msg.needle_x_axis[self.needle_base_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg.needle_y_axis[self.needle_base_index],3))
+                                        + str(round(self.needle_msg.needle_y_axis[self.needle_base_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg.needle_z_axis[self.needle_base_index],3))
+                                        + str(round(self.needle_msg.needle_z_axis[self.needle_base_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg.needle_slope[self.needle_base_index],3))
+                                        + str(round(self.needle_msg.needle_slope[self.needle_base_index],2))
                                         + "]")
 
 
@@ -359,13 +359,13 @@ class needle_shape_visulisation(Node):
                                          self.needle_msg.needle_z_axis[self.needle_tip_index]+1])
             
 
-            self.tip_text.set_text("[" + str(round(self.needle_msg.needle_x_axis[self.needle_tip_index],3))
+            self.tip_text.set_text("[" + str(round(self.needle_msg.needle_x_axis[self.needle_tip_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg.needle_y_axis[self.needle_tip_index],3))
+                                        + str(round(self.needle_msg.needle_y_axis[self.needle_tip_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg.needle_z_axis[self.needle_tip_index],3))
+                                        + str(round(self.needle_msg.needle_z_axis[self.needle_tip_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg.needle_slope[self.needle_tip_index],3))
+                                        + str(round(self.needle_msg.needle_slope[self.needle_tip_index],2))
                                         + "]")
             for i in range(len(self.needle_aa_index)):
                 self.curv_text[i].set_position([self.needle_msg.needle_x_axis[self.needle_aa_index[i]], 
@@ -431,13 +431,13 @@ class needle_shape_visulisation(Node):
             self.base_text_fbg.set_position([self.needle_msg_fbg.needle_x_axis[self.needle_base_index],
                                          self.needle_msg_fbg.needle_y_axis[self.needle_base_index]+2,
                                          self.needle_msg_fbg.needle_z_axis[self.needle_base_index]+1])
-            self.base_text_fbg.set_text("[" + str(round(self.needle_msg_fbg.needle_x_axis[self.needle_base_index],3))
+            self.base_text_fbg.set_text("[" + str(round(self.needle_msg_fbg.needle_x_axis[self.needle_base_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg_fbg.needle_y_axis[self.needle_base_index],3))
+                                        + str(round(self.needle_msg_fbg.needle_y_axis[self.needle_base_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg_fbg.needle_z_axis[self.needle_base_index],3))
+                                        + str(round(self.needle_msg_fbg.needle_z_axis[self.needle_base_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg_fbg.needle_slope[self.needle_base_index],3))
+                                        + str(round(self.needle_msg_fbg.needle_slope[self.needle_base_index],2))
                                         + "]")
 
 
@@ -447,13 +447,13 @@ class needle_shape_visulisation(Node):
                                          self.needle_msg_fbg.needle_z_axis[self.needle_tip_index]+1])
             
 
-            self.tip_text_fbg.set_text("[" + str(round(self.needle_msg_fbg.needle_x_axis[self.needle_tip_index],3))
+            self.tip_text_fbg.set_text("[" + str(round(self.needle_msg_fbg.needle_x_axis[self.needle_tip_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg_fbg.needle_y_axis[self.needle_tip_index],3))
+                                        + str(round(self.needle_msg_fbg.needle_y_axis[self.needle_tip_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg_fbg.needle_z_axis[self.needle_tip_index],3))
+                                        + str(round(self.needle_msg_fbg.needle_z_axis[self.needle_tip_index],2))
                                         + ", "
-                                        + str(round(self.needle_msg_fbg.needle_slope[self.needle_tip_index],3))
+                                        + str(round(self.needle_msg_fbg.needle_slope[self.needle_tip_index],2))
                                         + "]")
 
 
