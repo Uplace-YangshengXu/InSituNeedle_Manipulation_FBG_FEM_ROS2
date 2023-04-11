@@ -61,9 +61,9 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [0 40 10 40;
-      0 0 0 -1.5;
-      0 0 0 -0.03];
+xd = [-2 0 40 10 40;
+      0 0 0 0 -1.5;
+      0 0 0 0 -0.03];
 % xd = [0 40;
 %       0 0;
 %       0 0];
@@ -196,7 +196,9 @@ publisher.sendPubMsg(pub_msg);
         x_pre,y_pre,k_pre,...
         [],AA_lcn,thre,desired);
         if desired ~= desired_s
-            waitforbuttonpress
+%             waitforbuttonpress
+            disp("Paused")
+            pause
             desired_s = desired;
         end
 %         disp(desired)
