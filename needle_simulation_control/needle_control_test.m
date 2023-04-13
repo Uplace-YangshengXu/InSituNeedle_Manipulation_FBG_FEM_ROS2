@@ -81,24 +81,24 @@ ini_control = [0;0;0];
 
 %% initialization for sub
 
-% % curvature reading subscriber
-% if FBG_switch == 1
-%     if exist("subscriber",'var')
-%         delete(subscriber)
-%     end
-%     % create a matlab subscriber to get curvature reading
-%     subscriber = MatlabRosPubSub('sub','matlab_curvature_subscriber','/pub_Curv','fbg_msgs/Curvature');
-% end
-%% initialization for client
-
+% curvature reading subscriber
 if FBG_switch == 1
-    if exist("client",'var')
-        delete(client)
+    if exist("subscriber",'var')
+        delete(subscriber)
     end
-    client = MatlabRosSrvCli('client','/cli_node',"/cal_curv","fbg_msgs/CalCurvature");
-    [connectionStatus,connectionStatustext] = waitForServer(client.cli);
-
+    % create a matlab subscriber to get curvature reading
+    subscriber = MatlabRosPubSub('sub','matlab_curvature_subscriber','/pub_Curv','fbg_msgs/Curvature');
 end
+%% initialization for client
+% 
+% if FBG_switch == 1
+%     if exist("client",'var')
+%         delete(client)
+%     end
+%     client = MatlabRosSrvCli('client','/cli_node',"/cal_curv","fbg_msgs/CalCurvature");
+%     [connectionStatus,connectionStatustext] = waitForServer(client.cli);
+% 
+% end
 
 %% initialization for motor
 
@@ -118,21 +118,21 @@ curvatures_xy = [];
 curvatures_xz = [];
 
 %% sub to get curv
-% if exist('subscriber','var')
-%     [msg_received,status,statustext] = subscriber.getSubMsg(10);
-%     curvatures_xy = msg_received.curvature_xy;
-%     curvatures_xz = msg_received.curvature_xz;
-% else
-%     curvatures_xy = zeros(NumAA,1);
-%     curvatures_xz = zeros(NumAA,1);
-% end
-%% client to get curv 
-
-if exist('client','var')
-    msg_received = getResponseMsg(client);
+if exist('subscriber','var')
+    [msg_received,status,statustext] = subscriber.getSubMsg(10);
     curvatures_xy = msg_received.curvature_xy;
     curvatures_xz = msg_received.curvature_xz;
+else
+    curvatures_xy = zeros(NumAA,1);
+    curvatures_xz = zeros(NumAA,1);
 end
+%% client to get curv 
+
+% if exist('client','var')
+%     msg_received = getResponseMsg(client);
+%     curvatures_xy = msg_received.curvature_xy;
+%     curvatures_xz = msg_received.curvature_xz;
+% end
 
 % get the new states by ini move
 [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
