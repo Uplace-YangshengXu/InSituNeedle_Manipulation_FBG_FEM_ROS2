@@ -9,4 +9,4 @@ subscriber = MatlabRosPubSub('sub','matlab_curvature_subscriber','/sm130','fbg_m
 [msg_received,status,statustext] = subscriber.getSubMsg(10);
 disp(msg_received.signal_reading)
 
-delete(subscriber);
+% delete(subscriber);
