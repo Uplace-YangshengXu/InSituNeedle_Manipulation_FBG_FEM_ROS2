@@ -43,5 +43,5 @@ K3 = A3*E3*del_actual;
 A_aug = [A - A1*E1; A - A2*E2; A - A3*E3];
 K_aug = [K_actual - K1; K_actual - K2; K_actual - K3];
 calc_temp_wave_change = pinv(A_aug)*K_aug;
-disp('calculated wavelengh shifts from calibration')
+disp('calculated wavelengh shifts due to temperature variation')
 disp(calc_temp_wave_change);
