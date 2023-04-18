@@ -28,10 +28,12 @@ A3 = K_calibration*pinv(del_calibration_3);
 %% Temperature compensation during measurements
 clc
 disp('random wavelength shifts due to temperature variation')
-temp_wave_change = rand(3, 1); % wavelength changes due to temperature changes
+% temp_wave_change = rand(3, 1); % wavelength changes due to temperature changes
+temp_wave_change = rand()*ones(3, 1); % wavelength changes due to temperature changes
+bend_wave_change = ratios*rand(); % wavelength changes due to bending
 disp(temp_wave_change);
 
-del_actual = ratios*rand() + temp_wave_change; % total change in wavelength (bending + temperature)
+del_actual = bend_wave_change + temp_wave_change; % total change in wavelength (bending + temperature)
 K_actual = A*del_actual; % curvatures
 K1 = A1*E1*del_actual;
 K2 = A2*E2*del_actual;
