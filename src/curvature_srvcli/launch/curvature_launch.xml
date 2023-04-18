@@ -28,6 +28,13 @@
     <param name = "channel_selection" value = "3"/>
 
     </node>
+    <node
+    
+    pkg = "needle_shape"
+    exec = "sensor_data_viewer">
+    <param name = "channel_selection" value = "4"/>
+
+    </node>
 
 
 </launch>
