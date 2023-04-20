@@ -13,7 +13,7 @@ A23_index = {[5,9],[6,10]};
 E1 = [0 1 0; 0 0 1]; % for A23
 E2 = [1 0 0; 0 0 1]; % for A13
 E3 = [1 0 0; 0 1 0]; % for A12
-ratio = [1;1;1]; % assume the temp effect is 1:1:1 for each channel
+ratios = [1;1;1]; % assume the temp effect is 1:1:1 for each channel
 
 namefile = 'temp_fbg_data.xls';
 sheet_name = 'Temp_vari_data';
@@ -33,10 +33,11 @@ diff = data(2:end,:) - ref;
 for i = size(A_index,2)
     % active area number
     % get calibration matrix
-    A = H{i};
-    A12 = H12{i};
-    A13 = H13{i};
-    A23 = H23{i};
+    % convert to 2*3 and 2*2
+    A = H{i}';
+    A12 = H12{i}';
+    A13 = H13{i}';
+    A23 = H23{i}';
 
     cur_m1 = [];
     cur_m2 = [];
@@ -44,11 +45,12 @@ for i = size(A_index,2)
     alpha_m2 = [];
 
     % temperature compensation process
-    KA = A*diff(:,A_index{i}); % curvatures without temperature compensation
+    % convert to 2*n
+    KA = A*diff(:,A_index{i})'; % curvatures without temperature compensation
 
-    K23 = A23*E1*diff(:,A_index{i});
-    K13 = A13*E2*diff(:,A_index{i});
-    K12 = A12*E3*diff(:,A_index{i});
+    K23 = A23*E1*diff(:,A_index{i})';
+    K13 = A13*E2*diff(:,A_index{i})';
+    K12 = A12*E3*diff(:,A_index{i})';
 
     % Naieve pseudoinverse method
     A_aug = [A - A23*E1; A - A13*E2; A - A12*E3]*ratios; 
@@ -75,8 +77,8 @@ for i = size(A_index,2)
     alpha_m2 = [alpha_m2,temp_wave_avg];
 
     % get the compensated curvature
-    cur_m1 = [cur_m1, A*(diff(A_index{i}) - alpha_m1 * ratio')];
-    cur_m2 = [cur_m2, A*(diff(A_index{i}) - alpha_m2 * ratio')];
+    cur_m1 = [cur_m1, A*(diff(A_index{i}) - alpha_m1 * ratios')];
+    cur_m2 = [cur_m2, A*(diff(A_index{i}) - alpha_m2 * ratios')];
 
     % plotting 
     figure(i)
