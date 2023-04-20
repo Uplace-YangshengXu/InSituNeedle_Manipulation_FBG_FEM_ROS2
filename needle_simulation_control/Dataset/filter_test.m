@@ -9,12 +9,15 @@ AA_selection = [1,5,9]; % AA1: 1,5
 %AA_selection = [4,8];   % AA4: 4,8
 
 
+
+
 % namefile = {'calibration7-9_090.xls','calibration10-12_090.xls'};
 % num_trial = {7:9,10:12};
 % namefile = {'calibration_ch3_090.xls'}; %collected at 17/03/2023
-namefile = {'calibration_ch3_090_processed.xls'};
-num_trial = {1:3};
-curvature = [0 0.5 1.6 2 2.5 3.2];
+
+% namefile = {'calibration_ch3_090_processed.xls'};
+% num_trial = {1:3};
+% curvature = [0 0.5 1.6 2 2.5 3.2];
 
 
 % %namefile = {'validation7-9_090.xls','validation10-12_090.xls'}; % data used to validate the calibration matrix
