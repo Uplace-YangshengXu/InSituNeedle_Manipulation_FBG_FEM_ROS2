@@ -2,6 +2,7 @@ clear;
 %% Some constants to play with
 ratios = [1; 2; 3]; % just a random temperature-wavelength change ratio obtained by experiment
 ratios_noise = 0.5; % some unknown magnitude difference from experimental values
+calibration_noise_mag = 0.1; % noise coming into calibration signals
 A = rand(2, 3); % assumed calibration matrix
 
 %% Calibration; No temperature variation
@@ -11,7 +12,7 @@ K_calibration = zeros(2, n);
 % th = 2*pi*(rand() - 0.5); % calibration on the same plane
 for i = 1:n
     th = 2*pi*(rand() - 0.5); % calibration on different planes
-    del_wave_calibration(:, i) = [sin(th), -sin(pi/3 + th), sin(pi/3 - th)]'*rand() + 0.1*rand(3, 1); % generate signals due to bending
+    del_wave_calibration(:, i) = [sin(th), -sin(pi/3 + th), sin(pi/3 - th)]'*rand() + calibration_noise_mag*rand(3, 1); % generate signals due to bending
     K_calibration(:, i) = A*del_wave_calibration(:, i); % curvtures due to bending only
 end
 
