@@ -70,9 +70,9 @@ vali_ch1_deg90 = {[1:6],
             
 
 %output filename
-cal_name = 'Cal_mat_2CH_2AA_alldata.mat';
-H = {};
-CS = 'A23'; % condition for channel selection
+cal_name = 'Cal_mat_2CH_2AA_alldata_A12.mat';
+H12 = {};
+CS = 'A12'; % condition for channel selection
 
 %% construct meassured data matrix and expected data matrix
 
@@ -195,6 +195,6 @@ for i = 1:2 %use first two AA
 
 end
 
-save(cal_name,"H","CS");
+save(cal_name,"H12","CS");
         
     

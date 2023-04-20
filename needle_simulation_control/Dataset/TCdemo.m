@@ -1,0 +1,57 @@
+% create at 20/03/2023 by yangsheng xu
+% this script provides a demo to test the Temperature Compensation
+% principle using AA1 and AA2 of three Channel needle
+
+load Cal_mat_2CH_2AA_alldata_A12.mat % H12 CS
+load Cal_mat_2CH_2AA_alldata_A13.mat % H13 CS
+load Cal_mat_2CH_2AA_alldata_A23.mat % H23 CS
+load Cal_mat_3CH_2AA_alldata.mat % H
+A_index = {[1,5,9],[2,6,10]}; %3ch 2aa
+A12_index = {[1,5],[2,6]};
+A13_index = {[1,9],[2,10]};
+A23_index = {[5,9],[6,10]};
+
+namefile = 'temp_fbg_data.xls';
+sheet_name = 'Temp_vari_data';
+% data file
+% format
+% 1st unbent data
+% 2nd bend data with room temp
+% 3rd-end bend data with various temp
+
+data = readmatrix(namefile,'Sheet',sheet_name);
+[r,c ] = size(data); % row and col
+
+
+%% data process
+ref = data(1,:);
+
+diff = data(2:,:) - ref;
+
+for i = size(A_index,2)
+    % active area number
+    % get calibration matrix
+    A = H{i};
+    A12 = H12{i};
+    A13 = H13{i};
+    A23 = H23{i};
+    cur_xy = [];
+    cur_xz = [];
+
+    % temperature compensation process
+
+
+
+
+
+    
+    % plotting
+    figure(i)
+    plot(cur_xy)
+    hold on
+    plot(cur_xz)
+    legend("cur_xy","cur_xz");
+    hold off
+end
+
+
