@@ -10,6 +10,10 @@ A_index = {[1,5,9],[2,6,10]}; %3ch 2aa
 A12_index = {[1,5],[2,6]};
 A13_index = {[1,9],[2,10]};
 A23_index = {[5,9],[6,10]};
+E1 = [0 1 0; 0 0 1]; % for A23
+E2 = [1 0 0; 0 0 1]; % for A13
+E3 = [1 0 0; 0 1 0]; % for A12
+ratio = [1;1;1]; % assume the temp effect is 1:1:1 for each channel
 
 namefile = 'temp_fbg_data.xls';
 sheet_name = 'Temp_vari_data';
@@ -21,35 +25,67 @@ sheet_name = 'Temp_vari_data';
 
 data = readmatrix(namefile,'Sheet',sheet_name);
 [r,c ] = size(data); % row and col
-
+ref = data(1,:);
+diff = data(2:,:) - ref;
 
 %% data process
-ref = data(1,:);
 
-for j = r - 1 % data points except unbent
-    diff = data(j) - ref;
-    cur_xy = [];
-    cur_xz = [];
+for i = size(A_index,2)
+    % active area number
+    % get calibration matrix
+    A = H{i};
+    A12 = H12{i};
+    A13 = H13{i};
+    A23 = H23{i};
 
-    for i = size(A_index,2)
-        % active area number
-        % get calibration matrix
-        A = H{i};
-        A12 = H12{i};
-        A13 = H13{i};
-        A23 = H23{i};
-        
-        % temperature compensation process
-        
+    cur_m1 = [];
+    cur_m2 = [];
+    alpha_m1 = [];
+    alpha_m2 = [];
+
+    % temperature compensation process
+    KA = A*diff(A_index{i}); % curvatures without temperature compensation
+
+    K23 = A23*E1*diff(A_index{i});
+    K13 = A13*E2*diff(A_index{i});
+    K12 = A12*E3*diff(A_index{i});
+
+    % Naieve pseudoinverse method
+    A_aug = [A - A23*E1; A - A13*E2; A - A12*E3]*ratios; 
+    K_aug = [KA - K23; KA - K13; KA - K12];
+
+    calc_temp_wave_change = pinv(A_aug)*K_aug;
+    %disp('calculated wavelengh shifts due to temperature variation')
+    %calc_temp_wave_changes = calc_temp_wave_change * ratios;
+    %disp(calc_temp_wave_changes);
+    alpha_m1 = [alpha_m1,calc_temp_wave_change];
+
+    % JK's diagonal average method
+    b1 = KA - K23;
+    b2 = KA - K13;
+    b3 = KA - K12;
     
-    end
+    x1 = (A - A23*E1)*ratios;
+    x2 = (A - A13*E2)*ratios;
+    x3 = (A - A12*E3)*ratios;
+    
+    temp_wave_change_calc = [b1 b2 b3]/[x1 x2 x3];
+    temp_wave_avg = 0.5*(temp_wave_change_calc(1, 1) + temp_wave_change_calc(2, 2));
 
-    % plotting the result
-    fiugre(1);
-    plot(cur_xy);
-    hold on;
-    plot(cur_xz);
+    alpha_m2 = [alpha_m2,temp_wave_avg];
 
+    % get the compensated curvature
+    cur_m1 = [cur_m1, A*(diff(A_index{i}) - alpha_m1 * ratio')];
+    cur_m2 = [cur_m2, A*(diff(A_index{i}) - alpha_m2 * ratio')];
 
-
+    % plotting 
+    figure(i)
+    plot(cur_m1(:,1))
+    hold on
+    plot(cur_m1(:,2))
+    legend("cur_xy","cur_xz");
+    hold off
+    
 end
+
+

@@ -70,9 +70,9 @@ vali_ch1_deg90 = {[1:6],
             
 
 %output filename
-cal_name = 'Cal_mat_2CH_2AA_alldata_A12.mat';
-H12 = {};
-CS = 'A12'; % condition for channel selection
+cal_name = 'Cal_mat_2CH_2AA_alldata_A23.mat';
+H23 = {}; % consistant with L73, L75, L182 and L198
+CS = 'A23'; % condition for channel selection
 
 %% construct meassured data matrix and expected data matrix
 
@@ -179,7 +179,7 @@ for i = 1:2 %use first two AA
     H_sub = inv(transpose(measure_mat)*measure_mat)*transpose(measure_mat)*real_mat;
     predict = measure_mat * H_sub;
     error =  predict - real_mat;
-    H{i} = H_sub;
+    H23{i} = H_sub;
     disp('mean error:');
     disp(mean(abs(error),1));
     disp('max error:');
@@ -195,6 +195,6 @@ for i = 1:2 %use first two AA
 
 end
 
-save(cal_name,"H12","CS");
+save(cal_name,"H23","CS");
         
     
