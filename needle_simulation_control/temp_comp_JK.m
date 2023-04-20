@@ -1,14 +1,15 @@
 clear;
 %% Calibration; No temperature variation
 A = rand(2, 3); % assumed calibration matrix
-% ratios = [1; 2; -1]; % just a random ratio
+ratios = [1; 2; -1]; % just a random ratio
 
 n = 10;
 del_wave_calibration = zeros(3, n);
 K_calibration = zeros(2, n);
+% th = 2*pi*(rand()-0.5); % calibration on the same plane
 for i = 1:n
-    th = 2*pi*(rand()-0.5);
-    del_wave_calibration(:, i) = [sin(th),-sin(pi/3+th),sin(pi/3-th)]*rand(); % generate signals due to bending
+    th = 2*pi*(rand()-0.5); % calibration on different planes
+    del_wave_calibration(:, i) = [sin(th),-sin(pi/3+th),sin(pi/3-th)]'*rand(); % generate signals due to bending
     K_calibration(:, i) = A*del_wave_calibration(:, i); % curvtures due to bending only
 end
 
@@ -31,7 +32,7 @@ clc
 disp('random wavelength shifts due to temperature variation')
 % temp_wave_change = rand(3, 1); % wavelength changes due to temperature changes
 temp_wave_change = rand()*ones(3,1); % wavelength changes due to temperature changes
-th = 2*pi*(rand()-0.5);
+th = 2*pi*(rand()-0.5); % bending on a random plane
 bend_wave_change = [sin(th),-sin(pi/3+th),sin(pi/3-th)]'*rand(); % wavelength changes due to bending
 disp(temp_wave_change);
 
@@ -43,7 +44,6 @@ K3 = A3*E3*del_actual;
 
 
 A_aug = [A - A1*E1; A - A2*E2; A - A3*E3];
-rank(A_aug)
 K_aug = [K_actual - K1; K_actual - K2; K_actual - K3];
 calc_temp_wave_change = pinv(A_aug)*K_aug;
 disp('calculated wavelengh shifts due to temperature variation')
