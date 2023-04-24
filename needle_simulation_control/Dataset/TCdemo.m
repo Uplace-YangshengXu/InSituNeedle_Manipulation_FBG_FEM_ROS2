@@ -6,6 +6,8 @@ load Cal_mat_2CH_2AA_alldata_A12.mat % H12 CS
 load Cal_mat_2CH_2AA_alldata_A13.mat % H13 CS
 load Cal_mat_2CH_2AA_alldata_A23.mat % H23 CS
 load Cal_mat_3CH_2AA_alldata.mat % H
+load temp_comp_ratios.mat % ratio_AA1 ratio_AA2
+
 A_index = {[1,5,9],[2,6,10]}; %3ch 2aa
 A12_index = {[1,5],[2,6]};
 A13_index = {[1,9],[2,10]};
@@ -13,9 +15,13 @@ A23_index = {[5,9],[6,10]};
 E1 = [0 1 0; 0 0 1]; % for A23
 E2 = [1 0 0; 0 0 1]; % for A13
 E3 = [1 0 0; 0 1 0]; % for A12
-ratios = [1;1;1]; % assume the temp effect is 1:1:1 for each channel
+ratios = [ratio_AA1 ratio_AA2]; % assume the temp effect is 1:1:1 for each channel
 
-namefile = 'temp_fbg_data.xls';
+%namefile = 'temp_fbg_data.xls';
+%namefile = 'temp_fbg_data2.xls';
+%namefile = 'temp_fbg_data3.xls';
+%namefile = 'temp_fbg_data4.xls';
+namefile = 'temp_fbg_data5.xls';
 sheet_name = 'Temp_vari_data';
 % data file
 % format
@@ -82,7 +88,7 @@ legend(ax4,'Method 1 TC','Method 2 TC','Without TC from A','Without TC from A12'
 
 
 %% data process
-for j = 2:r
+for j = 1:r
     diff = data(j,:) - ref;
     % diff is one row of data
     
@@ -106,11 +112,11 @@ for j = 2:r
     
         % temperature compensation process
         % convert to 2*n
-        KA = A*diff(:,A_index{i})'; % curvatures without temperature compensation
+        KA = A*diff(A_index{i})'; % curvatures without temperature compensation
         
-        K23 = A23*E1*diff(:,A_index{i})';
-        K13 = A13*E2*diff(:,A_index{i})';
-        K12 = A12*E3*diff(:,A_index{i})';
+        K23 = A23*E1*diff(A_index{i})';
+        K13 = A13*E2*diff(A_index{i})';
+        K12 = A12*E3*diff(A_index{i})';
 
         % curvature without temperature compensation
         cur_NTC_A = KA;
@@ -119,7 +125,7 @@ for j = 2:r
         cur_NTC_A23 = K23;
     
         % Naieve pseudoinverse method
-        A_aug = [A - A23*E1; A - A13*E2; A - A12*E3]*ratios; 
+        A_aug = [A - A23*E1; A - A13*E2; A - A12*E3]*ratios(:,i); 
         K_aug = [KA - K23; KA - K13; KA - K12];
     
         calc_temp_wave_change = pinv(A_aug)*K_aug;
@@ -133,9 +139,9 @@ for j = 2:r
         b2 = KA - K13;
         b3 = KA - K12;
         
-        x1 = (A - A23*E1)*ratios;
-        x2 = (A - A13*E2)*ratios;
-        x3 = (A - A12*E3)*ratios;
+        x1 = (A - A23*E1)*ratios(:,i);
+        x2 = (A - A13*E2)*ratios(:,i);
+        x3 = (A - A12*E3)*ratios(:,i);
         
         temp_wave_change_calc = [b1 b2 b3]/[x1 x2 x3];
         temp_wave_avg = 0.5*(temp_wave_change_calc(1, 1) + temp_wave_change_calc(2, 2));
@@ -143,8 +149,8 @@ for j = 2:r
         alpha_m2 = [alpha_m2,temp_wave_avg];
     
         % get the compensated curvature
-        cur_m1 = [cur_m1, A*(diff(A_index{i})' - alpha_m1 * ratios)];
-        cur_m2 = [cur_m2, A*(diff(A_index{i})' - alpha_m2 * ratios)];
+        cur_m1 = [cur_m1, A*(diff(A_index{i})' - alpha_m1 * ratios(:,i))];
+        cur_m2 = [cur_m2, A*(diff(A_index{i})' - alpha_m2 * ratios(:,i))];
 
         % plotting 
         if i == 1
