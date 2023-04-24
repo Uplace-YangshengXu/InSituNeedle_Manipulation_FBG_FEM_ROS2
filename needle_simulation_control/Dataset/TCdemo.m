@@ -15,16 +15,15 @@ A23_index = {[5,9],[6,10]};
 E1 = [0 1 0; 0 0 1]; % for A23
 E2 = [1 0 0; 0 0 1]; % for A13
 E3 = [1 0 0; 0 1 0]; % for A12
-ratios = [ratio_AA1 ratio_AA2]; % assume the temp effect is 1:1:1 for each channel
+ratios = [ratio_AA1 ratio_AA2]; 
 
-%namefile = 'temp_fbg_data.xls';
-%namefile = 'temp_fbg_data2.xls';
-%namefile = 'temp_fbg_data3.xls';
-%namefile = 'temp_fbg_data4.xls';
-namefile = 'temp_fbg_data5.xls';
+%namefile = 'temp_fbg_data2.xls'; % Apr 24 2023, using hot water steam, straight needle
+%namefile = 'temp_fbg_data3.xls'; % Apr 24 2023, using hot water steam, bent needle
+% namefile = 'temp_fbg_data4.xls'; % Apr 24 2023, using incubator, 98.5F, straight needle
+namefile = 'temp_fbg_data5.xls'; % Apr 24 2023, using heat gun, straight needle
+
 sheet_name = 'Temp_vari_data';
-% data file
-% format
+% data file format
 % 1st unbent data
 % 2nd bend data with room temp
 % 3rd-end bend data with various temp
@@ -34,58 +33,63 @@ data = readmatrix(namefile,'Sheet',sheet_name);
 ref = data(1,:);
 
 f = figure();
-ax = subplot(2,2,1); % for AA1 cur_xy
-ax2 = subplot(2,2,2); % for AA1 cur_xz
-ax3 = subplot(2,2,3); % for AA2 cur_xy
-ax4 = subplot(2,2,4); % for AA2 cur_xz
-hold([ax,ax2,ax3,ax4],'on')
-xlabel([ax,ax2,ax3,ax4],'timestamp')
-ylabel([ax,ax2,ax3,ax4],'curvature (m^-1)')
-title(ax,"AA1 curv xy")
+ax1 = subplot(2,2,1); grid on; % for AA1 cur_xy
+ax2 = subplot(2,2,2); grid on; % for AA1 cur_xz
+ax3 = subplot(2,2,3); grid on; % for AA2 cur_xy
+ax4 = subplot(2,2,4); grid on; % for AA2 cur_xz
+hold([ax1,ax2,ax3,ax4],'on')
+xlabel([ax1,ax2,ax3,ax4],'timestamp')
+ylabel([ax1,ax2,ax3,ax4],'curvature (m^-1)')
+title(ax1,"AA1 curv xy")
 title(ax2,'AA1 curv xz')
 title(ax3,'AA2 curv xy')
 title(ax4,'AA2 curv xz')
+
 % plotting for TC method 1
-ani_plot1 = animatedline(ax,'Marker','o','Color','r');
+ani_plot1 = animatedline(ax1,'Marker','o','Color','r');
 ani_plot2 = animatedline(ax2,'Marker','o','Color','r');
 ani_plot3 = animatedline(ax3,'Marker','o','Color','r');
 ani_plot4 = animatedline(ax4,'Marker','o','Color','r');
 
 % plotting for TC method 2
-ani_plot12 = animatedline(ax,'Marker','*','Color','g');
+ani_plot12 = animatedline(ax1,'Marker','*','Color','g');
 ani_plot22 = animatedline(ax2,'Marker','*','Color','g');
 ani_plot32 = animatedline(ax3,'Marker','*','Color','g');
 ani_plot42 = animatedline(ax4,'Marker','*','Color','g');
 
 % plotting for NTC from A
-ani_plot13 = animatedline(ax,'Marker','+','Color','b');
+ani_plot13 = animatedline(ax1,'Marker','+','Color','b');
 ani_plot23 = animatedline(ax2,'Marker','+','Color','b');
 ani_plot33 = animatedline(ax3,'Marker','+','Color','b');
 ani_plot43 = animatedline(ax4,'Marker','+','Color','b');
 
 % plotting for NTC from A12
-ani_plot14 = animatedline(ax,'Marker','+','Color','k');
-ani_plot24 = animatedline(ax2,'Marker','+','Color','k');
-ani_plot34 = animatedline(ax3,'Marker','+','Color','k');
-ani_plot44 = animatedline(ax4,'Marker','+','Color','k');
+% ani_plot14 = animatedline(ax,'Marker','+','Color','k');
+% ani_plot24 = animatedline(ax2,'Marker','+','Color','k');
+% ani_plot34 = animatedline(ax3,'Marker','+','Color','k');
+% ani_plot44 = animatedline(ax4,'Marker','+','Color','k');
 
 % plotting for NTC from A13
-ani_plot15 = animatedline(ax,'Marker','+','Color','c');
-ani_plot25 = animatedline(ax2,'Marker','+','Color','c');
-ani_plot35 = animatedline(ax3,'Marker','+','Color','c');
-ani_plot45 = animatedline(ax4,'Marker','+','Color','c');
+% ani_plot15 = animatedline(ax,'Marker','+','Color','c');
+% ani_plot25 = animatedline(ax2,'Marker','+','Color','c');
+% ani_plot35 = animatedline(ax3,'Marker','+','Color','c');
+% ani_plot45 = animatedline(ax4,'Marker','+','Color','c');
 
 % plotting for NTC from A23
-ani_plot16 = animatedline(ax,'Marker','+','Color','y');
-ani_plot26 = animatedline(ax2,'Marker','+','Color','y');
-ani_plot36 = animatedline(ax3,'Marker','+','Color','y');
-ani_plot46 = animatedline(ax4,'Marker','+','Color','y');
+% ani_plot16 = animatedline(ax,'Marker','+','Color','y');
+% ani_plot26 = animatedline(ax2,'Marker','+','Color','y');
+% ani_plot36 = animatedline(ax3,'Marker','+','Color','y');
+% ani_plot46 = animatedline(ax4,'Marker','+','Color','y');
 
-legend(ax,'Method 1 TC','Method 2 TC','Without TC from A','Without TC from A12','Without TC from A13','Without TC from A23')
-legend(ax2,'Method 1 TC','Method 2 TC','Without TC from A','Without TC from A12','Without TC from A13','Without TC from A23')
-legend(ax3,'Method 1 TC','Method 2 TC','Without TC from A','Without TC from A12','Without TC from A13','Without TC from A23')
-legend(ax4,'Method 1 TC','Method 2 TC','Without TC from A','Without TC from A12','Without TC from A13','Without TC from A23')
+% legend(ax,'Method 1 TC','Method 2 TC','Without TC from A','Without TC from A12','Without TC from A13','Without TC from A23')
+% legend(ax2,'Method 1 TC','Method 2 TC','Without TC from A','Without TC from A12','Without TC from A13','Without TC from A23')
+% legend(ax3,'Method 1 TC','Method 2 TC','Without TC from A','Without TC from A12','Without TC from A13','Without TC from A23')
+% legend(ax4,'Method 1 TC','Method 2 TC','Without TC from A','Without TC from A12','Without TC from A13','Without TC from A23')
 
+legend(ax1, 'Method 1 TC', 'Method 2 TC', 'w/o TC')
+legend(ax2, 'Method 1 TC', 'Method 2 TC', 'w/o TC')
+legend(ax3, 'Method 1 TC', 'Method 2 TC', 'w/o TC')
+legend(ax4, 'Method 1 TC', 'Method 2 TC', 'w/o TC')
 
 %% data process
 for j = 1:r
@@ -165,14 +169,14 @@ for j = 1:r
             addpoints(ani_plot13,j,cur_NTC_A(1))
             addpoints(ani_plot23,j,cur_NTC_A(2))
             % A12
-            addpoints(ani_plot14,j,cur_NTC_A12(1))
-            addpoints(ani_plot24,j,cur_NTC_A12(2))
+            % addpoints(ani_plot14,j,cur_NTC_A12(1))
+            % addpoints(ani_plot24,j,cur_NTC_A12(2))
             % A13
-            addpoints(ani_plot15,j,cur_NTC_A13(1))
-            addpoints(ani_plot25,j,cur_NTC_A13(2))
+            % addpoints(ani_plot15,j,cur_NTC_A13(1))
+            % addpoints(ani_plot25,j,cur_NTC_A13(2))
             % A23
-            addpoints(ani_plot16,j,cur_NTC_A23(1))
-            addpoints(ani_plot26,j,cur_NTC_A23(2))
+            % addpoints(ani_plot16,j,cur_NTC_A23(1))
+            % addpoints(ani_plot26,j,cur_NTC_A23(2))
 
 
         elseif i == 2
@@ -185,22 +189,19 @@ for j = 1:r
             addpoints(ani_plot33,j,cur_NTC_A(1))
             addpoints(ani_plot43,j,cur_NTC_A(2))
             % A12
-            addpoints(ani_plot34,j,cur_NTC_A12(1))
-            addpoints(ani_plot44,j,cur_NTC_A12(2))
+            % addpoints(ani_plot34,j,cur_NTC_A12(1))
+            % addpoints(ani_plot44,j,cur_NTC_A12(2))
             % A13
-            addpoints(ani_plot35,j,cur_NTC_A13(1))
-            addpoints(ani_plot45,j,cur_NTC_A13(2))
+            % addpoints(ani_plot35,j,cur_NTC_A13(1))
+            % addpoints(ani_plot45,j,cur_NTC_A13(2))
             % A23
-            addpoints(ani_plot36,j,cur_NTC_A23(1))
-            addpoints(ani_plot46,j,cur_NTC_A23(2))
+            % addpoints(ani_plot36,j,cur_NTC_A23(1))
+            % addpoints(ani_plot46,j,cur_NTC_A23(2))
 
         else
-            
-        end
-       
+
+        end       
     end
-
-
 end
 
 

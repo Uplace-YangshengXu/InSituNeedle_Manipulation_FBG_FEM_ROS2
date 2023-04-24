@@ -2,7 +2,7 @@
 % this script is used to determine the ratio of change of 
 % wavelength in each fiber under the influence of temperature
 
-namefilelist = {'temp_fbg_data4.xls','temp_fbg_data4.xls','temp_fbg_data3.xls','temp_fbg_data2.xls'};
+namefilelist = {'temp_fbg_data5.xls','temp_fbg_data4.xls','temp_fbg_data3.xls','temp_fbg_data2.xls'};
 sheet_name = 'Temp_vari_data';
 
 % data file
