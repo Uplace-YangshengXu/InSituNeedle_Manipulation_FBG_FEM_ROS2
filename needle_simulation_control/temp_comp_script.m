@@ -5,14 +5,17 @@ bend_change_ratios = @bend_wave_ratios; % some bend-wavelength change ratio obta
 ratios_noise = 0.3; % some unknown magnitude difference from experimental values
 calibration_noise_mag = 0.1; % noise coming into calibration signals
 A = rand(2, 3); % assumed calibration matrix
+single_plane = false; % if calibration and bending is performed on the same plane
 
 %% Calibration; No temperature variation
 n = 50;
 del_wave_calibration = zeros(3, n);
 K_calibration = zeros(2, n);
-% th = 2*pi*(rand() - 0.5); % calibration on the same plane
+th = 2*pi*(rand() - 0.5); % calibration on the same plane
 for i = 1:n
-    th = 2*pi*(rand() - 0.5); % calibration on different planes
+    if ~single_plane
+        th = 2*pi*(rand() - 0.5); % calibration on different planes
+    end
     del_wave_calibration(:, i) = bend_change_ratios(th)*rand() + calibration_noise_mag*rand(3, 1); % generate signals due to bending
     K_calibration(:, i) = A*del_wave_calibration(:, i); % curvtures due to bending only
 end
@@ -36,7 +39,9 @@ clc
 
 ratios_actual = wave_change_ratios + ratios_noise; % actual temperature-wavelength change ratio during measurements
 temp_wave_change = ratios_actual*rand(); % wavelength changes due to temperature changes
-th = 2*pi*(rand() - 0.5); % bending on a random plane
+if ~single_plane
+    th = 2*pi*(rand() - 0.5); % bending on a random plane
+end
 bend_wave_change = bend_change_ratios(th)*rand(); % wavelength changes due to bending
 disp('random wavelength shifts due to temperature variation')
 disp(temp_wave_change);
@@ -50,7 +55,7 @@ K2 = A2*E2*del_actual;
 K3 = A3*E3*del_actual;
 
 % Naieve pseudoinverse method
-A_aug = [A - A1*E1; A - A2*E2; A - A3*E3]*wave_change_ratios; 
+A_aug = [A - A1*E1; A - A2*E2; A - A3*E3]*wave_change_ratios;
 K_aug = [K_actual - K1; K_actual - K2; K_actual - K3];
 calc_temp_wave_change = pinv(A_aug)*K_aug;
 disp('calculated wavelengh shifts due to temperature variation')
