@@ -3,7 +3,7 @@ clear;
 wave_change_ratios = [1; 2; 3]; % just a random temperature-wavelength change ratio obtained by experiment
 bend_change_ratios = @bend_wave_ratios; % some bend-wavelength change ratio obtained by geometry
 ratios_noise = 0.3; % some unknown magnitude difference from experimental values
-calibration_noise_mag = 0.1; % noise coming into calibration signals
+calibration_noise_mag = 0.2; % noise coming into calibration signals
 A = rand(2, 3); % assumed calibration matrix
 single_plane = false; % if calibration and bending is performed on the same plane
 
@@ -38,15 +38,19 @@ A3 = K_calibration*pinv(del_calibration_3);
 clc
 
 ratios_actual = wave_change_ratios + ratios_noise; % actual temperature-wavelength change ratio during measurements
-temp_wave_change = ratios_actual*rand(); % wavelength changes due to temperature changes
+temp_change = rand();
+disp('random temperature change in degrees')
+disp(temp_change);
+
+temp_wave_changes = ratios_actual*temp_change; % wavelength changes due to temperature changes
 if ~single_plane
     th = 2*pi*(rand() - 0.5); % bending on a random plane
 end
 bend_wave_change = bend_change_ratios(th)*rand(); % wavelength changes due to bending
 disp('random wavelength shifts due to temperature variation')
-disp(temp_wave_change);
+disp(temp_wave_changes);
 
-del_actual = bend_wave_change + temp_wave_change; % total change in wavelength (bending + temperature)
+del_actual = bend_wave_change + temp_wave_changes; % total change in wavelength (bending + temperature)
 K_actual = A*del_actual; % curvatures without temperature compensation
 
 % Temperature compensation routine
@@ -57,9 +61,11 @@ K3 = A3*E3*del_actual;
 % Naieve pseudoinverse method
 A_aug = [A - A1*E1; A - A2*E2; A - A3*E3]*wave_change_ratios;
 K_aug = [K_actual - K1; K_actual - K2; K_actual - K3];
-calc_temp_wave_change = pinv(A_aug)*K_aug;
+calc_temp_change = pinv(A_aug)*K_aug;
+disp('calculated temperature change in degrees')
+disp(calc_temp_change)
 disp('calculated wavelengh shifts due to temperature variation')
-calc_temp_wave_changes = calc_temp_wave_change * wave_change_ratios;
+calc_temp_wave_changes = calc_temp_change * wave_change_ratios;
 disp(calc_temp_wave_changes);
 
 % JK's diagonal average method
