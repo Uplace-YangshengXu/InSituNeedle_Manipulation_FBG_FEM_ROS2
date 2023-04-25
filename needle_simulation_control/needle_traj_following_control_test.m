@@ -17,7 +17,7 @@ addpath ./Control/
 
 %% switches
 FBG_switch = 1; %switch off fbg with 0
-Motor_switch = 1; %switch off motor with 0
+Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -53,7 +53,9 @@ bk = 0;
 % position of AA on needle, measured from needle base.
 % only the AA mentioned in AA_lcn will be used in FEM, 
 % in this test, we omit the last AA
-AA_lcn = [44;79;114]; 
+% AA_lcn = [44;79;114]; 
+AA_lcn = [44;79]; 
+
 
 % initial guess for FEM
 x_pre = linspace(bx,bx+L,L+1)';
@@ -61,9 +63,9 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [-2 0 40 10 40;
-      0 0 0 0 -1.5;
-      0 0 0 0 -0.03];
+xd = [0 40 10 40;
+      0 0 0 -1.5;
+      0 0 0 -0.03];
 % xd = [0 40;
 %       0 0;
 %       0 0];
@@ -214,9 +216,9 @@ publisher.sendPubMsg(pub_msg);
         dbx = dcontrol(1)*dt;
         dby = dcontrol(2)*dt;
         dbk = dcontrol(3)*dt;
-%         dbx = 0;
-%         dby = 0;
-%         dbk = 0;
+        dbx = 0;
+        dby = 0;
+        dbk = 0;
         %restricting the control for FEM convergence
 %         dbx = sign(dbx)*min(0.1,norm(dbx));
 %         dby = sign(dby)*min(0.05,norm(dby));

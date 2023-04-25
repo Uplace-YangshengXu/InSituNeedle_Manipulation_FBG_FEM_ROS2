@@ -1,11 +1,28 @@
 {
   "Serial Number": "3CH-4AA-0006",
-  "Num Channel": 3,
-  "Num AA": 4,
+  "Num Needle Channel": 3,
+  "Num Needle AA": 4,
+
+  "Num Interrogator Channel": 4,
   
   "Calibration Matrix Refer File":"Cal_mat_3CH_2AA_alldata.mat and Cal_mat_2CH_2AA_alldata.mat",
 
   "Calibration Style":"Y=Kx",
+  "Temperature Compensation": 1,
+  "Additional Calibration Matrix":["A23","A13","A12"],
+  "Additional E Matrix":["E1","E2","E3"],
+  "Additional E1 Matrix":[[0, 1, 0],
+                          [0, 0, 1]
+    ],
+
+  "Additional E2 Matrix":[[1, 0, 0],
+                          [0, 0, 1]
+    ],
+
+  "Additional E3 Matrix":[[1, 0, 0],
+                          [0, 1, 0]
+    ],
+
 
   "Calibration Matrix Configuration A": {
   	"CH1_sm130":2,
@@ -44,8 +61,8 @@
       [1.637282709371001, 0.053972770342347],
       [-1.451847086046000, -0.755213112247157],
       [0.380817722253515, -2.933124188521401]
-    ],
-  }
+    ]
+  },
 
   "Calibration Matrix A12": {
     "AA1":[
@@ -57,8 +74,8 @@
       [1.254513194139856, 3.002130007116346],
       [-1.882372796881022, 2.560770631255302]
 
-    ],
-  }
+    ]
+  },
 
   "Calibration Matrix A13": {
     "AA1":[
@@ -70,8 +87,8 @@
       [2.925817449926966, 0.724235045899207],
       [1.659504103214814, -2.267984773609699]
 
-    ],
-  }
+    ]
+  },
 
   "Calibration Matrix A23": {
     "AA1":[
@@ -83,13 +100,19 @@
       [-3.287601337475554, -0.815728466162773],
       [-1.238830504083898, -2.986515640868110]
 
+    ]
+  },
+
+
+  "Temperature Compensation Ratio": {
+    "AA1":[[1.000000000000000],
+      [0.943562111906003],
+      [0.662958317347450]
     ],
+    "AA2":[[1.000000000000000],
+      [1.048616841316771],
+      [1.072105945922591]
+    ]
   }
-
-
-
-
-
-
 
 }
