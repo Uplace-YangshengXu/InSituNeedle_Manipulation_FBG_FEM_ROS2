@@ -1,17 +1,22 @@
 {
   "Serial Number": "3CH-4AA-0006",
-  "Num Channel": 3,
-  "Num AA": 4,
+  "Num Needle Channel": 3,
+  "Num Needle AA": 4,
+  "Num Interrogator Channel": 4,
   
   "Calibration Matrix Refer File":"Cal_mat_2CH_alldata.mat",
-  "Calibration Matrix Configuration": {
+
+  "Calibration Style":"Y=Kx",
+  "Temperature Compensation":0,
+
+  "Calibration Matrix Configuration A": {
   	"CH1_sm130":4,
   	"CH2_sm130":0,
   	"CH3_sm130":4,
   	"CH4_sm130":0
   },
   
-  "Calibration Matrix": {
+  "Calibration Matrix A": {
     "AA1":[
       [3.008344034174126, -0.414339187662028],
       [1.459978855634437,2.412209998354925]
