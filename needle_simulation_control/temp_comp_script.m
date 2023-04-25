@@ -1,7 +1,8 @@
 clear;
 %% Some constants to play with
-ratios = [1; 2; 3]; % just a random temperature-wavelength change ratio obtained by experiment
-ratios_noise = 0.5; % some unknown magnitude difference from experimental values
+wave_change_ratios = [1; 2; 3]; % just a random temperature-wavelength change ratio obtained by experiment
+bend_change_ratios = @bend_wave_ratios; % some bend-wavelength change ratio obtained by geometry
+ratios_noise = 0.3; % some unknown magnitude difference from experimental values
 calibration_noise_mag = 0.1; % noise coming into calibration signals
 A = rand(2, 3); % assumed calibration matrix
 
@@ -12,7 +13,7 @@ K_calibration = zeros(2, n);
 % th = 2*pi*(rand() - 0.5); % calibration on the same plane
 for i = 1:n
     th = 2*pi*(rand() - 0.5); % calibration on different planes
-    del_wave_calibration(:, i) = [sin(th), -sin(pi/3 + th), sin(pi/3 - th)]'*rand() + calibration_noise_mag*rand(3, 1); % generate signals due to bending
+    del_wave_calibration(:, i) = bend_change_ratios(th)*rand() + calibration_noise_mag*rand(3, 1); % generate signals due to bending
     K_calibration(:, i) = A*del_wave_calibration(:, i); % curvtures due to bending only
 end
 
@@ -33,10 +34,10 @@ A3 = K_calibration*pinv(del_calibration_3);
 %% Temperature compensation during measurements
 clc
 
-ratios_actual = ratios + ratios_noise; % actual temperature-wavelength change ratio during measurements
+ratios_actual = wave_change_ratios + ratios_noise; % actual temperature-wavelength change ratio during measurements
 temp_wave_change = ratios_actual*rand(); % wavelength changes due to temperature changes
 th = 2*pi*(rand() - 0.5); % bending on a random plane
-bend_wave_change = [sin(th), -sin(pi/3 + th), sin(pi/3 - th)]'*rand(); % wavelength changes due to bending
+bend_wave_change = bend_change_ratios(th)*rand(); % wavelength changes due to bending
 disp('random wavelength shifts due to temperature variation')
 disp(temp_wave_change);
 
@@ -49,11 +50,11 @@ K2 = A2*E2*del_actual;
 K3 = A3*E3*del_actual;
 
 % Naieve pseudoinverse method
-A_aug = [A - A1*E1; A - A2*E2; A - A3*E3]*ratios; 
+A_aug = [A - A1*E1; A - A2*E2; A - A3*E3]*wave_change_ratios; 
 K_aug = [K_actual - K1; K_actual - K2; K_actual - K3];
 calc_temp_wave_change = pinv(A_aug)*K_aug;
 disp('calculated wavelengh shifts due to temperature variation')
-calc_temp_wave_changes = calc_temp_wave_change * ratios;
+calc_temp_wave_changes = calc_temp_wave_change * wave_change_ratios;
 disp(calc_temp_wave_changes);
 
 % JK's diagonal average method
@@ -61,12 +62,18 @@ b1 = K_actual - K1;
 b2 = K_actual - K2;
 b3 = K_actual - K3;
 
-x1 = (A - A1*E1)*ratios;
-x2 = (A - A2*E2)*ratios;
-x3 = (A - A3*E3)*ratios;
+x1 = (A - A1*E1)*wave_change_ratios;
+x2 = (A - A2*E2)*wave_change_ratios;
+x3 = (A - A3*E3)*wave_change_ratios;
 
 temp_wave_change_calc = [b1 b2 b3]/[x1 x2 x3];
 temp_wave_avg = 0.5*(temp_wave_change_calc(1, 1) + temp_wave_change_calc(2, 2));
 disp('JK calculated wavelength shifts')
-calc_temp_wave_changes_JK = temp_wave_avg*ratios;
+calc_temp_wave_changes_JK = temp_wave_avg*wave_change_ratios;
 disp(calc_temp_wave_changes_JK)
+
+%% Bending-Wavelength ratio
+function ratios = bend_wave_ratios(theta)
+ratios = [sin(theta); -sin(pi/3 + theta); sin(pi/3 - theta)]; % geometric argument
+% ratios = [2; 2.5; -1]; % random ratio
+end
