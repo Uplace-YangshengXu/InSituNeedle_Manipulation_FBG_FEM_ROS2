@@ -37,12 +37,12 @@ A3 = K_calibration*pinv(del_calibration_3);
 %% Temperature compensation during measurements
 clc
 
-ratios_actual = wave_change_ratios + ratios_noise; % actual temperature-wavelength change ratio during measurements
-temp_change = rand();
+wave_change_ratios_actual = wave_change_ratios + ratios_noise; % actual temperature-wavelength change ratio during measurements
+temp_change = 20*rand();
 disp('random temperature change in degrees')
 disp(temp_change);
 
-temp_wave_changes = ratios_actual*temp_change; % wavelength changes due to temperature changes
+temp_wave_changes = wave_change_ratios_actual*temp_change; % wavelength changes due to temperature changes
 if ~single_plane
     th = 2*pi*(rand() - 0.5); % bending on a random plane
 end
