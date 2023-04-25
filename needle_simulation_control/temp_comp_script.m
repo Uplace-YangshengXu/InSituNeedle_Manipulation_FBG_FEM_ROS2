@@ -2,8 +2,8 @@ clear;
 %% Some constants to play with
 wave_change_ratios = [1; 2; 3]; % just a random temperature-wavelength change ratio obtained by experiment
 bend_change_ratios = @bend_wave_ratios; % some bend-wavelength change ratio obtained by geometry
-ratios_noise = 0.3; % some unknown magnitude difference from experimental values
-calibration_noise_mag = 0.2; % noise coming into calibration signals
+ratios_noise = 0.0; % some unknown magnitude difference from experimental values
+calibration_noise_mag = 0.0; % noise coming into calibration signals
 A = rand(2, 3); % assumed calibration matrix
 single_plane = false; % if calibration and bending is performed on the same plane
 
@@ -85,6 +85,6 @@ disp(calc_temp_wave_changes_JK)
 
 %% Bending-Wavelength ratio
 function ratios = bend_wave_ratios(theta)
-ratios = [sin(theta); -sin(pi/3 + theta); sin(pi/3 - theta)]; % geometric argument
-% ratios = [2; 2.5; -1]; % random ratio
+% ratios = [sin(theta); -sin(pi/3 + theta); sin(pi/3 - theta)]; % geometric argument
+ratios = [2; 2.5; -1]; % random ratio
 end

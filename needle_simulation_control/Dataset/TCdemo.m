@@ -15,19 +15,25 @@ A23_index = {[5,9],[6,10]};
 E1 = [0 1 0; 0 0 1]; % for A23
 E2 = [1 0 0; 0 0 1]; % for A13
 E3 = [1 0 0; 0 1 0]; % for A12
-ratios = [ratio_AA1 ratio_AA2]; 
+ratios = ones(3,2);
+% ratios = [ratio_AA1 ratio_AA2]; 
 
 %namefile = 'temp_fbg_data2.xls'; % Apr 24 2023, using hot water steam, straight needle
 %namefile = 'temp_fbg_data3.xls'; % Apr 24 2023, using hot water steam, bent needle
 % namefile = 'temp_fbg_data4.xls'; % Apr 24 2023, using incubator, 98.5F, straight needle
-namefile = 'temp_fbg_data5.xls'; % Apr 24 2023, using heat gun, straight needle
+% namefile = 'temp_fbg_data5.xls'; % Apr 24 2023, using heat gun, straight needle
+% namefile = 'temp_fbg_data6.xls'; % Apr 25 2023, using incubator, 101.0F, 2.0 needle
+% namefile = 'temp_fbg_data7.xls'; % Apr 25 2023, using incubator, 101.0F, straight needle
+% namefile = 'temp_fbg_data8.xls'; % Apr 25 2023, using incubator, 101.0F, 1.25 needle, decrease
+% namefile = 'temp_fbg_data9.xls'; % Apr 25 2023, using incubator, 118.0F, 1.25 needle, decrease
+% namefile = 'temp_fbg_datatest.xls'; % Apr 25 2023,free to 0.0 needle
+namefile = 'temp_fbg_data10.xls'; % Apr 25 2023, using incubator, 118.0F, free to 0.8 & 1.25 needle, decrease
 
-sheet_name = 'Temp_vari_data';
 % data file format
 % 1st unbent data
 % 2nd bend data with room temp
 % 3rd-end bend data with various temp
-
+sheet_name = 'Temp_vari_data';
 data = readmatrix(namefile,'Sheet',sheet_name);
 [r,c ] = size(data); % row and col
 ref = data(1,:);

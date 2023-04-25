@@ -15,7 +15,7 @@ AAs = 4;
 fbg_sensor_num = 10; % 4 + 4 + 2
 
 
-filename = '/temp_fbg_data5.xls';
+filename = '/temp_fbg_data10.xls';
 
 calPath = cd;
 
