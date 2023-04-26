@@ -5,7 +5,7 @@ function generate_ros2msg(current_working_path)
 % build the custom message and service type
 % ros packge under pwd/custom/msg or pwd/custom/srv
 
-folderPath = fullfile(current_working_path,"custom");
+folderPath = fullfile(current_working_path,"../custom");
 matlab_msg_folderpath = fullfile(folderPath,"matlab_msg_gen");
 
 % delete exist matlab msg folder

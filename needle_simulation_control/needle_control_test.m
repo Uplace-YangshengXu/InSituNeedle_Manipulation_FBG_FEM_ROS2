@@ -22,7 +22,7 @@ clc;
 addpath ./FEM/helper_funcs/invChol/
 addpath ./FEM/helper_funcs/
 addpath ./FEM
-
+addpath ./MatlabRos2_API
 
 % FEM Constants
 FEM_params;

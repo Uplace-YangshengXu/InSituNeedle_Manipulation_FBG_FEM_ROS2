@@ -7,7 +7,7 @@ clear
 addpath ./FEM/helper_funcs/invChol/
 addpath ./FEM/helper_funcs/
 addpath ./FEM
-
+addpath ./MatlabRos2_API
 % Constants
 FEM_params;
 
