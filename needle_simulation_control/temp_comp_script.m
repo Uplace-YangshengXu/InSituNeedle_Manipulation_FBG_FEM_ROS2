@@ -1,6 +1,6 @@
 clear;
 %% Some constants to play with
-wave_change_ratios = [1; 2; 3]; % just a random temperature-wavelength change ratio obtained by experiment
+wave_change_ratios = [0.2; 0.5; 1]; % just a random temperature-wavelength change ratio obtained by experiment
 bend_change_ratios = @bend_wave_ratios; % some bend-wavelength change ratio obtained by geometry
 ratios_noise = 0.0; % some unknown magnitude difference from experimental values
 calibration_noise_mag = 0.0; % noise coming into calibration signals
@@ -39,8 +39,6 @@ clc
 
 wave_change_ratios_actual = wave_change_ratios + ratios_noise; % actual temperature-wavelength change ratio during measurements
 temp_change = 20*rand();
-disp('random temperature change in degrees')
-disp(temp_change);
 
 temp_wave_changes = wave_change_ratios_actual*temp_change; % wavelength changes due to temperature changes
 if ~single_plane
@@ -62,8 +60,7 @@ K3 = A3*E3*del_actual;
 A_aug = [A - A1*E1; A - A2*E2; A - A3*E3]*wave_change_ratios;
 K_aug = [K_actual - K1; K_actual - K2; K_actual - K3];
 calc_temp_change = pinv(A_aug)*K_aug;
-disp('calculated temperature change in degrees')
-disp(calc_temp_change)
+
 disp('calculated wavelengh shifts due to temperature variation')
 calc_temp_wave_changes = calc_temp_change * wave_change_ratios;
 disp(calc_temp_wave_changes);
