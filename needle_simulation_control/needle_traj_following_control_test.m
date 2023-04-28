@@ -66,6 +66,7 @@ k_pre = bk*ones(size(x_pre));
 % xd = [-2 0 40 10 42;
 %       0 0 0 0 -1.5;
 %       0 0 0 0 -0.03];
+global xd
 xd = [0 39;
       0 0;
       0 0];
@@ -74,6 +75,14 @@ desired = 1;
 desired_s = 1;
 % stopping and updating threshold
 thre = 0.03; 
+
+%%
+fig = figure;
+set(fig, 'WindowKeyPressFcn', @KeyPressCallback);
+
+global ESC_PRESSED Arrived
+ESC_PRESSED = 0;
+Arrived = 0;
 
 %% control parameters
 
@@ -137,7 +146,7 @@ end
         x_pre, y_pre, k_pre, ...
         0, 0, 0, ...
         curvatures_xz, AA_lcn);
-
+0020
         % update states
 x_pre = x_new;
 y_pre = y_new;
@@ -160,8 +169,10 @@ pub_msg.needle_y_axis = y_pre;
 pub_msg.needle_slope  = k_pre;
 publisher.sendPubMsg(pub_msg);    
 arrived = 0;
+
+
 %% main loop
-    while (1)
+    while (~ESC_PRESSED && ishghandle(fig))
 %         tic
         %% updated and the corresponding control
         dbx = 0;
@@ -192,19 +203,18 @@ arrived = 0;
         pub_msg.needle_slope  = k_pre;
         publisher.sendPubMsg(pub_msg);
         
-        if arrived == 0
+        if Arrived == 0
         ic = [x_pre(end);y_pre(end);k_pre(end);0;0;0];
         
         [dcontrol,desired] = numerical_jacobian_traj_following_control(xd, Kp, ic, L, Mu, Alpha, Interval,...
         x_pre,y_pre,k_pre,...
         [],AA_lcn,thre,desired);
         if desired ~= desired_s
-%             waitforbuttonpress
             disp("Paused")
             pause
             desired_s = desired;
         end
-%         disp(desired)
+
         %scaling the control using step_size for FEM convergence   
         step_size = 0.1;
         if norm(dcontrol*dt) > 0.3
@@ -264,16 +274,32 @@ arrived = 0;
         pub_msg.needle_y_axis = y_new;
         pub_msg.needle_slope  = k_new;
         publisher.sendPubMsg(pub_msg);
-        disp([x_new(end);y_new(end);k_new(end)])
+%         disp([x_new(end);y_new(end);k_new(end)])
         error = norm([x_new(end);y_new(end);k_new(end)] - xd(:,end));
         end
-        disp(error);
+%         disp(error);
 %         toc
         % break critria
-        if error <= 0.05
+        if error <= 0.05 && Arrived == 0
             disp("arrive at goal, stopped with error: " + error);
-            arrived = 1;
+            Arrived = 1;
+            desired = 1;
+            desired_s = 1;
 %             break;
         end
+    drawnow;
     end
+close all
+
+function KeyPressCallback(source, eventdata)
+global xd Arrived
+global ESC_PRESSED
+key = eventdata.Key;
+if strcmpi(key, 'upArrow')
+    xd = input("Input next goal position or trajectory:");
+    Arrived = 0;
+elseif strcmpi(key, 'escape')
+    ESC_PRESSED = 1;
+end
+end
 
