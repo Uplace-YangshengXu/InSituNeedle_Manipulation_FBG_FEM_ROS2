@@ -16,8 +16,8 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 1; %switch off fbg with 0
-Motor_switch = 1; %switch off motor with 0
+FBG_switch = 0; %switch off fbg with 0
+Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -63,12 +63,12 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [-2 0 40 10 42;
-      0 0 0 0 -1.5;
-      0 0 0 0 -0.03];
-% xd = [0 39;
-%       0 0;
-%       0 0];
+% xd = [-2 0 40 10 42;
+%       0 0 0 0 -1.5;
+%       0 0 0 0 -0.03];
+xd = [0 39;
+      0 0;
+      0 0];
 % initialize the desired traj
 desired = 1; 
 desired_s = 1;
@@ -159,7 +159,7 @@ pub_msg.needle_x_axis = x_pre;
 pub_msg.needle_y_axis = y_pre;
 pub_msg.needle_slope  = k_pre;
 publisher.sendPubMsg(pub_msg);    
-
+arrived = 0;
 %% main loop
     while (1)
 %         tic
@@ -191,7 +191,8 @@ publisher.sendPubMsg(pub_msg);
         pub_msg.needle_y_axis = y_pre;
         pub_msg.needle_slope  = k_pre;
         publisher.sendPubMsg(pub_msg);
-
+        
+        if arrived == 0
         ic = [x_pre(end);y_pre(end);k_pre(end);0;0;0];
         
         [dcontrol,desired] = numerical_jacobian_traj_following_control(xd, Kp, ic, L, Mu, Alpha, Interval,...
@@ -265,12 +266,14 @@ publisher.sendPubMsg(pub_msg);
         publisher.sendPubMsg(pub_msg);
         disp([x_new(end);y_new(end);k_new(end)])
         error = norm([x_new(end);y_new(end);k_new(end)] - xd(:,end));
+        end
         disp(error);
 %         toc
         % break critria
         if error <= 0.05
             disp("arrive at goal, stopped with error: " + error);
-            break;
+            arrived = 1;
+%             break;
         end
     end
 
