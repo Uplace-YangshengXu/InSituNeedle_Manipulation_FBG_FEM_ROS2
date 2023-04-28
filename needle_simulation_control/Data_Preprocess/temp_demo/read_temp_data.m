@@ -7,15 +7,15 @@ addpath ../
 % collect n data set for each curve
 FBG_data_point = 1;
 % trial num
-val_repetitions = 20;
+val_repetitions = 11;
+seq_cur = [0 0.25 0.8 1.0 1.25 3.125 0.5 1.6 2.0 2.5 3.2];
 trial_start_num = 1;
 % number of channle and activate area
 channels = 3;
 AAs = 4;
 fbg_sensor_num = 10; % 4 + 4 + 2
 
-
-filename = '/temp_fbg_data10.xls';
+filename = '/temp_fbg_data_comparation.xls';
 
 calPath = cd;
 

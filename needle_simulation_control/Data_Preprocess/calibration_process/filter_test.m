@@ -3,12 +3,13 @@
 
 close all;
 clear;
-AA_selection = [1,5,9]; % AA1: 1,5
-%AA_selection = [2,6,10]; % AA2: 2,6
+%AA_selection = [1,5,9]; % AA1: 1,5
+AA_selection = [2,6,10]; % AA2: 2,6
 %AA_selection = [3,7];  % AA3: 3,7
 %AA_selection = [4,8];   % AA4: 4,8
 
-
+addpath ./current_cali_data/
+addpath ./prev_cali_data/
 
 
 % namefile = {'calibration7-9_090.xls','calibration10-12_090.xls'};
@@ -22,9 +23,9 @@ AA_selection = [1,5,9]; % AA1: 1,5
 
 % %namefile = {'validation7-9_090.xls','validation10-12_090.xls'}; % data used to validate the calibration matrix
 % %namefile = {'validation_ch3_090.xls'}; % data get from ch3 needle, collected at 17/03/2023
-% namefile = {'validation_ch3_090_processed.xls'};
-% num_trial = {1:3};
-% curvature = [0,0.25,0.8,1.0,1.25,3.125]; % constant curvature curve
+namefile = {'validation_ch3_090_processed.xls'};
+num_trial = {1:3};
+curvature = [0,0.25,0.8,1.0,1.25,3.125]; % constant curvature curve
 
 fig1 = figure(1);
 fig2 = figure(2);

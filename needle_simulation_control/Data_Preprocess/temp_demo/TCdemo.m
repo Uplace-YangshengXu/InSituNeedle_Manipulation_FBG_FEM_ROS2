@@ -2,6 +2,9 @@
 % this script provides a demo to test the Temperature Compensation
 % principle using AA1 and AA2 of three Channel needle
 
+addpath ../calibration_process
+addpath ./temp_demo_data/
+
 load Cal_mat_2CH_2AA_alldata_A12.mat % H12 CS
 load Cal_mat_2CH_2AA_alldata_A13.mat % H13 CS
 load Cal_mat_2CH_2AA_alldata_A23.mat % H23 CS
@@ -15,8 +18,9 @@ A23_index = {[5,9],[6,10]};
 E1 = [0 1 0; 0 0 1]; % for A23
 E2 = [1 0 0; 0 0 1]; % for A13
 E3 = [1 0 0; 0 1 0]; % for A12
-ratios = ones(3,2);
-% ratios = [ratio_AA1 ratio_AA2]; 
+% ratios = ones(3,2);
+ratios = [ratio_AA1 ratio_AA2]; 
+%ratios = [[1;1;1],[1.5;0.1;0.1]];
 
 %namefile = 'temp_fbg_data2.xls'; % Apr 24 2023, using hot water steam, straight needle
 %namefile = 'temp_fbg_data3.xls'; % Apr 24 2023, using hot water steam, bent needle
@@ -25,9 +29,9 @@ ratios = ones(3,2);
 % namefile = 'temp_fbg_data6.xls'; % Apr 25 2023, using incubator, 101.0F, 2.0 needle
 % namefile = 'temp_fbg_data7.xls'; % Apr 25 2023, using incubator, 101.0F, straight needle
 % namefile = 'temp_fbg_data8.xls'; % Apr 25 2023, using incubator, 101.0F, 1.25 needle, decrease
-% namefile = 'temp_fbg_data9.xls'; % Apr 25 2023, using incubator, 118.0F, 1.25 needle, decrease
+ namefile = 'temp_fbg_data9.xls'; % Apr 25 2023, using incubator, 118.0F, 1.25 needle, decrease
 % namefile = 'temp_fbg_datatest.xls'; % Apr 25 2023,free to 0.0 needle
-namefile = 'temp_fbg_data10.xls'; % Apr 25 2023, using incubator, 118.0F, free to 0.8 & 1.25 needle, decrease
+%namefile = 'temp_fbg_data10.xls'; % Apr 25 2023, using incubator, 118.0F, free to 0.8 & 1.25 needle, decrease
 
 % data file format
 % 1st unbent data
@@ -159,8 +163,8 @@ for j = 1:r
         alpha_m2 = [alpha_m2,temp_wave_avg];
     
         % get the compensated curvature
-        cur_m1 = [cur_m1, A*(diff(A_index{i})' - alpha_m1 * ratios(:,i))];
-        cur_m2 = [cur_m2, A*(diff(A_index{i})' - alpha_m2 * ratios(:,i))];
+        cur_m1 = [cur_m1, A*(diff(A_index{i})' - alpha_m1 * ratios(:,i))]
+        cur_m2 = [cur_m2, A*(diff(A_index{i})' - alpha_m2 * ratios(:,i))]
 
         % plotting 
         if i == 1

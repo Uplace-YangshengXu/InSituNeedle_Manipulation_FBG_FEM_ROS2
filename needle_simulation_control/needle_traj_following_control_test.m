@@ -17,7 +17,7 @@ addpath ./Control/
 
 %% switches
 FBG_switch = 1; %switch off fbg with 0
-Motor_switch = 0; %switch off motor with 0
+Motor_switch = 1; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -46,7 +46,7 @@ Interval = {[0, 80]};
 
 L = 163; % total length of needle (estimate)
 
-bx = -L-2; % initial base position
+bx = -L-4.5; % initial base position
 by = 0; 
 bk = 0;
 
@@ -63,10 +63,10 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-xd = [0 40 10 40;
-      0 0 0 -1.5;
-      0 0 0 -0.03];
-% xd = [0 40;
+xd = [-2 0 40 10 42;
+      0 0 0 0 -1.5;
+      0 0 0 0 -0.03];
+% xd = [0 39;
 %       0 0;
 %       0 0];
 % initialize the desired traj
@@ -77,7 +77,7 @@ thre = 0.03;
 
 %% control parameters
 
-Kp = diag([1 1 1]);
+Kp = 2*diag([1 1 1]);
 % scale the control
 dt = 0.1;
 % ini_tip_state = [x_pre(end);y_pre(end);k_pre(end)];
@@ -216,9 +216,9 @@ publisher.sendPubMsg(pub_msg);
         dbx = dcontrol(1)*dt;
         dby = dcontrol(2)*dt;
         dbk = dcontrol(3)*dt;
-        dbx = 0;
-        dby = 0;
-        dbk = 0;
+%         dbx = 0;
+%         dby = 0;
+%         dbk = 0;
         %restricting the control for FEM convergence
 %         dbx = sign(dbx)*min(0.1,norm(dbx));
 %         dby = sign(dby)*min(0.05,norm(dby));
