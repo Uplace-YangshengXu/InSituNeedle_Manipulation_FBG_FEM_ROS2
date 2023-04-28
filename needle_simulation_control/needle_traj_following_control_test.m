@@ -146,7 +146,7 @@ end
         x_pre, y_pre, k_pre, ...
         0, 0, 0, ...
         curvatures_xz, AA_lcn);
-0020
+
         % update states
 x_pre = x_new;
 y_pre = y_new;
@@ -211,7 +211,8 @@ arrived = 0;
         [],AA_lcn,thre,desired);
         if desired ~= desired_s
             disp("Paused")
-            pause
+            Arrived = 1;
+            dcontrol = dcontrol*0;
             desired_s = desired;
         end
 
@@ -297,6 +298,8 @@ global ESC_PRESSED
 key = eventdata.Key;
 if strcmpi(key, 'upArrow')
     xd = input("Input next goal position or trajectory:");
+    Arrived = 0;
+elseif strcmpi(key, 'downArrow')
     Arrived = 0;
 elseif strcmpi(key, 'escape')
     ESC_PRESSED = 1;
