@@ -16,7 +16,7 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 0; %switch off fbg with 0
+FBG_switch = 1; %switch off fbg with 0
 Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
@@ -67,9 +67,9 @@ k_pre = bk*ones(size(x_pre));
 %       0 0 0 0 -1.5;
 %       0 0 0 0 -0.03];
 global xd
-xd = [0 39;
-      0 0;
-      0 0];
+xd = [39;
+      0;
+      0];
 % initialize the desired traj
 desired = 1; 
 desired_s = 1;
