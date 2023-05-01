@@ -47,6 +47,7 @@ class needle_shape_visulisation(Node):
         self.axs.grid(True)
         self.if_init_needle_shape = 0
         self.if_init_curv_plot = 0
+        self.if_init_tip_traj = 0
         self.tip_traj_x = []
         self.tip_traj_y = []
         self.tip_traj_z = []
@@ -67,11 +68,16 @@ class needle_shape_visulisation(Node):
 
 
     def matlab_listener_callback(self,msg):
+        #recieve needle shape msg from matalb pub
         self.needle_msg = msg
-        #print("receive msg from matlab pub")
         self.matlab_listener = 1
+        
+        self.if_init_tip_traj = self.needle_msg.if_init_tip_traj
+        if self.if_init_tip_traj == 0:  
+                self.tip_traj_x = []
+                self.tip_traj_y = []
+                self.tip_traj_z = []
 
-        #update tip traj
         self.tip_traj_x.append(self.needle_msg.needle_x_axis[-1])
         self.tip_traj_y.append(self.needle_msg.needle_y_axis[-1])
         self.tip_traj_z.append(self.needle_msg.needle_z_axis[-1])

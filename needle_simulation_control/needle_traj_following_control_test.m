@@ -3,6 +3,7 @@
 %% dependency initialization
 clc
 clear
+close all
 % for FEM
 addpath ./FEM/helper_funcs/invChol/
 addpath ./FEM/helper_funcs/
@@ -84,10 +85,9 @@ thre = 0.03;
 fig = figure;
 set(fig, 'WindowKeyPressFcn', @KeyPressCallback);
 
-global ESC_PRESSED Arrived
+global ESC_PRESSED Arrived 
 ESC_PRESSED = 0;
 Arrived = 0;
-
 %% control parameters
 
 Kp = 2*diag([1 1 1]);
@@ -175,6 +175,7 @@ pub_msg.needle_z_axis = ones(size(x_new));
 pub_msg.needle_x_axis = x_pre;
 pub_msg.needle_y_axis = y_pre;
 pub_msg.needle_slope  = k_pre;
+pub_msg.if_init_tip_traj = false;
 publisher.sendPubMsg(pub_msg);    
 arrived = 0;
 
@@ -213,6 +214,7 @@ arrived = 0;
         pub_msg.needle_x_axis = x_pre;
         pub_msg.needle_y_axis = y_pre;
         pub_msg.needle_slope  = k_pre;
+        pub_msg.if_init_tip_traj = true;
         publisher.sendPubMsg(pub_msg);
         
         if Arrived == 0
@@ -293,6 +295,7 @@ arrived = 0;
         pub_msg.needle_x_axis = x_new;
         pub_msg.needle_y_axis = y_new;
         pub_msg.needle_slope  = k_new;
+        pub_msg.if_init_tip_traj = true;
         publisher.sendPubMsg(pub_msg);
         error = norm([x_new(end);y_new(end);k_new(end)] - xd(:,end));
         end
