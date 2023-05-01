@@ -33,7 +33,7 @@ Alpha_PVC = -1;
 Mu_PSM = 3.03e+03;
 %Mu_PSM = 2030;
 Mu_PVC = 1.2715e+04;
-Mu = Mu_PSM;
+Mu = Mu_PSM; 
 Alpha = Alpha_PSM;
 Constraints = [];
 % for air
@@ -63,13 +63,17 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-% xd = [-2 0 40 10 42;
-%       0 0 0 0 -1.5;
-%       0 0 0 0 -0.03];
+
 global xd
-xd = [39;
-      0;
-      0];
+xd = [0 39;
+      0 -1.5;
+      0 -0.03];
+
+% xd = [-2 0 39 10 39;
+%       -5 -5 -5 -5 -6.5;
+%       0 0 0 0 -0.03];
+
+
 % initialize the desired traj
 desired = 1; 
 desired_s = 1;
@@ -314,6 +318,10 @@ if strcmpi(key, 'upArrow')
     xd = input("Input next goal position or trajectory:");
     Arrived = 0;
 elseif strcmpi(key, 'downArrow')
+    Arrived = 0;
+elseif strcmpi(key, 'leftArrow')
+    Arrived = 1;
+elseif strcmpi(key, 'rightArrow')
     Arrived = 0;
 elseif strcmpi(key, 'escape')
     ESC_PRESSED = 1;
