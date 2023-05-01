@@ -10,3 +10,9 @@ ti = 25; % initial length of the tissue
 max_inner_iter = 50; % maximum number of iterations for Newton's method
 max_outer_iter = 5; % maximum number of iteratinos for load stepping
 tol = 1e-3;
+
+% Constraint interval
+constraint_interval = 0.1;
+
+% Bevel slope. Experimental. Keep bevel value as zero
+bevel = 0;

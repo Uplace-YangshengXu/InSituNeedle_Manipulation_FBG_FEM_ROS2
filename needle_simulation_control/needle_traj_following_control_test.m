@@ -16,7 +16,7 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 1; %switch off fbg with 0
+FBG_switch = 0; %switch off fbg with 0
 Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
@@ -35,7 +35,7 @@ Mu_PSM = 3.03e+03;
 Mu_PVC = 1.2715e+04;
 Mu = Mu_PSM;
 Alpha = Alpha_PSM;
-
+Constraints = [];
 % for air
 % Mu = 0;
 % Alpha = 1;
@@ -142,12 +142,16 @@ if exist('client','var')
     curvatures_xz = msg_received.curvature_xz;
 end
 
-[x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
-        x_pre, y_pre, k_pre, ...
+% [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
+%         x_pre, y_pre, k_pre, ...
+%         0, 0, 0, ...
+%         curvatures_xz, AA_lcn);
+[x_new, y_new, k_new,Constraints] = planar_needle_FEM_wc(L, Mu, Alpha, Interval, ...
+        x_pre, y_pre, k_pre,Constraints, ...
         0, 0, 0, ...
         curvatures_xz, AA_lcn);
 
-        % update states
+% update states
 x_pre = x_new;
 y_pre = y_new;
 k_pre = k_new;
@@ -188,8 +192,12 @@ arrived = 0;
             curvatures_xz = [];
         end
 
-        [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
-        x_pre, y_pre, k_pre, ...
+%         [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
+%         x_pre, y_pre, k_pre, ...
+%         dbx, dby, dbk, ...
+%         curvatures_xz, AA_lcn);
+        [x_new, y_new, k_new,Constraints] = planar_needle_FEM_wc(L, Mu, Alpha, Interval, ...
+        x_pre, y_pre, k_pre,Constraints,...
         dbx, dby, dbk, ...
         curvatures_xz, AA_lcn);
 
@@ -205,10 +213,14 @@ arrived = 0;
         
         if Arrived == 0
         ic = [x_pre(end);y_pre(end);k_pre(end);0;0;0];
-        
+
+%         [dcontrol,desired] = numerical_jacobian_traj_following_control(xd, Kp, ic, L, Mu, Alpha, Interval,...
+%         x_pre,y_pre,k_pre,...
+%         [],AA_lcn,thre,desired);
         [dcontrol,desired] = numerical_jacobian_traj_following_control(xd, Kp, ic, L, Mu, Alpha, Interval,...
         x_pre,y_pre,k_pre,...
-        [],AA_lcn,thre,desired);
+        [],AA_lcn,thre,desired,Constraints);
+
         if desired ~= desired_s
             disp("Paused")
             Arrived = 1;
@@ -260,22 +272,24 @@ arrived = 0;
             curvatures_xz = [];
         end
 
-        [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
-            x_pre, y_pre, k_pre, ...
+%         [x_new, y_new, k_new] = planar_needle_FEM(L, Mu, Alpha, Interval, ...
+%             x_pre, y_pre, k_pre, ...
+%             dbx, dby, dbk, ...
+%             curvatures_xz, AA_lcn);
+        [x_new, y_new, k_new,Constraints] = planar_needle_FEM_wc(L, Mu, Alpha, Interval, ...
+            x_pre, y_pre, k_pre,Constraints, ...
             dbx, dby, dbk, ...
             curvatures_xz, AA_lcn);
 
         x_pre = x_new;
         y_pre = y_new;
         k_pre = k_new;
-%         disp([x_pre(end) y_pre(end) k_pre(end)]);
        
         % publish again
         pub_msg.needle_x_axis = x_new;
         pub_msg.needle_y_axis = y_new;
         pub_msg.needle_slope  = k_new;
         publisher.sendPubMsg(pub_msg);
-%         disp([x_new(end);y_new(end);k_new(end)])
         error = norm([x_new(end);y_new(end);k_new(end)] - xd(:,end));
         end
 %         disp(error);
