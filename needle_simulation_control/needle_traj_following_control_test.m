@@ -17,8 +17,8 @@ addpath ./Control/Galil_MATLAB_API/ % galil control api
 addpath ./Control/
 
 %% switches
-FBG_switch = 0; %switch off fbg with 0
-Motor_switch = 0; %switch off motor with 0
+FBG_switch = 1; %switch off fbg with 0
+Motor_switch = 1; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -65,28 +65,23 @@ y_pre = by*ones(size(x_pre));
 k_pre = bk*ones(size(x_pre));
 
 % desired traj
-
+tip_traj = [];
 global xd
-% xd = [0 39;
-%       0 -1.5;
-%       0 -0.03];
-% xd = [linspace(0,39,100);
-%       linspace(0,-1.5,100);
-%       linspace(0,-0.03,100)
-% ];
-load("tip_traj.mat")
-xd = tip_traj;
-xd = [-2 0 39 10 39;
-      -5 -5 -5 -5 -6.5;
-      0 0 0 0 -0.03];
 
-
+% load("tip_traj.mat")
+% xd = tip_traj;
+% xd = [-2 0 39 10 39;
+%       5 5 5 5 3.5;
+%       0 0 0 0 -0.12];
+xd = [0 39 -10 linspace(-7,-7,40) 0 40
+      5 5 5 linspace(5,5,40) 5 1
+      0 0 0 linspace(0,-(2/20),40) -(2/20) -(2/20)]
+% 
 % initialize the desired traj
 desired = 1; 
 desired_s = 1;
 % stopping and updating threshold
 thre = 0.1; 
-tip_traj = [];
 %% control panel
 
 fig = figure;
@@ -97,7 +92,7 @@ Arrived = 0;
 
 %% control parameters
 
-Kp = 10*diag([1 1 1]);
+Kp = 3*diag([1 1 1]);
 % scale the control
 dt = 0.1;
 % ini_tip_state = [x_pre(end);y_pre(end);k_pre(end)];
@@ -237,12 +232,12 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
         x_pre,y_pre,k_pre,...
         [],AA_lcn,thre,desired,Constraints);
 
-        if desired ~= desired_s
-            disp("Paused")
-            Arrived = 1;
-            dcontrol = dcontrol*0;
-            desired_s = desired;
-        end
+%         if desired ~= desired_s
+%             disp("Paused")
+%             Arrived = 1;
+%             dcontrol = dcontrol*0;
+%             desired_s = desired;
+%         end
 
         %scaling the control using step_size for FEM convergence   
         step_size = 0.1;
@@ -323,7 +318,7 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
         end
     drawnow;
     end
-save('tip_traj.mat','tip_traj')
+% save('tip_traj.mat','tip_traj')
 close all
 
 function KeyPressCallback(source, eventdata)
