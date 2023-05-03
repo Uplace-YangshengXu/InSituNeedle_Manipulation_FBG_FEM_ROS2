@@ -37,6 +37,7 @@ Mu_PVC = 1.2715e+04;
 Mu = Mu_PSM; 
 Alpha = Alpha_PSM;
 Constraints = [];
+
 % for air
 % Mu = 0;
 % Alpha = 1;
@@ -66,31 +67,37 @@ k_pre = bk*ones(size(x_pre));
 % desired traj
 
 global xd
-xd = [0 39;
-      0 -1.5;
-      0 -0.03];
-
-% xd = [-2 0 39 10 39;
-%       -5 -5 -5 -5 -6.5;
-%       0 0 0 0 -0.03];
+% xd = [0 39;
+%       0 -1.5;
+%       0 -0.03];
+% xd = [linspace(0,39,100);
+%       linspace(0,-1.5,100);
+%       linspace(0,-0.03,100)
+% ];
+load("tip_traj.mat")
+xd = tip_traj;
+xd = [-2 0 39 10 39;
+      -5 -5 -5 -5 -6.5;
+      0 0 0 0 -0.03];
 
 
 % initialize the desired traj
 desired = 1; 
 desired_s = 1;
 % stopping and updating threshold
-thre = 0.03; 
+thre = 0.1; 
+tip_traj = [];
+%% control panel
 
-%%
 fig = figure;
 set(fig, 'WindowKeyPressFcn', @KeyPressCallback);
-
 global ESC_PRESSED Arrived 
 ESC_PRESSED = 0;
 Arrived = 0;
+
 %% control parameters
 
-Kp = 2*diag([1 1 1]);
+Kp = 10*diag([1 1 1]);
 % scale the control
 dt = 0.1;
 % ini_tip_state = [x_pre(end);y_pre(end);k_pre(end)];
@@ -179,6 +186,7 @@ pub_msg.if_init_tip_traj = false;
 publisher.sendPubMsg(pub_msg);    
 arrived = 0;
 
+tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
 
 %% main loop
     while (~ESC_PRESSED && ishghandle(fig))
@@ -216,7 +224,9 @@ arrived = 0;
         pub_msg.needle_slope  = k_pre;
         pub_msg.if_init_tip_traj = true;
         publisher.sendPubMsg(pub_msg);
-        
+
+        tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
+
         if Arrived == 0
         ic = [x_pre(end);y_pre(end);k_pre(end);0;0;0];
 
@@ -297,6 +307,8 @@ arrived = 0;
         pub_msg.needle_slope  = k_new;
         pub_msg.if_init_tip_traj = true;
         publisher.sendPubMsg(pub_msg);
+        tip_traj = [tip_traj [x_new(end);y_new(end);k_new(end)]];
+
         error = norm([x_new(end);y_new(end);k_new(end)] - xd(:,end));
         end
 %         disp(error);
@@ -311,6 +323,7 @@ arrived = 0;
         end
     drawnow;
     end
+save('tip_traj.mat','tip_traj')
 close all
 
 function KeyPressCallback(source, eventdata)
