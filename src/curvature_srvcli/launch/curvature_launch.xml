@@ -1,40 +1,38 @@
-<launch>
-    
-    <node
-    pkg = "sm130_interrogator"
-    exec = "talker"
-    name = "interrogator_pub"
-    output = "screen">
-    </node>
-    
+<launch>  
+  <node
+      pkg = "sm130_interrogator"
+      exec = "talker"
+      name = "interrogator_pub"
+      output = "screen">
+  </node>
+  
 
-    <node
-    pkg = "curvature_srvcli"
-    exec = "server">
-    </node>
+  <node
+      pkg = "curvature_srvcli"
+      exec = "server">
+  </node>
 
   
-    
-    <node
-        pkg = "needle_shape"
-        exec = "sensor_data_viewer">
-    </node>
+
+  <node
+      pkg = "needle_shape"
+      exec = "sensor_data_viewer">
+    <param name = "channel_selection" value = "1"/>
+  </node>
 
 
-    <node
-    
-    pkg = "needle_shape"
-    exec = "sensor_data_viewer">
+  <node
+      
+      pkg = "needle_shape"
+      exec = "sensor_data_viewer">
     <param name = "channel_selection" value = "3"/>
 
-    </node>
-    <node
-    
-    pkg = "needle_shape"
-    exec = "sensor_data_viewer">
+  </node>
+  <node
+      
+      pkg = "needle_shape"
+      exec = "sensor_data_viewer">
     <param name = "channel_selection" value = "4"/>
 
-    </node>
-
-
+  </node>
 </launch>
