@@ -29,9 +29,9 @@ ratios = [ratio_AA1 ratio_AA2];
 % namefile = 'temp_fbg_data6.xls'; % Apr 25 2023, using incubator, 101.0F, 2.0 needle
 % namefile = 'temp_fbg_data7.xls'; % Apr 25 2023, using incubator, 101.0F, straight needle
 % namefile = 'temp_fbg_data8.xls'; % Apr 25 2023, using incubator, 101.0F, 1.25 needle, decrease
- namefile = 'temp_fbg_data9.xls'; % Apr 25 2023, using incubator, 118.0F, 1.25 needle, decrease
+% namefile = 'temp_fbg_data9.xls'; % Apr 25 2023, using incubator, 118.0F, 1.25 needle, decrease
 % namefile = 'temp_fbg_datatest.xls'; % Apr 25 2023,free to 0.0 needle
-%namefile = 'temp_fbg_data10.xls'; % Apr 25 2023, using incubator, 118.0F, free to 0.8 & 1.25 needle, decrease
+namefile = 'temp_fbg_data10.xls'; % Apr 25 2023, using incubator, 118.0F, free to 0.8 & 1.25 needle, decrease
 
 % data file format
 % 1st unbent data
