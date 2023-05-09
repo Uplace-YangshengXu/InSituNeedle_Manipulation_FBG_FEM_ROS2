@@ -57,13 +57,23 @@ K2 = A2*E2*del_actual;
 K3 = A3*E3*del_actual;
 
 % Naieve pseudoinverse method
-A_aug = [A - A1*E1; A - A2*E2; A - A3*E3]*wave_change_ratios;
+A_aug = [A - A1*E1; A - A2*E2; A - A3*E3];
 K_aug = [K_actual - K1; K_actual - K2; K_actual - K3];
-calc_temp_change = pinv(A_aug)*K_aug;
+calc_temp_change = pinv(A_aug*wave_change_ratios)*K_aug;
 
 disp('calculated wavelengh shifts due to temperature variation')
 calc_temp_wave_changes = calc_temp_change * wave_change_ratios;
 disp(calc_temp_wave_changes);
+
+% Reduced-Naieve pseudoinverse mthod
+A_aug_reduced = (A1*E1 - A2*E2);
+K_aug_reduced = K1 - K2;
+calc_temp_change_reduced = pinv(A_aug_reduced*wave_change_ratios)*K_aug_reduced;
+
+disp('reduced calculated wavelengh shifts due to temperature variation')
+calc_temp_wave_changes_reduced = calc_temp_change_reduced * wave_change_ratios;
+disp(calc_temp_wave_changes_reduced);
+
 
 % JK's diagonal average method
 b1 = K_actual - K1;
