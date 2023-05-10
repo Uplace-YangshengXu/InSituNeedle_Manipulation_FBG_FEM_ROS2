@@ -441,7 +441,7 @@ class HACQPeaksData(object):
 
         self.channel_boundaries = np.cumsum(self._peak_counts)
 
-        self.data = np.frombuffer(raw_data[self.header.length:], dtype=np.float)
+        self.data = np.frombuffer(raw_data[self.header.length:], dtype=np.float64)
 
         channel_start = 0
 
