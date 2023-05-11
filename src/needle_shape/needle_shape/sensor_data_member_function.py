@@ -35,7 +35,7 @@ class sensor_data_visulisation(Node):
 
         self.sm130_subscription = self.create_subscription(
                 FbgReading,
-                'sm130',
+                'interrogator',
                 self.sm130_listener_callback,
                 10)
 

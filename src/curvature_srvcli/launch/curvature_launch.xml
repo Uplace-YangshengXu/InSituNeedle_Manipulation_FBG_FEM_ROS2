@@ -1,6 +1,6 @@
 <launch>  
   <node
-      pkg = "sm130_interrogator"
+      pkg = "si155_interrogator"
       exec = "talker"
       name = "interrogator_pub"
       output = "screen">
@@ -25,14 +25,14 @@
       
       pkg = "needle_shape"
       exec = "sensor_data_viewer">
-    <param name = "channel_selection" value = "3"/>
+    <param name = "channel_selection" value = "2"/>
 
   </node>
   <node
       
       pkg = "needle_shape"
       exec = "sensor_data_viewer">
-    <param name = "channel_selection" value = "4"/>
+    <param name = "channel_selection" value = "3"/>
 
   </node>
 </launch>

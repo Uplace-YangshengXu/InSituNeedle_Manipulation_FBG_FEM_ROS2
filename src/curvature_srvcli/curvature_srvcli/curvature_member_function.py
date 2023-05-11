@@ -14,12 +14,13 @@ class CalService(Node):
         
         self.if_init_fbg_process = 0
         self.Load_json_filename = Load_json_filename
-
+        self.interrogator = 'si155'
+        #self.interrogator = 'sm130'
         super().__init__('CalCurv_service')
         self.srv = self.create_service(CalCurvature,'cal_curv',self.cal_curv_callback)
         self.sub = self.create_subscription(
                 FbgReading,
-                'sm130',
+                'interrogator',
                 self.listener_callback,
                 10)
          
@@ -32,10 +33,11 @@ class CalService(Node):
         #print(response)
         if self.if_init_fbg_process == 1:
             #ref = self.fbg_process.ref_wavelength
+            print(np.asarray(self.msg.signal_reading))
             curvatures = self.fbg_process.getCurvatures(np.asarray(self.msg.signal_reading))
 
-            #print("ref wavelength:")
-            #print(self.fbg_process.ref_wavelength)
+            print("ref wavelength:")
+            print(self.fbg_process.ref_wavelength)
             if len(curvatures) == 0:
                 print("get empty curvatures")
                 response.curvature.curvature_xy = array("d",[])
@@ -58,8 +60,9 @@ class CalService(Node):
 
         self.msg = msg
         if self.if_init_fbg_process == 0:
-      
-            self.fbg_process = FBG_process(self.Load_json_filename,self.msg.total_reading_num,self.msg.signal_each_ch,np.asarray(self.msg.signal_reading))
+            print(self.msg.total_reading_num)
+            print(self.msg.signal_each_ch)
+            self.fbg_process = FBG_process(self.interrogator,self.Load_json_filename,self.msg.total_reading_num,self.msg.signal_each_ch,np.asarray(self.msg.signal_reading))
             
             self.if_init_fbg_process = 1
         #end if

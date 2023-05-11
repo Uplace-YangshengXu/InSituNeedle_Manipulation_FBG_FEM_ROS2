@@ -8,7 +8,7 @@ class interrogator_publisher(Node):
 
     def __init__(self):
         super().__init__('interrogator_publisher')
-        self.publisher_ = self.create_publisher(FbgReading,'sm130',10)
+        self.publisher_ = self.create_publisher(FbgReading,'interrogator',10)
         timer_period = 0.05
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.address = "192.168.1.11"
@@ -48,7 +48,7 @@ class interrogator_subscriber(Node):
         super().__init__('interrogator_subscriber')
         self.subscription = self.create_subscription(
                 FbgReading,
-                'sm130',
+                'interrogator',
                 self.listener_callback,
                 10)
     def listener_callback(self, msg):

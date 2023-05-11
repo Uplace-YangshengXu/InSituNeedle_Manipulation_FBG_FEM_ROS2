@@ -25,27 +25,43 @@
 
 
   "Calibration Matrix Configuration A": {
-  	"CH1_sm130":2,
+  	"CH1_si155":2,
+  	"CH2_si155":2,
+  	"CH3_si155":2,
+  	"CH4_si155":0,
+    "CH1_sm130":2,
   	"CH2_sm130":0,
   	"CH3_sm130":2,
   	"CH4_sm130":2
   },
   "Calibration Matrix Configuration A12": {
-  	"CH1_sm130":2,
+  	"CH1_si155":2,
+  	"CH2_si155":2,
+  	"CH3_si155":0,
+  	"CH4_si155":0,
+    "CH1_sm130":2,
   	"CH2_sm130":0,
   	"CH3_sm130":2,
   	"CH4_sm130":0
   },
   
   "Calibration Matrix Configuration A13": {
-  	"CH1_sm130":2,
+  	"CH1_si155":2,
+  	"CH2_si155":0,
+  	"CH3_si155":2,
+  	"CH4_si155":0,
+    "CH1_sm130":2,
   	"CH2_sm130":0,
   	"CH3_sm130":0,
   	"CH4_sm130":2
   },
 
   "Calibration Matrix Configuration A23": {
-  	"CH1_sm130":0,
+  	"CH1_si155":0,
+  	"CH2_si155":2,
+  	"CH3_si155":2,
+  	"CH4_si155":0,
+    "CH1_sm130":0,
   	"CH2_sm130":0,
   	"CH3_sm130":2,
   	"CH4_sm130":2

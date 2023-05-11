@@ -18,7 +18,7 @@ addpath ./Control/
 
 %% switches
 FBG_switch = 1; %switch off fbg with 0
-Motor_switch = 1; %switch off motor with 0
+Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -75,7 +75,7 @@ global xd
 %       0 0 0 0 -0.12];
 xd = [0 39 -10 linspace(-7,-7,40) 0 40
       5 5 5 linspace(5,5,40) 5 1
-      0 0 0 linspace(0,-(2/20),40) -(2/20) -(2/20)]
+      0 0 0 linspace(0,-(2/20),40) -(2/20) -(2/20)];
 % 
 % initialize the desired traj
 desired = 1; 
@@ -155,7 +155,7 @@ end
 [x_new, y_new, k_new,Constraints] = planar_needle_FEM_wc(L, Mu, Alpha, Interval, ...
         x_pre, y_pre, k_pre,Constraints, ...
         0, 0, 0, ...
-        curvatures_xz, AA_lcn);
+        curvatures_xy, AA_lcn);
 
 % update states
 x_pre = x_new;
@@ -207,7 +207,7 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
         [x_new, y_new, k_new,Constraints] = planar_needle_FEM_wc(L, Mu, Alpha, Interval, ...
         x_pre, y_pre, k_pre,Constraints,...
         dbx, dby, dbk, ...
-        curvatures_xz, AA_lcn);
+        curvatures_xy, AA_lcn);
 
         % update states
         x_pre = x_new;
@@ -251,9 +251,9 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
         dbx = dcontrol(1)*dt;
         dby = dcontrol(2)*dt;
         dbk = dcontrol(3)*dt;
-%         dbx = 0;
-%         dby = 0;
-%         dbk = 0;
+        dbx = 0;
+        dby = 0;
+        dbk = 0;
         %restricting the control for FEM convergence
 %         dbx = sign(dbx)*min(0.1,norm(dbx));
 %         dby = sign(dby)*min(0.05,norm(dby));
@@ -290,7 +290,7 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
         [x_new, y_new, k_new,Constraints] = planar_needle_FEM_wc(L, Mu, Alpha, Interval, ...
             x_pre, y_pre, k_pre,Constraints, ...
             dbx, dby, dbk, ...
-            curvatures_xz, AA_lcn);
+            curvatures_xy, AA_lcn);
 
         x_pre = x_new;
         y_pre = y_new;

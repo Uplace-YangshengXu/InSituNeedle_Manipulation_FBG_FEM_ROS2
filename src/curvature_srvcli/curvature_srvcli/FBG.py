@@ -25,7 +25,7 @@ import numpy as np
 class FBG_process:
 
 
-    def __init__(self, filename: str, total_reading_num: int, signal_each_ch: np.ndarray, ref_wavelength: np.ndarray):
+    def __init__(self, interrogator: str, filename: str, total_reading_num: int, signal_each_ch: np.ndarray, ref_wavelength: np.ndarray):
         
         #self.Num_CH  # channel number (fbg property)
         #self.Num_AA  # Active Area number (fbg property)
@@ -36,6 +36,7 @@ class FBG_process:
 
         self.total_reading_num = total_reading_num
         self.signal_each_ch = signal_each_ch
+        self.interrogator = interrogator
         self.dif_bound = 5
         self.load_params(filename)
 
@@ -73,6 +74,8 @@ class FBG_process:
 
         #record current data position in rawdata
         counter = 0
+        print(ch_config_rev)
+
         for i in range(self.Num_sm_CH):
             if ch_config_rev[i] <= self.signal_each_ch[i]:
                 # how many data points are skipped for each ch
@@ -244,7 +247,7 @@ class FBG_process:
         """
         
         cal_ch_config = content["Calibration Matrix Configuration A"]
-        
+        print(cal_ch_config)
 
         """
         ch_config
@@ -252,7 +255,7 @@ class FBG_process:
         [int,int,int...]
         """
         for i in range(self.Num_sm_CH):
-            self.ch_config[i] = cal_ch_config['CH'+str(i+1)+'_sm130']
+            self.ch_config[i] = cal_ch_config['CH'+str(i+1)+'_'+self.interrogator]
         # end for
 
         # get sub calibration matrix for temperature compensation
@@ -302,7 +305,7 @@ class FBG_process:
                 cal_ch_config = content['Calibration Matrix Configuration '+str_i]
                 temp_ch_config = np.zeros(self.Num_sm_CH);
                 for i in range(self.Num_sm_CH):
-                    temp_ch_config[i] = cal_ch_config['CH'+str(i+1)+'_sm130']
+                    temp_ch_config[i] = cal_ch_config['CH'+str(i+1)+'_'+self.interrogator]
                 # end for
                 self.ch_config_TC[str_i] = temp_ch_config
 
