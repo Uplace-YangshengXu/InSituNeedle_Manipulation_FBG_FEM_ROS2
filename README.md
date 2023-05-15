@@ -30,7 +30,7 @@ IP setting:
 
 Address: 10.0.0.2,
 
-Netmask:255.255.255.0,
+Netmask: 255.255.255.0,
 
 Gate:10.0.0.1;
 
