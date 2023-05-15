@@ -26,6 +26,9 @@ test_matlabros_class.m
 test_MatlabRosSrvCli.m
 
 ## Usage
+IP setting:
+10.0.0.2, 255.255.255.0, 10.0.0.1
+192.168.1.1, 255.255.255.0
 
 Publisher node: 
 
