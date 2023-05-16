@@ -10,6 +10,8 @@
   <node
       pkg = "curvature_srvcli"
       exec = "server">
+    <param name = "interrogator_selection" value = "si155"/>
+
   </node>
 
   

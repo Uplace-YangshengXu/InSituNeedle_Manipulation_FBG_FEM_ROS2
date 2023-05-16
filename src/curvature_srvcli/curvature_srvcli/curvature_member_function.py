@@ -14,9 +14,11 @@ class CalService(Node):
         
         self.if_init_fbg_process = 0
         self.Load_json_filename = Load_json_filename
-        self.interrogator = 'si155'
+        #self.interrogator = 'si155'
         #self.interrogator = 'sm130'
         super().__init__('CalCurv_service')
+        self.declare_parameter('interrogator_selection','si155')
+        self.interrogator = self.get_parameter('interrogator_selection').get_parameter_value().string_value
         self.srv = self.create_service(CalCurvature,'cal_curv',self.cal_curv_callback)
         self.sub = self.create_subscription(
                 FbgReading,
