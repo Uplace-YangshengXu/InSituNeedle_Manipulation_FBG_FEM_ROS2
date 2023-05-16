@@ -26,6 +26,17 @@ test_matlabros_class.m
 test_MatlabRosSrvCli.m
 
 ## Usage
+IP setting:
+
+Address: 10.0.0.2,
+
+Netmask: 255.255.255.0,
+
+Gate:10.0.0.1;
+
+Address: 192.168.1.1, 
+
+Netmask: 255.255.255.0;
 
 Publisher node: 
 
