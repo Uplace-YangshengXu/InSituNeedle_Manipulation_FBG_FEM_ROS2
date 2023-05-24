@@ -18,7 +18,7 @@ addpath ./Control/
 
 %% switches
 FBG_switch = 1; %switch off fbg with 0
-Motor_switch = 0; %switch off motor with 0
+Motor_switch = 1; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -34,8 +34,8 @@ Alpha_PVC = -1;
 Mu_PSM = 3.03e+03;
 %Mu_PSM = 2030;
 Mu_PVC = 1.2715e+04;
-Mu = Mu_PSM; 
-Alpha = Alpha_PSM;
+Mu = [Mu_PSM/5 ; Mu_PSM]; 
+Alpha =[Alpha_PVC ; Alpha_PSM];
 Constraints = [];
 
 % for air
@@ -44,11 +44,11 @@ Constraints = [];
 % Mu = Mu_PVC;
 % Alpha = Alpha_PVC;
 
-Interval = {[0, 80]};
+Interval = {[0, 28];[28,80]};
 
 L = 163; % total length of needle (estimate)
 
-bx = -L-4.5; % initial base position
+bx = -L-3.5; % initial base position
 by = 0; 
 bk = 0;
 
@@ -70,12 +70,12 @@ global xd
 
 % load("tip_traj.mat")
 % xd = tip_traj;
-% xd = [-2 0 39 10 39;
-%       5 5 5 5 3.5;
-%       0 0 0 0 -0.12];
-xd = [0 39 -10 linspace(-7,-7,40) 0 40
-      5 5 5 linspace(5,5,40) 5 1
-      0 0 0 linspace(0,-(2/20),40) -(2/20) -(2/20)];
+xd = [-2 0 30 10 33; 
+      -7 -7 -7 -7 -11;
+      0 0 0 0 0.05];
+% xd = [0 39 -10 linspace(-7,-7,40) 0 40
+%       5 5 5 linspace(5,5,40) 5 1
+%       0 0 0 linspace(0,-(2/20),40) -(2/20) -(2/20)];
 % 
 % initialize the desired traj
 desired = 1; 
@@ -232,13 +232,14 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
         x_pre,y_pre,k_pre,...
         [],AA_lcn,thre,desired,Constraints);
 
-%         if desired ~= desired_s
-%             disp("Paused")
-%             Arrived = 1;
-%             dcontrol = dcontrol*0;
-%             desired_s = desired;
-%         end
-
+%%      Pasuing at each traj points 
+        if desired ~= desired_s
+            disp("Paused")
+            Arrived = 1;
+            dcontrol = dcontrol*0;
+            desired_s = desired;
+        end
+%%
         %scaling the control using step_size for FEM convergence   
         step_size = 0.1;
         if norm(dcontrol*dt) > 0.3
@@ -251,9 +252,9 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
         dbx = dcontrol(1)*dt;
         dby = dcontrol(2)*dt;
         dbk = dcontrol(3)*dt;
-        dbx = 0;
-        dby = 0;
-        dbk = 0;
+%         dbx = 0;
+%         dby = 0;
+%         dbk = 0;
         %restricting the control for FEM convergence
 %         dbx = sign(dbx)*min(0.1,norm(dbx));
 %         dby = sign(dby)*min(0.05,norm(dby));
@@ -306,7 +307,7 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
 
         error = norm([x_new(end);y_new(end);k_new(end)] - xd(:,end));
         end
-%         disp(error);
+        %disp(error);
 %         toc
         % break critria
         if error <= 0.05 && Arrived == 0
