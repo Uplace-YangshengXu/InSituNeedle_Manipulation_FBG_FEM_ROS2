@@ -109,7 +109,9 @@ class HCommTCPClient(object):
         Open an asyncio connection to the instrument.
         :return:
         """
-        self.reader, self.writer = await asyncio.open_connection(self.address, self.port, loop = self.loop)
+        #self.reader, self.writer = await asyncio.open_connection(self.address, self.port, loop = self.loop)
+        #loop is removed for python 3.10, and is deprecated in python 3.8
+        self.reader, self.writer = await asyncio.open_connection(self.address, self.port)
 
 
     async def read_data(self, data_length):
