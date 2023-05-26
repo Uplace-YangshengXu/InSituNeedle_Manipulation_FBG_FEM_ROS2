@@ -70,7 +70,7 @@ global xd
 
 % load("tip_traj.mat")
 % xd = tip_traj;
-xd = [-2 0 30 10 33; 
+xd = [-2 0 31 10 35; 
       -7 -7 -7 -7 -11;
       0 0 0 0 0.05];
 % xd = [0 39 -10 linspace(-7,-7,40) 0 40
