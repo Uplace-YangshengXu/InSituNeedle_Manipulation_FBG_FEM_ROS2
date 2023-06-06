@@ -29,26 +29,26 @@ motor_controller_ip = '192.168.1.201';
 motor_controller_port = 23;
 
 %% FEM parameters and setup
+% % for air
+
+% Mu = [0 ; 0];
+% Alpha = [1 ; 1];
+
 Alpha_PSM = 8.74;
 Alpha_PVC = -1;
 Mu_PSM = 3.03e+03;
-%Mu_PSM = 2030;
 Mu_PVC = 1.2715e+04;
-Mu = [Mu_PSM/5 ; Mu_PSM]; 
-Alpha =[Alpha_PVC ; Alpha_PSM];
+Mu = [Mu_PSM/2 ; Mu_PSM]; 
+Alpha =[Alpha_PSM ; Alpha_PSM];
 Constraints = [];
 
-% for air
-% Mu = 0;
-% Alpha = 1;
-% Mu = Mu_PVC;
-% Alpha = Alpha_PVC;
 
-Interval = {[0, 28];[28,80]};
+Interval = {[0, 40];[40,80]};
 
 L = 163; % total length of needle (estimate)
 
-bx = -L-3.5; % initial base position
+%bx = -L-3.5; % initial base position
+bx = -L;
 by = 0; 
 bk = 0;
 
@@ -68,22 +68,31 @@ k_pre = bk*ones(size(x_pre));
 tip_traj = [];
 global xd
 
-% load("tip_traj.mat")
-% xd = tip_traj;
-xd = [-2 0 31 10 35; 
-      -7 -7 -7 -7 -11;
-      0 0 0 0 0.05];
-% xd = [0 39 -10 linspace(-7,-7,40) 0 40
-%       5 5 5 linspace(5,5,40) 5 1
-%       0 0 0 linspace(0,-(2/20),40) -(2/20) -(2/20)];
-% 
+start_x = -3;
+start_y = 11;
+
+inter_x = 0;
+inter_y = 11;
+
+final_x = 10;
+final_y = 11;
+
+xd = [start_x start_y 0; 
+      inter_x inter_y 0;
+      final_x final_y 0;
+      49 12 0.1]';
+
+% xd = [[start_x start_y 0; 
+%       inter_x inter_y 0;
+%       final_x final_y 0];
+%       [linspace(final_x,50,100)' linspace(final_y,12,100)' linspace(0,0.05,100)']];
+
 % initialize the desired traj
 desired = 1; 
 desired_s = 1;
 % stopping and updating threshold
 thre = 0.1; 
 %% control panel
-
 fig = figure;
 set(fig, 'WindowKeyPressFcn', @KeyPressCallback);
 global ESC_PRESSED Arrived 
@@ -255,6 +264,7 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
 %         dbx = 0;
 %         dby = 0;
 %         dbk = 0;
+
         %restricting the control for FEM convergence
 %         dbx = sign(dbx)*min(0.1,norm(dbx));
 %         dby = sign(dby)*min(0.05,norm(dby));
@@ -310,7 +320,7 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
         %disp(error);
 %         toc
         % break critria
-        if error <= 0.05 && Arrived == 0
+        if error <= 0.01 && Arrived == 0
             disp("arrive at goal, stopped with error: " + error);
             Arrived = 1;
             desired = 1;

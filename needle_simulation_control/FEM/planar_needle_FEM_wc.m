@@ -7,6 +7,8 @@ function [x_new, y_new, k_new, Constraints_new] = planar_needle_FEM_wc(L, Mu, Al
 % based on Euler-Bernoulli beam theory. Tissue compression is modeled as
 % unconfined uniaxial compression with Ogden1 incompressible hyperelastic
 % material model. Needle insertion is based on nodal slope information.
+% This version resolves needle bending in the constraint space, and
+% includes dynamic constraint addition and deletion.
 
 % Inputs:
 % L: total length of the needle
@@ -37,7 +39,7 @@ PropertyTable = table(Interval, MuT, AlphaT, GammaT);
 
 % Place first constraint
 if isempty(Constraints_pre) && x_pre(end) >= Interval{1}(1)
-    Constraints_pre = [x_pre(end); y_pre(end); k_pre(end) + bevel];
+    Constraints_pre = [x_pre(end); y_pre(end); k_pre(end)];
 end
 
 [S2C, C2S] = produce_constraint_tf_2d(Constraints_pre);
@@ -100,11 +102,13 @@ while converged == 0 && (outer_iter <= max_outer_iter)
         % Loop over each element
         for e = 1:Nel
             d_i_local = d(2*e - 1:2*e + 2); % Get local nodal values from global d
-            C_i_y = Constraints_list(2, e); % Get current constraint y
-            d_i_local = d_i_local - C_i_y*[1; 0; 1; 0]; % Subtract constraint nodal position
+            Constraint_i_y = Constraints_list(2, e); % Get current constraint y
+            d_i_local = d_i_local - ...
+                Constraint_i_y*[1; 0; 1; 0]; % Change relative to nodal constraint
 
             [ke, pe] = compute_element_matrix(d_i_local, ti, E, I, e, h, ...
-                MuTs(e), AlphaTs(e), GammaTs(e), C_i_y, AA_er, AA_crv);
+                MuTs(e), AlphaTs(e), GammaTs(e), Constraint_i_y, AA_er, AA_crv);
+
             % Global assembly process
             % Using vectors instead of FOR loops
             K(LM(1:4, e), LM(1:4, e)) = K(LM(1:4, e), LM(1:4, e)) + ke;
@@ -151,7 +155,8 @@ end
 
 x_new_C = dx_bend + dx_insert;
 y_new_C = dy_bend + dy_insert;
-Constraints_new_C = update_constraints(x_new_C, y_new_C, k_new_C, Interval, Constraints, constraint_interval);
+Constraints_new_C = update_constraints(x_new_C, y_new_C, k_new_C, ...
+    Interval, Constraints, constraint_interval, bevel);
 
 % Convert back to {S}
 needle_S = apply_transformations_2d([x_new_C'; y_new_C'; k_new_C'], C2S);
@@ -194,16 +199,24 @@ ke = ke_beam + ke_cont;
 end
 
 % Update constraint points list
-function Constraints = update_constraints(x, y, k, Interval, Constraints, constraint_interval)
-tip_x = floor(x(end)); % see if tip has moved 1mm in x
+function Constraints = update_constraints(x, y, k, ...
+    Interval, Constraints, constraint_interval, bevel)
+tip_x = x(end);
 if (tip_x > Interval{1}(1) && tip_x < Interval{end}(end) && isempty(Constraints)) || ...
         (tip_x > Interval{1}(1) && tip_x < Interval{end}(end) && tip_x > Constraints(1, end) + constraint_interval)
-    Constraints = [Constraints, [tip_x; y(end); k(end)]]; % create a new constraint point
+    if isempty(Constraints) % create the first constraint
+        next_constraint = ...
+            [tip_x; y(end) + bevel; k(end)]; 
+    else % create a new constraint
+        next_constraint = ...
+            [tip_x; 0.2*y(end) + 0.8*Constraints(2, end) + bevel; k(end)]; % this is to avoid the sudden release of needle tip force
+    end
+    Constraints = [Constraints, next_constraint]; 
 elseif tip_x > Interval{1}(1) && tip_x < Constraints(1, end)
-    Constraints(:, end) = []; % remove end constraint point
+    Constraints(:, end) = []; % remove end constraint
 
 elseif tip_x < Interval{1}(1)
-    Constraints = []; % remove all constraint points
+    Constraints = []; % remove all constraints
 end
 end
 
