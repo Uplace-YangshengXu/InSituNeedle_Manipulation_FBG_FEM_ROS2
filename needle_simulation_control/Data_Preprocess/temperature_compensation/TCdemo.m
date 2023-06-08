@@ -33,6 +33,8 @@ ratios = [ratio_AA1 ratio_AA2];
 % namefile = 'temp_fbg_datatest.xls'; % Apr 25 2023,free to 0.0 needle
 namefile = 'temp_fbg_data10.xls'; % Apr 25 2023, using incubator, 118.0F, free to 0.8 & 1.25 needle, decrease
 
+%namefile = 'temp_exp_formal_ground_truth.xls';
+
 % data file format
 % 1st unbent data
 % 2nd bend data with room temp

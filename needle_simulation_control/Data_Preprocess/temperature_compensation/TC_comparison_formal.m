@@ -1,4 +1,4 @@
-% created by yangsheng xu at 28/04/2023
+% created by yangsheng xu at 6/06/2023
 % this script compare two methods of temperature compensation
 % use temp_fbg_data_comparation.xls
 % curvature change temperature stay constant
@@ -10,7 +10,7 @@ load Cal_mat_2CH_2AA_alldata_A12.mat % H12 CS
 load Cal_mat_2CH_2AA_alldata_A13.mat % H13 CS
 load Cal_mat_2CH_2AA_alldata_A23.mat % H23 CS
 load Cal_mat_3CH_2AA_alldata.mat % H
-% run the temp_ratio.m first to get ratios
+% run temp_ratio_formal.m to get ratio
 load temp_comp_ratios.mat % ratio_AA1 ratio_AA2
 
 
@@ -24,15 +24,19 @@ E3 = [1 0 0; 0 1 0]; % for A12
 ratios = [ratio_AA1 ratio_AA2];
 %ratios = ones(3,2);
 %ratios = [[1;1;1],[1.5;0.1;0.1]];
+
 seq_cur = [0 0.25 0.8 1.0 1.25 3.125 0.5 1.6 2.0 2.5 3.2];
 % caution::outlayer 0.5
 
-namefile = 'temp_fbg_data_comparation.xls';
+namefile_grount_turth = 'temp_exp_formal_ground_truth.xls';
+namefile = 'temp_exp_formal_T_100.xls';
+%namefile = 'temp_exp_formal_ground_truth.xls';
 sheet_name = 'Temp_vari_data';
 data = readmatrix(namefile,'Sheet',sheet_name);
+data_ground_truth = readmatrix(namefile_grount_turth,'Sheet',sheet_name);
 [r,c ] = size(data); % row and col
 % get ref
-ref = data(1,:);
+ref = data_ground_truth(1,:);
 
 f = figure();
 ax1 = subplot(2,2,1); grid on; % for AA1
@@ -80,7 +84,7 @@ legend(ax4, 'curv\_AA1\_m1', 'curv\_AA2\_m1', 'curv\_AA1\_m2','curv\_AA2\_m2')
 
 
 %% data process
-for j = [1,2,7,3,4,5,8,9,10,6,11] + 1
+for j = [1,2,7,3,4,5,8,9,10,6,11]
     diff = data(j,:) - ref;
     % diff is one row of data
     
@@ -112,15 +116,15 @@ for j = [1,2,7,3,4,5,8,9,10,6,11] + 1
         alpha_m1 = calc_temp_wave_change;
         cur_pred = A*(diff(A_index{i})' - alpha_m1 * ratios(:,i));
 
-        addpoints(choose_plot1{i},seq_cur(j-1),alpha_m1);
-        addpoints(choose_plot3{i},seq_cur(j-1),cur_pred(1));
-        addpoints(choose_plot5{i},seq_cur(j-1),cur_pred(2));
+        addpoints(choose_plot1{i},seq_cur(j),alpha_m1);
+        addpoints(choose_plot3{i},seq_cur(j),cur_pred(1));
+        addpoints(choose_plot5{i},seq_cur(j),cur_pred(2));
         % temperature compensation process, method 2
         diff_mode = mean(diff(A_index{i}));
         cur_pred2 = A*(diff(A_index{i})' - diff_mode);
-        addpoints(choose_plot2{i},seq_cur(j-1),diff_mode);
-        addpoints(choose_plot4{i},seq_cur(j-1),cur_pred2(1));
-        addpoints(choose_plot6{i},seq_cur(j-1),cur_pred2(2));
+        addpoints(choose_plot2{i},seq_cur(j),diff_mode);
+        addpoints(choose_plot4{i},seq_cur(j),cur_pred2(1));
+        addpoints(choose_plot6{i},seq_cur(j),cur_pred2(2));
 %         disp("-----")
 %         disp(cur_pred)
 %         disp(cur_pred2)
