@@ -97,7 +97,7 @@ class FBG_process:
         return raw_data_seperate_AA,1
 
 
-    def getCurvatures( self, raw_signal: np.ndarray) -> np.ndarray:
+    def getCurvatures( self, raw_signal: np.ndarray, flag) -> np.ndarray:
         
         """
         calculate curvatures
@@ -115,7 +115,10 @@ class FBG_process:
         raw_signal_seperate_AA
         {"AA1":list,"AA2":list...}
         """
-
+        # publisher is not updating
+        if flag == 0:
+            print("Missing interrogator")
+            return np.array([])
 
         if self.if_temp_comp == 1:
             # convert the rawdata in form of sub mats

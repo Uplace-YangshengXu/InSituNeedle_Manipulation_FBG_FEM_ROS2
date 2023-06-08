@@ -25,7 +25,7 @@ galil_command(g, 'SP 25000,25000,25000,80000');
 
 flag = true;
 promptX = "Input next X displacement (mm) negative-right:";
-promptY = "Input next Y displacement (mm) negative-up:";
+promptY = "Input next Y displacement (mm) negative-down:";
 promptZ = "Input next Z displacement (mm) negative-downward:";
 promptK = "Input next k(Deg) negative-cw:";
 
@@ -40,7 +40,7 @@ while flag
     input_num_X = str2num(usr_input_X);
 
     usr_input_Y = input(promptY, 's');
-    input_num_Y = str2num(usr_input_Y);
+    input_num_Y = -str2num(usr_input_Y);
 
     usr_input_Z = input(promptZ, 's');
     input_num_Z = str2num(usr_input_Z);

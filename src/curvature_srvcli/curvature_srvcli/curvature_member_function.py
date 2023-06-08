@@ -13,6 +13,7 @@ class CalService(Node):
     def __init__(self,Load_json_filename):
         
         self.if_init_fbg_process = 0
+        self.fbg_recieve = 0
         self.Load_json_filename = Load_json_filename
         #self.interrogator = 'si155'
         #self.interrogator = 'sm130'
@@ -36,8 +37,7 @@ class CalService(Node):
         if self.if_init_fbg_process == 1:
             #ref = self.fbg_process.ref_wavelength
             print(np.asarray(self.msg.signal_reading))
-            curvatures = self.fbg_process.getCurvatures(np.asarray(self.msg.signal_reading))
-
+            curvatures = self.fbg_process.getCurvatures(np.asarray(self.msg.signal_reading),self.fbg_recieve)
             print("ref wavelength:")
             print(self.fbg_process.ref_wavelength)
             if len(curvatures) == 0:
@@ -50,7 +50,8 @@ class CalService(Node):
 
             print("send msgs to client:")
             print(response)
-            
+            print(curvatures)
+            self.fbg_recieve = 0
         else:
             print("fbg ref data miss, try again!")
 
@@ -61,6 +62,7 @@ class CalService(Node):
     def listener_callback(self, msg):
 
         self.msg = msg
+        self.fbg_recieve = 1
         if self.if_init_fbg_process == 0:
             print(self.msg.total_reading_num)
             print(self.msg.signal_each_ch)

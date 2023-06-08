@@ -18,7 +18,7 @@ addpath ./Control/
 
 %% switches
 FBG_switch = 1; %switch off fbg with 0
-Motor_switch = 1; %switch off motor with 0
+Motor_switch = 0; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -68,30 +68,29 @@ k_pre = bk*ones(size(x_pre));
 tip_traj = [];
 global xd
 
-start_x = -3;
-start_y = 11;
+start_x = -6;
+start_y = 8.22;
 
 inter_x = 0;
-inter_y = 11;
+inter_y = 8.22;
 
-final_x = 10;
-final_y = 11;
+final_x = 48.00;
+final_y = 8.22;
 
 xd = [start_x start_y 0; 
       inter_x inter_y 0;
       final_x final_y 0;
-      49 12 0.1]';
-
-% xd = [[start_x start_y 0; 
-%       inter_x inter_y 0;
-%       final_x final_y 0];
-%       [linspace(final_x,50,100)' linspace(final_y,12,100)' linspace(0,0.05,100)']];
+      10 8.22 0;
+      50 11.22 0.1]';
+% xd = [[start_x start_y -0.167; 
+%       inter_x inter_y -0.167;];
+%       [linspace(inter_x,final_x,100)' linspace(inter_y,final_y,100)' linspace(-0.167,-0.167,100)']]';
 
 % initialize the desired traj
 desired = 1; 
 desired_s = 1;
 % stopping and updating threshold
-thre = 0.1; 
+thre = 0.01; 
 %% control panel
 fig = figure;
 set(fig, 'WindowKeyPressFcn', @KeyPressCallback);
@@ -202,8 +201,8 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
         
         if FBG_switch == 1
             msg_received = getResponseMsg(client);
-            curvatures_xy = msg_received.curvature_xy;
-            curvatures_xz = msg_received.curvature_xz;
+            curvatures_xy = msg_received.curvature_xy
+            curvatures_xz = msg_received.curvature_xz
         else
             curvatures_xy = [];
             curvatures_xz = [];
