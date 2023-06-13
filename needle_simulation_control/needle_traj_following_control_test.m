@@ -18,7 +18,7 @@ addpath ./Control/
 
 %% switches
 FBG_switch = 1; %switch off fbg with 0
-Motor_switch = 0; %switch off motor with 0
+Motor_switch = 1; %switch off motor with 0
 
 %% interrogator and GMC params
 
@@ -69,19 +69,19 @@ tip_traj = [];
 global xd
 
 start_x = -6;
-start_y = 8.22;
+start_y = 12.97;
 
 inter_x = 0;
-inter_y = 8.22;
+inter_y = 12.97;
 
-final_x = 48.00;
-final_y = 8.22;
+final_x = 50.00;
+final_y = 12.97;
 
 xd = [start_x start_y 0; 
       inter_x inter_y 0;
       final_x final_y 0;
-      10 8.22 0;
-      50 11.22 0.1]';
+        10 12.97 0;
+        52 15.97 0.1]';
 % xd = [[start_x start_y -0.167; 
 %       inter_x inter_y -0.167;];
 %       [linspace(inter_x,final_x,100)' linspace(inter_y,final_y,100)' linspace(-0.167,-0.167,100)']]';
@@ -201,8 +201,8 @@ tip_traj = [tip_traj [x_pre(end);y_pre(end);k_pre(end)]];
         
         if FBG_switch == 1
             msg_received = getResponseMsg(client);
-            curvatures_xy = msg_received.curvature_xy
-            curvatures_xz = msg_received.curvature_xz
+            curvatures_xy = msg_received.curvature_xy;
+            curvatures_xz = msg_received.curvature_xz;
         else
             curvatures_xy = [];
             curvatures_xz = [];

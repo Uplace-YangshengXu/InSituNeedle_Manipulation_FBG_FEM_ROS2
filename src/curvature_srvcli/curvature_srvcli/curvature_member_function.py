@@ -51,7 +51,7 @@ class CalService(Node):
             print("send msgs to client:")
             print(response)
             print(curvatures)
-            self.fbg_recieve = 0
+            self.fbg_recieve = 1
         else:
             print("fbg ref data miss, try again!")
 

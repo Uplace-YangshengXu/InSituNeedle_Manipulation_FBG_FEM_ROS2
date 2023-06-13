@@ -40,7 +40,7 @@ class needle_shape_visulisation(Node):
         self.axs.set_ylabel('y(mm)')
         self.axs.set_zlabel('z(mm)')
         self.axs.set_title('Needle Shape')
-        self.axs.set_xlim(-170,50)
+        self.axs.set_xlim(-160,60)
         self.axs.set_ylim(-50,50)
         self.axs.set_zlim(-20,20)
         self.axs.set_aspect('equal')
