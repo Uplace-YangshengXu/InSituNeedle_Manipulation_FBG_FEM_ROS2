@@ -15,7 +15,7 @@ classdef MatlabRosSrvCli
             if node_type == 'client'
                 obj.cli = ros2svcclient(node,service_name,service_type);
                 obj.request = ros2message(obj.cli);
-                obj.request.name = "request";
+                obj.request.command = uint8(1);
             end
         end
         

@@ -7,7 +7,7 @@ def main():
     rclpy.init()
     client = CalClient()
     for i in range(10):
-        response = client.send_request()
+        response = client.send_request(1)
         print(response)
         end = time.time()
         print("get one response")

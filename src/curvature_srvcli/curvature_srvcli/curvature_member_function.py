@@ -32,7 +32,7 @@ class CalService(Node):
     def cal_curv_callback(self, request, response):
         #calculate response
         #print("get request from client")
-        #print(request)
+        print(request)
         #print(response)
         if self.if_init_fbg_process == 1:
             #ref = self.fbg_process.ref_wavelength
@@ -51,7 +51,9 @@ class CalService(Node):
             print("send msgs to client:")
             print(response)
             print(curvatures)
-            self.fbg_recieve = 1
+            if request.command == 1:
+                self.fbg_recieve = 0
+                print("clearing saved msg")
         else:
             print("fbg ref data miss, try again!")
 
@@ -81,10 +83,10 @@ class CalClient(Node):
         #while not self.cli.wait_for_service(timeout_sec = 1.0):
         self.req = CalCurvature.Request()
 
-    def send_request(self):
+    def send_request(self,command):
     
         #sm130_subscriber = interrogator_subscriber()
-        self.req.command = "requested"
+        self.req.command = command
         self.future = self.cli.call_async(self.req)
         rclpy.spin_until_future_complete(self,self.future)
         return self.future.result()

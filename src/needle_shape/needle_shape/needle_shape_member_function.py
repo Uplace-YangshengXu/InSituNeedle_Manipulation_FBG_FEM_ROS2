@@ -59,7 +59,7 @@ class needle_shape_visulisation(Node):
                 10)
         
 
-        plot_timer_period = 0.05
+        plot_timer_period = 0.1
 
         self.plottimer = self.create_timer(plot_timer_period,self.plot_needle_shape)
         
@@ -220,7 +220,7 @@ class needle_shape_visulisation(Node):
     
     def plot_needle_shape(self):
         if self.client.cli.service_is_ready() == 1:
-                response = self.client.send_request()
+                response = self.client.send_request(0)
                 self.curv_msg = response.curvature
                 self.if_init_curv_plot = 1
 
