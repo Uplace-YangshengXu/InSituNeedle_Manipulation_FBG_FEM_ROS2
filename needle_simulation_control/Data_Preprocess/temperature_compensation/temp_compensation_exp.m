@@ -15,7 +15,7 @@ channels = 3;
 AAs = 4;
 fbg_sensor_num = 10; % 4 + 4 + 2
 
-filename = '/temp_exp_formal_T_100.xls';
+filename = '/temp_compen_test_14Jun_T_unknown.xls';
 
 calPath = cd;
 

@@ -69,18 +69,19 @@ tip_traj = [];
 global xd
 
 start_x = -6;
-start_y = 11.68;
+start_y = -14.63;
 
 inter_x = 0;
-inter_y = 11.68;
+inter_y = -14.63;
 
-final_x = 10;
-final_y = 11.68;
+final_x = 56;
+final_y = -14.63;
 
 xd = [start_x start_y 0; 
       inter_x inter_y 0;
       final_x final_y 0;
-         58.58 14.68 0.1]';
+        10 -14.63 0;
+        58 -17.63 -0.1]';
 % xd = [[start_x start_y -0.167; 
 %       inter_x inter_y -0.167;];
 %       [linspace(inter_x,final_x,100)' linspace(inter_y,final_y,100)' linspace(-0.167,-0.167,100)']]';

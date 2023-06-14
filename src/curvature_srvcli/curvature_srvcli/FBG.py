@@ -74,7 +74,7 @@ class FBG_process:
 
         #record current data position in rawdata
         counter = 0
-        print(ch_config_rev)
+        #print(ch_config_rev)
 
         for i in range(self.Num_sm_CH):
             if ch_config_rev[i] <= self.signal_each_ch[i]:
@@ -250,7 +250,7 @@ class FBG_process:
         """
         
         cal_ch_config = content["Calibration Matrix Configuration A"]
-        print(cal_ch_config)
+        #print(cal_ch_config)
 
         """
         ch_config

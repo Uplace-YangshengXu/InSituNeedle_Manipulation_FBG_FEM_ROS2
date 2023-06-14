@@ -21,7 +21,7 @@ A23_index = {[5,9],[6,10]};
 E1 = [0 1 0; 0 0 1]; % for A23
 E2 = [1 0 0; 0 0 1]; % for A13
 E3 = [1 0 0; 0 1 0]; % for A12
-ratios = [ratio_AA1 ratio_AA2];
+ratios = [ratio_AA1 ratio_AA2]
 %ratios = ones(3,2);
 %ratios = [[1;1;1],[1.5;0.1;0.1]];
 

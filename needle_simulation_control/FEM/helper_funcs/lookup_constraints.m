@@ -1,7 +1,7 @@
 function constraint_list = lookup_constraints(x, y, k, Interval, Constraints)
 needle_coord = [x, y, k]; % N_node x 3
 constraint_list = zeros(3, length(x));
-bound = 30;
+bound = 80;
 
 if ~isempty(Constraints)
     constr_coord = Constraints'; % N_constraint x 3

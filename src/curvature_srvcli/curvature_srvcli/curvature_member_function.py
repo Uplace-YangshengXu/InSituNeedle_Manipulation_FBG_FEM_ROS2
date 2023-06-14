@@ -32,14 +32,13 @@ class CalService(Node):
     def cal_curv_callback(self, request, response):
         #calculate response
         #print("get request from client")
-        print(request)
         #print(response)
         if self.if_init_fbg_process == 1:
             #ref = self.fbg_process.ref_wavelength
-            print(np.asarray(self.msg.signal_reading))
+            #print(np.asarray(self.msg.signal_reading))
             curvatures = self.fbg_process.getCurvatures(np.asarray(self.msg.signal_reading),self.fbg_recieve)
-            print("ref wavelength:")
-            print(self.fbg_process.ref_wavelength)
+            #print("ref wavelength:")
+            #print(self.fbg_process.ref_wavelength)
             if len(curvatures) == 0:
                 print("get empty curvatures")
                 response.curvature.curvature_xy = array("d",[])
@@ -48,12 +47,12 @@ class CalService(Node):
                 response.curvature.curvature_xy = array("d",curvatures[:,0])
                 response.curvature.curvature_xz = array("d",-curvatures[:,1])
 
-            print("send msgs to client:")
-            print(response)
+            #print("send msgs to client:")
+            #print(response)
             print(curvatures)
             if request.command == 1:
                 self.fbg_recieve = 0
-                print("clearing saved msg")
+                #print("clearing saved msg")
         else:
             print("fbg ref data miss, try again!")
 
@@ -66,8 +65,8 @@ class CalService(Node):
         self.msg = msg
         self.fbg_recieve = 1
         if self.if_init_fbg_process == 0:
-            print(self.msg.total_reading_num)
-            print(self.msg.signal_each_ch)
+            #print(self.msg.total_reading_num)
+            #print(self.msg.signal_each_ch)
             self.fbg_process = FBG_process(self.interrogator,self.Load_json_filename,self.msg.total_reading_num,self.msg.signal_each_ch,np.asarray(self.msg.signal_reading))
             
             self.if_init_fbg_process = 1
