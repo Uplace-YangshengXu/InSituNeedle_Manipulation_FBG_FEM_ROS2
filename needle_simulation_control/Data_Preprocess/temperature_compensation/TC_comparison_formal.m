@@ -25,12 +25,13 @@ ratios = [ratio_AA1 ratio_AA2]
 %ratios = ones(3,2);
 %ratios = [[1;1;1],[1.5;0.1;0.1]];
 
-seq_cur = [0 0.25 0.8 1.0 1.25 3.125 0.5 1.6 2.0 2.5 3.2];
+%seq_cur = [0 0.25 0.8 1.0 1.25 3.125 0.5 1.6 2.0 2.5 3.2];
+seq_cur = [0 1 2 3];
 % caution::outlayer 0.5
 
-namefile_grount_turth = 'temp_exp_formal_ground_truth.xls';
-namefile = 'temp_exp_formal_T_100.xls';
-%namefile = 'temp_exp_formal_ground_truth.xls';
+namefile_grount_turth = 'temp_compen_formal_ground.xls';
+%namefile = 'temp_compen_formal_T100.xls';
+namefile = 'temp_compen_formal_ground.xls';
 sheet_name = 'Temp_vari_data';
 data = readmatrix(namefile,'Sheet',sheet_name);
 data_ground_truth = readmatrix(namefile_grount_turth,'Sheet',sheet_name);
@@ -84,7 +85,7 @@ legend(ax4, 'curv\_AA1\_m1', 'curv\_AA2\_m1', 'curv\_AA1\_m2','curv\_AA2\_m2')
 
 
 %% data process
-for j = [1,2,7,3,4,5,8,9,10,6,11]
+for j = [1,2,3,4]
     diff = data(j,:) - ref;
     % diff is one row of data
     

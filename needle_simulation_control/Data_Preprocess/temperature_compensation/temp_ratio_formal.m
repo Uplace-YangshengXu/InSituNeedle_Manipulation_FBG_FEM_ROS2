@@ -5,7 +5,7 @@
 clear;
 clc;
 
-namefilelist = {'temp_exp_formal_ground_truth.xls','temp_exp_formal_T_100.xls'};
+namefilelist = {'temp_compen_formal_ground.xls','temp_compen_formal_T100.xls'};
 sheet_name = 'Temp_vari_data';
 
 % data file
@@ -40,8 +40,8 @@ for i = 2:size(namefilelist,2)
     plot(dif(:,1),dif(:,1)/ratio_12,'-*');
     plot(dif(:,1),dif(:,1)/ratio_13,'-*');
 
-    figure(3)
-    plot(dif(:,1) ,dif(:,9) - dif(:,1) ./ ratio_13);
+%     figure(3)
+%     plot(dif(:,1) ,dif(:,9) - dif(:,1) ./ ratio_13);
 
     %overall ratio 1:2:3
     ratio_AA1 = ratio_AA1 + [1;1/ratio_12;1/ratio_13];
