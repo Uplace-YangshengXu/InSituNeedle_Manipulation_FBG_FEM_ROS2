@@ -7,7 +7,7 @@ A = randn(2, 3); % assumed grount truth calibration matrix
 single_plane = false; % if calibration and bending is performed on the same plane
 temp_ratios_uncert_mag = 0.0; % uncertainty in temperature variation ratios
 bend_ratios_uncert_mag = 0.0; % uncertainty in bending signal ratios
-sensor_noise_mag = 0.5; % signal noise in general
+sensor_noise_mag = 0; % signal noise in general
 
 %% Calibration; No temperature variation
 n = 500;
@@ -16,7 +16,8 @@ K_calibration = zeros(2, n);
 th = 2*pi*(randn() - 0.5); % calibration on the same plane
 for i = 1:n
     if ~single_plane
-        th = 2*pi*(randn() - 0.5); % calibration on different planes
+%         th = 2*pi*(randn() - 0.5); % calibration on different planes
+        th = pi/2*mod(i, 2); % bending in two planes
     end
     del_wave_calibration(:, i) = (gt_bend_ratios(th) + bend_ratios_uncert_mag*randn(3, 1))*randn() + sensor_noise_mag*randn(3, 1); % generate signals due to bending
     K_calibration(:, i) = A*del_wave_calibration(:, i); % curvtures due to bending only
@@ -37,7 +38,7 @@ A3 = K_calibration*pinv(del_calibration_3);
 % Can verify (A - Ai*Ei)*del_wave_calibration(:, j) is approx 0's
 
 %% Temperature compensation during measurements
-temp_change = 20*randn(); % ground truth temperature variation
+temp_change = 20; % ground truth temperature variation
 gt_temp_wave_change = gt_temp_ratios*temp_change; % ground truth wavelength changes due to temperature changes
 disp('ground truth wavelength shifts due to temperature variation')
 disp(gt_temp_wave_change);
@@ -98,4 +99,5 @@ disp(calc_temp_wave_changes_JK)
 function ratios = bend_wave_ratios(theta)
 ratios = [sin(theta); -sin(pi/3 + theta); sin(pi/3 - theta)]; % geometric argument
 % ratios = [2; 2.5; -1]; % randnom ratio
+% ratios = randn(3, 1);
 end
