@@ -27,7 +27,7 @@ ratios = [ratio_AA1 ratio_AA2];
 seq_cur = [0 0.25 0.8 1.0 1.25 3.125 0.5 1.6 2.0 2.5 3.2];
 % caution::outlayer 0.5
 
-namefile = 'temp_fbg_data_comparation.xls';
+namefile = 'tem_comp_Tvar_C0.xls';
 sheet_name = 'Temp_vari_data';
 data = readmatrix(namefile,'Sheet',sheet_name);
 [r,c ] = size(data); % row and col

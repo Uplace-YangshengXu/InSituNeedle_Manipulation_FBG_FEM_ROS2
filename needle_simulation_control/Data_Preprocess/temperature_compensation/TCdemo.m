@@ -1,6 +1,8 @@
 % create at 20/03/2023 by yangsheng xu
 % this script provides a demo to test the Temperature Compensation
 % principle using AA1 and AA2 of three Channel needle
+clear;
+clc;
 
 addpath ../calibration_process
 addpath ./temp_demo_data/
@@ -11,6 +13,8 @@ load Cal_mat_2CH_2AA_alldata_A23.mat % H23 CS
 load Cal_mat_3CH_2AA_alldata.mat % H
 load temp_comp_ratios.mat % ratio_AA1 ratio_AA2
 
+
+
 A_index = {[1,5,9],[2,6,10]}; %3ch 2aa
 A12_index = {[1,5],[2,6]};
 A13_index = {[1,9],[2,10]};
@@ -19,8 +23,8 @@ E1 = [0 1 0; 0 0 1]; % for A23
 E2 = [1 0 0; 0 0 1]; % for A13
 E3 = [1 0 0; 0 1 0]; % for A12
 % ratios = ones(3,2);
-ratios = [ratio_AA1 ratio_AA2]; 
-%ratios = [[1;1;1],[1.5;0.1;0.1]];
+ratios = [ratio_AA1 ratio_AA2]
+%ratios = [[1;1;1] ratio_AA2];
 
 %namefile = 'temp_fbg_data2.xls'; % Apr 24 2023, using hot water steam, straight needle
 %namefile = 'temp_fbg_data3.xls'; % Apr 24 2023, using hot water steam, bent needle
@@ -31,18 +35,25 @@ ratios = [ratio_AA1 ratio_AA2];
 % namefile = 'temp_fbg_data8.xls'; % Apr 25 2023, using incubator, 101.0F, 1.25 needle, decrease
 % namefile = 'temp_fbg_data9.xls'; % Apr 25 2023, using incubator, 118.0F, 1.25 needle, decrease
 % namefile = 'temp_fbg_datatest.xls'; % Apr 25 2023,free to 0.0 needle
-namefile = 'temp_fbg_data10.xls'; % Apr 25 2023, using incubator, 118.0F, free to 0.8 & 1.25 needle, decrease
+% namefile = 'temp_fbg_data10.xls'; % Apr 25 2023, using incubator, 118.0F, free to 0.8 & 1.25 needle, decrease
+% C0 -> 1; C1 -> 2; C2 -> 3; C3 -> 4;
 
-%namefile = 'temp_exp_formal_ground_truth.xls';
+
+namefile = 'tem_comp_Tvar_C0_prev.xls'; % Jun 19 2023, using incubator
+%namefile = 'tem_comp_ground_truth.xls'
+sheet_name = 'Temp_vari_data';
+ref_data = readmatrix('tem_comp_Tvar_C0.xls','Sheet',sheet_name);
+ref = ref_data(1,:);
 
 % data file format
 % 1st unbent data
 % 2nd bend data with room temp
 % 3rd-end bend data with various temp
-sheet_name = 'Temp_vari_data';
+
 data = readmatrix(namefile,'Sheet',sheet_name);
 [r,c ] = size(data); % row and col
-ref = data(1,:);
+
+
 
 f = figure();
 ax1 = subplot(2,2,1); grid on; % for AA1 cur_xy

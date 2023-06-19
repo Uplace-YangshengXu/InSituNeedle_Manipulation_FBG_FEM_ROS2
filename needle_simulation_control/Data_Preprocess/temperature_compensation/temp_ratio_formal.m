@@ -5,7 +5,7 @@
 clear;
 clc;
 
-namefilelist = {'temp_compen_formal_ground.xls','temp_compen_formal_T100.xls'};
+namefilelist = {'tem_comp_ground_truth.xls','tem_comp_Tvar_C0.xls'};
 sheet_name = 'Temp_vari_data';
 
 % data file
@@ -42,7 +42,7 @@ for i = 2:size(namefilelist,2)
 
 %     figure(3)
 %     plot(dif(:,1) ,dif(:,9) - dif(:,1) ./ ratio_13);
-
+PubSub' is not found in the current folder or on the MATLAB path, but exists in:
     %overall ratio 1:2:3
     ratio_AA1 = ratio_AA1 + [1;1/ratio_12;1/ratio_13];
     

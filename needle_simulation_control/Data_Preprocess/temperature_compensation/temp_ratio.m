@@ -2,7 +2,8 @@
 % this script is used to determine the ratio of change of 
 % wavelength in each fiber under the influence of temperature
 addpath temp_demo_data/
-namefilelist = {'temp_fbg_data9.xls','temp_fbg_data8.xls','temp_fbg_data7.xls','temp_fbg_data6.xls','temp_fbg_data5.xls','temp_fbg_data4.xls','temp_fbg_data3.xls','temp_fbg_data2.xls'};
+%namefilelist = {'tem_comp_Tvar_C0.xls','tem_comp_Tvar_C1.xls','tem_comp_Tvar_C2.xls','tem_comp_Tvar_C3.xls'};
+namefilelist = {'tem_comp_Tvar_C0_prev.xls'};
 sheet_name = 'Temp_vari_data';
 
 % data file
@@ -14,28 +15,33 @@ sheet_name = 'Temp_vari_data';
 ratio_AA1 = [0;0;0];
 ratio_AA2 = [0;0;0];
 
+%data_ref  = readmatrix('tem_comp_ground_truth.xls','Sheet',sheet_name);
+
 for i = 1:size(namefilelist,2)
+    cmap = hsv(2*size(namefilelist, 2));
+
     namefile = namefilelist{i};
     data = readmatrix(namefile,'Sheet',sheet_name);
     [r,c ] = size(data); % row and col
+    %ref = data_ref(i,:);
     ref = data(1,:);
-    unbend = data(2,:);
     % calculate the diff
-    dif = data(3:end,:) - unbend;
+    dif = data(1:end,:) - ref;
 
 
-    % for AA1
+    % for AA1'o');
     figure(1)
-    plot(dif(:,1),dif(:,5),'-o');
+    axis equal
+    plot(dif(:,1),dif(:,5),'o', 'Color', cmap(2*i - 1, :));
     hold on
-    plot(dif(:,1),dif(:,9),'-o');
+    plot(dif(:,1),dif(:,9),'o', 'Color', cmap(2*i, :));
 
 
     ratio_12 = dif(:,1)'/dif(:,5)'; % channel 1 vs channel 2
     ratio_13 = dif(:,1)'/dif(:,9)'; % channel 1 va channel 3
 
-    plot(dif(:,1),dif(:,1)./ratio_12,'-*');
-    plot(dif(:,1),dif(:,1)./ratio_13,'-*');
+    plot(dif(:,1),dif(:,1)./ratio_12,'-*', 'Color', cmap(2*i - 1, :));
+    plot(dif(:,1),dif(:,1)./ratio_13,'-*', 'Color', cmap(2*i, :));
 
     %overall ratio 1:2:3
     ratio_AA1 = ratio_AA1 + [1;1/ratio_12;1/ratio_13];
@@ -44,14 +50,15 @@ for i = 1:size(namefilelist,2)
 
     % for AA2
     figure(2)
-    plot(dif(:,2),dif(:,6),'-o');
+    axis equal
+    plot(dif(:,2),dif(:,6),'o', 'Color', cmap(2*i - 1, :));
     hold on
-    plot(dif(:,2),dif(:,10),'-o');
+    plot(dif(:,2),dif(:,10),'o', 'Color', cmap(2*i, :));
     ratio_12 = dif(:,2)'/dif(:,6)'; % channel 1 vs channel 2
     ratio_13 = dif(:,2)'/dif(:,10)'; % channel 1 va channel 3
 
-    plot(dif(:,2),dif(:,2)./ratio_12,'-*');
-    plot(dif(:,2),dif(:,2)./ratio_13,'-*');
+    plot(dif(:,2),dif(:,2)./ratio_12,'-*', 'Color', cmap(2*i - 1, :));
+    plot(dif(:,2),dif(:,2)./ratio_13,'-*', 'Color', cmap(2*i, :));
 
     % get the overall ratio 1:2:3
     ratio_AA2 = ratio_AA2 + [1;1/ratio_12;1/ratio_13];

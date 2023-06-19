@@ -29,9 +29,8 @@ ratios = [ratio_AA1 ratio_AA2]
 seq_cur = [0 1 2 3];
 % caution::outlayer 0.5
 
-namefile_grount_turth = 'temp_compen_formal_ground.xls';
-%namefile = 'temp_compen_formal_T100.xls';
-namefile = 'temp_compen_formal_ground.xls';
+namefile_grount_turth = 'tem_comp_ground_truth.xls';
+namefile = 'tem_comp_Tvar_C0.xls';
 sheet_name = 'Temp_vari_data';
 data = readmatrix(namefile,'Sheet',sheet_name);
 data_ground_truth = readmatrix(namefile_grount_turth,'Sheet',sheet_name);
@@ -47,7 +46,7 @@ ax4 = subplot(2,2,4); grid on; % for curv at xz plane
 hold([ax1,ax2],'on')
 xlabel([ax1,ax2,ax3,ax4],'real\_curvature,(1/m)')
 ylabel([ax1,ax2],'wavelength compensation,(nm)')
-ylabel([ax3,ax4],'pred\_curvature,(1/m)')
+ylabel([ax3,ax4],'pred\data_curvature,(1/m)')
 title(ax1,"AA1")
 title(ax2,'AA2')
 title(ax3,"pred\_cur\_xy")
@@ -85,10 +84,9 @@ legend(ax4, 'curv\_AA1\_m1', 'curv\_AA2\_m1', 'curv\_AA1\_m2','curv\_AA2\_m2')
 
 
 %% data process
-for j = [1,2,3,4]
+for j = 1:1:r
     diff = data(j,:) - ref;
     % diff is one row of data
-    
     for i = 1:size(A_index,2)
         % active area number
         % get calibration matrix

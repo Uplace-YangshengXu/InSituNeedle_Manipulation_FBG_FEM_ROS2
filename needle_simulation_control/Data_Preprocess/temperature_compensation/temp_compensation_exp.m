@@ -7,7 +7,8 @@ addpath ../
 % collect n data set for each curve
 FBG_data_point = 1;
 % trial num
-val_repetitions = 4;
+%val_repetitions = 4;
+val_repetitions = 40;
 %seq_cur = [0 0.25 0.8 1.0 1.25 3.125 0.5 1.6 2.0 2.5 3.2];
 seq_cur = [0 1 2 3];
 trial_start_num = 1;
@@ -16,8 +17,8 @@ channels = 3;
 AAs = 4;
 fbg_sensor_num = 10; % 4 + 4 + 2
 
-filename = '/temp_compen_formal_T100.xls';
-
+%filename = '/tem_comp_ground_truth.xls';
+filename = ['/tem_comp_Tvar_C2.xls'];
 calPath = cd;
 
 if exist("subscriber",'var')
@@ -38,9 +39,9 @@ cal_data = [];
 % end
   
 for k = trial_start_num:val_repetitions+trial_start_num-1
-    disp('Press Enter when ready to collect data');
-    pause;
-    
+    str = sprintf('Press Enter when ready to collect data set %d',k);
+    disp(str)
+    pause(10)
     disp('reading, hold on...')
     for h = 1:FBG_data_point
         if exist('subscriber','var')
