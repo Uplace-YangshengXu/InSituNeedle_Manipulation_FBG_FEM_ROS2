@@ -13,6 +13,9 @@ load Cal_mat_2CH_2AA_alldata_A23.mat % H23 CS
 load Cal_mat_3CH_2AA_alldata.mat % H
 load temp_comp_ratios.mat % ratio_AA1 ratio_AA2
 
+% to do
+% add common mode
+% add ref cur at room temp
 
 
 A_index = {[1,5,9],[2,6,10]}; %3ch 2aa
@@ -22,9 +25,9 @@ A23_index = {[5,9],[6,10]};
 E1 = [0 1 0; 0 0 1]; % for A23
 E2 = [1 0 0; 0 0 1]; % for A13
 E3 = [1 0 0; 0 1 0]; % for A12
-% ratios = ones(3,2);
+
 ratios = [ratio_AA1 ratio_AA2]
-%ratios = [[1;1;1] ratio_AA2];
+
 
 %namefile = 'temp_fbg_data2.xls'; % Apr 24 2023, using hot water steam, straight needle
 %namefile = 'temp_fbg_data3.xls'; % Apr 24 2023, using hot water steam, bent needle
@@ -36,24 +39,18 @@ ratios = [ratio_AA1 ratio_AA2]
 % namefile = 'temp_fbg_data9.xls'; % Apr 25 2023, using incubator, 118.0F, 1.25 needle, decrease
 % namefile = 'temp_fbg_datatest.xls'; % Apr 25 2023,free to 0.0 needle
 % namefile = 'temp_fbg_data10.xls'; % Apr 25 2023, using incubator, 118.0F, free to 0.8 & 1.25 needle, decrease
-% C0 -> 1; C1 -> 2; C2 -> 3; C3 -> 4;
 
 
-namefile = 'tem_comp_Tvar_C0_prev.xls'; % Jun 19 2023, using incubator
-%namefile = 'tem_comp_ground_truth.xls'
-sheet_name = 'Temp_vari_data';
-ref_data = readmatrix('tem_comp_Tvar_C0.xls','Sheet',sheet_name);
-ref = ref_data(1,:);
-
+namefile = 'tem_comp_Tvar_C0.xls'; % Jun 19 2023, using incubator
 % data file format
-% 1st unbent data
-% 2nd bend data with room temp
-% 3rd-end bend data with various temp
+% 1st data at room temp
+% 2nd to last temp increase
+sheet_name = 'Temp_vari_data';
+ref_temp = readmatrix('tem_comp_Tvar_C0.xls','Sheet',sheet_name);
+ref = ref_temp(1,:);
 
 data = readmatrix(namefile,'Sheet',sheet_name);
 [r,c ] = size(data); % row and col
-
-
 
 f = figure();
 ax1 = subplot(2,2,1); grid on; % for AA1 cur_xy
@@ -68,13 +65,13 @@ title(ax2,'AA1 curv xz')
 title(ax3,'AA2 curv xy')
 title(ax4,'AA2 curv xz')
 
-% plotting for TC method 1
+% plotting for TC method 1 ours
 ani_plot1 = animatedline(ax1,'Marker','o','Color','r');
 ani_plot2 = animatedline(ax2,'Marker','o','Color','r');
 ani_plot3 = animatedline(ax3,'Marker','o','Color','r');
 ani_plot4 = animatedline(ax4,'Marker','o','Color','r');
 
-% plotting for TC method 2
+% plotting for TC method 2 "common mode"
 ani_plot12 = animatedline(ax1,'Marker','*','Color','g');
 ani_plot22 = animatedline(ax2,'Marker','*','Color','g');
 ani_plot32 = animatedline(ax3,'Marker','*','Color','g');
@@ -109,10 +106,10 @@ ani_plot43 = animatedline(ax4,'Marker','+','Color','b');
 % legend(ax3,'Method 1 TC','Method 2 TC','Without TC from A','Without TC from A12','Without TC from A13','Without TC from A23')
 % legend(ax4,'Method 1 TC','Method 2 TC','Without TC from A','Without TC from A12','Without TC from A13','Without TC from A23')
 
-legend(ax1, 'Method 1 TC', 'Method 2 TC', 'w/o TC')
-legend(ax2, 'Method 1 TC', 'Method 2 TC', 'w/o TC')
-legend(ax3, 'Method 1 TC', 'Method 2 TC', 'w/o TC')
-legend(ax4, 'Method 1 TC', 'Method 2 TC', 'w/o TC')
+legend(ax1, 'with TC','with common mode TC', 'w/o TC')
+legend(ax2, 'with TC','with common mode TC', 'w/o TC')
+legend(ax3, 'with TC','with common mode TC', 'w/o TC')
+legend(ax4, 'with TC','with common mode TC', 'w/o TC')
 
 %% data process
 for j = 1:r
@@ -176,8 +173,8 @@ for j = 1:r
         alpha_m2 = [alpha_m2,temp_wave_avg];
     
         % get the compensated curvature
-        cur_m1 = [cur_m1, A*(diff(A_index{i})' - alpha_m1 * ratios(:,i))]
-        cur_m2 = [cur_m2, A*(diff(A_index{i})' - alpha_m2 * ratios(:,i))]
+        cur_m1 = [cur_m1, A*(diff(A_index{i})' - alpha_m1 * ratios(:,i))];
+        cur_m2 = [cur_m2, A*(diff(A_index{i})' - alpha_m2 * ratios(:,i))];
 
         % plotting 
         if i == 1
@@ -185,8 +182,8 @@ for j = 1:r
             addpoints(ani_plot1,j,cur_m1(1))
             addpoints(ani_plot2,j,cur_m1(2))
             % method 2
-            addpoints(ani_plot12,j,cur_m2(1))
-            addpoints(ani_plot22,j,cur_m2(2))
+%             addpoints(ani_plot12,j,cur_m2(1))
+%             addpoints(ani_plot22,j,cur_m2(2))
 
             % A
             addpoints(ani_plot13,j,cur_NTC_A(1))
