@@ -335,16 +335,16 @@ function KeyPressCallback(source, eventdata)
 global xd Arrived
 global ESC_PRESSED
 key = eventdata.Key;
-if strcmpi(key, 'upArrow')
+if strcmpi(key, 'upArrow') % add another goal point [x; y; k]
     xd = input("Input next goal position or trajectory:");
     Arrived = 0;
-elseif strcmpi(key, 'downArrow')
+elseif strcmpi(key, 'downArrow') % next goal point
     Arrived = 0;
-elseif strcmpi(key, 'leftArrow')
+elseif strcmpi(key, 'leftArrow') % pause
     Arrived = 1;
-elseif strcmpi(key, 'rightArrow')
+elseif strcmpi(key, 'rightArrow') % next goal point
     Arrived = 0;
-elseif strcmpi(key, 'escape')
+elseif strcmpi(key, 'escape') % exit
     ESC_PRESSED = 1;
 end
 end
