@@ -9,7 +9,7 @@ class interrogator_publisher(Node):
     def __init__(self):
         super().__init__('interrogator_publisher')
         self.publisher_ = self.create_publisher(FbgReading,'interrogator',10)
-        timer_period = 0.01
+        timer_period = 0.001
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.address = "192.168.1.11"
         self.port = 1852
