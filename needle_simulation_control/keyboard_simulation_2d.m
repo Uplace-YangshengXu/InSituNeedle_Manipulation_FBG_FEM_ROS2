@@ -20,6 +20,7 @@ Mu = [Mu_1; Mu_2];
 Alpha = [Alpha_1; Alpha_2];
 Interval = {[0, 30]; [30, 80]};
 Constraints = []; % to store constraint points [px, py]
+Ti = [50; 50];
 
 L = 50; % total length of the needle
 global bx by bk % needle base config, can be changed by keyboard
@@ -80,7 +81,7 @@ while ~ESC_PRESSED && ishghandle(fig)
     dby = by - y(1); % change in base y coordinate
     dbk = bk - k(1); % change in base slope
     tic
-    [x, y, k, Constraints] = planar_needle_FEM_wc(L, Mu, Alpha, Interval, ... % params
+    [x, y, k, Constraints] = planar_needle_FEM_wc(L, Mu, Alpha, Interval, Ti, ... % params
         x, y, k, Constraints, ...% previous states
         dbx, dby, dbk, ...
         [], []); % change in needle base config
