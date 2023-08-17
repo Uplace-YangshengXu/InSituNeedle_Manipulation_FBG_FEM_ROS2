@@ -42,7 +42,6 @@ for i = 2:size(namefilelist,2)
 
 %     figure(3)
 %     plot(dif(:,1) ,dif(:,9) - dif(:,1) ./ ratio_13);
-PubSub' is not found in the current folder or on the MATLAB path, but exists in:
     %overall ratio 1:2:3
     ratio_AA1 = ratio_AA1 + [1;1/ratio_12;1/ratio_13];
     

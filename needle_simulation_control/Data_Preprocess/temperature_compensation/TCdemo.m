@@ -179,31 +179,31 @@ for j = 1:r
         % plotting 
         if i == 1
             % method 1
-            addpoints(ani_plot1,j,cur_m1(1))
-            addpoints(ani_plot2,j,cur_m1(2))
-            % method 2
-%             addpoints(ani_plot12,j,cur_m2(1))
-%             addpoints(ani_plot22,j,cur_m2(2))
-
-            % A
-            addpoints(ani_plot13,j,cur_NTC_A(1))
-            addpoints(ani_plot23,j,cur_NTC_A(2))
-            % A12
-            % addpoints(ani_plot14,j,cur_NTC_A12(1))
-            % addpoints(ani_plot24,j,cur_NTC_A12(2))
-            % A13
-            % addpoints(ani_plot15,j,cur_NTC_A13(1))
-            % addpoints(ani_plot25,j,cur_NTC_A13(2))
-            % A23
-            % addpoints(ani_plot16,j,cur_NTC_A23(1))
-            % addpoints(ani_plot26,j,cur_NTC_A23(2))
+%             addpoints(ani_plot1,j,cur_m1(1))
+%             addpoints(ani_plot2,j,cur_m1(2))
+%             % method 2
+% %             addpoints(ani_plot12,j,cur_m2(1))
+% %             addpoints(ani_plot22,j,cur_m2(2))
+% 
+%             % A
+%             addpoints(ani_plot13,j,cur_NTC_A(1))
+%             addpoints(ani_plot23,j,cur_NTC_A(2))
+%             % A12
+%             % addpoints(ani_plot14,j,cur_NTC_A12(1))
+%             % addpoints(ani_plot24,j,cur_NTC_A12(2))
+%             % A13
+%             % addpoints(ani_plot15,j,cur_NTC_A13(1))
+%             % addpoints(ani_plot25,j,cur_NTC_A13(2))
+%             % A23
+%             % addpoints(ani_plot16,j,cur_NTC_A23(1))
+%             % addpoints(ani_plot26,j,cur_NTC_A23(2))
 
 
         elseif i == 2
             addpoints(ani_plot3,j,cur_m1(1))
             addpoints(ani_plot4,j,cur_m1(2))
-            addpoints(ani_plot32,j,cur_m2(1))
-            addpoints(ani_plot42,j,cur_m2(2))
+%             addpoints(ani_plot32,j,cur_m2(1))
+%             addpoints(ani_plot42,j,cur_m2(2))
 
             % A
             addpoints(ani_plot33,j,cur_NTC_A(1))
