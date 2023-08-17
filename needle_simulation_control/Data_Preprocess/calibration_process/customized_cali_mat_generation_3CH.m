@@ -11,7 +11,7 @@
 
 clear;
 clc;
-
+addpath ./current_cali_data
 num_CH = 3; % 3 channels were used
 num_AA = 4; 
 trial_num = {1:3}; % each data file store 3 trials of measurement for 6 curves

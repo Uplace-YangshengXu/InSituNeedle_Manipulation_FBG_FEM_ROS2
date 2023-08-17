@@ -43,7 +43,7 @@ Alpha =[Alpha_PSM ; Alpha_PSM];
 Constraints = [];
 
 
-Interval = {[0, 13];[13,80]};
+Interval = {[0, 26];[26,80]};
 
 L = 163; % total length of needle (estimate)
 
@@ -68,20 +68,25 @@ k_pre = bk*ones(size(x_pre));
 tip_traj = [];
 global xd
 
-start_x = -6;
-start_y = -14.63;
+start_x = -5;
+start_y = 17.56;
 
 inter_x = 0;
-inter_y = -14.63;
+inter_y = 17.56;
 
-final_x = 56;
-final_y = -14.63;
+final_x = 57;
+final_y = 17.56;
 
 xd = [start_x start_y 0; 
-      inter_x inter_y 0;
-      final_x final_y 0;
-        10 -14.63 0;
-        58 -17.63 -0.1]';
+     inter_x inter_y 0;
+    final_x final_y 0]';
+
+% xd = [start_x start_y 0;
+%       inter_x inter_y 0;
+%       final_x final_y 0;
+%       final_x-15 final_y 0;
+%       final_x+1 -12.5 0.1]';
+
 % xd = [[start_x start_y -0.167; 
 %       inter_x inter_y -0.167;];
 %       [linspace(inter_x,final_x,100)' linspace(inter_y,final_y,100)' linspace(-0.167,-0.167,100)']]';
