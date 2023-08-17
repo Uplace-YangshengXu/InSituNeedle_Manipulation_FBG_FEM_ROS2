@@ -1,4 +1,4 @@
-function [x_new, y_new, k_new, Constraints_new] = planar_needle_FEM_wc(L, Mu, Alpha, Interval, ...
+function [x_new, y_new, k_new, Constraints_new] = planar_needle_FEM_wc(L, Mu, Alpha, Interval, Ti,...
     x_pre, y_pre, k_pre, Constraints_pre, ...
     dbx, dby, dbk, ...
     curvatures, AA_lcn)
@@ -15,6 +15,7 @@ function [x_new, y_new, k_new, Constraints_new] = planar_needle_FEM_wc(L, Mu, Al
 % Mu: cell array of material parameters Mu
 % Alpha: cell array of material parameters Alpha
 % Interval: cell array of material layers
+% Ti: cell array of tissue initial length range ti
 % x_pre, y_pre, k_pre: arrays of initial/previous nodal x, y, and k
 % Constraints_pre: constraint points [x, y, k]; can be empty
 % dbx, dby, dbk: changes in needle base position and slope
@@ -32,10 +33,9 @@ function [x_new, y_new, k_new, Constraints_new] = planar_needle_FEM_wc(L, Mu, Al
 % Constants
 FEM_params;
 
-MuT = Mu*10^-6; % Pa, but in mm^2; 1Pa = 1e-6 N/mm^2; 1kPa = 1e-3 N/mm^2
-AlphaT = Alpha; % need abs(alpha) > 1
-GammaT = zeros(size(MuT));
-PropertyTable = table(Interval, MuT, AlphaT, GammaT);
+Mu = Mu*10^-6; % Pa, but in mm^2; 1Pa = 1e-6 N/mm^2; 1kPa = 1e-3 N/mm^2
+Gamma = zeros(size(Mu));
+PropertyTable = table(Interval, Mu, Alpha, Gamma, Ti);
 
 % Place first constraint
 if isempty(Constraints_pre) && x_pre(end) >= Interval{1}(1)
@@ -47,8 +47,7 @@ needle_C = apply_transformations_2d([x_pre'; y_pre'; k_pre'], S2C);
 x_pre = needle_C(1, :)'; y_pre = needle_C(2, :)'; k_pre = needle_C(3, :)';
 Constraints = apply_transformations_2d(Constraints_pre, S2C); % NOTE: first column should always be zeros
 
-[MuTs, AlphaTs, GammaTs] = lookup_properties(x_pre, PropertyTable);
-% Lambdas = lookup_compressions(x_pre, y_pre, ti, Interval, Constraints, constraint_interval);
+[Mus, Alphas, Gammas, Tis] = lookup_properties(x_pre, PropertyTable);
 Constraints_list = lookup_constraints(x_pre, y_pre, k_pre, Interval, Constraints);
 
 % FEM-specific constants
@@ -79,16 +78,16 @@ if ~isempty(AA_crv) % if curvatrue is empty then AA_er is []
 end
 
 % Load-stepping functionality
-outer_iter = 1;
-converged = 0;
+outer_iter = 0;
 load_ratio = 1;
 EBC_delta_des = [dby; dbk]; % desired amount of BC change
 EBC_delta_cur = zeros(2, 1); % current amount of BC change
 EBC_delta_converged = zeros(2, 1); % previously-converged BC change
 
+converged = 0;
 %% FEM Main with load stepping
-while converged == 0 && (outer_iter <= max_outer_iter)
-    outer_iter = outer_iter + 1;
+while ~all(abs(EBC_delta_des - EBC_delta_converged) < 1e-3) && ...
+        (outer_iter <= max_outer_iter) || converged == 0
     inner_iter = 1;
     converged = 0;
     EBC_delta_cur = EBC_delta_converged + load_ratio*EBC_delta_des;
@@ -105,9 +104,12 @@ while converged == 0 && (outer_iter <= max_outer_iter)
             Constraint_i_y = Constraints_list(2, e); % Get current constraint y
             d_i_local = d_i_local - ...
                 Constraint_i_y*[1; 0; 1; 0]; % Change relative to nodal constraint
-
-            [ke, pe] = compute_element_matrix(d_i_local, ti, E, I, e, h, ...
-                MuTs(e), AlphaTs(e), GammaTs(e), Constraint_i_y, AA_er, AA_crv);
+            
+            if Tis(e) == 0 % in case the element is outside of tissue, assign Tis(e) to something nonzero
+                Tis(e) = ti;
+            end
+            [ke, pe] = compute_element_matrix(d_i_local, Tis(e), E, I, e, h, ...
+                Mus(e), Alphas(e), Gammas(e), Constraint_i_y, AA_er, AA_crv);
 
             % Global assembly process
             % Using vectors instead of FOR loops
@@ -117,23 +119,26 @@ while converged == 0 && (outer_iter <= max_outer_iter)
 
         % Newton's method
         % Use only free DOF from the list of DOF to compute d
-        delta_d = invChol_mex(K(freeDOF, freeDOF))*(F(freeDOF, 1)-P(freeDOF, 1));
+        delta_d = invChol_mex(K(freeDOF, freeDOF))*(F(freeDOF, 1) - P(freeDOF, 1));
         % delta_d = pinv(K(freeDOF, freeDOF))*(F(freeDOF, 1)-P(freeDOF, 1));
+        d(freeDOF, 1) = d(freeDOF, 1) + delta_d;
         err = norm(F(freeDOF, 1) - P(freeDOF, 1));
         if(err <= tol)
             converged = 1;
             break;
         end
-        d(freeDOF, 1) = d(freeDOF, 1) + delta_d;
         inner_iter = inner_iter + 1;
     end % end inner iteration
     if converged ~= 1
         load_ratio = 0.5*load_ratio;
         EBC_delta_cur = zeros(2, 1);
-        %         fprintf("No convergence. Decreasing load step\n");
+        fprintf("No convergence. Decreasing load step\n");
+        outer_iter = outer_iter + 1;
     else
         EBC_delta_converged = EBC_delta_cur;
+        outer_iter = 0;
     end
+    
 end % end outer iteration
 
 if converged ~= 1
@@ -179,15 +184,15 @@ end
 
 %% Defined helper functions
 % Compute element stiffness matrix and internal force vector
-function [ke, pe] = compute_element_matrix(d_i_local, ti, E, I, ...
-    e, h, MuT_e, AlphaT_e, GammaT_e, C_e_y, AA_er,AA_crv)
+function [ke, pe] = compute_element_matrix(d_i_local, Ti_e, E, I, ...
+    e, h, Mu_e, Alpha_e, Gamma_e, C_e_y, AA_er,AA_crv)
 % Calculate integrals
 % _beam will stay the same
 pe_beam = calc_pe_beam(d_i_local, h, E, I);
 ke_beam = calc_ke_beam(h, E, I);
 % _cont will depend on external force formulation
-pe_cont = calc_pe_cont(d_i_local, h, ti, MuT_e, AlphaT_e, GammaT_e, C_e_y);
-ke_cont = calc_ke_cont(d_i_local, h, ti, MuT_e, AlphaT_e, GammaT_e, C_e_y);
+pe_cont = calc_pe_cont(d_i_local, h, Ti_e, Mu_e, Alpha_e, Gamma_e, C_e_y);
+ke_cont = calc_ke_cont(d_i_local, h, Ti_e, Mu_e, Alpha_e, Gamma_e, C_e_y);
 
 pe = pe_beam + pe_cont;
 % repalce the curvature with fbg measured value
@@ -235,7 +240,7 @@ ke_beam = E*I/h^3*[12,   6*h,    -12,    6*h;
     6*h,  2*h^2,  -6*h,   4*h^2];
 end
 
-function pe_cont = calc_pe_cont(d_i_local, h, ti, MuT_e, AlphaT_e, GammaT_e, C_e_y)
+function pe_cont = calc_pe_cont(d_i_local, h, Ti_e, Mu_e, Alpha_e, Gamma_e, C_e_y)
 % Element internal force vector from tissue contact
 ig = [-1/sqrt(3); 1/sqrt(3)]; % Gauss integration points
 wg = [1; 1]; % Gauss weights
@@ -247,20 +252,20 @@ u_zeta = [N_zeta(1, :)*d_i_local; N_zeta(2, :)*d_i_local];% Displacements deriva
 % Sum over all gauss points
 pe_cont = zeros(1, 4);
 for i = 1:length(ig)
-    stretch = (ti - abs(C_e_y))/ti;
+    stretch = (Ti_e - abs(C_e_y))/Ti_e;
     if stretch < 0 % happens when control makes abs(u) larger than ti
-        stretch = 0.1; % manually assign a large compression ratio
+        stretch = 0.01; % manually assign a large compression ratio
     end
     pe_cont = pe_cont + ...
         wg(i)*(...
-        N(i, :)*2*MuT_e*((stretch)^(AlphaT_e - 1) + 1/2*(stretch)^(-AlphaT_e/2 - 1))*...
-        u(i)*(1 - GammaT_e*sin(atan(u_zeta(i)*(2/h)))^2)*(h/2)...
+        N(i, :)*2*Mu_e*((stretch)^(Alpha_e - 1) + 1/2*(stretch)^(-Alpha_e/2 - 1))*...
+        u(i)*(1 - Gamma_e*sin(atan(u_zeta(i)*(2/h)))^2)*(h/2)...
         );
 end
 pe_cont = pe_cont'; % transpose to get the right dimension
 end
 
-function ke_cont = calc_ke_cont(d_i_local, h, ti, MuT_e, AlphaT_e, GammaT_e, C_e_y)
+function ke_cont = calc_ke_cont(d_i_local, h, Ti_e, Mu_e, Alpha_e, Gamma_e, C_e_y)
 % Element stiffness from tissue contact
 ig = [-1/sqrt(3); 1/sqrt(3)]; % Gauss integration points
 wg = [1; 1]; % Gauss weights
@@ -272,21 +277,21 @@ u_zeta = [N_zeta(1, :)*d_i_local; N_zeta(2, :)*d_i_local];% Displacements deriva
 % Sum over all gauss points
 ke_cont = zeros(4, 4);
 for i = 1:length(ig)
-    stretch = (ti - abs(C_e_y))/ti;
+    stretch = (Ti_e - abs(C_e_y))/Ti_e;
     if stretch < 0 % happens when control makes abs(u) larger than ti
-        stretch = 0.1; % manually assign a large compression ratio
+        stretch = 0.01; % manually assign a large compression ratio
     end
     ke_cont = ke_cont + ...
         wg(i)*(...
-        N(i, :)'*2*MuT_e*((AlphaT_e - 1)*(stretch)^(AlphaT_e - 2)*(-1/ti*sign(u(i))*N(i, :)) + ...
-        1/2*(-AlphaT_e/2 - 1)*(stretch)^(-AlphaT_e/2 - 2)*(-1/ti*sign(u(i))*N(i, :)))*u(i)* ...
-        (1 - GammaT_e*sin(atan(u_zeta(i)*(2/h)))^2)*(h/2) + ...
+        N(i, :)'*2*Mu_e*((Alpha_e - 1)*(stretch)^(Alpha_e - 2)*(-1/Ti_e*sign(u(i))*N(i, :)) + ...
+        1/2*(-Alpha_e/2 - 1)*(stretch)^(-Alpha_e/2 - 2)*(-1/Ti_e*sign(u(i))*N(i, :)))*u(i)* ...
+        (1 - Gamma_e*sin(atan(u_zeta(i)*(2/h)))^2)*(h/2) + ...
         ...
-        N(i, :)'*2*MuT_e*((stretch)^(AlphaT_e - 1) + 1/2*(stretch)^(-AlphaT_e/2 - 1))*N(i, :)*...
-        (1 - GammaT_e*sin(atan(u_zeta(i)*(2/h)))^2)*(h/2) + ...
+        N(i, :)'*2*Mu_e*((stretch)^(Alpha_e - 1) + 1/2*(stretch)^(-Alpha_e/2 - 1))*N(i, :)*...
+        (1 - Gamma_e*sin(atan(u_zeta(i)*(2/h)))^2)*(h/2) + ...
         ...
-        N(i, :)'*2*MuT_e*((stretch)^(AlphaT_e - 1) + 1/2*(stretch)^(-AlphaT_e/2 - 1))*u(i)*...
-        -GammaT_e*((2*u_zeta(i)*(2/h))/((u_zeta(i)*(2/h))^2 + 1)^2*N(i, :)*(2/h) - (2*(u_zeta(i)*(2/h))^3)/((u_zeta(i)*(2/h))^2 + 1)^2*N(i, :)*(2/h))*(h/2)...
+        N(i, :)'*2*Mu_e*((stretch)^(Alpha_e - 1) + 1/2*(stretch)^(-Alpha_e/2 - 1))*u(i)*...
+        -Gamma_e*((2*u_zeta(i)*(2/h))/((u_zeta(i)*(2/h))^2 + 1)^2*N(i, :)*(2/h) - (2*(u_zeta(i)*(2/h))^3)/((u_zeta(i)*(2/h))^2 + 1)^2*N(i, :)*(2/h))*(h/2)...
         );
 end
 end
