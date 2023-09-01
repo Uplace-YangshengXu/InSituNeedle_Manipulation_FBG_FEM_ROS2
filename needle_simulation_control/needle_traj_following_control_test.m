@@ -1,5 +1,6 @@
 % created by Jiarong Kang at 27/02/2023
 % adpoted from needle_control_test, used for trajectory following
+
 %% dependency initialization
 clc
 clear
@@ -29,22 +30,27 @@ motor_controller_ip = '192.168.1.201';
 motor_controller_port = 23;
 
 %% FEM parameters and setup
-% % for air
-
-% Mu = [0 ; 0];
-% Alpha = [1 ; 1];
 
 Alpha_PSM = 8.74;
 Alpha_PVC = -1;
-Mu_PSM = 3.03e+03;
+Alpha_SKN = 12;
+Alpha_AIR = -1;
+
+Mu_PSM = 3.63e+03;
 Mu_PVC = 1.2715e+04;
-Mu = [Mu_PSM/2 ; Mu_PSM]; 
-Alpha =[Alpha_PSM ; Alpha_PSM];
-Ti = [ti; ti];
+Mu_SKN = 1.2e+06;
+Mu_AIR = 0;
+
+% Mu = [Mu_PSM/2 ; Mu_PSM]; 
+% Alpha =[Alpha_PSM ; Alpha_PSM];
+
+Mu = [Mu_AIR; Mu_AIR; Mu_AIR];
+Alpha = [Alpha_AIR; Alpha_SKN; Alpha_PSM];
+
+Ti = [ti; ti; ti];
 Constraints = [];
 
-
-Interval = {[0, 26];[26,80]};
+Interval = {[0, 12];[12,29]; [29, 150]};
 
 L = 163; % total length of needle (estimate)
 
@@ -69,28 +75,19 @@ k_pre = bk*ones(size(x_pre));
 tip_traj = [];
 global xd
 
-start_x = -5;
-start_y = 17.56;
+start_x = 0;
+start_y = 0.6;
 
-inter_x = 0;
-inter_y = 17.56;
+inter_x = 12;
+inter_y = 0.6;
 
-final_x = 57;
-final_y = 17.56;
+final_x = 75;
+final_y = 0.6;
 
 xd = [start_x start_y 0; 
      inter_x inter_y 0;
     final_x final_y 0]';
 
-% xd = [start_x start_y 0;
-%       inter_x inter_y 0;
-%       final_x final_y 0;
-%       final_x-15 final_y 0;
-%       final_x+1 -12.5 0.1]';
-
-% xd = [[start_x start_y -0.167; 
-%       inter_x inter_y -0.167;];
-%       [linspace(inter_x,final_x,100)' linspace(inter_y,final_y,100)' linspace(-0.167,-0.167,100)']]';
 
 % initialize the desired traj
 desired = 1; 
@@ -106,7 +103,7 @@ Arrived = 0;
 
 %% control parameters
 
-Kp = 3*diag([1 1 1]);
+Kp = 1*diag([1 1 1]);
 % scale the control
 dt = 0.1;
 % ini_tip_state = [x_pre(end);y_pre(end);k_pre(end)];

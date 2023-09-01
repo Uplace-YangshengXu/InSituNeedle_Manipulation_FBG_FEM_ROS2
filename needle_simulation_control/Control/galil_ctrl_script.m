@@ -1,3 +1,6 @@
+clear;
+clc;
+
 addpath ./Galil_MATLAB_API/;
 % old Galil Motor Controller
 % address = '192.168.1.201';
