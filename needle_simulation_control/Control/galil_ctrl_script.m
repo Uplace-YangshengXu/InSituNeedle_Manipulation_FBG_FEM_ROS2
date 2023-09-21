@@ -14,7 +14,7 @@ res = galil_command(g, [char(18), char(22)]);
 % parameter of controller
 % axis D: rotery stage                7031.25 unit: 1 degree
 % axis B: Y direction of XYZ robot    1000 unit: 1 mm
-% axis C: Z direction of XYZ robot    1000 unit: 1 mm
+% axis C: Z direction of XYZ robot    ? unit: 1 mm  about 700 per mm
 % axis A: X direction of XYZ robot    1000 unit: 1 mm
 
 % for x,y,z,rot axis
@@ -26,7 +26,7 @@ galil_command(g, 'AC 9216,9216,9216,64820');
 galil_command(g, 'DC 9216,9216,9216,64820');
 galil_command(g, 'SP 25000,25000,25000,80000');
 
-flag = true;
+flag = true;curvatures_xy
 promptX = "Input next X displacement (mm) negative-right:";
 promptY = "Input next Y displacement (mm) negative-down:";
 promptZ = "Input next Z displacement (mm) negative-downward:";
